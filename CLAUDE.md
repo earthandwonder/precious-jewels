@@ -37,6 +37,13 @@ The full working brief is in `docs/plan.md`. Key points:
 - Shrinking-object ladder for intuitive scale comparison
 - Counter that transitions from uncountable to countable as rarity increases
 
+## Deployment checklist (not yet done)
+
+1. Create a Vercel project for this repo (should auto-detect as Next.js)
+2. Deploy it — verify it works at `precious-jewels.vercel.app/p/precious-jewels`
+3. Then in the **shell site** repo (`/Users/ben/Developer/Next(dot)js/ben-mccarthy-com-au`), commit and deploy the `next.config.ts` change that adds the rewrite rules for `/p/precious-jewels`. The rewrite rules are already written — they just need committing and pushing.
+4. Verify `benmccarthy.com.au/p/precious-jewels` loads correctly
+
 ## Tech notes
 
 - Next.js with App Router, TypeScript, Tailwind
