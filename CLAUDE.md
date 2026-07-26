@@ -1,1 +1,45 @@
 @AGENTS.md
+
+# Precious Jewels — Interactive Essay
+
+An interactive scroll-essay that visualises how much of each precious material exists across the known universe, ranking them from most abundant to rarest.
+
+## Project Configuration
+
+**Project Name**: Precious Jewels
+
+## How it's served
+
+This project is served at `benmccarthy.com.au/p/precious-jewels` via Vercel rewrites from the shell site (`ben-mccarthy-com-au`). The shell site proxies all requests under `/p/precious-jewels` to this project's Vercel deployment.
+
+- `basePath` is set to `/p/precious-jewels` in `next.config.ts`
+- `NEXT_PUBLIC_BASE_PATH` is available as an env var for fetch calls, window.location, etc.
+- Local dev runs at `localhost:3000/p/precious-jewels`
+- See `REWRITE-SETUP.md` in the shell repo for the full pattern docs
+
+## The plan
+
+The full working brief is in `docs/plan.md`. Key points:
+
+- **Step 1 (SEO)** — Done. Primary keyword cluster: "rarest gemstone / rarest thing in the universe"
+- **Step 2 (Candidate list)** — Open. Draft the long list of jewellery materials (mineral + biological)
+- **Step 3 (Run the numbers)** — THE crux. Estimate total mass per material across the universe. This determines the ending.
+- **Step 4 (Suppliers)** — Deferred until Step 3 lands
+- **Step 5 (Design)** — Direction drafted: dark cosmic descent, particle piles, act-based zoom resets
+- **Step 6 (Build)** — Open. Prototype exists in session scratchpad from earlier work
+
+## Design direction
+
+- Dark "cosmic descent" theme
+- Colour temperature encodes rarity (icy/mineral at top, warm at rare bottom)
+- Each material = interactive particle pile you can click to scatter
+- Act-based structure to handle the 30-40 order-of-magnitude range without raw log axes
+- Shrinking-object ladder for intuitive scale comparison
+- Counter that transitions from uncountable to countable as rarity increases
+
+## Tech notes
+
+- Next.js with App Router, TypeScript, Tailwind
+- Will likely need: Canvas/WebGL for particles, scroll-driven animation library
+- No database needed — this is a static interactive essay
+- No auth needed
