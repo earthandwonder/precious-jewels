@@ -20,7 +20,7 @@ export default function AffiliateRow({
 
   return (
     <div className="flex items-center justify-center gap-4 mt-5">
-      {products.slice(0, 2).map((product, i) => (
+      {products.slice(0, 1).map((product, i) => (
         <ProductCard
           key={i}
           product={product}
