@@ -567,15 +567,11 @@ export const materials: Material[] = [
 export const interstitials = {
   "1-2": {
     heading: "Now things get genuinely rare.",
-    body: "Everything above exists on trillions of worlds. But the minerals below depend on beryllium — an element so scarce the universe barely makes it. Beryllium isn't forged in stellar cores like carbon or iron. It's created only when cosmic rays slam into heavier atoms at near-light speed and shatter them. A single massive star forges as much iron in its final day of fusion as the entire Milky Way has gathered in beryllium over thirteen billion years.",
-    multiplierLabel: "The gap you just crossed",
-    multiplierValue: "100,000,000\u00D7",
+    body: "Everything below needs beryllium — an element stars can't make. It's created only when cosmic rays shatter heavier atoms at near-light speed.",
   },
   "2-3": {
     heading: "One planet.",
-    body: "Every mineral above forms on rocky worlds, and there are an estimated ten sextillion of them. But everything below this line was made by life — and life, as far as we know, happened exactly once. Not because these materials are chemically exotic — because they're biological. You're surrounded by some of the rarest stuff in the universe, and you probably didn't know it.",
-    multiplierLabel: "The gap you just crossed",
-    multiplierValue: "1,000,000\u00D7",
+    body: "Everything below was made by life. You're surrounded by some of the rarest stuff in the universe.",
   },
 };
 
