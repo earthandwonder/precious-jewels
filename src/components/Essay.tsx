@@ -78,8 +78,6 @@ export default function Essay() {
   const act2 = materials.filter((m) => m.act === 2);
   const act3 = materials.filter((m) => m.act === 3);
 
-  const act1LastColor = act1[act1.length - 1]?.color ?? "#ffecd2";
-  const act2LastColor = act2[act2.length - 1]?.color ?? "#ffecd2";
   const act2Last = act2[act2.length - 1];
 
   return (
