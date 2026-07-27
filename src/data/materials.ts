@@ -424,13 +424,10 @@ export const materials: Material[] = [
       "Jet is ancient conifer wood, compressed under ocean sediments for 180 million years until it became a hard, lustrous black stone. Queen Victoria made it famous as mourning jewellery. It is fossilised biology — doubly rare.",
     derivation: {
       steps: [
-        "Jet deposits: primarily Whitby (UK, Toarcian ~182 Ma), Asturias (Spain), a few others.",
-        "No published global estimate. Fermi estimate: ~10⁹ kg (1 million tonnes).",
-        "Volume = 10⁹ / 1300 ≈ 10⁵·⁹ m³.",
+        "Fermi estimate. Major deposits: Whitby (UK, ~182 Ma), Asturias (Spain). No published global total.",
       ],
       sources: [
-        "Whitby jet is Toarcian age, ~181-182 Ma — well-dated",
-        "Queen Victoria's mourning jewellery decree after Prince Albert's death (1861)",
+        "Whitby jet: Toarcian age, well-dated at ~181-182 Ma",
       ],
     },
   },
@@ -448,13 +445,10 @@ export const materials: Material[] = [
       "Amber is fossilised tree resin — not sap, but the sticky defensive secretion trees produce when wounded. The Baltic deposit alone holds an estimated 640,000 tonnes, laid down 44 million years ago in a vast forest that no longer exists. All of it: one planet.",
     derivation: {
       steps: [
-        "Baltic deposit: ~640,000 tonnes (widely cited in scientific literature).",
-        "Other deposits (Dominican Republic, Myanmar, Mexican, Bitterfeld): adds ~300,000+ tonnes.",
-        "Total: ~1 million tonnes = 10⁹ kg → logMass ≈ 9.",
-        "Volume = 10⁹ / 1050 ≈ 10⁶ m³.",
+        "Baltic deposit: ~640,000 tonnes. Other deposits (Dominican Republic, Myanmar, etc.) add ~300,000+ tonnes.",
       ],
       sources: [
-        "Baltic amber tonnage: widely cited in geological and amber literature",
+        "Baltic amber tonnage widely cited in geological literature",
       ],
     },
   },
@@ -472,14 +466,11 @@ export const materials: Material[] = [
       "Precious coral — Corallium rubrum — is not reef coral. It's a slow-growing deep-water animal that builds a dense, polishable skeleton of calcium carbonate. Mediterranean fishers have harvested it for millennia. Populations have crashed 80% since the 1970s.",
     derivation: {
       steps: [
-        "No published global biomass for Corallium spp.",
-        "Peak catches: ~98 tonnes/year (1978). Millennia of deep-water habitat growth.",
-        "Fermi estimate: ~10⁸ kg (100,000 tonnes) living + dead-in-situ precious coral.",
-        "Volume = 10⁸ / 2700 ≈ 10⁴·⁶ m³.",
+        "Fermi estimate — no published global biomass. Peak catches ~98 t/year (1978); millennia of deep-water growth.",
       ],
       sources: [
-        "FAO data: Mediterranean red coral catch declined ~80% from 98t (1978) to <20t by late 1990s",
-        "Santangelo & Bramanti — Mediterranean red coral population studies",
+        "FAO data — red coral catch decline ~80% since 1978",
+        "Santangelo & Bramanti — population studies",
       ],
     },
   },
@@ -497,12 +488,10 @@ export const materials: Material[] = [
       "Ammolite is the iridescent aragonite shell of Placenticeras ammonites, found almost exclusively in a narrow belt along the St. Mary River in southern Alberta, Canada. One species. One geological formation. One planet. Gem-grade material may run out within decades.",
     derivation: {
       steps: [
-        "Bearpaw Formation, Alberta — sole significant source worldwide.",
-        "No published total tonnage. Fermi estimate: ~10⁷ kg (10,000 tonnes).",
-        "Volume = 10⁷ / 2800 ≈ 10³·⁶ m³.",
+        "Fermi estimate. Bearpaw Formation, Alberta — sole significant source. No published total tonnage.",
       ],
       sources: [
-        "GIA and Alberta government geological surveys confirm sole-source status",
+        "GIA and Alberta government geological surveys",
       ],
     },
   },
@@ -520,12 +509,10 @@ export const materials: Material[] = [
       "Only about one in a thousand pieces of amber contains an insect. Of those, only 10% are well-enough preserved to identify. Each one is a time capsule: a creature that landed on a sticky wound on a tree, 40 million years ago, on the only planet known to have trees, or insects, or resin.",
     derivation: {
       steps: [
-        "Total amber ≈ 10⁹ kg (see amber entry).",
-        "~1 in 1,000 pieces contains an insect → amber-with-insect ≈ 10⁶ kg.",
-        "Volume = 10⁶ / 1050 ≈ 10³ m³.",
+        "Total amber ≈ 10⁶ tonnes. ~1 in 1,000 pieces contains an insect → ~1,000 tonnes.",
       ],
       sources: [
-        "1-in-1000 ratio widely cited in amber and entomological literature",
+        "1-in-1,000 ratio — amber and entomological literature",
       ],
     },
   },
@@ -543,14 +530,11 @@ export const materials: Material[] = [
       "14.8 million years ago, an asteroid slammed into what is now Bavaria with enough force to vaporise the ground. The molten glass rained across central Europe and solidified mid-flight. About 275 tonnes survive today. Erosion has destroyed 99% of what was created. No more will ever form — unless another asteroid hits.",
     derivation: {
       steps: [
-        "Ries impact: 14.808 ± 0.038 Ma (Schmieder & Buchner 2008).",
-        "Surviving moldavite: ~275 tonnes (Trnka & Houzar 2002).",
-        "275 tonnes = 275,000 kg → logMass ≈ 5.4.",
-        "Volume = 275,000 / 2400 ≈ 115 m³ → logVolume ≈ 2.0.",
+        "~275 tonnes survive (Trnka & Houzar 2002). Ries impact dated to 14.808 ± 0.038 Ma.",
       ],
       sources: [
         "Trnka & Houzar (2002) — moldavite mass estimates",
-        "Schmieder & Buchner (2008) — Ries crater dating (14.808 ± 0.038 Ma)",
+        "Schmieder & Buchner (2008) — Ries crater dating",
       ],
     },
   },
@@ -570,13 +554,10 @@ export const materials: Material[] = [
       "Every natural pearl that has ever existed would fit inside a single room.",
     derivation: {
       steps: [
-        "GIA: ~1 in 10,000 wild oysters produces a gem pearl.",
-        "Historical fisheries (Persian Gulf, Sri Lanka, Japan) over millennia, but pearls degrade.",
-        "Total surviving natural gem pearls: Fermi estimate ~100 tonnes = 10⁵ kg.",
-        "Volume = 10⁵ / 2700 ≈ 40 m³ → logVolume ≈ 1.6.",
+        "1 in 10,000 wild oysters produces a gem pearl. Total surviving natural pearls: Fermi estimate ~100 tonnes.",
       ],
       sources: [
-        "GIA and The Pearl Source — 1-in-10,000 gem pearl ratio",
+        "GIA — 1-in-10,000 gem pearl ratio",
       ],
     },
   },
