@@ -169,7 +169,7 @@ export const materials: Material[] = [
     description:
       "Emerald's secret is beryllium — an element so cosmically rare it isn't even made inside stars. Beryllium is produced only when high-energy cosmic rays slam into heavier atoms and shatter them. Every emerald in existence is built from the debris of these collisions.",
     scaleComparison:
-      "All the emerald in the universe would fit in a ball the size of Manhattan.",
+      "All the emerald in the universe would fit in a sphere about six times wider than the Sun.",
   },
   {
     id: "red-beryl",
@@ -258,7 +258,7 @@ export const materials: Material[] = [
     name: "Wood",
     category: "biological",
     act: 3,
-    logVolume: 12.3,
+    logVolume: 12.0,
     density: 500,
     color: "#6B4423",
     glowColor: "#8B6914",
