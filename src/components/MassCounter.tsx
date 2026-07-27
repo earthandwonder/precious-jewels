@@ -1,46 +1,11 @@
 "use client";
 
+import type { Act } from "@/data/materials";
+
 interface MassCounterProps {
   logMass: number;
   color: string;
-}
-
-function formatMass(logMass: number): { value: string; unit: string } {
-  if (logMass >= 45) {
-    const exp = Math.round(logMass - 24.8);
-    return { value: `10${superscript(exp)}`, unit: "Earth-masses" };
-  }
-  if (logMass >= 30) {
-    return { value: `10${superscript(logMass)}`, unit: "kg" };
-  }
-  if (logMass >= 18) {
-    const tonnes = logMass - 3;
-    return { value: `10${superscript(Math.round(tonnes - 12))}`, unit: "trillion tonnes" };
-  }
-  if (logMass >= 15) {
-    const tonnes = logMass - 3;
-    const val = Math.round(10 ** (tonnes - 9));
-    return { value: val.toLocaleString(), unit: "billion tonnes" };
-  }
-  if (logMass >= 12) {
-    const tonnes = logMass - 3;
-    const val = Math.round(10 ** (tonnes - 6));
-    return { value: val.toLocaleString(), unit: "million tonnes" };
-  }
-  if (logMass >= 9) {
-    const val = Math.round(10 ** (logMass - 3) / 1e6);
-    return { value: val.toLocaleString(), unit: "million tonnes" };
-  }
-  if (logMass >= 6) {
-    const val = Math.round(10 ** (logMass - 3));
-    return { value: val.toLocaleString(), unit: "tonnes" };
-  }
-  if (logMass >= 3) {
-    const val = Math.round(10 ** logMass / 1000);
-    return { value: val.toLocaleString(), unit: "tonnes" };
-  }
-  const val = Math.round(10 ** logMass);
-  return { value: val.toLocaleString(), unit: "kg" };
+  act: Act;
 }
 
 function superscript(n: number): string {
@@ -52,20 +17,59 @@ function superscript(n: number): string {
   return String(n).split("").map(c => map[c] ?? c).join("");
 }
 
-export default function MassCounter({ logMass, color }: MassCounterProps) {
-  const { value, unit } = formatMass(logMass);
+/**
+ * Consistent units per part:
+ * Part 1 (logMass 41-49): Earth-masses
+ * Part 2 (logMass 27-38): kg
+ * Part 3 (logMass 5-16): tonnes
+ */
+function formatMass(logMass: number, act: Act): { value: string; unit: string } {
+  if (act === 1) {
+    // Earth mass ≈ 5.97 × 10^24 kg → logEarth ≈ 24.8
+    const earthExp = Math.round(logMass - 24.8);
+    if (earthExp <= 0) {
+      return { value: "~1", unit: "Earth-mass" };
+    }
+    return { value: `~10${superscript(earthExp)}`, unit: "Earth-masses" };
+  }
 
-  // Uncountable: logMass >= 25 — large, pulsing, overwhelming
-  // Transitional: 10-25 — medium
-  // Countable: < 10 — sharp, precise, small
+  if (act === 2) {
+    return { value: `~10${superscript(Math.round(logMass))}`, unit: "kg" };
+  }
+
+  // Act 3: tonnes (logMass is in kg, so subtract 3 for tonnes)
+  const logTonnes = logMass - 3;
+  if (logTonnes >= 9) {
+    const billionExp = Math.round(logTonnes - 9);
+    if (billionExp === 0) return { value: "~1", unit: "billion tonnes" };
+    return { value: `~10${superscript(billionExp)}`, unit: "billion tonnes" };
+  }
+  if (logTonnes >= 6) {
+    const millionExp = Math.round(logTonnes - 6);
+    if (millionExp === 0) return { value: "~1", unit: "million tonnes" };
+    const val = Math.round(10 ** millionExp);
+    return { value: `~${val.toLocaleString()}`, unit: "million tonnes" };
+  }
+  if (logTonnes >= 3) {
+    const val = Math.round(10 ** (logTonnes - 3));
+    return { value: `~${val.toLocaleString()}`, unit: "thousand tonnes" };
+  }
+  if (logTonnes >= 0) {
+    const val = Math.round(10 ** logTonnes);
+    return { value: `~${val.toLocaleString()}`, unit: "tonnes" };
+  }
+  const kg = Math.round(10 ** logMass);
+  return { value: `~${kg.toLocaleString()}`, unit: "kg" };
+}
+
+export default function MassCounter({ logMass, color, act }: MassCounterProps) {
+  const { value, unit } = formatMass(logMass, act);
+
   const isUncountable = logMass >= 25;
-  const isTransitional = logMass >= 10 && logMass < 25;
 
   const fontSize = isUncountable
     ? "text-xl md:text-2xl"
-    : isTransitional
-      ? "text-lg md:text-xl"
-      : "text-base md:text-lg";
+    : "text-base md:text-lg";
 
   return (
     <div className="my-3 flex items-baseline justify-center gap-2">
@@ -76,10 +80,10 @@ export default function MassCounter({ logMass, color }: MassCounterProps) {
           opacity: isUncountable ? 0.8 : 0.6,
         }}
       >
-        ~{value}
+        {value}
       </span>
       <span className="text-xs text-muted">
-        {unit} across the known universe
+        {unit}
       </span>
     </div>
   );

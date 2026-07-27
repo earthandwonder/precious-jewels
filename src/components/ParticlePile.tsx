@@ -303,25 +303,7 @@ export default function ParticlePile({
 
       ctx.clearRect(0, 0, rect.width, rect.height);
 
-      // Glow behind the pile
-      const centerX = rect.width / 2;
       const groundY = rect.height * 0.88;
-      const glowRadius = rect.width * (0.15 + abundance * 0.35);
-      const grad = ctx.createRadialGradient(
-        centerX,
-        groundY - rect.height * 0.15,
-        0,
-        centerX,
-        groundY - rect.height * 0.15,
-        glowRadius
-      );
-      grad.addColorStop(
-        0,
-        `rgba(${glowRgb.r}, ${glowRgb.g}, ${glowRgb.b}, ${0.1 + abundance * 0.2})`
-      );
-      grad.addColorStop(1, "transparent");
-      ctx.fillStyle = grad;
-      ctx.fillRect(0, 0, rect.width, rect.height);
 
       // Apply pointer repulsion
       applyPointerRepulsion();
@@ -549,13 +531,29 @@ export default function ParticlePile({
     kickAnimation();
   };
 
+  const glowRgb = hexToRgb(glowColor);
+  const glowOpacity = 0.06 + abundance * 0.12;
+
   return (
-    <canvas
-      ref={canvasRef}
-      onClick={handleClick}
-      className="particle-canvas w-full cursor-pointer touch-none"
-      style={{ height }}
-      aria-label="Click to scatter particles"
-    />
+    <div className="relative overflow-visible" style={{ height }}>
+      {/* CSS glow — separate layer so it bleeds past canvas bounds */}
+      <div
+        className="absolute pointer-events-none"
+        style={{
+          left: "-30%",
+          right: "-30%",
+          top: "-20%",
+          bottom: "-40%",
+          background: `radial-gradient(ellipse 40% 40% at 50% 55%, rgba(${glowRgb.r}, ${glowRgb.g}, ${glowRgb.b}, ${glowOpacity}) 0%, transparent 70%)`,
+        }}
+      />
+      <canvas
+        ref={canvasRef}
+        onClick={handleClick}
+        className="particle-canvas w-full cursor-pointer touch-none relative z-10"
+        style={{ height }}
+        aria-label="Click to scatter particles"
+      />
+    </div>
   );
 }
