@@ -37,9 +37,9 @@ export default function ProductCard({
             src={product.imageUrl}
             alt=""
             aria-hidden
-            className="absolute z-0 max-h-16 max-w-16 md:max-h-24 md:max-w-24 object-contain transition-opacity duration-500 opacity-60 group-hover:opacity-80"
+            className="absolute z-0 max-h-16 max-w-16 md:max-h-24 md:max-w-24 object-contain transition-opacity duration-500 opacity-30 group-hover:opacity-50"
             style={{
-              filter: `blur(12px) brightness(1.5) saturate(2)`,
+              filter: `blur(10px) brightness(1.2) saturate(1.4)`,
             }}
           />
           {/* Actual product image */}
@@ -48,7 +48,7 @@ export default function ProductCard({
             alt=""
             className="relative z-10 max-h-16 max-w-16 md:max-h-24 md:max-w-24 object-contain transition-transform duration-300 group-hover:scale-105"
             style={{
-              filter: `drop-shadow(0 0 6px rgba(${rgb},0.4))`,
+              filter: `drop-shadow(0 0 4px rgba(${rgb},0.2))`,
             }}
             loading="lazy"
           />

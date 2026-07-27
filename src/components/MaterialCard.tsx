@@ -4,7 +4,7 @@ import { useRef, useEffect, useState } from "react";
 import type { Material } from "@/data/materials";
 import { affiliateProducts } from "@/data/products";
 import ParticlePile from "./ParticlePile";
-import type { MaterialFeel } from "./ParticlePile";
+import type { MaterialFeel, ParticleShape } from "./ParticlePile";
 import MassCounter from "./MassCounter";
 import ScaleReference, { getRefType, REFERENCES } from "./ScaleReference";
 import AffiliateRow from "./AffiliateRow";
@@ -12,6 +12,68 @@ import AffiliateRow from "./AffiliateRow";
 function abundanceToNormalized(logMass: number): number {
   const raw = (logMass - 5) / 44;
   return Math.max(0.35, Math.min(1, raw));
+}
+
+interface ParticleStyle {
+  particleShape: ParticleShape;
+  colorJitter: number;
+  sizeRange: [number, number];
+}
+
+function getParticleStyle(material: Material): ParticleStyle {
+  switch (material.id) {
+    // Logs / elongated pieces
+    case "wood":
+    case "petrified-wood":
+    case "jet":
+      return { particleShape: "log", colorJitter: 0.25, sizeRange: [0.6, 1.8] };
+
+    // Flat shards / shell fragments
+    case "shell":
+    case "ammolite":
+      return { particleShape: "shard", colorJitter: 0.2, sizeRange: [0.7, 1.5] };
+
+    // Branching / irregular organic
+    case "coral":
+      return { particleShape: "log", colorJitter: 0.15, sizeRange: [0.5, 1.6] };
+
+    // Faceted crystals / angular chunks
+    case "diamond":
+    case "quartz":
+    case "emerald":
+    case "red-beryl":
+    case "alexandrite":
+    case "benitoite":
+    case "taaffeite":
+    case "painite":
+    case "garnet":
+    case "zircon":
+    case "corundum":
+    case "jadeite":
+    case "olivine":
+    case "moldavite":
+      return { particleShape: "chunk", colorJitter: 0.15, sizeRange: [0.5, 1.4] };
+
+    // Opal — extra colour variation
+    case "opal":
+      return { particleShape: "chunk", colorJitter: 0.35, sizeRange: [0.5, 1.5] };
+
+    // Smooth round things
+    case "pearl":
+      return { particleShape: "circle", colorJitter: 0.08, sizeRange: [0.85, 1.1] };
+
+    // Rounded lumps
+    case "amber":
+    case "amber-inclusion":
+      return { particleShape: "circle", colorJitter: 0.2, sizeRange: [0.6, 1.6] };
+
+    // Fossils — rounded irregular
+    case "ammonite":
+      return { particleShape: "circle", colorJitter: 0.2, sizeRange: [0.7, 1.5] };
+
+    default:
+      return { particleShape: "circle", colorJitter: 0.1, sizeRange: [0.7, 1.3] };
+  }
 }
 
 function getMaterialFeel(material: Material): MaterialFeel {
@@ -137,6 +199,7 @@ export default function MaterialCard({
             isVisible={active}
             feel={getMaterialFeel(material)}
             density={material.density}
+            {...getParticleStyle(material)}
           />
         </div>
       </div>
@@ -171,7 +234,7 @@ export default function MaterialCard({
         {hasProducts && (
           <div className={`snap-animate snap-animate-delay-6 mt-3 md:mt-4 opacity-70 hover:opacity-100 transition-opacity ${active ? "is-active" : ""}`}>
             <p
-              className="text-[9px] md:text-[10px] tracking-[0.2em] uppercase mb-0"
+              className="text-[9px] md:text-[10px] tracking-[0.2em] uppercase mb-[-4px]"
               style={{ color: `${tint} 0.35)` }}
             >
               What it looks like
