@@ -5,30 +5,58 @@ import type { Product } from "@/components/ProductCard";
  * Only high-conversion materials where the essay copy has done the selling.
  * Keys match material.id from materials.ts.
  *
- * TODO (Ben): Source Etsy products for these materials. Priority order:
- *   1. moldavite — alien origin story, #2 rarest, ~$50-200 pendant
- *   2. alexandrite — colour-change stone, ~$150-400, minimal setting
- *   3. amber-inclusion — visible insect, ~$30-150, pendant or necklace
- *   4. ammolite — iridescent fossil, ~$100-400, cabochon pendant
- *   5. pearl — natural pearl pendant for the Finale, ~$80-300
- *
  * Image requirements: stone is the hero, minimal setting, dark/transparent
  * background preferred. See docs/conversion-strategy.md for full brief.
  */
 export const inlineProducts: Record<string, Product[]> = {
-  // opal keeps inline placement — play-of-colour sells visually
   opal: [
     {
-      name: "Minimalist Opal Stud Earrings",
-      price: "$95",
-      url: "https://www.etsy.com/au/listing/857888625/minimalist-opal-stud-earrings-in",
-      imageUrl: "/p/abundant-gems/samples/opal1.png",
+      name: "Black Fire Opal Pendant — Gold Vermeil",
+      price: "$60",
+      url: "https://www.etsy.com/au/listing/4445734533/large-black-opal-pendant-gold-vermeil",
+      imageUrl: "/p/abundant-gems/samples/opal2.png",
     },
   ],
-  // TODO: alexandrite
-  // TODO: ammolite
-  // TODO: amber-inclusion
-  // TODO: moldavite
+  moldavite: [
+    {
+      name: "Raw Moldavite Pendant — 925 Sterling Silver",
+      price: "$37",
+      url: "https://www.etsy.com/au/listing/4395103239/raw-moldavite-pendant-925-sterling",
+      imageUrl: "/p/abundant-gems/samples/moldavite.png",
+    },
+  ],
+  alexandrite: [
+    {
+      name: "Fireworks Cut Color-Change Alexandrite Pendant — Sterling Silver",
+      price: "$180",
+      url: "https://www.etsy.com/au/listing/4411411619/fireworks-cut-color-change-alexandrite",
+      imageUrl: "/p/abundant-gems/samples/alexandrite1.png",
+    },
+  ],
+  ammolite: [
+    {
+      name: "Ammolite Shell Pendant — Sterling Silver",
+      price: "$100",
+      url: "https://www.etsy.com/au/listing/1508401721/ammolite-necklace-sterling-silver",
+      imageUrl: "/p/abundant-gems/samples/ammolite1.png",
+    },
+  ],
+  "amber-inclusion": [
+    {
+      name: "Baltic Amber Pendant with Insect Inclusions — Sterling Silver",
+      price: "$60",
+      url: "https://www.etsy.com/au/listing/4464038627/baltic-amber-with-insect-inclusions-925",
+      imageUrl: "/p/abundant-gems/samples/amber-inclusion1.png",
+    },
+  ],
+  pearl: [
+    {
+      name: "Freshwater Pearl Pendant — Sterling Silver Chain",
+      price: "$57",
+      url: "https://www.etsy.com/au/listing/1280195347/18-925-sterling-silver-necklace-with-a",
+      imageUrl: "/p/abundant-gems/samples/pearl1.png",
+    },
+  ],
 };
 
 /**
