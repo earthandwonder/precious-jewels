@@ -56,7 +56,7 @@ export const materials: Material[] = [
     glowColor: "#FF6B8A",
     tagline: "Born in the atmospheres of dying stars",
     description:
-      "Corundum — the mineral that gives us both rubies and sapphires — forms when aluminium oxide condenses in the searing atmospheres of red giant stars. It's one of the first minerals to crystallise from a cooling stellar wind.",
+      "Corundum — the mineral that gives us both rubies and sapphires — is one of the first minerals to crystallise from a cooling stellar wind. The same crystal, coloured red by chromium or blue by iron and titanium.",
     scaleComparison:
       "Enough ruby and sapphire to bury every planet in the solar system kilometres deep.",
     derivation: {
@@ -81,7 +81,7 @@ export const materials: Material[] = [
     glowColor: "#B5658A",
     tagline: "Crushed into existence in the deep mantle of every rocky planet",
     description:
-      "Garnet makes up a large share of the deep mantles of rocky planets — from 250 to 600 km down. Any world big enough to have pressure has garnet. The universe is full of rocky worlds.",
+      "Any world big enough to have pressure has garnet — from 250 to 600 km down. The universe is full of rocky worlds.",
     scaleComparison: "A sphere of garnet wider than the orbit of Neptune.",
     derivation: {
       steps: [
@@ -104,7 +104,7 @@ export const materials: Material[] = [
     glowColor: "#E0F7FF",
     tagline: "Rained from methane skies, scattered through interstellar dust",
     description:
-      "Diamond nanocrystals litter the interstellar medium. They rain from the methane atmospheres of ice giants. Carbon — the fourth most abundant element — becomes diamond wherever pressure and temperature align, and the universe provides both generously.",
+      "Carbon — the fourth most abundant element — becomes diamond wherever pressure and temperature align. The universe provides both generously.",
     scaleComparison:
       "A sphere of diamond stretching far past the orbit of Pluto.",
     derivation: {
@@ -129,7 +129,7 @@ export const materials: Material[] = [
     glowColor: "#C39BD3",
     tagline: "Crystallised wherever silica and water meet inside a cooling crust",
     description:
-      "Quartz needs silica-rich, differentiated crust — rarer than raw mantle minerals, but still staggeringly common across the trillions of rocky planets. Amethyst is just quartz with a trace of irradiated iron.",
+      "Rarer than raw mantle minerals, but still staggeringly common across trillions of rocky planets. Amethyst is just quartz with a trace of irradiated iron.",
     scaleComparison: "Enough amethyst to build a mountain range spanning a galaxy.",
     derivation: {
       steps: [
@@ -174,7 +174,7 @@ export const materials: Material[] = [
     glowColor: "#66CDAA",
     tagline: "Forged in the collision zones of tectonic plates",
     description:
-      "Jadeite needs immense pressure — it forms only where one tectonic plate dives beneath another. Not every rocky world has plate tectonics, but enough do. Imperial jade, the vivid green variety, requires a chromium trace that makes it genuinely uncommon.",
+      "Not every rocky world has plate tectonics, but enough do. Imperial jade — the vivid green variety — requires a chromium trace that makes it genuinely uncommon.",
     derivation: {
       steps: [
         "~10-30% of rocky planets have plate tectonics. ~10²⁰ kg jadeite-facies material per tectonic world × ~10²² planets.",
@@ -195,7 +195,7 @@ export const materials: Material[] = [
     glowColor: "#FFA07A",
     tagline: "Silica dissolved in water, settled into a lattice that splits light into fire",
     description:
-      "Opal is silica that precipitated from water, trapping it in a lattice of nanospheres that diffract light into fire. It requires a world with liquid water — a far rarer condition than most people realise. Opal has been detected on Mars.",
+      "It requires a world with liquid water — a far rarer condition than most people realise. Opal has been detected on Mars.",
     derivation: {
       steps: [
         "Requires liquid water. ~1-10% of rocky planets have water history → ~10²¹ water-worlds × ~10¹⁵ kg opal each.",
@@ -221,7 +221,7 @@ export const materials: Material[] = [
     glowColor: "#7DCEA0",
     tagline: "Built from cosmic ray debris — beryllium, an element stars can't make",
     description:
-      "Emerald's secret is beryllium — an element so cosmically rare it isn't even made inside stars. Beryllium is produced only when high-energy cosmic rays slam into heavier atoms and shatter them. Every emerald in existence is built from the debris of these collisions.",
+      "Every emerald in existence started as atomic shrapnel. The beryllium bottleneck means emerald can never be cosmically common — no matter how many rocky worlds there are.",
     scaleComparison:
       "All the emerald in the universe would fit in a sphere about six times wider than the Sun.",
     derivation: {
@@ -246,7 +246,7 @@ export const materials: Material[] = [
     glowColor: "#FF4444",
     tagline: "The same impossible element, trapped in a single Utah lava flow",
     description:
-      "Red beryl has the same beryllium bottleneck as emerald, but demands an additional coincidence: manganese as a chromophore, inside a very specific type of rhyolitic lava flow. On Earth, there is exactly one commercial deposit, in Utah.",
+      "Same beryllium bottleneck as emerald, plus an additional coincidence: manganese, inside a very specific type of rhyolitic lava flow. One red beryl crystal for every 150,000 gem diamonds.",
     derivation: {
       steps: [
         "Same Be bottleneck as emerald, plus Mn in rhyolitic lava. ~1,000× rarer — one commercial deposit exists on Earth.",
@@ -268,7 +268,7 @@ export const materials: Material[] = [
     glowColor: "#EE82EE",
     tagline: "Four reluctant elements, forced into a crystal that almost never forms",
     description:
-      "Taaffeite was first discovered in 1945 — already cut and polished, sitting in a jeweller's box, mistaken for spinel. Fewer than a thousand faceted stones are known worldwide. It needs beryllium, magnesium, and aluminium to meet in a specific crystal structure that almost never forms.",
+      "First discovered in 1945 — already cut and polished, sitting in a jeweller's box, mistaken for spinel. Fewer than a thousand faceted stones are known worldwide.",
     derivation: {
       steps: [
         "BeMgAl₄O₈ — same Be scarcity, but the crystal structure almost never nucleates. <1,000 faceted stones known.",
@@ -289,7 +289,7 @@ export const materials: Material[] = [
     glowColor: "#8A2BE2",
     tagline: "Beryllium from the crust, chromium from the mantle — they almost never meet",
     description:
-      "Alexandrite needs beryllium and chromium — but these two elements are geochemical enemies. Beryllium concentrates in evolved, silica-rich rocks. Chromium concentrates in primitive, iron-rich mantle rocks. They almost never meet. When they do, you get a gem that changes colour from green to red depending on the light.",
+      "When they do meet, you get a gem that changes colour from green to red depending on the light. Geochemical enemies producing something beautiful.",
     derivation: {
       steps: [
         "BeAl₂O₄ + Cr³⁺. Be lives in felsic rocks, Cr in mafic — they converge only at pegmatite-ultramafic contacts.",
@@ -310,7 +310,7 @@ export const materials: Material[] = [
     glowColor: "#6495ED",
     tagline: "Barium-rich fluids altering serpentinite, in one county in California",
     description:
-      "Gem-quality benitoite comes from exactly one place on Earth: San Benito County, California. It forms when barium-rich hydrothermal fluids alter serpentinite under very specific pressure and temperature. The mine closed in 2006. Commercial production has ended permanently.",
+      "The mine closed in 2006. Commercial production has ended permanently. What exists is all there will ever be.",
     derivation: {
       steps: [
         "BaTiSi₃O₉ — not beryllium-limited but equally rare. One gem source on Earth (hundreds of kg total production).",
@@ -379,7 +379,7 @@ export const materials: Material[] = [
     glowColor: "#FFEFD5",
     tagline: "Aragonite bricks, mortared by a living animal, thinner than a wavelength of light",
     description:
-      "Mother-of-pearl — nacre — is aragonite crystals laid down in microscopic brick-and-mortar layers by living mollusks. The iridescence comes from the layers being thinner than a wavelength of light. No geological process produces it. Only life does.",
+      "Nacre is aragonite crystals laid down in microscopic brick-and-mortar layers by living mollusks. No geological process produces it. Only life does.",
     derivation: {
       steps: [
         "Fermi estimate — no published total. Marine molluscs produce vast CaCO₃; fossil shell beds are enormous.",
@@ -400,7 +400,7 @@ export const materials: Material[] = [
     glowColor: "#CD853F",
     tagline: "Trees turned to stone, cell by cell",
     description:
-      "Petrified wood is what happens when silica-rich groundwater slowly replaces every cell of a buried tree with quartz, preserving the grain, the rings, even the bark. It requires trees — which require life — which, as far as we know, requires this one planet.",
+      "Silica-rich groundwater slowly replaces every cell of a buried tree with quartz, preserving the grain, the rings, even the bark.",
     derivation: {
       steps: [
         "Fermi estimate. Deposits worldwide. ~3 OoM below living wood — only a tiny fraction gets silicified.",
@@ -485,7 +485,7 @@ export const materials: Material[] = [
     glowColor: "#FF69B4",
     tagline: "One extinct species, one river in Alberta, 70 million years underground",
     description:
-      "Ammolite is the iridescent aragonite shell of Placenticeras ammonites, found almost exclusively in a narrow belt along the St. Mary River in southern Alberta, Canada. One species. One geological formation. One planet. Gem-grade material may run out within decades.",
+      "The iridescent shell of one extinct ammonite species, found in a narrow belt along the St. Mary River. Gem-grade material may run out within decades.",
     derivation: {
       steps: [
         "Fermi estimate. Bearpaw Formation, Alberta — sole significant source. No published total tonnage.",
@@ -506,7 +506,7 @@ export const materials: Material[] = [
     glowColor: "#E6A800",
     tagline: "A whole creature, frozen in tree resin for 40 million years",
     description:
-      "Only about one in a thousand pieces of amber contains an insect. Of those, only 10% are well-enough preserved to identify. Each one is a time capsule: a creature that landed on a sticky wound on a tree, 40 million years ago, on the only planet known to have trees, or insects, or resin.",
+      "Only about one in a thousand pieces of amber contains an insect. Of those, only 10% are well-enough preserved to identify. Each one is a time capsule: a creature that landed on a sticky wound on a tree and never left.",
     derivation: {
       steps: [
         "Total amber ≈ 10⁶ tonnes. ~1 in 1,000 pieces contains an insect → ~1,000 tonnes.",
@@ -549,7 +549,7 @@ export const materials: Material[] = [
     glowColor: "#FFF8DC",
     tagline: "A mollusk's slow answer to a grain of sand",
     description:
-      "A natural pearl forms when a living mollusk — an oyster, a mussel — wraps an irritant in layer after layer of nacre. One in ten thousand wild oysters produces a gem pearl. No other world is known to have oceans, or mollusks, or the patient biology that builds a pearl. Of everything you could wear, this is the rarest thing in all of existence.",
+      "One in ten thousand wild oysters produces a gem pearl. Every natural pearl that has ever existed would fit inside a single room. Of everything you could wear, this is the rarest thing in all of existence.",
     scaleComparison:
       "Every natural pearl that has ever existed would fit inside a single room.",
     derivation: {

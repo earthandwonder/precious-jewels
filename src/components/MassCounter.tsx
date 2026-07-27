@@ -117,7 +117,7 @@ export default function MassCounter({ logVolume, density, color, act, derivation
           {value}
         </span>
         <span className="text-sm text-muted">
-          {unit} in the universe<span style={{ opacity: 0.55 }}>*</span>
+          {unit}<span style={{ opacity: 0.55 }}>*</span>
         </span>
         {hasDerivation && (
           <span

@@ -187,7 +187,7 @@ export default function MaterialCard({
   const hasProducts = !!inlineProducts[material.id];
 
   return (
-    <div className="material-card w-full h-full flex flex-col items-center justify-center px-4 md:px-6 py-6 md:py-0 overflow-hidden">
+    <div className="material-card relative w-full h-full flex flex-col items-center justify-center px-4 md:px-6 py-6 md:py-0 overflow-hidden">
       {/* Visual: pile + reference */}
       <div
         className={`snap-animate snap-animate-delay-1 flex items-end justify-center gap-2 md:gap-3 mb-3 md:mb-6 overflow-visible ${active ? "is-active" : ""}`}
@@ -257,32 +257,33 @@ export default function MaterialCard({
           </div>
         )}
 
-        {/* Share button */}
-        <button
-          type="button"
-          className={`snap-animate snap-animate-delay-7 mt-3 md:mt-4 flex items-center gap-1.5 mx-auto text-xs md:text-sm tracking-wider uppercase transition-opacity cursor-pointer ${active ? "is-active" : ""}`}
-          style={{ color: `${tint} 0.5)`, background: "none", border: "none", padding: "4px 8px" }}
-          onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.8")}
-          onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
-          onClick={() => {
-            const url = typeof window !== "undefined"
-              ? window.location.origin + (process.env.NEXT_PUBLIC_BASE_PATH || "")
-              : "";
-            if (navigator.share) {
-              navigator.share({ title: "Imagine You Are an Intergalactic Gem Hunter", url });
-            } else {
-              navigator.clipboard.writeText(url);
-            }
-          }}
-        >
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
-            <polyline points="16 6 12 2 8 6" />
-            <line x1="12" y1="2" x2="12" y2="15" />
-          </svg>
-          Share
-        </button>
       </div>
+
+      {/* Share button — pinned to bottom */}
+      <button
+        type="button"
+        className={`snap-animate snap-animate-delay-7 absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-1.5 text-xs md:text-sm tracking-wider uppercase transition-opacity cursor-pointer ${active ? "is-active" : ""}`}
+        style={{ color: `${tint} 0.5)`, background: "none", border: "none", padding: "4px 8px" }}
+        onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.8")}
+        onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+        onClick={() => {
+          const url = typeof window !== "undefined"
+            ? window.location.origin + (process.env.NEXT_PUBLIC_BASE_PATH || "")
+            : "";
+          if (navigator.share) {
+            navigator.share({ title: "Imagine You Are an Intergalactic Gem Hunter", url });
+          } else {
+            navigator.clipboard.writeText(url);
+          }
+        }}
+      >
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
+          <polyline points="16 6 12 2 8 6" />
+          <line x1="12" y1="2" x2="12" y2="15" />
+        </svg>
+        Share
+      </button>
     </div>
   );
 }
