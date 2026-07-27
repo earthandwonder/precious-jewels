@@ -42,18 +42,13 @@ function conePileHeight(logMass: number, density: number): number {
 }
 
 const REF_DISPLAY_SIZES: Record<string, number> = {
-  earth: 60, everest: 60, statue: 50, human: 40,
+  earth: 50, everest: 50, statue: 40, human: 35,
 };
 
 function abundanceToHeight(abundance: number): number {
-  return Math.round(100 + abundance * abundance * 220);
+  return Math.round(80 + abundance * abundance * 160);
 }
 
-/**
- * For Act 3: compute pile height in px so the pile-to-reference ratio
- * on screen matches the real-world ratio, clamped to [0.5x, 20x].
- * For Acts 1-2: use the old abundance-based height (Earth is narrative).
- */
 function getPileHeight(material: Material): number {
   if (material.act <= 2) {
     return abundanceToHeight(abundanceToNormalized(material.logMass));
@@ -63,49 +58,45 @@ function getPileHeight(material: Material): number {
   const refType = getRefType(material.logMass, material.density, material.act);
   const refRealSize = REFERENCES[refType].realSize;
   const realRatio = realH / refRealSize;
-  const clampedRatio = Math.max(0.5, Math.min(8, realRatio));
+  const clampedRatio = Math.max(0.5, Math.min(6, realRatio));
   const refPx = REF_DISPLAY_SIZES[refType];
   return Math.round(refPx * clampedRatio);
 }
 
 export default function MaterialCard({
   material,
+  isActive,
 }: {
   material: Material;
+  isActive: boolean;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
+    if (isActive && !hasAnimated) {
+      setHasAnimated(true);
+    }
+  }, [isActive, hasAnimated]);
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting);
-      },
-      { threshold: 0.05, rootMargin: "100px 0px 100px 0px" }
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+  const active = hasAnimated;
 
   const pileHeight = getPileHeight(material);
-  // For Act 3, scale abundance with pile height so bigger piles get more particles
   const abundance = material.act === 3
-    ? Math.max(0.35, Math.min(1, pileHeight / 400))
+    ? Math.max(0.35, Math.min(1, pileHeight / 300))
     : abundanceToNormalized(material.logMass);
   const isWarm = material.act === 3;
   const tint = isWarm
     ? "rgba(255, 200, 150,"
     : "rgba(150, 180, 220,";
 
+  const hasProducts = !!affiliateProducts[material.id];
+
   return (
-    <div ref={ref} className="material-card" data-visible={isVisible}>
-      {/* ── Visual: pile + reference at scale ── */}
-      <div className="flex items-end justify-center gap-3 mb-10 overflow-visible">
-        {/* Reference object — pulled tight against the pile base */}
+    <div className="material-card w-full h-full flex flex-col items-center justify-center px-6">
+      {/* Visual: pile + reference */}
+      <div
+        className={`snap-animate snap-animate-delay-1 flex items-end justify-center gap-3 mb-6 overflow-visible ${active ? "is-active" : ""}`}
+      >
         <div className="flex-shrink-0">
           <ScaleReference
             logMass={material.logMass}
@@ -115,11 +106,10 @@ export default function MaterialCard({
           />
         </div>
 
-        {/* Pile — the hero */}
         <div
           className="flex-1"
           style={{
-            maxWidth: Math.min(480 + abundance * 160, pileHeight * 2),
+            maxWidth: Math.min(360 + abundance * 120, pileHeight * 2),
           }}
         >
           <ParticlePile
@@ -127,52 +117,48 @@ export default function MaterialCard({
             glowColor={material.glowColor}
             abundance={abundance}
             height={pileHeight}
-            isVisible={isVisible}
+            isVisible={active}
             feel={getMaterialFeel(material)}
             density={material.density}
           />
         </div>
       </div>
 
-      {/* ── Text block — one cohesive unit ── */}
+      {/* Text block */}
       <div className="text-center max-w-lg mx-auto">
         <h3
-          className="font-editorial text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight leading-[1.1]"
+          className={`snap-animate snap-animate-delay-2 font-editorial text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight leading-[1.1] ${active ? "is-active" : ""}`}
           style={{ color: material.color }}
         >
           {material.name}
         </h3>
 
-        {/* Counter — data annotation paired with the name */}
-        <MassCounter logMass={material.logMass} color={material.color} act={material.act} />
+        <div className={`snap-animate snap-animate-delay-3 ${active ? "is-active" : ""}`}>
+          <MassCounter logMass={material.logMass} color={material.color} act={material.act} />
+        </div>
 
-        {/* Tagline — begins the prose */}
         <p
-          className="font-editorial text-lg md:text-xl italic mt-3 mb-5 leading-relaxed"
+          className={`snap-animate snap-animate-delay-4 font-editorial text-base md:text-lg italic mt-2 mb-3 leading-relaxed ${active ? "is-active" : ""}`}
           style={{ color: `${tint} 0.7)` }}
         >
           {material.tagline}
         </p>
 
-        {/* Description — the reading block */}
         <p
-          className="text-sm md:text-[15px] leading-[1.8] mt-5 max-w-md mx-auto"
+          className={`snap-animate snap-animate-delay-5 text-xs md:text-sm leading-[1.8] mt-3 max-w-md mx-auto ${active ? "is-active" : ""}`}
           style={{ color: `${tint} 0.5)` }}
         >
           {material.description}
-          {material.formula && (
-            <span
-              className="font-mono text-xs ml-1"
-              style={{ color: `${tint} 0.25)` }}
-            >
-              ({material.formula})
-            </span>
-          )}
         </p>
 
-        {/* Product — small, quiet, at the end */}
-        {affiliateProducts[material.id] && (
-          <div className="mt-6 opacity-70 hover:opacity-100 transition-opacity">
+        {hasProducts && (
+          <div className={`snap-animate snap-animate-delay-6 mt-4 opacity-70 hover:opacity-100 transition-opacity ${active ? "is-active" : ""}`}>
+            <p
+              className="text-[10px] tracking-[0.2em] uppercase mb-1"
+              style={{ color: `${tint} 0.35)` }}
+            >
+              What it looks like
+            </p>
             <AffiliateRow
               products={affiliateProducts[material.id]}
               glowColor={material.glowColor}

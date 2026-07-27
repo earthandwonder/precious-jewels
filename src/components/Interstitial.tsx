@@ -1,12 +1,14 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 interface InterstitialProps {
   heading: string;
   body: string;
   multiplierLabel: string;
   multiplierValue: string;
+  partLabel?: string;
+  isActive: boolean;
 }
 
 export default function Interstitial({
@@ -14,52 +16,67 @@ export default function Interstitial({
   body,
   multiplierLabel,
   multiplierValue,
+  partLabel,
+  isActive,
 }: InterstitialProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
+    if (isActive && !hasAnimated) {
+      setHasAnimated(true);
+    }
+  }, [isActive, hasAnimated]);
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setIsVisible(true);
-      },
-      { threshold: 0.2 }
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+  const active = hasAnimated;
 
   return (
-    <div
-      ref={ref}
-      className="relative z-10 py-24 md:py-36 px-6"
-    >
-      <div
-        className="max-w-xl mx-auto text-center transition-all duration-1000"
-        style={{
-          opacity: isVisible ? 1 : 0,
-          transform: isVisible ? "translateY(0)" : "translateY(30px)",
-        }}
-      >
-        <p className="act-number text-muted mb-6 tracking-widest">
+    <div className="interstitial-content">
+      <div className="max-w-xl mx-auto text-center px-6">
+        {/* Multiplier label */}
+        <p
+          className={`snap-animate snap-animate-delay-1 act-number mb-8 tracking-[0.3em] ${active ? "is-active" : ""}`}
+          style={{ color: "rgba(255, 200, 150, 0.3)" }}
+        >
           {multiplierLabel}
         </p>
+
+        {/* The big number */}
         <p
-          className="text-4xl md:text-6xl font-bold font-mono mb-8"
+          className={`snap-animate snap-animate-delay-2 font-editorial text-5xl md:text-7xl lg:text-8xl font-medium mb-12 leading-none ${active ? "is-active" : ""}`}
           style={{ color: "#ffecd2" }}
         >
           {multiplierValue}
         </p>
-        <h2 className="text-2xl md:text-3xl font-bold mb-4 text-accent">
+
+        {/* Heading */}
+        <h2
+          className={`snap-animate snap-animate-delay-3 font-editorial text-3xl md:text-4xl lg:text-5xl font-medium mb-6 leading-[1.1] italic ${active ? "is-active" : ""}`}
+          style={{ color: "#ffecd2" }}
+        >
           {heading}
         </h2>
-        <p className="text-sm md:text-base leading-relaxed text-muted">
+
+        <hr
+          className={`snap-animate snap-animate-delay-4 editorial-rule my-8 ${active ? "is-active" : ""}`}
+        />
+
+        {/* Body */}
+        <p
+          className={`snap-animate snap-animate-delay-5 text-sm md:text-base leading-[1.9] max-w-md mx-auto ${active ? "is-active" : ""}`}
+          style={{ color: "rgba(255, 236, 210, 0.55)" }}
+        >
           {body}
         </p>
+
+        {/* Part label */}
+        {partLabel && (
+          <p
+            className={`snap-animate snap-animate-delay-7 act-number mt-12 tracking-[0.3em] ${active ? "is-active" : ""}`}
+            style={{ color: "rgba(255, 200, 150, 0.35)" }}
+          >
+            {partLabel}
+          </p>
+        )}
       </div>
     </div>
   );

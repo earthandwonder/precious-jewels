@@ -5,7 +5,6 @@ export type Act = 1 | 2 | 3;
 export interface Material {
   id: string;
   name: string;
-  formula?: string;
   category: MaterialCategory;
   act: Act;
   logMass: number; // log10 of estimated cosmic mass in kg
@@ -45,7 +44,6 @@ export const materials: Material[] = [
   {
     id: "olivine",
     name: "Peridot",
-    formula: "Mg₂SiO₄",
     category: "mineral",
     act: 1,
     logMass: 49,
@@ -60,7 +58,6 @@ export const materials: Material[] = [
   {
     id: "corundum",
     name: "Ruby & Sapphire",
-    formula: "Al₂O₃",
     category: "mineral",
     act: 1,
     logMass: 47,
@@ -76,7 +73,6 @@ export const materials: Material[] = [
   {
     id: "garnet",
     name: "Garnet",
-    formula: "X₃Y₂(SiO₄)₃",
     category: "mineral",
     act: 1,
     logMass: 46,
@@ -91,7 +87,6 @@ export const materials: Material[] = [
   {
     id: "diamond",
     name: "Diamond",
-    formula: "C",
     category: "mineral",
     act: 1,
     logMass: 45,
@@ -107,7 +102,6 @@ export const materials: Material[] = [
   {
     id: "quartz",
     name: "Quartz & Amethyst",
-    formula: "SiO₂",
     category: "mineral",
     act: 1,
     logMass: 45,
@@ -122,7 +116,6 @@ export const materials: Material[] = [
   {
     id: "zircon",
     name: "Zircon",
-    formula: "ZrSiO₄",
     category: "mineral",
     act: 1,
     logMass: 43,
@@ -136,7 +129,6 @@ export const materials: Material[] = [
   {
     id: "jadeite",
     name: "Jadeite",
-    formula: "NaAlSi₂O₆",
     category: "mineral",
     act: 1,
     logMass: 42,
@@ -150,7 +142,6 @@ export const materials: Material[] = [
   {
     id: "opal",
     name: "Opal",
-    formula: "SiO₂·nH₂O",
     category: "mineral",
     act: 1,
     logMass: 41,
@@ -168,7 +159,6 @@ export const materials: Material[] = [
   {
     id: "emerald",
     name: "Emerald",
-    formula: "Be₃Al₂Si₆O₁₈",
     category: "mineral",
     act: 2,
     logMass: 38,
@@ -184,7 +174,6 @@ export const materials: Material[] = [
   {
     id: "red-beryl",
     name: "Red Beryl",
-    formula: "Be₃Al₂Si₆O₁₈ + Mn",
     category: "mineral",
     act: 2,
     logMass: 35,
@@ -198,7 +187,6 @@ export const materials: Material[] = [
   {
     id: "taaffeite",
     name: "Taaffeite",
-    formula: "BeMgAl₄O₈",
     category: "mineral",
     act: 2,
     logMass: 33,
@@ -212,7 +200,6 @@ export const materials: Material[] = [
   {
     id: "alexandrite",
     name: "Alexandrite",
-    formula: "BeAl₂O₄ + Cr",
     category: "mineral",
     act: 2,
     logMass: 32,
@@ -226,7 +213,6 @@ export const materials: Material[] = [
   {
     id: "benitoite",
     name: "Benitoite",
-    formula: "BaTiSi₃O₉",
     category: "mineral",
     act: 2,
     logMass: 29,
@@ -240,7 +226,6 @@ export const materials: Material[] = [
   {
     id: "painite",
     name: "Painite",
-    formula: "CaZrBAl₉O₁₅(OH)",
     category: "mineral",
     act: 2,
     logMass: 27,
@@ -414,7 +399,7 @@ export const interstitials = {
   },
   "2-3": {
     heading: "One planet.",
-    body: "Every mineral above forms on rocky worlds, and there are an estimated ten sextillion of them. But everything below this line was made by life — and life, as far as we know, happened exactly once. You're about to cross the largest cliff on this page: a drop of twenty-five orders of magnitude. Not because these materials are chemically exotic. Because they're biological.",
+    body: "Every mineral above forms on rocky worlds, and there are an estimated ten sextillion of them. But everything below this line was made by life — and life, as far as we know, happened exactly once. You're about to cross the largest cliff on this page: a drop of twenty-five orders of magnitude. Not because these materials are chemically exotic. Because they're biological. If there were an intergalactic jewel trade, Earth would have an absolute monopoly on every one of them.",
     multiplierLabel: "The gap you just crossed",
     multiplierValue: "100,000,000,000\u00D7",
   },
