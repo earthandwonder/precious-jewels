@@ -573,7 +573,7 @@ export const interstitials = {
   },
   "2-3": {
     heading: "One planet.",
-    body: "Every mineral above forms on rocky worlds, and there are an estimated ten sextillion of them. But everything below this line was made by life — and life, as far as we know, happened exactly once. Not because these materials are chemically exotic — because they're biological. If there were an intergalactic jewel trade, Earth would have an absolute monopoly on every one of them.",
+    body: "Every mineral above forms on rocky worlds, and there are an estimated ten sextillion of them. But everything below this line was made by life — and life, as far as we know, happened exactly once. Not because these materials are chemically exotic — because they're biological. You're surrounded by some of the rarest stuff in the universe, and you probably didn't know it.",
     multiplierLabel: "The gap you just crossed",
     multiplierValue: "1,000,000\u00D7",
   },

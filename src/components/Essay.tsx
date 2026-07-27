@@ -208,16 +208,7 @@ function HeroPage({ isActive }: { isActive: boolean }) {
         </p>
       </div>
 
-      <div className="hero-body relative z-10 mb-16">
-        <p className="text-base md:text-lg text-muted max-w-md leading-relaxed">
-          By considering stellar nucleosynthesis, mineral formation, and the
-          number of rocky worlds, we can estimate the volume of each precious
-          gemstone across the known universe. On this journey you may discover
-          that you&apos;re surrounded by some of the rarest stuff in existence.
-        </p>
-      </div>
-
-      <div className="hero-arrow relative z-10 text-muted">
+      <div className="hero-arrow relative z-10 text-muted mt-16">
         <svg
           width="20"
           height="20"

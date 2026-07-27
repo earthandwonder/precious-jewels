@@ -76,7 +76,7 @@ export default function EarthIntro({ isActive }: { isActive: boolean }) {
           color: "rgba(160, 150, 220, 0.9)",
         }}
       >
-        The Heliosphere
+        Voyager 1
       </p>
 
       {/* Context */}
@@ -87,7 +87,7 @@ export default function EarthIntro({ isActive }: { isActive: boolean }) {
           color: "rgba(210, 222, 238, 0.85)",
         }}
       >
-        We start with the farthest any human object has ever travelled. Voyager 1. The sphere it traces around the Sun can be filled many times over by gems we call rare.
+        We can actually estimate this. This is the bubble of solar wind around our Sun — Voyager 1 just barely crossed its edge. How much of each gem could you fit inside it?
       </p>
     </div>
   );
