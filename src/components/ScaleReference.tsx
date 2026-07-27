@@ -174,11 +174,17 @@ function renderEarth(size: number) {
       <line x1="4" y1="20" x2="36" y2="20" stroke={o} strokeWidth="0.3" strokeOpacity="0.4" />
       <line x1="6" y1="13" x2="34" y2="13" stroke={o} strokeWidth="0.3" strokeOpacity="0.3" />
       <line x1="6" y1="27" x2="34" y2="27" stroke={o} strokeWidth="0.3" strokeOpacity="0.3" />
-      {/* Continental masses */}
-      <path d="M14 11 Q17 9 21 12 Q19 16 15 14 Z" fill={l} opacity="0.6" />
-      <path d="M23 16 Q27 14 30 18 Q28 22 24 20 Z" fill={l} opacity="0.55" />
-      <path d="M11 21 Q14 19 16 23 Q13 27 11 24 Z" fill={l} opacity="0.5" />
-      <path d="M22 26 Q25 25 26 28 Q24 30 22 28 Z" fill={l} opacity="0.45" />
+      {/* Continental masses — Europe/Africa centred view */}
+      {/* Europe: single unified mass — Iberia through Scandinavia */}
+      <path d="M14 10 C15 8.5, 17 8, 19 8.5 C21 9, 23 9, 24 10 C24.5 10.5, 24 11.5, 23 12 C22 12.5, 20 13, 18 13 C16 13, 14.5 12, 14 11 Z" fill={l} opacity="0.5" />
+      {/* Africa: broad north, West African bulge, rounder south */}
+      <path d="M15 14.5 C17 14, 21 13.5, 25 14.5 C26.5 15.5, 27 17, 26.5 19 C26 20.5, 25.5 22, 25 23.5 C24.5 25, 24 26.5, 23 28 C22.5 29, 21.5 29.5, 20.5 29 C19.5 28.5, 19 27, 18.5 25.5 C18 24, 17 22, 16 20 C15 18, 14.5 16, 15 14.5 Z" fill={l} opacity="0.5" />
+      {/* Middle East + Arabia */}
+      <path d="M26 12.5 C27.5 12, 29 13, 29 14.5 C29 16, 28 17, 27 16.5 C26 16, 25.5 14, 26 12.5 Z" fill={l} opacity="0.4" />
+      {/* Madagascar */}
+      <path d="M27 26 C27.5 25.5, 28 26.5, 27.5 28 C27 29, 26.5 28.5, 27 26 Z" fill={l} opacity="0.3" />
+      {/* India hint at right edge */}
+      <path d="M30.5 13 C32 12.5, 33 14, 32 16 C31 17, 30 16, 30.5 13 Z" fill={l} opacity="0.3" />
       {/* Specular glint */}
       <circle cx="13" cy="12" r="2.5" fill="white" opacity="0.15" />
     </svg>
@@ -209,21 +215,20 @@ function renderStatue(size: number) {
   const c = "#7ab8a0";
   return (
     <svg width={size * 0.5} height={size} viewBox="0 0 20 40" fill="none">
-      {/* Pedestal */}
-      <path d="M4 34 L5 32 L15 32 L16 34 L17 40 L3 40 Z" fill="#808080" opacity="0.4" stroke="#808080" strokeWidth="0.4" strokeOpacity="0.6" />
-      {/* Robe / body */}
-      <path d="M7 32 Q7 24 8 20 L8 15 Q10 14 12 15 L12 20 Q13 24 13 32 Z" fill={c} opacity="0.5" stroke={c} strokeWidth="0.4" strokeOpacity="0.7" />
+      {/* Pedestal — tapered block */}
+      <path d="M5 33 L15 33 L16.5 40 L3.5 40 Z" fill="#707070" opacity="0.35" stroke="#808080" strokeWidth="0.4" strokeOpacity="0.5" />
+      {/* Robe — single flowing silhouette */}
+      <path d="M6.5 33 Q6.5 26 7.5 20 L8 14.5 Q10 13.5 12 14.5 L12.5 20 Q13.5 26 13.5 33 Z" fill={c} opacity="0.45" stroke={c} strokeWidth="0.5" strokeOpacity="0.65" />
       {/* Head */}
-      <ellipse cx="10" cy="11.5" rx="2" ry="2.3" fill={c} opacity="0.5" stroke={c} strokeWidth="0.3" strokeOpacity="0.7" />
-      {/* Crown */}
-      <path d="M7.5 9 L6.5 5.5 M8.5 8.5 L8 4.5 M10 8 L10 3.5 M11.5 8.5 L12 4.5 M12.5 9 L13.5 5.5" stroke={c} strokeWidth="0.5" strokeOpacity="0.7" strokeLinecap="round" />
+      <ellipse cx="10" cy="11.5" rx="2" ry="2.5" fill={c} opacity="0.5" stroke={c} strokeWidth="0.4" strokeOpacity="0.65" />
       {/* Raised arm + torch */}
-      <path d="M12.5 15 Q14 12 15 8 L15.5 5.5" stroke={c} strokeWidth="0.8" strokeOpacity="0.65" strokeLinecap="round" fill="none" />
+      <path d="M12 14.5 Q13.5 11.5 14.5 7.5 L14.8 5" stroke={c} strokeWidth="0.9" strokeOpacity="0.6" strokeLinecap="round" fill="none" />
       {/* Torch flame */}
-      <circle cx="15.5" cy="4.5" r="1.8" fill="#e8a840" opacity="0.55" />
-      <circle cx="15.5" cy="4.5" r="0.7" fill="#ffd080" opacity="0.75" />
-      {/* Tablet */}
-      <rect x="6" y="18" width="1.8" height="4.5" rx="0.3" fill={c} opacity="0.4" transform="rotate(-8 7 20)" />
+      <ellipse cx="14.8" cy="3.8" rx="1.5" ry="2" fill="#e8a840" opacity="0.5" />
+      <ellipse cx="14.8" cy="3.8" rx="0.6" ry="1" fill="#ffd080" opacity="0.7" />
+      {/* Tablet arm */}
+      <path d="M8 14.5 Q6.5 17 6 19" stroke={c} strokeWidth="0.8" strokeOpacity="0.5" strokeLinecap="round" fill="none" />
+      <rect x="5" y="18.5" width="2" height="4" rx="0.3" fill={c} opacity="0.35" transform="rotate(-10 6 20.5)" />
     </svg>
   );
 }
@@ -233,17 +238,20 @@ function renderHuman(size: number) {
   return (
     <svg width={size * 0.4} height={size} viewBox="0 0 16 40" fill="none">
       {/* Head */}
-      <ellipse cx="8" cy="6" rx="2.5" ry="3" fill={c} opacity="0.5" stroke={c} strokeWidth="0.4" strokeOpacity="0.7" />
-      {/* Torso */}
-      <path d="M5.5 11 Q5 13 5 17 L5.5 24 Q6.5 25 8 25 Q9.5 25 10.5 24 L11 17 Q11 13 10.5 11 Z" fill={c} opacity="0.45" stroke={c} strokeWidth="0.4" strokeOpacity="0.65" />
+      <circle cx="8" cy="5.5" r="2.5" fill={c} opacity="0.5" stroke={c} strokeWidth="0.4" strokeOpacity="0.65" />
       {/* Neck */}
-      <line x1="8" y1="9" x2="8" y2="11" stroke={c} strokeWidth="1" strokeOpacity="0.6" />
-      {/* Arms */}
-      <path d="M5.5 12 Q3.5 15 3 20" stroke={c} strokeWidth="0.8" strokeOpacity="0.6" strokeLinecap="round" fill="none" />
-      <path d="M10.5 12 Q12.5 15 13 20" stroke={c} strokeWidth="0.8" strokeOpacity="0.6" strokeLinecap="round" fill="none" />
+      <line x1="8" y1="8" x2="8" y2="10.5" stroke={c} strokeWidth="1.2" strokeOpacity="0.55" />
+      {/* Shoulders + torso — single path */}
+      <path d="M4 12 Q4.5 10.5 8 10.5 Q11.5 10.5 12 12 L11.5 16 L10.5 24 Q8 25.5 5.5 24 L4.5 16 Z" fill={c} opacity="0.4" stroke={c} strokeWidth="0.4" strokeOpacity="0.6" />
+      {/* Arms — relaxed at sides */}
+      <path d="M4 12 Q2.5 16 2.5 21" stroke={c} strokeWidth="0.9" strokeOpacity="0.55" strokeLinecap="round" fill="none" />
+      <path d="M12 12 Q13.5 16 13.5 21" stroke={c} strokeWidth="0.9" strokeOpacity="0.55" strokeLinecap="round" fill="none" />
       {/* Legs */}
-      <path d="M6.5 25 Q6 30 5 38" stroke={c} strokeWidth="1" strokeOpacity="0.6" strokeLinecap="round" />
-      <path d="M9.5 25 Q10 30 11 38" stroke={c} strokeWidth="1" strokeOpacity="0.6" strokeLinecap="round" />
+      <path d="M6.5 24 Q6 30 5.5 38" stroke={c} strokeWidth="1.1" strokeOpacity="0.55" strokeLinecap="round" />
+      <path d="M9.5 24 Q10 30 10.5 38" stroke={c} strokeWidth="1.1" strokeOpacity="0.55" strokeLinecap="round" />
+      {/* Feet — small horizontal ticks */}
+      <path d="M5.5 38 L4 38.5" stroke={c} strokeWidth="0.8" strokeOpacity="0.45" strokeLinecap="round" />
+      <path d="M10.5 38 L12 38.5" stroke={c} strokeWidth="0.8" strokeOpacity="0.45" strokeLinecap="round" />
     </svg>
   );
 }
@@ -259,7 +267,7 @@ export default function ScaleReference({ logVolume, act, pileHeight }: ScaleRefe
     <div className="flex flex-col items-center justify-end gap-1" style={{ minWidth: size * 0.4 }}>
       {ref.render(size)}
       <span
-        className="text-[9px] tracking-wider uppercase whitespace-nowrap"
+        className="text-xs tracking-wider uppercase whitespace-nowrap"
         style={{ color: ref.color, opacity: 0.9 }}
       >
         {ref.label}
