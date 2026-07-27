@@ -9,6 +9,7 @@ interface MassCounterProps {
   color: string;
   act: Act;
   derivation?: Material["derivation"];
+  scaleNote?: string;
 }
 
 function superscript(n: number): string {
@@ -65,7 +66,7 @@ function formatMass(logMass: number, act: Act): { value: string; unit: string } 
   return { value: `~${kg.toLocaleString()}`, unit: "kg" };
 }
 
-export default function MassCounter({ logVolume, density, color, act, derivation }: MassCounterProps) {
+export default function MassCounter({ logVolume, density, color, act, derivation, scaleNote }: MassCounterProps) {
   const [expanded, setExpanded] = useState(false);
   const logMass = logVolume + Math.log10(density);
   const { value, unit } = formatMass(logMass, act);
@@ -190,6 +191,17 @@ export default function MassCounter({ logVolume, density, color, act, derivation
                   </li>
                 ))}
               </ul>
+            </>
+          )}
+          {scaleNote && (
+            <>
+              <hr className="my-2 border-0" style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }} />
+              <p
+                className="text-[9px] md:text-[10px] leading-[1.4] italic"
+                style={{ color: "rgba(200, 210, 220, 0.4)" }}
+              >
+                {scaleNote}
+              </p>
             </>
           )}
         </div>

@@ -79,13 +79,13 @@ export function getRefType(logVolume: number, _act: Act): RefType {
 
 /** Fixed display sizes for each reference type (px). The yardstick stays constant. */
 const REF_DISPLAY_SIZES: Record<RefType, number> = {
-  heliosphere: 50,
-  "solar-system": 50,
-  sun: 50,
-  earth: 50,
-  everest: 50,
-  statue: 40,
-  human: 35,
+  heliosphere: 100,
+  "solar-system": 100,
+  sun: 100,
+  earth: 100,
+  everest: 100,
+  statue: 80,
+  human: 70,
 };
 
 function getRefSize(logVolume: number, act: Act): number {

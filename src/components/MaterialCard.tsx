@@ -105,8 +105,8 @@ function conePileHeight(logVolume: number): number {
 }
 
 const REF_DISPLAY_SIZES: Record<string, number> = {
-  heliosphere: 50, "solar-system": 50, sun: 50,
-  earth: 50, everest: 50, statue: 40, human: 35,
+  heliosphere: 100, "solar-system": 100, sun: 100,
+  earth: 100, everest: 100, statue: 80, human: 70,
 };
 
 /**
@@ -116,7 +116,7 @@ const REF_DISPLAY_SIZES: Record<string, number> = {
  * clamped to 0.3x for readability).
  */
 function getPileHeight(material: Material, isMobile: boolean): number {
-  const mobileCap = 200;
+  const mobileCap = 400;
 
   const realH = conePileHeight(material.logVolume);
   const refType = getRefType(material.logVolume, material.act);
@@ -129,6 +129,19 @@ function getPileHeight(material: Material, isMobile: boolean): number {
   const refPx = REF_DISPLAY_SIZES[refType];
   const h = Math.round(refPx * clampedRatio);
   return isMobile ? Math.min(h, mobileCap) : h;
+}
+
+/** Returns a disclaimer string if the pile is visually enlarged beyond its true ratio. */
+function getScaleNote(material: Material): string | undefined {
+  const realH = conePileHeight(material.logVolume);
+  const refType = getRefType(material.logVolume, material.act);
+  const ref = REFERENCES[refType];
+  const realRatio = realH / ref.realSize;
+  const minRatio = material.id === "opal" ? 0.3 : 0.25;
+  // Only show note if the ratio was clamped upward (pile shown bigger than reality)
+  if (realRatio >= minRatio) return undefined;
+  const pct = (realRatio * 100).toFixed(realRatio < 0.1 ? 1 : 0);
+  return `Pile enlarged for visibility — true size is ${pct}% of the ${ref.label.toLowerCase()}.`;
 }
 
 function useIsMobile() {
@@ -162,7 +175,7 @@ export default function MaterialCard({
   const active = hasAnimated;
 
   const pileHeight = getPileHeight(material, isMobile);
-  const minCanvasHeight = 80;
+  const minCanvasHeight = 160;
   const canvasHeight = Math.max(minCanvasHeight, pileHeight);
   const pileScale = pileHeight / canvasHeight;
   const abundance = abundanceToNormalized(material.logVolume);
@@ -190,7 +203,7 @@ export default function MaterialCard({
         <div
           className="flex-1"
           style={{
-            maxWidth: Math.max(120, Math.min(360 + abundance * 120, canvasHeight * 2)),
+            maxWidth: Math.max(240, Math.min(720 + abundance * 240, canvasHeight * 2)),
           }}
         >
           <ParticlePile
@@ -217,7 +230,7 @@ export default function MaterialCard({
         </h3>
 
         <div className={`snap-animate snap-animate-delay-3 ${active ? "is-active" : ""}`}>
-          <MassCounter logVolume={material.logVolume} density={material.density} color={material.color} act={material.act} derivation={material.derivation} />
+          <MassCounter logVolume={material.logVolume} density={material.density} color={material.color} act={material.act} derivation={material.derivation} scaleNote={getScaleNote(material)} />
         </div>
 
         <p
