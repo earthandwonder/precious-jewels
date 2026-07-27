@@ -171,7 +171,7 @@ export default function MaterialCard({
         {hasProducts && (
           <div className={`snap-animate snap-animate-delay-6 mt-3 md:mt-4 opacity-70 hover:opacity-100 transition-opacity ${active ? "is-active" : ""}`}>
             <p
-              className="text-[9px] md:text-[10px] tracking-[0.2em] uppercase mb-1"
+              className="text-[9px] md:text-[10px] tracking-[0.2em] uppercase mb-0"
               style={{ color: `${tint} 0.35)` }}
             >
               What it looks like

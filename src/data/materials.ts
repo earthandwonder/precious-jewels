@@ -301,8 +301,8 @@ export const materials: Material[] = [
     act: 3,
     logMass: 9,
     density: 1300,
-    color: "#1A1A1A",
-    glowColor: "#404040",
+    color: "#4A4A4A",
+    glowColor: "#6B6B6B",
     tagline: "Fossilised driftwood from the Jurassic",
     description:
       "Jet is ancient conifer wood, compressed under ocean sediments for 180 million years until it became a hard, lustrous black stone. Queen Victoria made it famous as mourning jewellery. It is fossilised biology — doubly rare.",
