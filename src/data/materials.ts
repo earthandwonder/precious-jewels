@@ -566,7 +566,7 @@ export const materials: Material[] = [
 // Interstitial text between acts
 export const interstitials = {
   "1-2": {
-    heading: "Now things get genuinely rare.",
+    heading: "Now things get genuinely rare. These piles may look large — but this is all there is, everywhere.",
     body: "Everything below needs beryllium — an element stars can't make. It's created only when cosmic rays shatter heavier atoms at near-light speed.",
   },
   "2-3": {
