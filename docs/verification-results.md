@@ -20,7 +20,7 @@
 | 1 | **Diamond scale comparison** | Line 100 | "a planet ten times the mass of Earth" — off by **19 orders of magnitude**. 10^45 kg = ~10^20 Earth masses, not 10. |
 | 2 | **Olivine scale comparison** | Line 56 | "fill a billion Milky Way galaxies" — off by **~24 OoM**. 10^49 kg of olivine = ~3x10^45 m^3; one Milky Way = ~10^61 m^3. It wouldn't fill a fraction of one galaxy, let alone a billion. |
 | 3 | **Olivine "trillion trillion" comparison** | Line 55 | At logMass 49, the ratio to Earth's water (10^21 kg) is ~10^28, not "a trillion trillion" (10^24). Off by ~10,000x. |
-| 4 | **Interstitial 2-3: "twenty-five orders of magnitude"** | Line 402 | Actual gap painite→ammonite is 11 OoM (27-16=11). The multiplier value 10^11 is correct; the prose "twenty-five" is wrong. |
+| 4 | **Interstitial 2-3: "twenty-five orders of magnitude"** | Line 402 | Actual gap painite→wood is 13 OoM (27-15=12, or benitoite 24→wood 15=9 by logVolume). The multiplier value and prose both need review after ammonite was revised to logMass 14 and wood became first Act 3 material. |
 | 5 | **Interstitial 1-2: beryllium vs iron claim** | Line 396 | "The entire cosmos has produced less beryllium than a single star produces iron in a day" — wrong by **~12 OoM**. Cosmic Be ~10^43 kg; one star's daily iron ~10^30 kg. |
 | 6 | **Pearl scale comparison** | Line 388, Finale.tsx line 111 | "Pacific Ocean vs thimble" — Pacific/thimble ratio is ~10^23, but peridot-to-pearl gap is 10^44. Off by **21 OoM**. |
 | 7 | **Taaffeite specimen count** | Line 198 | "Fewer than fifty specimens" was true ~2000, now outdated. Hundreds to low-thousands known as of 2026. |
@@ -233,23 +233,12 @@ A Milky Way-scale version nearly works: the MW ISM contains ~1-2 solar masses of
 | Claim | Rating | Detail |
 |-------|--------|--------|
 | **"ten sextillion" rocky worlds (10^22)** | AMBER | Current estimates: 10^22-10^23 rocky planets. 10^22 is at the low end but defensible. |
-| **Multiplier "100,000,000,000x" (10^11)** | GREEN | Painite 27 - Ammonite 16 = 11 OoM = 10^11. Matches. |
-| **Prose: "twenty-five orders of magnitude"** | RED | Contradicts the multiplier. Actual gap is 11 OoM, not 25. The prose and the number disagree. Must fix one or the other. |
+| **Multiplier "100,000,000,000x" (10^11)** | AMBER | Was based on Painite 27 - Ammonite 16 = 11 OoM. With ammonite revised to logMass 14 and wood (logMass 15) now first in Act 3, gap is Painite 27 - Wood 15 = 12 OoM. Multiplier needs updating. |
+| **Prose: "twenty-five orders of magnitude"** | RED | Contradicts the multiplier. Actual gap is 12 OoM (painite→wood), not 25. The prose and the number disagree. Must fix one or the other. |
 
 ---
 
-### 15. Ammonite — logMass: 16
-
-| Field | Rating | Detail |
-|-------|--------|--------|
-| **logMass** | AMBER | No peer-reviewed estimate of total fossilised ammonite mass. 10^16 kg (10 billion tonnes) is a Fermi estimate. Could be 10^14-10^17. Defensible but unverifiable. |
-| **Density 2700** | GREEN | Calcite fossils, density ~2710. Correct. |
-| **"Ruled oceans for 340 million years"** | AMBER | Ammonoids: Early Devonian (~400 Ma) to K-Pg (66 Ma) = ~334 Ma. "340" rounds up slightly. "Ruled" is editorial colour. Acceptable for essay. |
-| **"Asteroid that killed the dinosaurs wiped them out too"** | GREEN | K-Pg extinction, 66 Ma. Standard paleontology. |
-
----
-
-### 16. Wood — logMass: 15
+### 15. Wood — logMass: 15
 
 | Field | Rating | Detail |
 |-------|--------|--------|
@@ -259,6 +248,17 @@ A Milky Way-scale version nearly works: the MW ISM contains ~1-2 solar masses of
 | **"700 billion tonnes of wood"** | AMBER | FAO 2025: total forest living biomass ~647 Gt (includes leaves, fine roots). Above-ground woody biomass ~422 Gt. "700 billion tonnes of wood" is high — likely conflates total biomass with wood. ~450-600 Gt more accurate for all woody tissue. |
 | **"Thirty orders of magnitude rarer than diamond"** | GREEN | Diamond logMass 45, wood 15. Difference = 30. Math checks out. |
 | **Scale: "Pacific Ocean vs raindrop"** | AMBER | Pacific ~7x10^20 litres. Raindrop ~5x10^-5 litres. Ratio ~1.4x10^25. But 30 OoM = 10^30. Off by ~5 OoM. Evocative but mathematically wrong. |
+
+---
+
+### 16. Ammonite — logMass: 14 (revised from 16)
+
+| Field | Rating | Detail |
+|-------|--------|--------|
+| **logMass** | AMBER | Revised from 10^16 to 10^14 kg (~100 billion tonnes). Original estimate of 10,000 billion tonnes exceeded living wood (450-700 Gt), which didn't pass sanity check. Most shells dissolved in undersaturated deep ocean, were subducted, or metamorphosed. 10^14 is more defensible. Still a Fermi estimate. |
+| **Density 2700** | GREEN | Calcite fossils, density ~2710. Correct. |
+| **"Ruled oceans for 340 million years"** | AMBER | Ammonoids: Early Devonian (~400 Ma) to K-Pg (66 Ma) = ~334 Ma. "340" rounds up slightly. "Ruled" is editorial colour. Acceptable for essay. |
+| **"Asteroid that killed the dinosaurs wiped them out too"** | GREEN | K-Pg extinction, 66 Ma. Standard paleontology. |
 
 ---
 
@@ -272,7 +272,7 @@ A Milky Way-scale version nearly works: the MW ISM contains ~1-2 solar masses of
 
 ---
 
-### 18. Petrified Wood — logMass: 12
+### 18. Petrified Wood — logMass: 12 (unchanged)
 
 | Field | Rating | Detail |
 |-------|--------|--------|

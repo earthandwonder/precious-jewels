@@ -324,27 +324,6 @@ export const materials: Material[] = [
   // ACT III — Biological / Earth-only
   // ═══════════════════════════════════════════
   {
-    id: "ammonite",
-    name: "Ammonite",
-    category: "biological",
-    act: 3,
-    logVolume: 12.6,
-    density: 2700,
-    color: "#D4A574",
-    glowColor: "#E8C9A0",
-    tagline: "340 million years of ocean life, fossilised in stone",
-    description:
-      "Ammonites ruled Earth's oceans for over 300 million years before the asteroid that killed the dinosaurs wiped them out too. Their spiralling shells are embedded in marine rock across every continent. But they only ever existed here.",
-    derivation: {
-      steps: [
-        "Fermi estimate — no published total exists. Abundant across all oceans for ~335 My; calcite shells preserve well.",
-      ],
-      sources: [
-        "Ammonoid range: ~400 Ma to 66 Ma (K-Pg extinction)",
-      ],
-    },
-  },
-  {
     id: "wood",
     name: "Wood",
     category: "biological",
@@ -365,6 +344,27 @@ export const materials: Material[] = [
       sources: [
         "Crowther et al. (2015) Nature — global tree density",
         "FAO Global Forest Resources Assessment (2020)",
+      ],
+    },
+  },
+  {
+    id: "ammonite",
+    name: "Ammonite",
+    category: "biological",
+    act: 3,
+    logVolume: 10.6,
+    density: 2700,
+    color: "#D4A574",
+    glowColor: "#E8C9A0",
+    tagline: "340 million years of ocean life, fossilised in stone",
+    description:
+      "Ammonites ruled Earth's oceans for over 300 million years before the asteroid that killed the dinosaurs wiped them out too. Their spiralling shells are embedded in marine rock across every continent. But they only ever existed here.",
+    derivation: {
+      steps: [
+        "Fermi estimate — no published total exists. Most shells dissolved or were subducted; revised down from earlier estimate.",
+      ],
+      sources: [
+        "Ammonoid range: ~400 Ma to 66 Ma (K-Pg extinction)",
       ],
     },
   },

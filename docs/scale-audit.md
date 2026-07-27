@@ -57,8 +57,8 @@ Dropped: Painite (1.09 x 10^6 m -- 123x Everest but 0.085x Earth, falls in the g
 
 | Material | logVol | Pile height | Reference | Ratio | Notes |
 |----------|--------|------------|-----------|-------|-------|
-| Ammonite | 12.6 | 11,735 m | Everest (8,850 m) | 1.33x | |
-| Wood | 12.0 | 7,400 m | Everest | 0.84x | |
+| Wood | 12.0 | 7,400 m | Everest (8,850 m) | 0.84x | |
+| Ammonite | 10.6 | 2,523 m | Everest | 0.29x | Revised logMass 16→14 (logVol 12.6→10.6). Original estimate didn't pass sanity check vs wood. |
 | Shell | 10.6 | 2,523 m | Everest | 0.29x | Bumped up from Statue (was 27x Statue, clamped to 6x). 0.29x Everest is more honest. |
 | Petrified Wood | 8.6 | 544 m | Statue (93 m) | 5.85x | |
 | Amber | 6.0 | 73.5 m | Statue | 0.79x | |
