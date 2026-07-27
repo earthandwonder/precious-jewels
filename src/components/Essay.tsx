@@ -190,11 +190,11 @@ function HeroPage({ isActive }: { isActive: boolean }) {
       />
 
       <h1 className="hero-title font-editorial text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight mb-8 text-foreground relative z-10 leading-[0.95]">
-        The Cosmic
+        Imagine you are
         <br />
-        Abundance of
+        an intergalactic
         <br />
-        <span className="italic hero-gemstones">Gemstones</span>
+        <span className="italic hero-gemstones">gem hunter</span>...
       </h1>
 
       <div className="hero-subtitle relative z-10 mb-6">
@@ -202,15 +202,18 @@ function HeroPage({ isActive }: { isActive: boolean }) {
           className="font-editorial text-xl md:text-2xl lg:text-3xl italic max-w-xl leading-relaxed"
           style={{ color: "rgba(232, 230, 227, 0.7)" }}
         >
-          Diamonds are common throughout the universe.
+          Which gemstones are common across the universe?
+          <br />
+          Which are vanishingly rare?
         </p>
       </div>
 
       <div className="hero-body relative z-10 mb-16">
         <p className="text-sm md:text-base text-muted max-w-md leading-relaxed">
-          Measured against the whole universe, the ranking of rarity inverts
-          completely. The most famous gems are the most common. And the rarest
-          thing you could wear turns out to be something no one expects.
+          By considering stellar nucleosynthesis, mineral formation, and the
+          number of rocky worlds, we can estimate the volume of each precious
+          gemstone across the known universe. On this journey you may discover
+          that you&apos;re surrounded by some of the rarest stuff in existence.
         </p>
       </div>
 
