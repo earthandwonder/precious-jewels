@@ -38,7 +38,7 @@ export default function EarthIntro({ isActive }: { isActive: boolean }) {
     return () => cancelAnimationFrame(raf);
   }, [hasAnimated]);
 
-  const size = Math.round(280 - progress * 220); // 280px -> 60px
+  const size = 280;
   const labelOpacity = Math.max(0, Math.min(1, (progress - 0.5) / 0.2));
   const textOpacity = Math.max(0, Math.min(1, (progress - 0.65) / 0.2));
 
@@ -52,7 +52,7 @@ export default function EarthIntro({ isActive }: { isActive: boolean }) {
         height={size}
         viewBox="0 0 40 40"
         fill="none"
-        style={{ transition: "width 0.05s, height 0.05s" }}
+        style={{ opacity: Math.max(0.3, Math.min(1, progress / 0.3)) }}
       >
         {/* Outer boundary — the heliopause */}
         <circle cx="20" cy="20" r="18" stroke={c} strokeWidth="0.5" strokeOpacity="0.35" strokeDasharray="2 1.5" />

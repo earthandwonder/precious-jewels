@@ -1,12 +1,14 @@
 "use client";
 
-import type { Act } from "@/data/materials";
+import { useState } from "react";
+import type { Act, Material } from "@/data/materials";
 
 interface MassCounterProps {
   logVolume: number;
   density: number;
   color: string;
   act: Act;
+  derivation?: Material["derivation"];
 }
 
 function superscript(n: number): string {
@@ -63,7 +65,8 @@ function formatMass(logMass: number, act: Act): { value: string; unit: string } 
   return { value: `~${kg.toLocaleString()}`, unit: "kg" };
 }
 
-export default function MassCounter({ logVolume, density, color, act }: MassCounterProps) {
+export default function MassCounter({ logVolume, density, color, act, derivation }: MassCounterProps) {
+  const [expanded, setExpanded] = useState(false);
   const logMass = logVolume + Math.log10(density);
   const { value, unit } = formatMass(logMass, act);
 
@@ -73,20 +76,124 @@ export default function MassCounter({ logVolume, density, color, act }: MassCoun
     ? "text-xl md:text-2xl"
     : "text-base md:text-lg";
 
+  const hasDerivation = derivation && derivation.steps.length > 0;
+
+  // Auto-generate bridge line connecting raw mass → displayed value
+  const bridgeLine = (() => {
+    const roundedLog = Math.round(logMass);
+    if (act === 1) {
+      const earthExp = Math.round(logMass - 24.8);
+      return `Total estimated mass: ~10${superscript(roundedLog)} kg ÷ Earth mass (6 × 10${superscript(24)} kg) ≈ 10${superscript(earthExp)} Earth-masses`;
+    }
+    if (act === 2) {
+      return `Total estimated mass: ~10${superscript(roundedLog)} kg`;
+    }
+    // Act 3 — show tonnes
+    const logTonnes = logMass - 3;
+    if (logTonnes >= 6) {
+      return `Total estimated mass: ~10${superscript(roundedLog)} kg = ~10${superscript(Math.round(logTonnes))} tonnes`;
+    }
+    const tonnes = Math.round(10 ** logTonnes);
+    return `Total estimated mass: ~10${superscript(roundedLog)} kg ≈ ${tonnes.toLocaleString()} tonnes`;
+  })();
+
   return (
-    <div className="my-1.5 md:my-3 flex items-baseline justify-center gap-2">
-      <span
-        className={`font-mono font-bold tracking-wider ${fontSize} ${isUncountable ? "count-pulse" : ""}`}
-        style={{
-          color,
-          opacity: isUncountable ? 0.8 : 0.6,
-        }}
+    <div className="my-1.5 md:my-3">
+      <button
+        type="button"
+        onClick={hasDerivation ? () => setExpanded(!expanded) : undefined}
+        className={`flex items-baseline justify-center gap-2 mx-auto ${hasDerivation ? "cursor-pointer" : "cursor-default"}`}
+        style={{ background: "none", border: "none", padding: 0 }}
+        aria-expanded={hasDerivation ? expanded : undefined}
       >
-        {value}
-      </span>
-      <span className="text-xs text-muted">
-        {unit}
-      </span>
+        <span
+          className={`font-mono font-bold tracking-wider ${fontSize} ${isUncountable ? "count-pulse" : ""}`}
+          style={{
+            color,
+            opacity: isUncountable ? 0.8 : 0.6,
+          }}
+        >
+          {value}
+        </span>
+        <span className="text-xs text-muted">
+          {unit}
+        </span>
+        {hasDerivation && (
+          <span
+            className="text-[9px] ml-1 transition-transform duration-200"
+            style={{
+              color,
+              opacity: 0.3,
+              transform: expanded ? "rotate(180deg)" : "rotate(0deg)",
+              display: "inline-block",
+            }}
+          >
+            ▼
+          </span>
+        )}
+      </button>
+
+      {expanded && derivation && (
+        <div
+          className="mt-2 mx-auto max-w-sm text-left rounded px-3 py-2"
+          style={{
+            background: "rgba(255,255,255,0.03)",
+            border: `1px solid rgba(255,255,255,0.06)`,
+          }}
+        >
+          {/* Bridge: connects displayed value to derivation */}
+          <p
+            className="text-[10px] md:text-[11px] font-mono leading-[1.5] mb-2 pb-2"
+            style={{
+              color,
+              opacity: 0.6,
+              borderBottom: "1px solid rgba(255,255,255,0.06)",
+            }}
+          >
+            {bridgeLine}
+          </p>
+
+          <p
+            className="text-[9px] uppercase tracking-[0.15em] mb-1.5"
+            style={{ color, opacity: 0.5 }}
+          >
+            How we got this number
+          </p>
+          <ul className="space-y-1">
+            {derivation.steps.map((step, i) => (
+              <li
+                key={i}
+                className="text-[10px] md:text-[11px] leading-[1.5]"
+                style={{ color: "rgba(200, 210, 220, 0.55)" }}
+              >
+                {step}
+              </li>
+            ))}
+          </ul>
+          {derivation.sources.length > 0 && (
+            <>
+              <hr className="my-2 border-0" style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }} />
+              <p
+                className="text-[9px] uppercase tracking-[0.15em] mb-1"
+                style={{ color, opacity: 0.4 }}
+              >
+                Sources
+              </p>
+              <ul className="space-y-0.5">
+                {derivation.sources.map((src, i) => (
+                  <li
+                    key={i}
+                    className="text-[9px] md:text-[10px] leading-[1.4] italic"
+                    style={{ color: "rgba(200, 210, 220, 0.4)" }}
+                  >
+                    {src}
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
+        </div>
+      )}
     </div>
   );
 }

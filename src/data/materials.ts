@@ -14,6 +14,10 @@ export interface Material {
   tagline: string; // short hook shown on scroll
   description: string; // longer explanation
   scaleComparison?: string; // shrinking-object ladder text
+  derivation?: {
+    steps: string[];
+    sources: string[];
+  };
 }
 
 export const ACT_TITLES = {
@@ -55,6 +59,16 @@ export const materials: Material[] = [
       "Corundum — the mineral that gives us both rubies and sapphires — forms when aluminium oxide condenses in the searing atmospheres of red giant stars. It's one of the first minerals to crystallise from a cooling stellar wind.",
     scaleComparison:
       "Enough ruby and sapphire to bury every planet in the solar system kilometres deep.",
+    derivation: {
+      steps: [
+        "Al₂O₃ is ~0.01-0.1% of interstellar dust (~10⁵⁰ kg total) → ~10⁴⁶–10⁴⁷ kg of corundum.",
+      ],
+      sources: [
+        "Lodders (2003) ApJ — condensation temperatures",
+        "Ferrarotti & Gail (2006) — AGB star dust production",
+        "Draine (2003) ARAA — interstellar dust grains",
+      ],
+    },
   },
   {
     id: "garnet",
@@ -69,6 +83,15 @@ export const materials: Material[] = [
     description:
       "Garnet makes up a large share of the deep mantles of rocky planets — from 250 to 600 km down. Any world big enough to have pressure has garnet. The universe is full of rocky worlds.",
     scaleComparison: "A sphere of garnet wider than the orbit of Neptune.",
+    derivation: {
+      steps: [
+        "~20-25% of upper mantle/transition zone. ~3 × 10²³ kg per Earth × ~10²³ rocky planets.",
+      ],
+      sources: [
+        "Stixrude & Lithgow-Bertelloni (2012) — mantle mineralogy",
+        "Cassan et al. (2012) Nature — rocky planet frequency",
+      ],
+    },
   },
   {
     id: "diamond",
@@ -84,6 +107,16 @@ export const materials: Material[] = [
       "Diamond nanocrystals litter the interstellar medium. They rain from the methane atmospheres of ice giants. Carbon — the fourth most abundant element — becomes diamond wherever pressure and temperature align, and the universe provides both generously.",
     scaleComparison:
       "A sphere of diamond stretching far past the orbit of Pluto.",
+    derivation: {
+      steps: [
+        "~5% of interstellar carbon is nano-diamond → ~10⁴⁷ kg. Ice giant diamond rain adds ~10⁴⁷ kg more.",
+        "Conservative estimate (planetary diamond only): ~10⁴⁵ kg.",
+      ],
+      sources: [
+        "Lewis et al. (1987) Nature — interstellar diamonds in meteorites",
+        "Kraus et al. (2017) Nature Astronomy — diamond rain on ice giants",
+      ],
+    },
   },
   {
     id: "quartz",
@@ -98,6 +131,15 @@ export const materials: Material[] = [
     description:
       "Quartz needs silica-rich, differentiated crust — rarer than raw mantle minerals, but still staggeringly common across the trillions of rocky planets. Amethyst is just quartz with a trace of irradiated iron.",
     scaleComparison: "Enough amethyst to build a mountain range spanning a galaxy.",
+    derivation: {
+      steps: [
+        "~12% of continental crust. ~2.6 × 10²¹ kg per Earth × ~10²² differentiated planets ≈ 10⁴³ kg.",
+        "Upper range estimate — not all rocky planets form silica-rich crust.",
+      ],
+      sources: [
+        "Wedepohl (1995) Geochimica — continental crust composition",
+      ],
+    },
   },
   {
     id: "zircon",
@@ -111,6 +153,15 @@ export const materials: Material[] = [
     tagline: "Crystallised 4.4 billion years ago — and survived everything since",
     description:
       "Zircon crystals are the most durable timekeepers in geology. The oldest material ever found on Earth is a zircon grain from Western Australia, 4.4 billion years old. Zirconium is a trace element cosmically, but trillions of rocky worlds each contribute their share.",
+    derivation: {
+      steps: [
+        "Zr: ~10 ppm of Earth's mass → ~9 × 10¹⁹ kg of ZrSiO₄ per planet × 10²³ planets.",
+      ],
+      sources: [
+        "Wilde et al. (2001) Nature — Jack Hills zircon (4.404 Ga)",
+        "Lodders et al. (2009) — solar system abundances",
+      ],
+    },
   },
   {
     id: "jadeite",
@@ -124,6 +175,14 @@ export const materials: Material[] = [
     tagline: "Forged in the collision zones of tectonic plates",
     description:
       "Jadeite needs immense pressure — it forms only where one tectonic plate dives beneath another. Not every rocky world has plate tectonics, but enough do. Imperial jade, the vivid green variety, requires a chromium trace that makes it genuinely uncommon.",
+    derivation: {
+      steps: [
+        "~10-30% of rocky planets have plate tectonics. ~10²⁰ kg jadeite-facies material per tectonic world × ~10²² planets.",
+      ],
+      sources: [
+        "Jadeite stability field in subduction zones — standard petrology",
+      ],
+    },
   },
   {
     id: "opal",
@@ -137,6 +196,15 @@ export const materials: Material[] = [
     tagline: "Silica dissolved in water, settled into a lattice that splits light into fire",
     description:
       "Opal is silica that precipitated from water, trapping it in a lattice of nanospheres that diffract light into fire. It requires a world with liquid water — a far rarer condition than most people realise. Opal has been detected on Mars.",
+    derivation: {
+      steps: [
+        "Requires liquid water. ~1-10% of rocky planets have water history → ~10²¹ water-worlds × ~10¹⁵ kg opal each.",
+      ],
+      sources: [
+        "Curiosity rover opal detection in Gale Crater — JGR (2023)",
+        "Mars Reconnaissance Orbiter — hydrated silica",
+      ],
+    },
   },
 
   // ═══════════════════════════════════════════
@@ -156,6 +224,16 @@ export const materials: Material[] = [
       "Emerald's secret is beryllium — an element so cosmically rare it isn't even made inside stars. Beryllium is produced only when high-energy cosmic rays slam into heavier atoms and shatter them. Every emerald in existence is built from the debris of these collisions.",
     scaleComparison:
       "All the emerald in the universe would fit in a sphere about six times wider than the Sun.",
+    derivation: {
+      steps: [
+        "Be abundance: ~1.5 × 10⁻¹⁰ by mass (spallation only). ~10⁻⁹ to 10⁻⁸ of crustal Be forms beryl on Earth.",
+        "Earth's emerald: ~10⁹ kg. Scaled across ~10²² suitable planets → ~10³¹ kg. Upper bound ~10³³ kg.",
+      ],
+      sources: [
+        "Lodders et al. (2009) — solar system abundances",
+        "Reeves (1970) — cosmic ray spallation as sole Be-9 source",
+      ],
+    },
   },
   {
     id: "red-beryl",
@@ -169,6 +247,15 @@ export const materials: Material[] = [
     tagline: "The same impossible element, trapped in a single Utah lava flow",
     description:
       "Red beryl has the same beryllium bottleneck as emerald, but demands an additional coincidence: manganese as a chromophore, inside a very specific type of rhyolitic lava flow. On Earth, there is exactly one commercial deposit, in Utah.",
+    derivation: {
+      steps: [
+        "Same Be bottleneck as emerald, plus Mn in rhyolitic lava. ~1,000× rarer — one commercial deposit exists on Earth.",
+        "Utah Geological Survey: 1 red beryl crystal per 150,000 gem diamonds.",
+      ],
+      sources: [
+        "Utah Geological Survey — red beryl rarity",
+      ],
+    },
   },
   {
     id: "taaffeite",
@@ -182,6 +269,14 @@ export const materials: Material[] = [
     tagline: "Four reluctant elements, forced into a crystal that almost never forms",
     description:
       "Taaffeite was first discovered in 1945 — already cut and polished, sitting in a jeweller's box, mistaken for spinel. Fewer than a thousand faceted stones are known worldwide. It needs beryllium, magnesium, and aluminium to meet in a specific crystal structure that almost never forms.",
+    derivation: {
+      steps: [
+        "BeMgAl₄O₈ — same Be scarcity, but the crystal structure almost never nucleates. <1,000 faceted stones known.",
+      ],
+      sources: [
+        "GIA and gemological literature — specimen counts",
+      ],
+    },
   },
   {
     id: "alexandrite",
@@ -195,6 +290,14 @@ export const materials: Material[] = [
     tagline: "Beryllium from the crust, chromium from the mantle — they almost never meet",
     description:
       "Alexandrite needs beryllium and chromium — but these two elements are geochemical enemies. Beryllium concentrates in evolved, silica-rich rocks. Chromium concentrates in primitive, iron-rich mantle rocks. They almost never meet. When they do, you get a gem that changes colour from green to red depending on the light.",
+    derivation: {
+      steps: [
+        "BeAl₂O₄ + Cr³⁺. Be lives in felsic rocks, Cr in mafic — they converge only at pegmatite-ultramafic contacts.",
+      ],
+      sources: [
+        "GeologyScience — alexandrite formation",
+      ],
+    },
   },
   {
     id: "benitoite",
@@ -208,6 +311,14 @@ export const materials: Material[] = [
     tagline: "Barium-rich fluids altering serpentinite, in one county in California",
     description:
       "Gem-quality benitoite comes from exactly one place on Earth: San Benito County, California. It forms when barium-rich hydrothermal fluids alter serpentinite under very specific pressure and temperature. The mine closed in 2006. Commercial production has ended permanently.",
+    derivation: {
+      steps: [
+        "BaTiSi₃O₉ — not beryllium-limited but equally rare. One gem source on Earth (hundreds of kg total production).",
+      ],
+      sources: [
+        "ResearchGate — '100-year history of the Benitoite Gem mine'",
+      ],
+    },
   },
   // ═══════════════════════════════════════════
   // ACT III — Biological / Earth-only
@@ -224,6 +335,14 @@ export const materials: Material[] = [
     tagline: "340 million years of ocean life, fossilised in stone",
     description:
       "Ammonites ruled Earth's oceans for over 300 million years before the asteroid that killed the dinosaurs wiped them out too. Their spiralling shells are embedded in marine rock across every continent. But they only ever existed here.",
+    derivation: {
+      steps: [
+        "Fermi estimate — no published total exists. Abundant across all oceans for ~335 My; calcite shells preserve well.",
+      ],
+      sources: [
+        "Ammonoid range: ~400 Ma to 66 Ma (K-Pg extinction)",
+      ],
+    },
   },
   {
     id: "wood",
@@ -239,6 +358,15 @@ export const materials: Material[] = [
       "There are about 3 trillion trees on Earth, holding roughly 450 billion tonnes of wood. That sounds like a lot — until you remember that diamond exists on trillions of worlds. Wood exists on one. By cosmic measure, a wooden ring is roughly thirty orders of magnitude rarer than a diamond one.",
     scaleComparison:
       "All the wood on Earth would not fill a single large asteroid. All the diamond in the universe would swallow the solar system.",
+    derivation: {
+      steps: [
+        "3.04 trillion trees (Crowther 2015). FAO: ~422 Gt above-ground woody biomass + roots ≈ 450 Gt total.",
+      ],
+      sources: [
+        "Crowther et al. (2015) Nature — global tree density",
+        "FAO Global Forest Resources Assessment (2020)",
+      ],
+    },
   },
   {
     id: "shell",
@@ -252,6 +380,14 @@ export const materials: Material[] = [
     tagline: "Aragonite bricks, mortared by a living animal, thinner than a wavelength of light",
     description:
       "Mother-of-pearl — nacre — is aragonite crystals laid down in microscopic brick-and-mortar layers by living mollusks. The iridescence comes from the layers being thinner than a wavelength of light. No geological process produces it. Only life does.",
+    derivation: {
+      steps: [
+        "Fermi estimate — no published total. Marine molluscs produce vast CaCO₃; fossil shell beds are enormous.",
+      ],
+      sources: [
+        "Nacre structure well-characterised in materials science literature",
+      ],
+    },
   },
   {
     id: "petrified-wood",
@@ -265,6 +401,14 @@ export const materials: Material[] = [
     tagline: "Trees turned to stone, cell by cell",
     description:
       "Petrified wood is what happens when silica-rich groundwater slowly replaces every cell of a buried tree with quartz, preserving the grain, the rings, even the bark. It requires trees — which require life — which, as far as we know, requires this one planet.",
+    derivation: {
+      steps: [
+        "Fermi estimate. Deposits worldwide. ~3 OoM below living wood — only a tiny fraction gets silicified.",
+      ],
+      sources: [
+        "Quartz replacement process well-documented in geology",
+      ],
+    },
   },
   {
     id: "jet",
@@ -278,6 +422,17 @@ export const materials: Material[] = [
     tagline: "Fossilised driftwood from the Jurassic",
     description:
       "Jet is ancient conifer wood, compressed under ocean sediments for 180 million years until it became a hard, lustrous black stone. Queen Victoria made it famous as mourning jewellery. It is fossilised biology — doubly rare.",
+    derivation: {
+      steps: [
+        "Jet deposits: primarily Whitby (UK, Toarcian ~182 Ma), Asturias (Spain), a few others.",
+        "No published global estimate. Fermi estimate: ~10⁹ kg (1 million tonnes).",
+        "Volume = 10⁹ / 1300 ≈ 10⁵·⁹ m³.",
+      ],
+      sources: [
+        "Whitby jet is Toarcian age, ~181-182 Ma — well-dated",
+        "Queen Victoria's mourning jewellery decree after Prince Albert's death (1861)",
+      ],
+    },
   },
   {
     id: "amber",
@@ -291,6 +446,17 @@ export const materials: Material[] = [
     tagline: "Ancient tree blood, hardened by time",
     description:
       "Amber is fossilised tree resin — not sap, but the sticky defensive secretion trees produce when wounded. The Baltic deposit alone holds an estimated 640,000 tonnes, laid down 44 million years ago in a vast forest that no longer exists. All of it: one planet.",
+    derivation: {
+      steps: [
+        "Baltic deposit: ~640,000 tonnes (widely cited in scientific literature).",
+        "Other deposits (Dominican Republic, Myanmar, Mexican, Bitterfeld): adds ~300,000+ tonnes.",
+        "Total: ~1 million tonnes = 10⁹ kg → logMass ≈ 9.",
+        "Volume = 10⁹ / 1050 ≈ 10⁶ m³.",
+      ],
+      sources: [
+        "Baltic amber tonnage: widely cited in geological and amber literature",
+      ],
+    },
   },
   {
     id: "coral",
@@ -304,6 +470,18 @@ export const materials: Material[] = [
     tagline: "Built by tiny animals, colony by colony",
     description:
       "Precious coral — Corallium rubrum — is not reef coral. It's a slow-growing deep-water animal that builds a dense, polishable skeleton of calcium carbonate. Mediterranean fishers have harvested it for millennia. Populations have crashed 80% since the 1970s.",
+    derivation: {
+      steps: [
+        "No published global biomass for Corallium spp.",
+        "Peak catches: ~98 tonnes/year (1978). Millennia of deep-water habitat growth.",
+        "Fermi estimate: ~10⁸ kg (100,000 tonnes) living + dead-in-situ precious coral.",
+        "Volume = 10⁸ / 2700 ≈ 10⁴·⁶ m³.",
+      ],
+      sources: [
+        "FAO data: Mediterranean red coral catch declined ~80% from 98t (1978) to <20t by late 1990s",
+        "Santangelo & Bramanti — Mediterranean red coral population studies",
+      ],
+    },
   },
   {
     id: "ammolite",
@@ -317,6 +495,16 @@ export const materials: Material[] = [
     tagline: "One extinct species, one river in Alberta, 70 million years underground",
     description:
       "Ammolite is the iridescent aragonite shell of Placenticeras ammonites, found almost exclusively in a narrow belt along the St. Mary River in southern Alberta, Canada. One species. One geological formation. One planet. Gem-grade material may run out within decades.",
+    derivation: {
+      steps: [
+        "Bearpaw Formation, Alberta — sole significant source worldwide.",
+        "No published total tonnage. Fermi estimate: ~10⁷ kg (10,000 tonnes).",
+        "Volume = 10⁷ / 2800 ≈ 10³·⁶ m³.",
+      ],
+      sources: [
+        "GIA and Alberta government geological surveys confirm sole-source status",
+      ],
+    },
   },
   {
     id: "amber-inclusion",
@@ -330,6 +518,16 @@ export const materials: Material[] = [
     tagline: "A whole creature, frozen in tree resin for 40 million years",
     description:
       "Only about one in a thousand pieces of amber contains an insect. Of those, only 10% are well-enough preserved to identify. Each one is a time capsule: a creature that landed on a sticky wound on a tree, 40 million years ago, on the only planet known to have trees, or insects, or resin.",
+    derivation: {
+      steps: [
+        "Total amber ≈ 10⁹ kg (see amber entry).",
+        "~1 in 1,000 pieces contains an insect → amber-with-insect ≈ 10⁶ kg.",
+        "Volume = 10⁶ / 1050 ≈ 10³ m³.",
+      ],
+      sources: [
+        "1-in-1000 ratio widely cited in amber and entomological literature",
+      ],
+    },
   },
   {
     id: "moldavite",
@@ -343,6 +541,18 @@ export const materials: Material[] = [
     tagline: "Earth's crust, turned to glass by a cosmic impact",
     description:
       "14.8 million years ago, an asteroid slammed into what is now Bavaria with enough force to vaporise the ground. The molten glass rained across central Europe and solidified mid-flight. About 275 tonnes survive today. Erosion has destroyed 99% of what was created. No more will ever form — unless another asteroid hits.",
+    derivation: {
+      steps: [
+        "Ries impact: 14.808 ± 0.038 Ma (Schmieder & Buchner 2008).",
+        "Surviving moldavite: ~275 tonnes (Trnka & Houzar 2002).",
+        "275 tonnes = 275,000 kg → logMass ≈ 5.4.",
+        "Volume = 275,000 / 2400 ≈ 115 m³ → logVolume ≈ 2.0.",
+      ],
+      sources: [
+        "Trnka & Houzar (2002) — moldavite mass estimates",
+        "Schmieder & Buchner (2008) — Ries crater dating (14.808 ± 0.038 Ma)",
+      ],
+    },
   },
   {
     id: "pearl",
@@ -358,6 +568,17 @@ export const materials: Material[] = [
       "A natural pearl forms when a living mollusk — an oyster, a mussel — wraps an irritant in layer after layer of nacre. One in ten thousand wild oysters produces a gem pearl. No other world is known to have oceans, or mollusks, or the patient biology that builds a pearl. Of everything you could wear, this is the rarest thing in all of existence.",
     scaleComparison:
       "Every natural pearl that has ever existed would fit inside a single room.",
+    derivation: {
+      steps: [
+        "GIA: ~1 in 10,000 wild oysters produces a gem pearl.",
+        "Historical fisheries (Persian Gulf, Sri Lanka, Japan) over millennia, but pearls degrade.",
+        "Total surviving natural gem pearls: Fermi estimate ~100 tonnes = 10⁵ kg.",
+        "Volume = 10⁵ / 2700 ≈ 40 m³ → logVolume ≈ 1.6.",
+      ],
+      sources: [
+        "GIA and The Pearl Source — 1-in-10,000 gem pearl ratio",
+      ],
+    },
   },
 ];
 

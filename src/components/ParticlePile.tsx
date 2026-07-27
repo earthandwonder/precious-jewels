@@ -61,6 +61,8 @@ interface ParticlePileProps {
   sizeRange?: [number, number];
   /** Multiplier for particle count (default 1) */
   countMultiplier?: number;
+  /** 0-1: how much of the canvas the pile fills (default 1). Keeps pile accurately small in a larger canvas. */
+  pileScale?: number;
 }
 
 function hexToRgb(hex: string) {
@@ -230,6 +232,7 @@ export default function ParticlePile({
   colorJitter = 0.1,
   sizeRange = [0.7, 1.3],
   countMultiplier = 1,
+  pileScale = 1,
 }: ParticlePileProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
@@ -263,8 +266,8 @@ export default function ParticlePile({
   const initParticles = useCallback(
     (width: number, h: number) => {
       const particles: Particle[] = [];
-      const pileWidth = width * (0.3 + abundance * 0.5);
-      const pileHeight = h * (0.35 + abundance * 0.3);
+      const pileWidth = width * (0.3 + abundance * 0.5) * pileScale;
+      const pileHeight = h * (0.35 + abundance * 0.3) * pileScale;
       const centerX = width / 2;
       const groundY = h * 0.88;
 
@@ -280,7 +283,7 @@ export default function ParticlePile({
 
         // Size variance
         const sizeMult = sizeRange[0] + Math.random() * (sizeRange[1] - sizeRange[0]);
-        const baseRadius = 2.5 + Math.random() * 1.5 + abundance * 4.0;
+        const baseRadius = (2.5 + Math.random() * 1.5 + abundance * 4.0) * pileScale;
 
         // Colour jitter: shift lightness uniformly + tiny per-channel noise
         const lightnessShift = (Math.random() - 0.5) * 2 * colorJitter * 60;
@@ -311,7 +314,7 @@ export default function ParticlePile({
       }
       return particles;
     },
-    [particleCount, abundance, rgb.r, rgb.g, rgb.b, colorJitter, sizeRange, particleShape]
+    [particleCount, abundance, rgb.r, rgb.g, rgb.b, colorJitter, sizeRange, particleShape, pileScale]
   );
 
   const scatter = useCallback(

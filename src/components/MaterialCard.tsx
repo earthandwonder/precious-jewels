@@ -162,6 +162,9 @@ export default function MaterialCard({
   const active = hasAnimated;
 
   const pileHeight = getPileHeight(material, isMobile);
+  const minCanvasHeight = 80;
+  const canvasHeight = Math.max(minCanvasHeight, pileHeight);
+  const pileScale = pileHeight / canvasHeight;
   const abundance = abundanceToNormalized(material.logVolume);
   const isWarm = material.act === 3;
   const tint = isWarm
@@ -187,17 +190,18 @@ export default function MaterialCard({
         <div
           className="flex-1"
           style={{
-            maxWidth: Math.min(360 + abundance * 120, pileHeight * 2),
+            maxWidth: Math.max(120, Math.min(360 + abundance * 120, canvasHeight * 2)),
           }}
         >
           <ParticlePile
             color={material.color}
             glowColor={material.glowColor}
             abundance={abundance}
-            height={pileHeight}
+            height={canvasHeight}
             isVisible={active}
             feel={getMaterialFeel(material)}
             density={material.density}
+            pileScale={pileScale}
             {...getParticleStyle(material)}
           />
         </div>
@@ -213,7 +217,7 @@ export default function MaterialCard({
         </h3>
 
         <div className={`snap-animate snap-animate-delay-3 ${active ? "is-active" : ""}`}>
-          <MassCounter logVolume={material.logVolume} density={material.density} color={material.color} act={material.act} />
+          <MassCounter logVolume={material.logVolume} density={material.density} color={material.color} act={material.act} derivation={material.derivation} />
         </div>
 
         <p
