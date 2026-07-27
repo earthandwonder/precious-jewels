@@ -22,7 +22,7 @@ export const inlineProducts: Record<string, Product[]> = {
       name: "Minimalist Opal Stud Earrings",
       price: "$95",
       url: "https://www.etsy.com/au/listing/857888625/minimalist-opal-stud-earrings-in",
-      imageUrl: "/p/precious-jewels/samples/opal1.png",
+      imageUrl: "/p/abundant-gems/samples/opal1.png",
     },
   ],
   // TODO: alexandrite
@@ -42,7 +42,7 @@ export const shopProducts: Record<string, Product[]> = {
       name: "Teal Sapphire Stud Earrings — Sterling Silver",
       price: "$195",
       url: "https://www.etsy.com/au/listing/4351859922/teal-sapphire-stud-earrings-sterling",
-      imageUrl: "/p/precious-jewels/samples/RubySapphire2.png",
+      imageUrl: "/p/abundant-gems/samples/RubySapphire2.png",
     },
   ],
   quartz: [
@@ -50,7 +50,7 @@ export const shopProducts: Record<string, Product[]> = {
       name: "Amethyst Purple CZ Marquise Cluster Stud Earrings",
       price: "$48",
       url: "https://www.etsy.com/au/listing/1491023644/amethyst-purple-cz-marquise-cluster-stud",
-      imageUrl: "/p/precious-jewels/samples/Amethyst.png",
+      imageUrl: "/p/abundant-gems/samples/Amethyst.png",
     },
   ],
   jadeite: [
@@ -58,7 +58,7 @@ export const shopProducts: Record<string, Product[]> = {
       name: "Natural Certificated Type A Jadeite Bangle",
       price: "$165",
       url: "https://www.etsy.com/au/listing/4390574011/natural-certificated-type-a-54-63mm-blue",
-      imageUrl: "/p/precious-jewels/samples/jade.png",
+      imageUrl: "/p/abundant-gems/samples/jade.png",
     },
   ],
   garnet: [
@@ -66,7 +66,7 @@ export const shopProducts: Record<string, Product[]> = {
       name: "Sterling Silver Natural Garnet Stud Earrings",
       price: "$110",
       url: "https://www.etsy.com/au/listing/1641858407/sterling-silver-natural-garnet-stud",
-      imageUrl: "/p/precious-jewels/samples/garnet1.png",
+      imageUrl: "/p/abundant-gems/samples/garnet1.png",
     },
   ],
 };

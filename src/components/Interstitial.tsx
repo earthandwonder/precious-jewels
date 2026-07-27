@@ -35,7 +35,7 @@ export default function Interstitial({
         {/* Multiplier label */}
         <p
           className={`snap-animate snap-animate-delay-1 act-number mb-8 tracking-[0.3em] ${active ? "is-active" : ""}`}
-          style={{ color: "rgba(255, 200, 150, 0.3)" }}
+          style={{ color: "rgba(255, 210, 170, 0.6)" }}
         >
           {multiplierLabel}
         </p>
@@ -63,7 +63,7 @@ export default function Interstitial({
         {/* Body */}
         <p
           className={`snap-animate snap-animate-delay-5 text-sm md:text-base leading-[1.9] max-w-md mx-auto ${active ? "is-active" : ""}`}
-          style={{ color: "rgba(255, 236, 210, 0.55)" }}
+          style={{ color: "rgba(255, 236, 210, 0.75)" }}
         >
           {body}
         </p>
@@ -72,7 +72,7 @@ export default function Interstitial({
         {partLabel && (
           <p
             className={`snap-animate snap-animate-delay-7 act-number mt-12 tracking-[0.3em] ${active ? "is-active" : ""}`}
-            style={{ color: "rgba(255, 200, 150, 0.35)" }}
+            style={{ color: "rgba(255, 210, 170, 0.6)" }}
           >
             {partLabel}
           </p>

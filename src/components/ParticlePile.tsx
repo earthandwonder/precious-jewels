@@ -256,8 +256,10 @@ export default function ParticlePile({
   const mobile = typeof window !== "undefined" && isMobile();
   const areaFactor = Math.min(2, Math.max(1, height / 100));
   const baseMobile = mobile ? 0.5 : 1;
+  // Bump cap for large canvases (height > 400px gets up to 800)
+  const largeCap = height > 400 ? 800 : 600;
   const particleCount = Math.min(
-    mobile ? Math.floor(300 * countMultiplier) : Math.floor(600 * countMultiplier),
+    mobile ? Math.floor(300 * countMultiplier) : Math.floor(largeCap * countMultiplier),
     Math.max(80, Math.floor((150 + abundance * 400) * areaFactor * baseMobile * countMultiplier))
   );
 
@@ -283,7 +285,8 @@ export default function ParticlePile({
 
         // Size variance
         const sizeMult = sizeRange[0] + Math.random() * (sizeRange[1] - sizeRange[0]);
-        const baseRadius = (2.5 + Math.random() * 1.5 + abundance * 4.0) * pileScale;
+        const rawRadius = (3.0 + Math.random() * 2.0 + abundance * 5.0) * pileScale;
+        const baseRadius = Math.max(2, rawRadius);
 
         // Colour jitter: shift lightness uniformly + tiny per-channel noise
         const lightnessShift = (Math.random() - 0.5) * 2 * colorJitter * 60;

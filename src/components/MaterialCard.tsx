@@ -242,7 +242,7 @@ export default function MaterialCard({
 
         <p
           className={`snap-animate snap-animate-delay-5 text-[11px] md:text-sm leading-[1.7] md:leading-[1.8] mt-1 md:mt-3 max-w-md mx-auto ${active ? "is-active" : ""}`}
-          style={{ color: `${tint} 0.5)` }}
+          style={{ color: `${tint} 0.65)` }}
         >
           {material.description}
         </p>
@@ -256,6 +256,32 @@ export default function MaterialCard({
             />
           </div>
         )}
+
+        {/* Share button */}
+        <button
+          type="button"
+          className={`snap-animate snap-animate-delay-7 mt-3 md:mt-4 flex items-center gap-1.5 mx-auto text-[10px] md:text-xs tracking-wider uppercase transition-opacity cursor-pointer ${active ? "is-active" : ""}`}
+          style={{ color: `${tint} 0.35)`, background: "none", border: "none", padding: "4px 8px" }}
+          onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.8")}
+          onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+          onClick={() => {
+            const url = typeof window !== "undefined"
+              ? window.location.origin + (process.env.NEXT_PUBLIC_BASE_PATH || "")
+              : "";
+            if (navigator.share) {
+              navigator.share({ title: "The Cosmic Abundance of Gemstones", url });
+            } else {
+              navigator.clipboard.writeText(url);
+            }
+          }}
+        >
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
+            <polyline points="16 6 12 2 8 6" />
+            <line x1="12" y1="2" x2="12" y2="15" />
+          </svg>
+          Share
+        </button>
       </div>
     </div>
   );

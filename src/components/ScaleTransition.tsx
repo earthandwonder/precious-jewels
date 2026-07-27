@@ -68,10 +68,10 @@ function ZoomTransition({
   const fromScale = 60 + phase1 * phase1 * 500;
   const fromOpacity = phase1 < 0.7 ? 1 : Math.max(0, 1 - (phase1 - 0.7) / 0.3);
 
-  // Phase 2: to object fades in (0.5-1)
+  // Phase 2: to object fades in (0.5-1) — match heliosphere intro size (280px)
   const phase2 = Math.max(0, (progress - 0.45) / 0.5);
   const toOpacity = Math.min(1, phase2 * 2);
-  const toSize = 70;
+  const toSize = 200;
 
   return (
     <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
@@ -82,7 +82,7 @@ function ZoomTransition({
           {phase1 < 0.4 && (
             <span
               className="mt-2 text-[9px] tracking-wider uppercase"
-              style={{ color: from.color, opacity: 0.5 }}
+              style={{ color: from.color, opacity: 0.8 }}
             >
               {from.label}
             </span>
@@ -96,7 +96,7 @@ function ZoomTransition({
           {to.render(toSize)}
           <span
             className="mt-2 text-[9px] tracking-wider uppercase"
-            style={{ color: to.color, opacity: 0.5 * toOpacity }}
+            style={{ color: to.color, opacity: 0.8 * toOpacity }}
           >
             {to.label}
           </span>
@@ -104,8 +104,8 @@ function ZoomTransition({
             <p
               className="font-editorial text-sm md:text-base italic mt-6 max-w-sm text-center leading-relaxed"
               style={{
-                opacity: Math.max(0, toOpacity - 0.3) * 0.55,
-                color: "rgba(200, 214, 230, 0.7)",
+                opacity: Math.max(0, toOpacity - 0.3) * 0.85,
+                color: "rgba(210, 222, 238, 0.85)",
               }}
             >
               {contextText}

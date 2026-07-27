@@ -50,7 +50,7 @@ export default function Finale({ isActive }: { isActive: boolean }) {
         <p
           className="act-number tracking-[0.3em] mb-12"
           style={{
-            color: "rgba(255, 200, 150, 0.4)",
+            color: "rgba(255, 210, 170, 0.65)",
             opacity: labelOpacity,
           }}
         >
@@ -103,7 +103,7 @@ export default function Finale({ isActive }: { isActive: boolean }) {
         <p
           className="text-sm leading-relaxed max-w-md mx-auto"
           style={{
-            color: "rgba(255, 200, 150, 0.4)",
+            color: "rgba(255, 210, 170, 0.65)",
             opacity: comparisonOpacity,
           }}
         >

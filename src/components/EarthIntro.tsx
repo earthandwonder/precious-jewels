@@ -55,25 +55,25 @@ export default function EarthIntro({ isActive }: { isActive: boolean }) {
         style={{ opacity: Math.max(0.3, Math.min(1, progress / 0.3)) }}
       >
         {/* Outer boundary — the heliopause */}
-        <circle cx="20" cy="20" r="18" stroke={c} strokeWidth="0.5" strokeOpacity="0.35" strokeDasharray="2 1.5" />
+        <circle cx="20" cy="20" r="18" stroke={c} strokeWidth="0.5" strokeOpacity="0.55" strokeDasharray="2 1.5" />
         {/* Inner shock wave */}
-        <circle cx="20" cy="20" r="12" stroke={c} strokeWidth="0.4" strokeOpacity="0.2" strokeDasharray="1.5 1" />
+        <circle cx="20" cy="20" r="12" stroke={c} strokeWidth="0.4" strokeOpacity="0.35" strokeDasharray="1.5 1" />
         {/* Solar wind region */}
-        <circle cx="20" cy="20" r="6" stroke={c} strokeWidth="0.3" strokeOpacity="0.15" />
+        <circle cx="20" cy="20" r="6" stroke={c} strokeWidth="0.3" strokeOpacity="0.25" />
         {/* Sun at centre */}
-        <circle cx="20" cy="20" r="1.5" fill="#e8a840" opacity="0.4" />
-        <circle cx="20" cy="20" r="0.6" fill="#ffd080" opacity="0.6" />
+        <circle cx="20" cy="20" r="1.5" fill="#e8a840" opacity="0.6" />
+        <circle cx="20" cy="20" r="0.6" fill="#ffd080" opacity="0.8" />
         {/* Voyager trajectory hint */}
-        <line x1="20" y1="20" x2="35" y2="10" stroke={c} strokeWidth="0.3" strokeOpacity="0.2" strokeDasharray="0.8 0.8" />
-        <circle cx="34" cy="11" r="0.6" fill={c} opacity="0.3" />
+        <line x1="20" y1="20" x2="35" y2="10" stroke={c} strokeWidth="0.3" strokeOpacity="0.35" strokeDasharray="0.8 0.8" />
+        <circle cx="34" cy="11" r="0.6" fill={c} opacity="0.5" />
       </svg>
 
       {/* Label */}
       <p
         className="act-number mt-4 tracking-[0.3em]"
         style={{
-          opacity: labelOpacity * 0.6,
-          color: "rgba(122, 111, 191, 0.6)",
+          opacity: labelOpacity * 0.9,
+          color: "rgba(160, 150, 220, 0.9)",
         }}
       >
         The Heliosphere
@@ -84,7 +84,7 @@ export default function EarthIntro({ isActive }: { isActive: boolean }) {
         className="font-editorial text-lg md:text-xl italic mt-6 max-w-md text-center leading-relaxed"
         style={{
           opacity: textOpacity,
-          color: "rgba(200, 214, 230, 0.6)",
+          color: "rgba(210, 222, 238, 0.85)",
         }}
       >
         We start with the farthest any human object has ever travelled. Voyager 1. The sphere it traces around the Sun can be filled many times over by gems we call rare.

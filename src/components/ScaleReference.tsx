@@ -37,13 +37,13 @@ const STATUE_HEIGHT = 93;
 const HUMAN_HEIGHT = 1.8;
 
 export const REFERENCES: Record<RefType, ReferenceInfo> = {
-  heliosphere:    { type: "heliosphere",    label: "Heliosphere",             color: "#7a6fbf", realSize: HELIOSPHERE_DIAMETER, render: (s) => renderHeliosphere(s) },
-  "solar-system": { type: "solar-system",   label: "Solar system",            color: "#b8a040", realSize: SOLAR_SYSTEM_DIAMETER, render: (s) => renderSolarSystem(s) },
-  sun:            { type: "sun",            label: "The Sun",                 color: "#e8a840", realSize: SUN_DIAMETER, render: (s) => renderSun(s) },
-  earth:          { type: "earth",          label: "Earth",                   color: "#5b8cbf", realSize: EARTH_DIAMETER, render: (s) => renderEarth(s) },
-  everest:        { type: "everest",        label: "Everest",                 color: "#b0b8c0", realSize: EVEREST_HEIGHT, render: (s) => renderMountain(s) },
-  statue:         { type: "statue",         label: "Statue of Liberty",       color: "#7ab8a0", realSize: STATUE_HEIGHT, render: (s) => renderStatue(s) },
-  human:          { type: "human",          label: "Human",                   color: "#c4a882", realSize: HUMAN_HEIGHT, render: (s) => renderHuman(s) },
+  heliosphere:    { type: "heliosphere",    label: "Heliosphere-scale",        color: "#7a6fbf", realSize: HELIOSPHERE_DIAMETER, render: (s) => renderHeliosphere(s) },
+  "solar-system": { type: "solar-system",   label: "Solar system-scale",       color: "#b8a040", realSize: SOLAR_SYSTEM_DIAMETER, render: (s) => renderSolarSystem(s) },
+  sun:            { type: "sun",            label: "Sun-scale",                color: "#e8a840", realSize: SUN_DIAMETER, render: (s) => renderSun(s) },
+  earth:          { type: "earth",          label: "Earth-scale",              color: "#5b8cbf", realSize: EARTH_DIAMETER, render: (s) => renderEarth(s) },
+  everest:        { type: "everest",        label: "Everest-scale",            color: "#b0b8c0", realSize: EVEREST_HEIGHT, render: (s) => renderMountain(s) },
+  statue:         { type: "statue",         label: "Statue of Liberty-scale",  color: "#7ab8a0", realSize: STATUE_HEIGHT, render: (s) => renderStatue(s) },
+  human:          { type: "human",          label: "Human-scale",              color: "#c4a882", realSize: HUMAN_HEIGHT, render: (s) => renderHuman(s) },
 };
 
 /**
@@ -260,7 +260,7 @@ export default function ScaleReference({ logVolume, act, pileHeight }: ScaleRefe
       {ref.render(size)}
       <span
         className="text-[9px] tracking-wider uppercase whitespace-nowrap"
-        style={{ color: ref.color, opacity: 0.7 }}
+        style={{ color: ref.color, opacity: 0.9 }}
       >
         {ref.label}
       </span>

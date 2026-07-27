@@ -117,7 +117,7 @@ export default function MassCounter({ logVolume, density, color, act, derivation
           {value}
         </span>
         <span className="text-xs text-muted">
-          {unit}
+          {unit} in the universe<span style={{ opacity: 0.4 }}>*</span>
         </span>
         {hasDerivation && (
           <span
@@ -142,6 +142,17 @@ export default function MassCounter({ logVolume, density, color, act, derivation
             border: `1px solid rgba(255,255,255,0.06)`,
           }}
         >
+          {/* Asterisk note */}
+          <p
+            className="text-[9px] md:text-[10px] leading-[1.4] italic mb-2 pb-2"
+            style={{
+              color: "rgba(200, 210, 220, 0.4)",
+              borderBottom: "1px solid rgba(255,255,255,0.06)",
+            }}
+          >
+            * Estimated total mass across the observable universe.
+          </p>
+
           {/* Bridge: connects displayed value to derivation */}
           <p
             className="text-[10px] md:text-[11px] font-mono leading-[1.5] mb-2 pb-2"

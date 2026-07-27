@@ -69,7 +69,17 @@ body {
     radial-gradient(1.5px 1.5px at 65% 70%, rgba(255, 255, 255, 0.35), transparent),
     radial-gradient(1px 1px at 5% 90%, rgba(255, 255, 255, 0.25), transparent),
     radial-gradient(1px 1px at 95% 25%, rgba(255, 255, 255, 0.3), transparent),
-    radial-gradient(1px 1px at 40% 30%, rgba(255, 255, 255, 0.2), transparent);
+    radial-gradient(1px 1px at 40% 30%, rgba(255, 255, 255, 0.2), transparent),
+    radial-gradient(1px 1px at 18% 75%, rgba(255, 255, 255, 0.35), transparent),
+    radial-gradient(1px 1px at 82% 12%, rgba(255, 255, 255, 0.25), transparent),
+    radial-gradient(1.5px 1.5px at 38% 52%, rgba(255, 255, 255, 0.45), transparent),
+    radial-gradient(1px 1px at 62% 88%, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(1px 1px at 8% 42%, rgba(255, 255, 255, 0.2), transparent),
+    radial-gradient(1px 1px at 72% 58%, rgba(255, 255, 255, 0.35), transparent),
+    radial-gradient(1.5px 1.5px at 48% 22%, rgba(255, 255, 255, 0.4), transparent),
+    radial-gradient(1px 1px at 92% 68%, rgba(255, 255, 255, 0.25), transparent),
+    radial-gradient(1px 1px at 28% 92%, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(1px 1px at 58% 5%, rgba(255, 255, 255, 0.2), transparent);
 }
 
 /* ─── Material card ─── */
