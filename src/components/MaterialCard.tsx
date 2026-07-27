@@ -235,14 +235,14 @@ export default function MaterialCard({
 
         <p
           className={`snap-animate snap-animate-delay-4 font-editorial text-base md:text-xl italic mt-1 md:mt-2 mb-2 md:mb-3 leading-relaxed ${active ? "is-active" : ""}`}
-          style={{ color: `${tint} 0.7)` }}
+          style={{ color: `${tint} 0.85)` }}
         >
           {material.tagline}
         </p>
 
         <p
           className={`snap-animate snap-animate-delay-5 text-sm md:text-base leading-[1.7] md:leading-[1.8] mt-1 md:mt-3 max-w-md mx-auto ${active ? "is-active" : ""}`}
-          style={{ color: `${tint} 0.65)` }}
+          style={{ color: `${tint} 0.8)` }}
         >
           {material.description}
         </p>
@@ -261,7 +261,7 @@ export default function MaterialCard({
         <button
           type="button"
           className={`snap-animate snap-animate-delay-7 mt-3 md:mt-4 flex items-center gap-1.5 mx-auto text-xs md:text-sm tracking-wider uppercase transition-opacity cursor-pointer ${active ? "is-active" : ""}`}
-          style={{ color: `${tint} 0.35)`, background: "none", border: "none", padding: "4px 8px" }}
+          style={{ color: `${tint} 0.5)`, background: "none", border: "none", padding: "4px 8px" }}
           onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.8")}
           onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
           onClick={() => {

@@ -50,7 +50,7 @@ export default function Finale({ isActive }: { isActive: boolean }) {
         <p
           className="act-number tracking-[0.3em] mb-12"
           style={{
-            color: "rgba(255, 210, 170, 0.65)",
+            color: "rgba(255, 210, 170, 0.8)",
             opacity: labelOpacity,
           }}
         >
@@ -91,7 +91,7 @@ export default function Finale({ isActive }: { isActive: boolean }) {
         <p
           className="font-editorial text-lg md:text-xl italic leading-relaxed mb-8 max-w-md mx-auto"
           style={{
-            color: "rgba(253, 235, 208, 0.7)",
+            color: "rgba(253, 235, 208, 0.85)",
             opacity: bodyOpacity,
           }}
         >
@@ -103,7 +103,7 @@ export default function Finale({ isActive }: { isActive: boolean }) {
         <p
           className="text-base leading-relaxed max-w-md mx-auto"
           style={{
-            color: "rgba(255, 210, 170, 0.65)",
+            color: "rgba(255, 210, 170, 0.8)",
             opacity: comparisonOpacity,
           }}
         >

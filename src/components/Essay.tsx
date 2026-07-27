@@ -200,7 +200,7 @@ function HeroPage({ isActive }: { isActive: boolean }) {
       <div className="hero-subtitle relative z-10 mb-6">
         <p
           className="font-editorial text-xl md:text-2xl lg:text-3xl italic max-w-xl leading-relaxed"
-          style={{ color: "rgba(232, 230, 227, 0.7)" }}
+          style={{ color: "rgba(232, 230, 227, 0.85)" }}
         >
           Which gemstones are common across the universe?
           <br />
