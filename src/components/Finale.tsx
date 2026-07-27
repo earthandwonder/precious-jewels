@@ -101,7 +101,7 @@ export default function Finale({ isActive }: { isActive: boolean }) {
         </p>
 
         <p
-          className="text-sm leading-relaxed max-w-md mx-auto"
+          className="text-base leading-relaxed max-w-md mx-auto"
           style={{
             color: "rgba(255, 210, 170, 0.65)",
             opacity: comparisonOpacity,

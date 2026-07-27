@@ -62,7 +62,7 @@ export default function Interstitial({
 
         {/* Body */}
         <p
-          className={`snap-animate snap-animate-delay-5 text-sm md:text-base leading-[1.9] max-w-md mx-auto ${active ? "is-active" : ""}`}
+          className={`snap-animate snap-animate-delay-5 text-base md:text-lg leading-[1.9] max-w-md mx-auto ${active ? "is-active" : ""}`}
           style={{ color: "rgba(255, 236, 210, 0.75)" }}
         >
           {body}

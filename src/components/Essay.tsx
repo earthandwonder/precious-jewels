@@ -209,7 +209,7 @@ function HeroPage({ isActive }: { isActive: boolean }) {
       </div>
 
       <div className="hero-body relative z-10 mb-16">
-        <p className="text-sm md:text-base text-muted max-w-md leading-relaxed">
+        <p className="text-base md:text-lg text-muted max-w-md leading-relaxed">
           By considering stellar nucleosynthesis, mineral formation, and the
           number of rocky worlds, we can estimate the volume of each precious
           gemstone across the known universe. On this journey you may discover

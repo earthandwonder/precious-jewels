@@ -79,7 +79,7 @@ export default function ProductCard({
 
       {/* Overlay pill */}
       <span
-        className="absolute -bottom-1 left-1/2 -translate-x-1/2 z-20 inline-flex items-center px-2 py-0.5 text-[8px] md:text-[9px] tracking-wider uppercase transition-all duration-300 opacity-40 md:opacity-0 group-hover:opacity-80 backdrop-blur-sm whitespace-nowrap"
+        className="absolute -bottom-1 left-1/2 -translate-x-1/2 z-20 inline-flex items-center px-2 py-0.5 text-[10px] md:text-xs tracking-wider uppercase transition-all duration-300 opacity-40 md:opacity-0 group-hover:opacity-80 backdrop-blur-sm whitespace-nowrap"
         style={{
           border: `1px solid ${materialColor}40`,
           color: `${materialColor}CC`,

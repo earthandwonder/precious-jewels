@@ -234,14 +234,14 @@ export default function MaterialCard({
         </div>
 
         <p
-          className={`snap-animate snap-animate-delay-4 font-editorial text-sm md:text-lg italic mt-1 md:mt-2 mb-2 md:mb-3 leading-relaxed ${active ? "is-active" : ""}`}
+          className={`snap-animate snap-animate-delay-4 font-editorial text-base md:text-xl italic mt-1 md:mt-2 mb-2 md:mb-3 leading-relaxed ${active ? "is-active" : ""}`}
           style={{ color: `${tint} 0.7)` }}
         >
           {material.tagline}
         </p>
 
         <p
-          className={`snap-animate snap-animate-delay-5 text-[11px] md:text-sm leading-[1.7] md:leading-[1.8] mt-1 md:mt-3 max-w-md mx-auto ${active ? "is-active" : ""}`}
+          className={`snap-animate snap-animate-delay-5 text-sm md:text-base leading-[1.7] md:leading-[1.8] mt-1 md:mt-3 max-w-md mx-auto ${active ? "is-active" : ""}`}
           style={{ color: `${tint} 0.65)` }}
         >
           {material.description}
@@ -260,7 +260,7 @@ export default function MaterialCard({
         {/* Share button */}
         <button
           type="button"
-          className={`snap-animate snap-animate-delay-7 mt-3 md:mt-4 flex items-center gap-1.5 mx-auto text-[10px] md:text-xs tracking-wider uppercase transition-opacity cursor-pointer ${active ? "is-active" : ""}`}
+          className={`snap-animate snap-animate-delay-7 mt-3 md:mt-4 flex items-center gap-1.5 mx-auto text-xs md:text-sm tracking-wider uppercase transition-opacity cursor-pointer ${active ? "is-active" : ""}`}
           style={{ color: `${tint} 0.35)`, background: "none", border: "none", padding: "4px 8px" }}
           onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.8")}
           onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}

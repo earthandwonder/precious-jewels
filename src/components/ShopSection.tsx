@@ -25,7 +25,7 @@ export default function ShopSection() {
           }}
         />
 
-        <p className="text-center text-sm text-muted leading-relaxed mb-10 max-w-md mx-auto">
+        <p className="text-center text-base text-muted leading-relaxed mb-10 max-w-md mx-auto">
           Every material above is real. Some of them are surprisingly easy to own.
         </p>
 
@@ -40,7 +40,7 @@ export default function ShopSection() {
                 href={primary.url}
                 target="_blank"
                 rel="noopener noreferrer nofollow sponsored"
-                className="group inline-flex items-center gap-1.5 px-3 py-1.5 text-xs transition-all duration-300 hover:scale-105"
+                className="group inline-flex items-center gap-1.5 px-3 py-1.5 text-sm transition-all duration-300 hover:scale-105"
                 style={{
                   border: `1px solid ${m.color}30`,
                   color: `${m.color}99`,
@@ -62,7 +62,7 @@ export default function ShopSection() {
           })}
         </div>
 
-        <p className="text-center text-[10px] text-muted mt-6 opacity-40">
+        <p className="text-center text-xs text-muted mt-6 opacity-40">
           Affiliate links — we may earn a small commission at no cost to you.
         </p>
       </div>

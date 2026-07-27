@@ -81,7 +81,7 @@ export default function EarthIntro({ isActive }: { isActive: boolean }) {
 
       {/* Context */}
       <p
-        className="font-editorial text-lg md:text-xl italic mt-6 max-w-md text-center leading-relaxed"
+        className="font-editorial text-xl md:text-2xl italic mt-6 max-w-md text-center leading-relaxed"
         style={{
           opacity: textOpacity,
           color: "rgba(210, 222, 238, 0.85)",
