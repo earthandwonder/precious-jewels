@@ -1,17 +1,29 @@
 "use client";
 
 export default function ScrollProgress({ progress }: { progress: number }) {
-  // Color transitions from cool (top) to warm (bottom)
-  const hue = 210 - progress * 1.8; // 210 (blue) -> 30 (amber/gold)
-  const color = `hsl(${Math.max(20, hue)}, 60%, 65%)`;
-
   return (
     <div
       className="scroll-progress"
       style={{
         width: `${progress}%`,
-        background: `linear-gradient(90deg, hsl(210, 60%, 65%), ${color})`,
+        background: `linear-gradient(90deg, rgba(185, 242, 255, 0.3), #B9F2FF)`,
+        boxShadow: `0 0 6px rgba(185, 242, 255, 0.5), 0 0 12px rgba(185, 242, 255, 0.2)`,
       }}
-    />
+    >
+      {/* Diamond particle at leading edge */}
+      <div
+        style={{
+          position: "absolute",
+          right: -4,
+          top: -3,
+          width: 8,
+          height: 8,
+          background: "#E0F7FF",
+          transform: "rotate(45deg)",
+          boxShadow:
+            "0 0 6px rgba(185, 242, 255, 0.8), 0 0 12px rgba(185, 242, 255, 0.4)",
+        }}
+      />
+    </div>
   );
 }

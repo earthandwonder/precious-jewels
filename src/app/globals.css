@@ -150,6 +150,7 @@ body {
   height: 2px;
   z-index: 50;
   transition: width 0.3s ease-out;
+  overflow: visible;
 }
 
 /* ─── Act number ─── */
