@@ -19,7 +19,7 @@ export default function AffiliateRow({
   if (products.length === 0) return null;
 
   return (
-    <div className="flex items-center justify-center gap-4 mt-5">
+    <div className="flex items-center justify-center gap-4 mt-2 md:mt-4">
       {products.slice(0, 1).map((product, i) => (
         <ProductCard
           key={i}

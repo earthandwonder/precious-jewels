@@ -49,9 +49,12 @@ function abundanceToHeight(abundance: number): number {
   return Math.round(80 + abundance * abundance * 160);
 }
 
-function getPileHeight(material: Material): number {
+function getPileHeight(material: Material, isMobile: boolean): number {
+  const mobileCap = 160;
+
   if (material.act <= 2) {
-    return abundanceToHeight(abundanceToNormalized(material.logMass));
+    const h = abundanceToHeight(abundanceToNormalized(material.logMass));
+    return isMobile ? Math.min(h, mobileCap) : h;
   }
 
   const realH = conePileHeight(material.logMass, material.density);
@@ -60,7 +63,20 @@ function getPileHeight(material: Material): number {
   const realRatio = realH / refRealSize;
   const clampedRatio = Math.max(0.5, Math.min(6, realRatio));
   const refPx = REF_DISPLAY_SIZES[refType];
-  return Math.round(refPx * clampedRatio);
+  const h = Math.round(refPx * clampedRatio);
+  return isMobile ? Math.min(h, mobileCap) : h;
+}
+
+function useIsMobile() {
+  const [mobile, setMobile] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 768px)");
+    setMobile(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setMobile(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+  return mobile;
 }
 
 export default function MaterialCard({
@@ -71,6 +87,7 @@ export default function MaterialCard({
   isActive: boolean;
 }) {
   const [hasAnimated, setHasAnimated] = useState(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     if (isActive && !hasAnimated) {
@@ -80,7 +97,7 @@ export default function MaterialCard({
 
   const active = hasAnimated;
 
-  const pileHeight = getPileHeight(material);
+  const pileHeight = getPileHeight(material, isMobile);
   const abundance = material.act === 3
     ? Math.max(0.35, Math.min(1, pileHeight / 300))
     : abundanceToNormalized(material.logMass);
@@ -92,10 +109,10 @@ export default function MaterialCard({
   const hasProducts = !!affiliateProducts[material.id];
 
   return (
-    <div className="material-card w-full h-full flex flex-col items-center justify-center px-6">
+    <div className="material-card w-full h-full flex flex-col items-center justify-center px-4 md:px-6 py-6 md:py-0 overflow-hidden">
       {/* Visual: pile + reference */}
       <div
-        className={`snap-animate snap-animate-delay-1 flex items-end justify-center gap-3 mb-6 overflow-visible ${active ? "is-active" : ""}`}
+        className={`snap-animate snap-animate-delay-1 flex items-end justify-center gap-2 md:gap-3 mb-3 md:mb-6 overflow-visible ${active ? "is-active" : ""}`}
       >
         <div className="flex-shrink-0">
           <ScaleReference
@@ -127,7 +144,7 @@ export default function MaterialCard({
       {/* Text block */}
       <div className="text-center max-w-lg mx-auto">
         <h3
-          className={`snap-animate snap-animate-delay-2 font-editorial text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight leading-[1.1] ${active ? "is-active" : ""}`}
+          className={`snap-animate snap-animate-delay-2 font-editorial text-2xl md:text-4xl lg:text-5xl font-medium tracking-tight leading-[1.1] ${active ? "is-active" : ""}`}
           style={{ color: material.color }}
         >
           {material.name}
@@ -138,23 +155,23 @@ export default function MaterialCard({
         </div>
 
         <p
-          className={`snap-animate snap-animate-delay-4 font-editorial text-base md:text-lg italic mt-2 mb-3 leading-relaxed ${active ? "is-active" : ""}`}
+          className={`snap-animate snap-animate-delay-4 font-editorial text-sm md:text-lg italic mt-1 md:mt-2 mb-2 md:mb-3 leading-relaxed ${active ? "is-active" : ""}`}
           style={{ color: `${tint} 0.7)` }}
         >
           {material.tagline}
         </p>
 
         <p
-          className={`snap-animate snap-animate-delay-5 text-xs md:text-sm leading-[1.8] mt-3 max-w-md mx-auto ${active ? "is-active" : ""}`}
+          className={`snap-animate snap-animate-delay-5 text-[11px] md:text-sm leading-[1.7] md:leading-[1.8] mt-1 md:mt-3 max-w-md mx-auto ${active ? "is-active" : ""}`}
           style={{ color: `${tint} 0.5)` }}
         >
           {material.description}
         </p>
 
         {hasProducts && (
-          <div className={`snap-animate snap-animate-delay-6 mt-4 opacity-70 hover:opacity-100 transition-opacity ${active ? "is-active" : ""}`}>
+          <div className={`snap-animate snap-animate-delay-6 mt-3 md:mt-4 opacity-70 hover:opacity-100 transition-opacity ${active ? "is-active" : ""}`}>
             <p
-              className="text-[10px] tracking-[0.2em] uppercase mb-1"
+              className="text-[9px] md:text-[10px] tracking-[0.2em] uppercase mb-1"
               style={{ color: `${tint} 0.35)` }}
             >
               What it looks like

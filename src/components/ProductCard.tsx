@@ -28,7 +28,7 @@ export default function ProductCard({
       href={product.url}
       target="_blank"
       rel="noopener noreferrer nofollow sponsored"
-      className="group relative w-40 h-40 flex items-center justify-center overflow-visible"
+      className="group relative w-20 h-20 md:w-32 md:h-32 flex items-center justify-center overflow-visible"
     >
       {product.imageUrl ? (
         <>
@@ -37,16 +37,16 @@ export default function ProductCard({
             src={product.imageUrl}
             alt=""
             aria-hidden
-            className="absolute z-0 max-h-32 max-w-32 object-contain transition-opacity duration-500 opacity-60 group-hover:opacity-80"
+            className="absolute z-0 max-h-16 max-w-16 md:max-h-24 md:max-w-24 object-contain transition-opacity duration-500 opacity-60 group-hover:opacity-80"
             style={{
-              filter: `blur(16px) brightness(1.5) saturate(2)`,
+              filter: `blur(12px) brightness(1.5) saturate(2)`,
             }}
           />
           {/* Actual product image */}
           <img
             src={product.imageUrl}
             alt=""
-            className="relative z-10 max-h-32 max-w-32 object-contain transition-transform duration-300 group-hover:scale-105"
+            className="relative z-10 max-h-16 max-w-16 md:max-h-24 md:max-w-24 object-contain transition-transform duration-300 group-hover:scale-105"
             style={{
               filter: `drop-shadow(0 0 6px rgba(${rgb},0.4))`,
             }}
@@ -55,8 +55,8 @@ export default function ProductCard({
         </>
       ) : (
         <svg
-          width="56"
-          height="56"
+          width="40"
+          height="40"
           viewBox="0 0 64 64"
           fill="none"
           className="relative z-10 opacity-25"
@@ -79,7 +79,7 @@ export default function ProductCard({
 
       {/* Overlay pill */}
       <span
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 z-20 inline-flex items-center px-2.5 py-0.5 rounded-full text-[9px] tracking-wider uppercase transition-all duration-300 opacity-40 md:opacity-0 group-hover:opacity-80 backdrop-blur-sm whitespace-nowrap"
+        className="absolute -bottom-1 left-1/2 -translate-x-1/2 z-20 inline-flex items-center px-2 py-0.5 rounded-full text-[8px] md:text-[9px] tracking-wider uppercase transition-all duration-300 opacity-40 md:opacity-0 group-hover:opacity-80 backdrop-blur-sm whitespace-nowrap"
         style={{
           border: `1px solid ${materialColor}40`,
           color: `${materialColor}CC`,

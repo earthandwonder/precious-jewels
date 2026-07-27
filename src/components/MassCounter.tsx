@@ -72,7 +72,7 @@ export default function MassCounter({ logMass, color, act }: MassCounterProps) {
     : "text-base md:text-lg";
 
   return (
-    <div className="my-3 flex items-baseline justify-center gap-2">
+    <div className="my-1.5 md:my-3 flex items-baseline justify-center gap-2">
       <span
         className={`font-mono font-bold tracking-wider ${fontSize} ${isUncountable ? "count-pulse" : ""}`}
         style={{
