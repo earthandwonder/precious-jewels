@@ -269,7 +269,7 @@ export default function MaterialCard({
               ? window.location.origin + (process.env.NEXT_PUBLIC_BASE_PATH || "")
               : "";
             if (navigator.share) {
-              navigator.share({ title: "The Cosmic Abundance of Gemstones", url });
+              navigator.share({ title: "Imagine You Are an Intergalactic Gem Hunter", url });
             } else {
               navigator.clipboard.writeText(url);
             }

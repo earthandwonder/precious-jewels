@@ -20,7 +20,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "The Cosmic Abundance of Gemstones — Every Gemstone Ranked by Total Mass in the Universe",
+  title: "Imagine You Are an Intergalactic Gem Hunter — Every Gemstone Ranked by Total Mass in the Universe",
   description:
     "Every gemstone ranked by total mass in the known universe. Diamond is one of the most common. The rarest thing you could wear is something no one expects.",
   keywords: [
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     "diamond common universe",
   ],
   openGraph: {
-    title: "The Cosmic Abundance of Gemstones",
+    title: "Imagine You Are an Intergalactic Gem Hunter",
     description:
       "Every gemstone ranked by total mass in the known universe. Diamond is one of the most common.",
     type: "article",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Cosmic Abundance of Gemstones",
+    title: "Imagine You Are an Intergalactic Gem Hunter",
     description:
       "Every gemstone ranked by total mass in the known universe. Diamond is one of the most common.",
   },
