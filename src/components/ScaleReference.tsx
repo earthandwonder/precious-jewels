@@ -9,8 +9,7 @@
 import type { Act } from "@/data/materials";
 
 interface ScaleReferenceProps {
-  logMass: number;
-  density: number;
+  logVolume: number;
   act: Act;
   pileHeight: number;
 }
@@ -42,8 +41,7 @@ export const REFERENCES: Record<RefType, ReferenceInfo> = {
  * V = mass / density; cone V = 0.68 * r^3; h = 0.65 * r
  * Uses log arithmetic to avoid overflow.
  */
-function conePileHeight(logMass: number, density: number): number {
-  const logVolume = logMass - Math.log10(density);
+function conePileHeight(logVolume: number): number {
   const logR = (logVolume - Math.log10(0.68)) / 3;
   const logH = logR + Math.log10(0.65);
   return Math.pow(10, logH);
@@ -53,10 +51,10 @@ function conePileHeight(logMass: number, density: number): number {
  * For Act 3: pick the reference where the pile-to-ref ratio is most useful (0.2x - 30x).
  * For Acts 1-2: always Earth (narrative, not proportional).
  */
-export function getRefType(logMass: number, density: number, act: Act): RefType {
+export function getRefType(logVolume: number, act: Act): RefType {
   if (act <= 2) return "earth";
 
-  const h = conePileHeight(logMass, density);
+  const h = conePileHeight(logVolume);
   // Pick the reference that keeps the ratio in the most readable range
   if (h > EVEREST_HEIGHT * 0.5) return "everest";
   if (h > HUMAN_HEIGHT * 15) return "statue";
@@ -71,8 +69,8 @@ const REF_DISPLAY_SIZES: Record<RefType, number> = {
   human: 40,
 };
 
-function getRefSize(logMass: number, density: number, act: Act, pileHeightPx: number): number {
-  const refType = getRefType(logMass, density, act);
+function getRefSize(logVolume: number, act: Act): number {
+  const refType = getRefType(logVolume, act);
   return REF_DISPLAY_SIZES[refType];
 }
 
@@ -171,10 +169,10 @@ function renderHuman(size: number) {
 
 // ─── Component ────────────────────────────────────────────────
 
-export default function ScaleReference({ logMass, density, act, pileHeight }: ScaleReferenceProps) {
-  const refType = getRefType(logMass, density, act);
+export default function ScaleReference({ logVolume, act, pileHeight }: ScaleReferenceProps) {
+  const refType = getRefType(logVolume, act);
   const ref = REFERENCES[refType];
-  const size = getRefSize(logMass, density, act, pileHeight);
+  const size = getRefSize(logVolume, act);
 
   return (
     <div className="flex flex-col items-center justify-end gap-1" style={{ minWidth: size * 0.4 }}>

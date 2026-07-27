@@ -3,7 +3,8 @@
 import type { Act } from "@/data/materials";
 
 interface MassCounterProps {
-  logMass: number;
+  logVolume: number;
+  density: number;
   color: string;
   act: Act;
 }
@@ -62,10 +63,11 @@ function formatMass(logMass: number, act: Act): { value: string; unit: string } 
   return { value: `~${kg.toLocaleString()}`, unit: "kg" };
 }
 
-export default function MassCounter({ logMass, color, act }: MassCounterProps) {
+export default function MassCounter({ logVolume, density, color, act }: MassCounterProps) {
+  const logMass = logVolume + Math.log10(density);
   const { value, unit } = formatMass(logMass, act);
 
-  const isUncountable = logMass >= 25;
+  const isUncountable = logVolume >= 20;
 
   const fontSize = isUncountable
     ? "text-xl md:text-2xl"

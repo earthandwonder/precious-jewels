@@ -2,15 +2,15 @@
 
 import { useRef, useEffect, useState } from "react";
 import type { Material } from "@/data/materials";
-import { affiliateProducts } from "@/data/products";
+import { inlineProducts } from "@/data/products";
 import ParticlePile from "./ParticlePile";
 import type { MaterialFeel, ParticleShape } from "./ParticlePile";
 import MassCounter from "./MassCounter";
 import ScaleReference, { getRefType, REFERENCES } from "./ScaleReference";
 import AffiliateRow from "./AffiliateRow";
 
-function abundanceToNormalized(logMass: number): number {
-  const raw = (logMass - 5) / 44;
+function abundanceToNormalized(logVolume: number): number {
+  const raw = (logVolume - 1.5) / 44;
   return Math.max(0.35, Math.min(1, raw));
 }
 
@@ -18,6 +18,7 @@ interface ParticleStyle {
   particleShape: ParticleShape;
   colorJitter: number;
   sizeRange: [number, number];
+  countMultiplier?: number;
 }
 
 function getParticleStyle(material: Material): ParticleStyle {
@@ -25,17 +26,19 @@ function getParticleStyle(material: Material): ParticleStyle {
     // Logs / elongated pieces
     case "wood":
     case "petrified-wood":
+      return { particleShape: "log", colorJitter: 0.25, sizeRange: [0.3, 0.8], countMultiplier: 2 };
     case "jet":
       return { particleShape: "log", colorJitter: 0.25, sizeRange: [0.6, 1.8] };
 
     // Flat shards / shell fragments
     case "shell":
+      return { particleShape: "shard", colorJitter: 0.2, sizeRange: [0.15, 0.4], countMultiplier: 4 };
     case "ammolite":
-      return { particleShape: "shard", colorJitter: 0.2, sizeRange: [0.7, 1.5] };
+      return { particleShape: "shard", colorJitter: 0.2, sizeRange: [0.3, 0.8], countMultiplier: 2 };
 
     // Branching / irregular organic
     case "coral":
-      return { particleShape: "log", colorJitter: 0.15, sizeRange: [0.5, 1.6] };
+      return { particleShape: "log", colorJitter: 0.15, sizeRange: [0.3, 0.8], countMultiplier: 2 };
 
     // Faceted crystals / angular chunks
     case "diamond":
@@ -60,12 +63,12 @@ function getParticleStyle(material: Material): ParticleStyle {
 
     // Smooth round things
     case "pearl":
-      return { particleShape: "circle", colorJitter: 0.08, sizeRange: [0.85, 1.1] };
+      return { particleShape: "circle", colorJitter: 0.08, sizeRange: [0.2, 0.4], countMultiplier: 4 };
 
     // Rounded lumps
     case "amber":
     case "amber-inclusion":
-      return { particleShape: "circle", colorJitter: 0.2, sizeRange: [0.6, 1.6] };
+      return { particleShape: "circle", colorJitter: 0.2, sizeRange: [0.3, 0.8], countMultiplier: 2 };
 
     // Fossils — rounded irregular
     case "ammonite":
@@ -96,8 +99,7 @@ function getMaterialFeel(material: Material): MaterialFeel {
 }
 
 /** Cone pile height in metres (angle of repose ~33deg). */
-function conePileHeight(logMass: number, density: number): number {
-  const logVolume = logMass - Math.log10(density);
+function conePileHeight(logVolume: number): number {
   const logR = (logVolume - Math.log10(0.68)) / 3;
   const logH = logR + Math.log10(0.65);
   return Math.pow(10, logH);
@@ -115,12 +117,12 @@ function getPileHeight(material: Material, isMobile: boolean): number {
   const mobileCap = 160;
 
   if (material.act <= 2) {
-    const h = abundanceToHeight(abundanceToNormalized(material.logMass));
+    const h = abundanceToHeight(abundanceToNormalized(material.logVolume));
     return isMobile ? Math.min(h, mobileCap) : h;
   }
 
-  const realH = conePileHeight(material.logMass, material.density);
-  const refType = getRefType(material.logMass, material.density, material.act);
+  const realH = conePileHeight(material.logVolume);
+  const refType = getRefType(material.logVolume, material.act);
   const refRealSize = REFERENCES[refType].realSize;
   const realRatio = realH / refRealSize;
   const clampedRatio = Math.max(0.5, Math.min(6, realRatio));
@@ -162,13 +164,13 @@ export default function MaterialCard({
   const pileHeight = getPileHeight(material, isMobile);
   const abundance = material.act === 3
     ? Math.max(0.35, Math.min(1, pileHeight / 300))
-    : abundanceToNormalized(material.logMass);
+    : abundanceToNormalized(material.logVolume);
   const isWarm = material.act === 3;
   const tint = isWarm
     ? "rgba(255, 200, 150,"
     : "rgba(150, 180, 220,";
 
-  const hasProducts = !!affiliateProducts[material.id];
+  const hasProducts = !!inlineProducts[material.id];
 
   return (
     <div className="material-card w-full h-full flex flex-col items-center justify-center px-4 md:px-6 py-6 md:py-0 overflow-hidden">
@@ -178,8 +180,7 @@ export default function MaterialCard({
       >
         <div className="flex-shrink-0">
           <ScaleReference
-            logMass={material.logMass}
-            density={material.density}
+            logVolume={material.logVolume}
             act={material.act}
             pileHeight={pileHeight}
           />
@@ -214,7 +215,7 @@ export default function MaterialCard({
         </h3>
 
         <div className={`snap-animate snap-animate-delay-3 ${active ? "is-active" : ""}`}>
-          <MassCounter logMass={material.logMass} color={material.color} act={material.act} />
+          <MassCounter logVolume={material.logVolume} density={material.density} color={material.color} act={material.act} />
         </div>
 
         <p
@@ -233,14 +234,8 @@ export default function MaterialCard({
 
         {hasProducts && (
           <div className={`snap-animate snap-animate-delay-6 mt-3 md:mt-4 opacity-70 hover:opacity-100 transition-opacity ${active ? "is-active" : ""}`}>
-            <p
-              className="text-[9px] md:text-[10px] tracking-[0.2em] uppercase mb-[-4px]"
-              style={{ color: `${tint} 0.35)` }}
-            >
-              What it looks like
-            </p>
             <AffiliateRow
-              products={affiliateProducts[material.id]}
+              products={inlineProducts[material.id]}
               glowColor={material.glowColor}
               materialColor={material.color}
             />

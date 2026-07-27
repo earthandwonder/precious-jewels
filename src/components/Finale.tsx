@@ -107,8 +107,8 @@ export default function Finale({ isActive }: { isActive: boolean }) {
             opacity: comparisonOpacity,
           }}
         >
-          If all the peridot in the universe were the Pacific Ocean, all the
-          natural pearls ever formed on Earth wouldn&apos;t fill a thimble.
+          Every natural pearl that has ever existed — across all of history
+          — would fit inside a single room.
         </p>
       </div>
     </div>

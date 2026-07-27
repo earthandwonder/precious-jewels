@@ -9,14 +9,13 @@ import ScrollProgress from "./ScrollProgress";
 import ScaleTransition from "./ScaleTransition";
 import ScrollAtmosphere from "./ScrollAtmosphere";
 import { getRefType } from "./ScaleReference";
-import ShopSection from "./ShopSection";
 import Finale from "./Finale";
 import EarthIntro from "./EarthIntro";
 
 /**
  * Build the ordered list of all snap pages (segments).
  * Each segment is either a material card, interstitial, scale transition,
- * or special section (hero, earth-intro, finale, shop).
+ * or special section (hero, earth-intro, finale).
  */
 type Segment =
   | { type: "hero" }
@@ -24,8 +23,7 @@ type Segment =
   | { type: "material"; material: Material }
   | { type: "interstitial"; key: "1-2" | "2-3" }
   | { type: "scale-transition"; fromRef: string; toRef: string; fromId: string; toId: string }
-  | { type: "finale" }
-  | { type: "shop" };
+  | { type: "finale" };
 
 function buildSegments(): Segment[] {
   const act1 = materials.filter((m) => m.act === 1);
@@ -54,7 +52,6 @@ function buildSegments(): Segment[] {
   addMaterialsWithTransitions(segments, act3, act2Last);
 
   segments.push({ type: "finale" });
-  segments.push({ type: "shop" });
 
   return segments;
 }
@@ -67,8 +64,8 @@ function addMaterialsWithTransitions(
   for (let i = 0; i < items.length; i++) {
     const m = items[i];
     const prev = i === 0 ? prevMaterial : items[i - 1];
-    const currentRef = getRefType(m.logMass, m.density, m.act);
-    const prevRef = prev ? getRefType(prev.logMass, prev.density, prev.act) : null;
+    const currentRef = getRefType(m.logVolume, m.act);
+    const prevRef = prev ? getRefType(prev.logVolume, prev.act) : null;
 
     if (prevRef && prevRef !== currentRef) {
       segments.push({
@@ -173,12 +170,6 @@ export default function Essay() {
                 </div>
               );
 
-            case "shop":
-              return (
-                <div key="shop" className="snap-page">
-                  <ShopSection />
-                </div>
-              );
           }
         })}
       </div>

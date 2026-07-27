@@ -7,7 +7,7 @@ export interface Material {
   name: string;
   category: MaterialCategory;
   act: Act;
-  logMass: number; // log10 of estimated cosmic mass in kg
+  logVolume: number; // log10 of estimated total cosmic volume in m³
   density: number; // kg/m³ — used to compute real pile volume
   color: string; // hex color for the particle pile
   glowColor: string; // hex color for glow effects
@@ -21,19 +21,19 @@ export const ACT_TITLES = {
     title: "The Cosmos Makes These by the Planet-Load",
     subtitle:
       "Every 'precious' gem you know is one of the most abundant materials in the universe.",
-    logRange: [40, 50] as const,
+    logRange: [37, 46] as const,
   },
   2: {
     title: "The Beryllium Cliff",
     subtitle:
-      "Beryllium isn't forged in stars — it's made when cosmic rays smash into heavier atoms. Every gem that needs it is genuinely rare.",
-    logRange: [25, 39] as const,
+      "Beryllium isn't forged in stars — it's made when cosmic rays smash into heavier atoms. Most gems below need beryllium to form. The rest demand an equally improbable convergence of elements.",
+    logRange: [18, 30] as const,
   },
   3: {
     title: "Life on One Planet",
     subtitle:
       "Minerals form on trillions of worlds. Life — as far as we know — happened on one. Everything below this line exists only on Earth.",
-    logRange: [0, 24] as const,
+    logRange: [0, 13] as const,
   },
 } as const;
 
@@ -46,21 +46,21 @@ export const materials: Material[] = [
     name: "Peridot",
     category: "mineral",
     act: 1,
-    logMass: 49,
+    logVolume: 45.5,
     density: 3300,
     color: "#8DB600",
     glowColor: "#C5E17A",
     tagline: "The most abundant gemstone in the universe",
     description:
-      "Olivine is the dominant mineral in every rocky planet's mantle, and it condenses directly from the cooling winds of dying stars. There is more peridot in the universe than there is water on Earth — by a factor of a trillion trillion.",
-    scaleComparison: "If all the peridot were an ocean, it would fill a billion Milky Way galaxies.",
+      "Olivine is the dominant mineral in every rocky planet's mantle, and it condenses directly from the cooling winds of dying stars. There is more peridot in the universe than there is water on Earth — by a factor of ten thousand trillion trillion.",
+    scaleComparison: "A sphere of peridot wider than the orbit of Pluto — by a factor of a thousand.",
   },
   {
     id: "corundum",
     name: "Ruby & Sapphire",
     category: "mineral",
     act: 1,
-    logMass: 47,
+    logVolume: 43.4,
     density: 4000,
     color: "#E0115F",
     glowColor: "#FF6B8A",
@@ -75,13 +75,13 @@ export const materials: Material[] = [
     name: "Garnet",
     category: "mineral",
     act: 1,
-    logMass: 46,
+    logVolume: 42.4,
     density: 3800,
     color: "#7B3F61",
     glowColor: "#B5658A",
     tagline: "Hidden deep inside every rocky world",
     description:
-      "Garnet dominates the deep mantles of rocky planets — from 250 to 600 km down. Any world big enough to have pressure has garnet. The universe is full of rocky worlds.",
+      "Garnet makes up a large share of the deep mantles of rocky planets — from 250 to 600 km down. Any world big enough to have pressure has garnet. The universe is full of rocky worlds.",
     scaleComparison: "A sphere of garnet wider than the orbit of Neptune.",
   },
   {
@@ -89,7 +89,7 @@ export const materials: Material[] = [
     name: "Diamond",
     category: "mineral",
     act: 1,
-    logMass: 45,
+    logVolume: 41.5,
     density: 3500,
     color: "#B9F2FF",
     glowColor: "#E0F7FF",
@@ -97,14 +97,14 @@ export const materials: Material[] = [
     description:
       "Diamond nanocrystals litter the interstellar medium. They rain from the methane atmospheres of ice giants. Carbon — the fourth most abundant element — becomes diamond wherever pressure and temperature align, and the universe provides both generously.",
     scaleComparison:
-      "All the diamond in the universe would make a planet ten times the mass of Earth.",
+      "A sphere of diamond stretching far past the orbit of Pluto.",
   },
   {
     id: "quartz",
     name: "Quartz & Amethyst",
     category: "mineral",
     act: 1,
-    logMass: 45,
+    logVolume: 41.6,
     density: 2650,
     color: "#9B59B6",
     glowColor: "#C39BD3",
@@ -118,7 +118,7 @@ export const materials: Material[] = [
     name: "Zircon",
     category: "mineral",
     act: 1,
-    logMass: 43,
+    logVolume: 39.3,
     density: 4700,
     color: "#E8B960",
     glowColor: "#F5D89A",
@@ -131,7 +131,7 @@ export const materials: Material[] = [
     name: "Jadeite",
     category: "mineral",
     act: 1,
-    logMass: 42,
+    logVolume: 38.5,
     density: 3300,
     color: "#00A86B",
     glowColor: "#66CDAA",
@@ -144,7 +144,7 @@ export const materials: Material[] = [
     name: "Opal",
     category: "mineral",
     act: 1,
-    logMass: 41,
+    logVolume: 35.7,
     density: 2100,
     color: "#FF6F61",
     glowColor: "#FFA07A",
@@ -161,7 +161,7 @@ export const materials: Material[] = [
     name: "Emerald",
     category: "mineral",
     act: 2,
-    logMass: 38,
+    logVolume: 29.6,
     density: 2700,
     color: "#50C878",
     glowColor: "#7DCEA0",
@@ -169,14 +169,14 @@ export const materials: Material[] = [
     description:
       "Emerald's secret is beryllium — an element so cosmically rare it isn't even made inside stars. Beryllium is produced only when high-energy cosmic rays slam into heavier atoms and shatter them. Every emerald in existence is built from the debris of these collisions.",
     scaleComparison:
-      "All the emerald in the universe would fit inside a small moon.",
+      "All the emerald in the universe would fit in a ball the size of Manhattan.",
   },
   {
     id: "red-beryl",
     name: "Red Beryl",
     category: "mineral",
     act: 2,
-    logMass: 35,
+    logVolume: 26.6,
     density: 2700,
     color: "#DC143C",
     glowColor: "#FF4444",
@@ -189,20 +189,20 @@ export const materials: Material[] = [
     name: "Taaffeite",
     category: "mineral",
     act: 2,
-    logMass: 33,
+    logVolume: 24.4,
     density: 3600,
     color: "#DDA0DD",
     glowColor: "#EE82EE",
     tagline: "So rare it was misidentified for years",
     description:
-      "Taaffeite was first discovered in 1945 — already cut and polished, sitting in a jeweller's box, mistaken for spinel. Fewer than fifty specimens have ever been found. It needs beryllium, magnesium, and aluminium to meet in a specific crystal structure that almost never forms.",
+      "Taaffeite was first discovered in 1945 — already cut and polished, sitting in a jeweller's box, mistaken for spinel. Fewer than a thousand faceted stones are known worldwide. It needs beryllium, magnesium, and aluminium to meet in a specific crystal structure that almost never forms.",
   },
   {
     id: "alexandrite",
     name: "Alexandrite",
     category: "mineral",
     act: 2,
-    logMass: 32,
+    logVolume: 23.4,
     density: 3700,
     color: "#4B0082",
     glowColor: "#8A2BE2",
@@ -215,20 +215,20 @@ export const materials: Material[] = [
     name: "Benitoite",
     category: "mineral",
     act: 2,
-    logMass: 29,
+    logVolume: 20.4,
     density: 3650,
     color: "#4169E1",
     glowColor: "#6495ED",
     tagline: "One deposit. One county. One state.",
     description:
-      "Gem-quality benitoite comes from exactly one place on Earth: San Benito County, California. It forms when barium-rich hydrothermal fluids alter serpentinite under very specific pressure and temperature. The mine is exhausted. No more will ever be found there.",
+      "Gem-quality benitoite comes from exactly one place on Earth: San Benito County, California. It forms when barium-rich hydrothermal fluids alter serpentinite under very specific pressure and temperature. The mine closed in 2006. Commercial production has ended permanently.",
   },
   {
     id: "painite",
     name: "Painite",
     category: "mineral",
     act: 2,
-    logMass: 27,
+    logVolume: 18.4,
     density: 4010,
     color: "#8B4513",
     glowColor: "#CD853F",
@@ -245,35 +245,35 @@ export const materials: Material[] = [
     name: "Ammonite",
     category: "biological",
     act: 3,
-    logMass: 16,
+    logVolume: 12.6,
     density: 2700,
     color: "#D4A574",
     glowColor: "#E8C9A0",
     tagline: "340 million years of ocean life, fossilised in stone",
     description:
-      "Ammonites ruled Earth's oceans for 340 million years before the asteroid that killed the dinosaurs wiped them out too. Their spiralling shells are embedded in marine rock across every continent. But they only ever existed here.",
+      "Ammonites ruled Earth's oceans for over 300 million years before the asteroid that killed the dinosaurs wiped them out too. Their spiralling shells are embedded in marine rock across every continent. But they only ever existed here.",
   },
   {
     id: "wood",
     name: "Wood",
     category: "biological",
     act: 3,
-    logMass: 15,
+    logVolume: 12.3,
     density: 500,
     color: "#6B4423",
     glowColor: "#8B6914",
     tagline: "Rarer than diamond",
     description:
-      "There are about 3 trillion trees on Earth, holding roughly 700 billion tonnes of wood. That sounds like a lot — until you remember that diamond exists on trillions of worlds. Wood exists on one. By cosmic measure, a wooden ring is thirty orders of magnitude rarer than a diamond one.",
+      "There are about 3 trillion trees on Earth, holding roughly 450 billion tonnes of wood. That sounds like a lot — until you remember that diamond exists on trillions of worlds. Wood exists on one. By cosmic measure, a wooden ring is roughly thirty orders of magnitude rarer than a diamond one.",
     scaleComparison:
-      "If all the diamond in the universe were the Pacific Ocean, all the wood is a single raindrop.",
+      "All the wood on Earth would not fill a single large asteroid. All the diamond in the universe would swallow the solar system.",
   },
   {
     id: "shell",
     name: "Shell & Nacre",
     category: "biological",
     act: 3,
-    logMass: 14,
+    logVolume: 10.6,
     density: 2800,
     color: "#FFF5EE",
     glowColor: "#FFEFD5",
@@ -286,7 +286,7 @@ export const materials: Material[] = [
     name: "Petrified Wood",
     category: "biological",
     act: 3,
-    logMass: 12,
+    logVolume: 8.6,
     density: 2600,
     color: "#A0522D",
     glowColor: "#CD853F",
@@ -299,7 +299,7 @@ export const materials: Material[] = [
     name: "Jet",
     category: "biological",
     act: 3,
-    logMass: 9,
+    logVolume: 5.9,
     density: 1300,
     color: "#4A4A4A",
     glowColor: "#6B6B6B",
@@ -312,7 +312,7 @@ export const materials: Material[] = [
     name: "Amber",
     category: "biological",
     act: 3,
-    logMass: 9,
+    logVolume: 6.0,
     density: 1050,
     color: "#FFBF00",
     glowColor: "#FFD700",
@@ -325,7 +325,7 @@ export const materials: Material[] = [
     name: "Precious Coral",
     category: "biological",
     act: 3,
-    logMass: 8,
+    logVolume: 4.6,
     density: 2700,
     color: "#FF4040",
     glowColor: "#FF6B6B",
@@ -338,7 +338,7 @@ export const materials: Material[] = [
     name: "Ammolite",
     category: "biological",
     act: 3,
-    logMass: 7,
+    logVolume: 3.6,
     density: 2800,
     color: "#FF1493",
     glowColor: "#FF69B4",
@@ -351,7 +351,7 @@ export const materials: Material[] = [
     name: "Amber with Insect",
     category: "biological",
     act: 3,
-    logMass: 6,
+    logVolume: 3.0,
     density: 1050,
     color: "#CC8400",
     glowColor: "#E6A800",
@@ -364,20 +364,20 @@ export const materials: Material[] = [
     name: "Moldavite",
     category: "earth-impact",
     act: 3,
-    logMass: 5.4,
+    logVolume: 2.0,
     density: 2400,
     color: "#556B2F",
     glowColor: "#6B8E23",
     tagline: "Earth's crust, turned to glass by a cosmic impact",
     description:
-      "14.7 million years ago, an asteroid slammed into what is now Bavaria with enough force to vaporise the ground. The molten glass rained across central Europe and solidified mid-flight. About 275 tonnes survive today. Erosion has destroyed 99% of what was created. No more will ever form — unless another asteroid hits.",
+      "14.8 million years ago, an asteroid slammed into what is now Bavaria with enough force to vaporise the ground. The molten glass rained across central Europe and solidified mid-flight. About 275 tonnes survive today. Erosion has destroyed 99% of what was created. No more will ever form — unless another asteroid hits.",
   },
   {
     id: "pearl",
     name: "Natural Pearl",
     category: "biological",
     act: 3,
-    logMass: 5,
+    logVolume: 1.6,
     density: 2700,
     color: "#FDEBD0",
     glowColor: "#FFF8DC",
@@ -385,7 +385,7 @@ export const materials: Material[] = [
     description:
       "A natural pearl forms when a living mollusk — an oyster, a mussel — wraps an irritant in layer after layer of nacre. One in ten thousand wild oysters produces a gem pearl. No other world is known to have oceans, or mollusks, or the patient biology that builds a pearl. Of everything you could wear, this is the rarest thing in all of existence.",
     scaleComparison:
-      "If all the peridot in the universe were the Pacific Ocean, all the natural pearls on Earth wouldn't fill a thimble.",
+      "Every natural pearl that has ever existed would fit inside a single room.",
   },
 ];
 
@@ -393,22 +393,22 @@ export const materials: Material[] = [
 export const interstitials = {
   "1-2": {
     heading: "Now things get genuinely rare.",
-    body: "Everything above exists on trillions of worlds. But the minerals below depend on beryllium — an element so scarce the universe barely makes it. Beryllium isn't forged in stellar cores like carbon or iron. It's created only when cosmic rays slam into heavier atoms at near-light speed and shatter them. The entire cosmos has produced less beryllium than a single star produces iron in a day.",
+    body: "Everything above exists on trillions of worlds. But the minerals below depend on beryllium — an element so scarce the universe barely makes it. Beryllium isn't forged in stellar cores like carbon or iron. It's created only when cosmic rays slam into heavier atoms at near-light speed and shatter them. A single massive star forges as much iron in its final day of fusion as the entire Milky Way has gathered in beryllium over thirteen billion years.",
     multiplierLabel: "The gap you just crossed",
-    multiplierValue: "1,000\u00D7",
+    multiplierValue: "100,000,000\u00D7",
   },
   "2-3": {
     heading: "One planet.",
-    body: "Every mineral above forms on rocky worlds, and there are an estimated ten sextillion of them. But everything below this line was made by life — and life, as far as we know, happened exactly once. You're about to cross the largest cliff on this page: a drop of twenty-five orders of magnitude. Not because these materials are chemically exotic. Because they're biological. If there were an intergalactic jewel trade, Earth would have an absolute monopoly on every one of them.",
+    body: "Every mineral above forms on rocky worlds, and there are an estimated ten sextillion of them. But everything below this line was made by life — and life, as far as we know, happened exactly once. Not because these materials are chemically exotic — because they're biological. If there were an intergalactic jewel trade, Earth would have an absolute monopoly on every one of them.",
     multiplierLabel: "The gap you just crossed",
-    multiplierValue: "100,000,000,000\u00D7",
+    multiplierValue: "1,000,000\u00D7",
   },
 };
 
 // Counter display configuration
 export const counterConfig = {
-  uncountableThreshold: 20, // logMass above this shows "uncountable" style
-  countableThreshold: 10, // logMass below this shows actual numbers
+  uncountableThreshold: 20, // logVolume above this shows "uncountable" style
+  countableThreshold: 10, // logVolume below this shows actual numbers
   units: [
     { max: 50, label: "trillion Earth-masses" },
     { max: 40, label: "Earth-masses" },
