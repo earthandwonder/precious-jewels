@@ -44,6 +44,27 @@ The full working brief is in `docs/plan.md`. Key points:
 3. Then in the **shell site** repo (`/Users/ben/Developer/Next(dot)js/ben-mccarthy-com-au`), commit and deploy the `next.config.ts` change that adds the rewrite rules for `/p/precious-jewels`. The rewrite rules are already written — they just need committing and pushing.
 4. Verify `benmccarthy.com.au/p/precious-jewels` loads correctly
 
+## Reddit distribution constraints (MUST READ)
+
+The full brief is in `docs/reddit-distribution-requirements.md`. These are the non-negotiable rules:
+
+1. **No email/signup/login/account required** to fully experience the piece. An optional non-blocking footer is fine; a gate is an instant ban on r/InternetIsBeautiful.
+2. **No AI-generated content or AI-as-feature.** The build method (Claude) is fine; the *content* must be human-researched. No "powered by AI" anywhere.
+3. **No paywall or freemium gating.** Everything fully free. The ShopSection with affiliate links must not gate any content.
+4. **No game-like mechanics** (scores, challenges, quizzes). Interactive essay = fine.
+5. **Custom domain only** — `benmccarthy.com.au/p/precious-jewels`. vercel.app subdomains are blanket-banned on the primary target sub.
+6. **Must survive a traffic spike** (50K+ sessions in hours). Static/CDN, no server bottleneck.
+
+### Avoiding "AI feel" (the real gatekeeper)
+
+Reddit communities are actively rejecting sites that look AI-generated. When writing or modifying copy, design, or interactions:
+
+- **Kill generic wonder-language:** never write "Explore the wonders of...", "Discover the beauty of...", "Dive deep into...", "Journey through...", "An interactive experience that...". These are AI-prompt tells.
+- **Keep Ben's voice:** short, specific, opinionated. The Finale copy ("Not diamond. Not ruby. A small, quiet sphere built by a living creature...") is the bar. Match it.
+- **No default Tailwind/shadcn aesthetic:** the dark cosmic theme with Playfair serif is already distinctive — protect it. Don't regress toward rounded-corner gradient cards or pill buttons.
+- **Restraint over features:** one thing done memorably beats ten things done adequately.
+- **The one-line test:** for every piece of copy, ask "would a tired Redditor think a human wrote this or ChatGPT wrote this?" If there's any doubt, rewrite it.
+
 ## Tech notes
 
 - Next.js with App Router, TypeScript, Tailwind

@@ -10,11 +10,15 @@ interface Particle {
   radius: number;
   opacity: number;
   settled: boolean;
-  // Fun extras
   rotation: number;
   rotationSpeed: number;
   sparkleTimer: number;
-  idleOffset: number; // phase offset for idle shimmer
+  idleOffset: number;
+  // Per-particle visuals
+  cr: number;
+  cg: number;
+  cb: number;
+  aspect: number;
 }
 
 interface SparkleTrail {
@@ -35,6 +39,7 @@ interface BlastFlash {
 }
 
 export type MaterialFeel = "heavy" | "sparkly" | "organic" | "glassy";
+export type ParticleShape = "circle" | "chunk" | "shard" | "log";
 
 interface ParticlePileProps {
   color: string;
@@ -46,8 +51,16 @@ interface ParticlePileProps {
   isVisible: boolean;
   /** Controls scatter/regroup physics personality */
   feel?: MaterialFeel;
-  /** Material density kg/m3 — affects scatter weight */
+  /** Material density kg/m3 */
   density?: number;
+  /** Particle rendering shape */
+  particleShape?: ParticleShape;
+  /** 0-1: how much colour varies between particles */
+  colorJitter?: number;
+  /** [min, max] size multiplier range */
+  sizeRange?: [number, number];
+  /** Multiplier for particle count (default 1) */
+  countMultiplier?: number;
 }
 
 function hexToRgb(hex: string) {
@@ -58,6 +71,10 @@ function hexToRgb(hex: string) {
     g: parseInt(result[2], 16),
     b: parseInt(result[3], 16),
   };
+}
+
+function clamp(v: number, min = 0, max = 255) {
+  return Math.max(min, Math.min(max, v));
 }
 
 function isMobile(): boolean {
@@ -77,33 +94,129 @@ const FEEL_PHYSICS: Record<
 > = {
   heavy: {
     scatterForce: 0.8,
-    gravity: 0.12,
+    gravity: 0.35,
     damping: 0.92,
     sparkleChance: 0.02,
     regroupSpeed: 0.03,
   },
   sparkly: {
     scatterForce: 2.0,
-    gravity: 0.03,
+    gravity: 0.12,
     damping: 0.98,
     sparkleChance: 0.15,
     regroupSpeed: 0.06,
   },
   organic: {
     scatterForce: 1.2,
-    gravity: 0.06,
+    gravity: 0.18,
     damping: 0.95,
     sparkleChance: 0.04,
     regroupSpeed: 0.05,
   },
   glassy: {
     scatterForce: 1.8,
-    gravity: 0.05,
+    gravity: 0.15,
     damping: 0.97,
     sparkleChance: 0.1,
     regroupSpeed: 0.07,
   },
 };
+
+// Shape-based physics modifiers
+const SHAPE_DAMPING: Record<ParticleShape, number> = {
+  circle: 1.0,
+  chunk: 0.97,
+  shard: 0.94,
+  log: 0.91,
+};
+
+const SHAPE_BOUNCE: Record<ParticleShape, number> = {
+  circle: -0.4,
+  chunk: -0.25,
+  shard: -0.15,
+  log: -0.12,
+};
+
+// --- Drawing helpers ---
+
+function drawShape(
+  ctx: CanvasRenderingContext2D,
+  p: Particle,
+  shape: ParticleShape,
+  fillStyle: string,
+) {
+  ctx.fillStyle = fillStyle;
+
+  if (shape === "circle") {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+    ctx.fill();
+    return;
+  }
+
+  ctx.save();
+  ctx.translate(p.x, p.y);
+  ctx.rotate(p.rotation);
+
+  if (shape === "chunk") {
+    ctx.beginPath();
+    for (let i = 0; i < 6; i++) {
+      const angle = (i / 6) * Math.PI * 2;
+      const r = p.radius * (i % 2 === 0 ? 1 : 0.78);
+      ctx.lineTo(Math.cos(angle) * r, Math.sin(angle) * r);
+    }
+    ctx.closePath();
+    ctx.fill();
+  } else if (shape === "shard") {
+    ctx.beginPath();
+    ctx.ellipse(0, 0, p.radius * p.aspect * 0.5, p.radius * 0.4, 0, 0, Math.PI * 2);
+    ctx.fill();
+  } else if (shape === "log") {
+    const w = p.radius * p.aspect;
+    const h = p.radius * 0.7;
+    ctx.beginPath();
+    ctx.roundRect(-w / 2, -h / 2, w, h, h * 0.3);
+    ctx.fill();
+  }
+
+  ctx.restore();
+}
+
+function drawHighlight(
+  ctx: CanvasRenderingContext2D,
+  p: Particle,
+  shape: ParticleShape,
+  alpha: number,
+) {
+  ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+
+  if (shape === "circle") {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.radius * 0.4, 0, Math.PI * 2);
+    ctx.fill();
+    return;
+  }
+
+  ctx.save();
+  ctx.translate(p.x, p.y);
+  ctx.rotate(p.rotation);
+
+  if (shape === "chunk") {
+    ctx.beginPath();
+    ctx.arc(0, -p.radius * 0.2, p.radius * 0.3, 0, Math.PI * 2);
+    ctx.fill();
+  } else if (shape === "shard") {
+    ctx.beginPath();
+    ctx.ellipse(0, -p.radius * 0.08, p.radius * p.aspect * 0.3, p.radius * 0.1, 0, 0, Math.PI * 2);
+    ctx.fill();
+  } else if (shape === "log") {
+    ctx.beginPath();
+    ctx.ellipse(0, -p.radius * 0.12, p.radius * p.aspect * 0.3, p.radius * 0.1, 0, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  ctx.restore();
+}
 
 export default function ParticlePile({
   color,
@@ -113,6 +226,10 @@ export default function ParticlePile({
   isVisible,
   feel = "sparkly",
   density = 3000,
+  particleShape = "circle",
+  colorJitter = 0.1,
+  sizeRange = [0.7, 1.3],
+  countMultiplier = 1,
 }: ParticlePileProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
@@ -127,20 +244,21 @@ export default function ParticlePile({
     active: false,
   });
   const timeRef = useRef(0);
+  const disturbedRef = useRef(false);
 
   const physics = FEEL_PHYSICS[feel];
 
-  // Heavier materials get a weight multiplier that slows them down
   const weightFactor = Math.max(0.5, Math.min(1.5, density / 3000));
 
-  // Reduce particles on mobile, cap total
   const mobile = typeof window !== "undefined" && isMobile();
   const areaFactor = Math.min(2, Math.max(1, height / 100));
   const baseMobile = mobile ? 0.5 : 1;
   const particleCount = Math.min(
-    mobile ? 300 : 600,
-    Math.max(80, Math.floor((150 + abundance * 400) * areaFactor * baseMobile))
+    mobile ? Math.floor(300 * countMultiplier) : Math.floor(600 * countMultiplier),
+    Math.max(80, Math.floor((150 + abundance * 400) * areaFactor * baseMobile * countMultiplier))
   );
+
+  const rgb = hexToRgb(color);
 
   const initParticles = useCallback(
     (width: number, h: number) => {
@@ -151,35 +269,51 @@ export default function ParticlePile({
       const groundY = h * 0.88;
 
       for (let i = 0; i < particleCount; i++) {
-        const angle = Math.random() * Math.PI;
-        const dist = Math.random();
-        const xSpread = (Math.random() - 0.5) * pileWidth * dist;
+        // Place particles uniformly inside a triangular pile shape.
+        // Pick a random height fraction (0 = ground, 1 = apex), then
+        // allow x-spread proportional to how close to the ground we are.
+        const hFrac = Math.random();          // 0..1, height within pile
+        const widthAtH = 1 - hFrac;           // triangle: wider at bottom
+        const xSpread = (Math.random() - 0.5) * pileWidth * widthAtH;
         const x = centerX + xSpread;
-        const xNorm = Math.abs(xSpread) / (pileWidth * 0.5 + 0.01);
-        const y =
-          groundY -
-          Math.sin(angle) * pileHeight * dist * Math.max(0, 1 - xNorm);
+        const y = groundY - hFrac * pileHeight;
+
+        // Size variance
+        const sizeMult = sizeRange[0] + Math.random() * (sizeRange[1] - sizeRange[0]);
+        const baseRadius = 2.5 + Math.random() * 1.5 + abundance * 4.0;
+
+        // Colour jitter: shift lightness uniformly + tiny per-channel noise
+        const lightnessShift = (Math.random() - 0.5) * 2 * colorJitter * 60;
+        const channelNoise = colorJitter * 15;
+
+        // Aspect ratio for non-circle shapes
+        let aspect = 1;
+        if (particleShape === "log") aspect = 2.0 + Math.random() * 1.5;
+        else if (particleShape === "shard") aspect = 1.8 + Math.random() * 1.2;
 
         particles.push({
           x,
           y: Math.min(y, groundY),
           vx: 0,
           vy: 0,
-          radius: 1.5 + Math.random() * 1.2 + abundance * 1.0,
+          radius: baseRadius * sizeMult,
           opacity: 0.7 + Math.random() * 0.3,
           settled: true,
           rotation: Math.random() * Math.PI * 2,
           rotationSpeed: (Math.random() - 0.5) * 0.3,
           sparkleTimer: 0,
           idleOffset: Math.random() * Math.PI * 2,
+          cr: clamp(rgb.r + lightnessShift + (Math.random() - 0.5) * channelNoise),
+          cg: clamp(rgb.g + lightnessShift + (Math.random() - 0.5) * channelNoise),
+          cb: clamp(rgb.b + lightnessShift + (Math.random() - 0.5) * channelNoise),
+          aspect,
         });
       }
       return particles;
     },
-    [particleCount, abundance]
+    [particleCount, abundance, rgb.r, rgb.g, rgb.b, colorJitter, sizeRange, particleShape]
   );
 
-  // Scatter from a specific point
   const scatter = useCallback(
     (blastX?: number, blastY?: number) => {
       const particles = particlesRef.current;
@@ -190,11 +324,13 @@ export default function ParticlePile({
       const h = canvas.height / dpr;
       const cx = blastX ?? w / 2;
       const cy = blastY ?? h * 0.7;
+      const groundY = h * 0.88;
 
       const blastRadius = 30;
 
       // Blast flash
       flashRef.current = { x: cx, y: cy, radius: blastRadius * 0.4, opacity: 0.6 };
+      disturbedRef.current = true;
 
       for (const p of particles) {
         const dx = p.x - cx;
@@ -208,7 +344,6 @@ export default function ParticlePile({
           weightFactor;
         if (force < 0.05) continue;
 
-        // += so repeated clicks add momentum instead of replacing
         p.vx +=
           (dx / dist) * force + (Math.random() - 0.5) * force * 0.5;
         p.vy +=
@@ -218,7 +353,6 @@ export default function ParticlePile({
         p.settled = false;
         p.rotationSpeed = (Math.random() - 0.5) * 0.4 * force;
 
-        // Spawn sparkle trails for sparkly/glassy materials
         if (Math.random() < physics.sparkleChance * 3 && sparklesRef.current.length < 80) {
           sparklesRef.current.push({
             x: p.x,
@@ -233,14 +367,11 @@ export default function ParticlePile({
       }
 
       // Collapse: unsettle particles above the blast in a vertical column
-      // Cheap O(n) pass — no collision detection needed
       const collapseWidth = blastRadius * 0.8;
       for (const p of particles) {
         if (!p.settled) continue;
-        // Must be above the blast center and within horizontal band
         if (p.y >= cy) continue;
         if (Math.abs(p.x - cx) > collapseWidth) continue;
-        // Small downward nudge + slight horizontal jitter
         p.vy = 0.3 + Math.random() * 0.5;
         p.vx = (Math.random() - 0.5) * 0.4;
         p.settled = false;
@@ -250,7 +381,6 @@ export default function ParticlePile({
       if (navigator.vibrate) {
         navigator.vibrate(12);
       }
-
     },
     [physics, weightFactor]
   );
@@ -273,6 +403,7 @@ export default function ParticlePile({
       p.vx += (dx / dist) * force;
       p.vy += (dy / dist) * force - force * 0.2;
       p.settled = false;
+      disturbedRef.current = true;
     }
   }, [weightFactor]);
 
@@ -294,36 +425,69 @@ export default function ParticlePile({
       initializedRef.current = true;
     }
 
-    const rgb = hexToRgb(color);
     const glowRgb = hexToRgb(glowColor);
+    const shape = particleShape;
+    const shapeDamp = SHAPE_DAMPING[shape];
+    const shapeBounce = SHAPE_BOUNCE[shape];
 
     const draw = () => {
-      timeRef.current += 0.016; // ~60fps increment
-      const t = timeRef.current;
+      timeRef.current += 0.016;
 
       ctx.clearRect(0, 0, rect.width, rect.height);
 
       const groundY = rect.height * 0.88;
 
-      // Apply pointer repulsion
       applyPointerRepulsion();
 
       const particles = particlesRef.current;
       let hasMotion = false;
 
+      // Continuous settling: only runs after a disturbance (click/drag).
+      // Each frame, sample ~10% of settled particles. If one is floating
+      // (not on ground, few settled neighbours below), wake it gently.
+      // Spreads the cascade naturally across frames.
+      const sampleRate = 0.1;
+      const disturbed = disturbedRef.current;
       for (const p of particles) {
-        // Settled particles: draw statically (no animation cost)
-        if (p.settled) {
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${p.opacity})`;
-          ctx.fill();
+        if (!disturbed) break;
+        if (!p.settled) continue;
+        if (Math.random() > sampleRate) continue;
+        // Already on the ground — stable
+        if (p.y >= groundY - p.radius * 3) continue;
 
+        // Quick check: count settled particles in a small zone below
+        let below = 0;
+        for (const other of particles) {
+          if (other === p || !other.settled) continue;
+          // Must be below this particle
+          if (other.y <= p.y) continue;
+          const dx = p.x - other.x;
+          const dy = p.y - other.y;
+          // Within a close neighbourhood
+          if (dx * dx + dy * dy < 25 * 25) {
+            below++;
+            if (below >= 2) break;
+          }
+        }
+
+        if (below < 2) {
+          // No support — gentle wake-up
+          p.vy = 0.1 + Math.random() * 0.2;
+          p.vx = (Math.random() - 0.5) * 0.15;
+          p.settled = false;
+          hasMotion = true;
+        }
+      }
+
+      for (const p of particles) {
+        if (p.opacity <= 0) continue;
+
+        // Settled particles: draw statically
+        if (p.settled) {
+          const fill = `rgba(${p.cr}, ${p.cg}, ${p.cb}, ${p.opacity})`;
+          drawShape(ctx, p, shape, fill);
           if (p.radius > 0.8) {
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.radius * 0.4, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity * 0.4})`;
-            ctx.fill();
+            drawHighlight(ctx, p, shape, p.opacity * 0.4);
           }
           continue;
         }
@@ -332,16 +496,16 @@ export default function ParticlePile({
         p.vy += physics.gravity * weightFactor;
         p.x += p.vx;
         p.y += p.vy;
-        p.vx *= physics.damping;
-        p.vy *= physics.damping;
+        p.vx *= physics.damping * shapeDamp;
+        p.vy *= physics.damping * shapeDamp;
         p.rotation += p.rotationSpeed;
         p.rotationSpeed *= 0.98;
 
         // Floor collision
         if (p.y >= groundY - p.radius) {
           p.y = groundY - p.radius;
-          p.vy *= -0.3; // small bounce
-          p.vx *= 0.8; // friction
+          p.vy *= shapeBounce;
+          p.vx *= 0.8;
           if (Math.abs(p.vy) < 0.15) {
             p.vy = 0;
           }
@@ -363,22 +527,15 @@ export default function ParticlePile({
 
         hasMotion = true;
 
-        if (p.opacity <= 0) continue;
-
         // Draw particle
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${p.opacity})`;
-        ctx.fill();
+        const fill = `rgba(${p.cr}, ${p.cg}, ${p.cb}, ${p.opacity})`;
+        drawShape(ctx, p, shape, fill);
 
-        // Inner sparkle — brighter when moving fast
+        // Inner sparkle -- brighter when moving fast
         if (p.radius > 0.8) {
           const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
           const movingSparkle = Math.min(0.6, speed * 0.1);
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.radius * 0.4, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity * (0.4 + movingSparkle)})`;
-          ctx.fill();
+          drawHighlight(ctx, p, shape, p.opacity * (0.4 + movingSparkle));
         }
 
         // Spawn sparkle trails while moving fast
@@ -429,13 +586,14 @@ export default function ParticlePile({
           flash.y,
           flash.radius
         );
+        const glR = glowRgb.r, glG = glowRgb.g, glB = glowRgb.b;
         flashGrad.addColorStop(
           0,
           `rgba(255, 255, 255, ${flash.opacity * 0.6})`
         );
         flashGrad.addColorStop(
           0.4,
-          `rgba(${glowRgb.r}, ${glowRgb.g}, ${glowRgb.b}, ${flash.opacity * 0.3})`
+          `rgba(${glR}, ${glG}, ${glB}, ${flash.opacity * 0.3})`
         );
         flashGrad.addColorStop(1, "transparent");
         ctx.fillStyle = flashGrad;
@@ -450,6 +608,8 @@ export default function ParticlePile({
 
       if (hasMotion) {
         animFrameRef.current = requestAnimationFrame(draw);
+      } else {
+        disturbedRef.current = false;
       }
     };
 
@@ -459,7 +619,7 @@ export default function ParticlePile({
     return () => {
       if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
     };
-  }, [isVisible, color, glowColor, abundance, initParticles, physics, weightFactor, applyPointerRepulsion]);
+  }, [isVisible, color, glowColor, abundance, initParticles, physics, weightFactor, applyPointerRepulsion, particleShape]);
 
   // Pointer event handlers
   useEffect(() => {
@@ -474,7 +634,6 @@ export default function ParticlePile({
     const onPointerDown = (e: PointerEvent) => {
       const pos = getCanvasPos(e.clientX, e.clientY);
       pointerRef.current = { ...pos, active: true };
-      // Kick the animation loop if it stopped
       kickAnimation();
     };
 
@@ -498,7 +657,6 @@ export default function ParticlePile({
     canvas.addEventListener("pointerup", onPointerUp);
     canvas.addEventListener("pointerleave", onPointerLeave);
 
-    // Prevent scroll while dragging on canvas (mobile)
     const preventScroll = (e: TouchEvent) => {
       if (pointerRef.current.active) {
         e.preventDefault();
@@ -515,7 +673,6 @@ export default function ParticlePile({
     };
   }, []);
 
-  // Restart the animation loop (reuses the draw function from the effect)
   const kickAnimation = useCallback(() => {
     if (!drawRef.current) return;
     if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
@@ -536,7 +693,7 @@ export default function ParticlePile({
 
   return (
     <div className="relative overflow-visible" style={{ height }}>
-      {/* CSS glow — separate layer so it bleeds past canvas bounds */}
+      {/* CSS glow */}
       <div
         className="absolute pointer-events-none"
         style={{

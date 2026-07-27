@@ -26,8 +26,7 @@ export default function ShopSection() {
         />
 
         <p className="text-center text-sm text-muted leading-relaxed mb-10 max-w-md mx-auto">
-          Want to own a piece of the ranking? These are real examples of the
-          materials above — from the cosmically common to the genuinely rare.
+          Every material above is real. Some of them are surprisingly easy to own.
         </p>
 
         <div className="flex flex-wrap justify-center gap-2">
@@ -41,7 +40,7 @@ export default function ShopSection() {
                 href={primary.url}
                 target="_blank"
                 rel="noopener noreferrer nofollow sponsored"
-                className="group inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs transition-all duration-300 hover:scale-105"
+                className="group inline-flex items-center gap-1.5 px-3 py-1.5 text-xs transition-all duration-300 hover:scale-105"
                 style={{
                   border: `1px solid ${m.color}30`,
                   color: `${m.color}99`,
@@ -57,10 +56,6 @@ export default function ShopSection() {
                   e.currentTarget.style.background = "transparent";
                 }}
               >
-                <span
-                  className="w-1.5 h-1.5 rounded-full"
-                  style={{ background: m.color }}
-                />
                 {m.name}
               </a>
             );

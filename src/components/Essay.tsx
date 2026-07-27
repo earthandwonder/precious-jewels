@@ -188,14 +188,12 @@ function HeroPage({ isActive }: { isActive: boolean }) {
         }}
       />
 
-      <p className="hero-label act-number text-muted mb-8 tracking-[0.3em] relative z-10">
-        An interactive essay
-      </p>
-
-      <h1 className="hero-title font-editorial text-6xl md:text-8xl lg:text-[9rem] font-medium tracking-tight mb-8 text-foreground relative z-10 leading-[0.95]">
-        Precious
+      <h1 className="hero-title font-editorial text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight mb-8 text-foreground relative z-10 leading-[0.95]">
+        The Cosmic
         <br />
-        <span className="italic">Jewels</span>
+        Abundance of
+        <br />
+        <span className="italic hero-gemstones">Gemstones</span>
       </h1>
 
       <div className="hero-subtitle relative z-10 mb-6">
@@ -203,10 +201,7 @@ function HeroPage({ isActive }: { isActive: boolean }) {
           className="font-editorial text-xl md:text-2xl lg:text-3xl italic max-w-xl leading-relaxed"
           style={{ color: "rgba(232, 230, 227, 0.7)" }}
         >
-          We call gems &ldquo;precious&rdquo; because they feel rare.
-          <br />
-          But rare{" "}
-          <em className="not-italic font-semibold text-foreground">where?</em>
+          Diamonds are common throughout the universe.
         </p>
       </div>
 

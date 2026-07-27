@@ -5,8 +5,8 @@
   --color-foreground: #e8e6e3;
   --color-muted: #6b6b76;
   --color-accent: #ffecd2;
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-jakarta-sans);
+  --font-mono: var(--font-jetbrains-mono);
   --font-serif: var(--font-playfair);
 }
 
@@ -204,6 +204,28 @@ body {
 
 .hero-title {
   animation: heroFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+}
+
+.hero-gemstones {
+  background: linear-gradient(
+    90deg,
+    #a8c4e0 0%,
+    #e8d5b7 20%,
+    #f0c4c4 40%,
+    #c9a8e0 60%,
+    #a8d8c8 80%,
+    #e8d5b7 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gemstoneShimmer 8s ease-in-out infinite;
+}
+
+@keyframes gemstoneShimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 .hero-subtitle {

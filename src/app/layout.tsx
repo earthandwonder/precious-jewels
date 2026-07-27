@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
+import { Plus_Jakarta_Sans, JetBrains_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const jakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-jakarta-sans",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
 });
 
@@ -20,31 +20,31 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Precious Jewels — What's Actually the Rarest Gemstone in the Universe?",
+  title: "The Cosmic Abundance of Gemstones — Every Gemstone Ranked by Total Mass in the Universe",
   description:
-    "An interactive essay ranking every gemstone and jewellery material by how much exists across the entire universe. The answer flips everything you thought you knew about rarity.",
+    "Every gemstone ranked by total mass in the known universe. Diamond is one of the most common. The rarest thing you could wear is something no one expects.",
   keywords: [
     "rarest gemstone",
     "rarest gem in the world",
     "rarest stone in the world",
     "rarest thing in the universe",
     "precious stones",
-    "how rare is wood",
-    "are trees rarer than diamonds",
     "cosmic abundance of gems",
+    "gemstone rarity ranking",
+    "diamond common universe",
   ],
   openGraph: {
-    title: "Precious Jewels — The Rarest Gemstone in the Universe",
+    title: "The Cosmic Abundance of Gemstones",
     description:
-      "Diamond is cosmically common. The rarest thing you could wear is something no one expects.",
+      "Every gemstone ranked by total mass in the known universe. Diamond is one of the most common.",
     type: "article",
     locale: "en_AU",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Precious Jewels — The Rarest Gemstone in the Universe",
+    title: "The Cosmic Abundance of Gemstones",
     description:
-      "Diamond is cosmically common. The rarest thing you could wear is something no one expects.",
+      "Every gemstone ranked by total mass in the known universe. Diamond is one of the most common.",
   },
 };
 
@@ -56,7 +56,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} antialiased`}
+      className={`${jakartaSans.variable} ${jetbrainsMono.variable} ${playfair.variable} antialiased`}
     >
       <body>{children}</body>
     </html>
