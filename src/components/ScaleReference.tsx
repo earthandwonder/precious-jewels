@@ -2,8 +2,11 @@
 
 /**
  * Shows a familiar reference-object silhouette next to a particle pile.
- * Act 3 uses real cone-pile physics for proportional sizing.
- * Acts 1-2 use Earth as a narrative reference.
+ * All acts use real cone-pile physics for proportional sizing.
+ * Reference object stays a fixed pixel size; pile scales relative to it.
+ *
+ * Ladder (large → small):
+ *   Heliosphere → Solar System → Sun → Earth → Everest → Statue → Human
  */
 
 import type { Act } from "@/data/materials";
@@ -14,7 +17,7 @@ interface ScaleReferenceProps {
   pileHeight: number;
 }
 
-export type RefType = "earth" | "everest" | "statue" | "human";
+export type RefType = "heliosphere" | "solar-system" | "sun" | "earth" | "everest" | "statue" | "human";
 
 export interface ReferenceInfo {
   type: RefType;
@@ -25,20 +28,27 @@ export interface ReferenceInfo {
 }
 
 // Real-world sizes in metres
+const HELIOSPHERE_DIAMETER = 3.59e13;    // ~240 AU
+const SOLAR_SYSTEM_DIAMETER = 8.97e12;   // ~60 AU (Neptune orbit diameter)
+const SUN_DIAMETER = 1.39e9;
+const EARTH_DIAMETER = 1.2742e7;
 const EVEREST_HEIGHT = 8_850;
 const STATUE_HEIGHT = 93;
 const HUMAN_HEIGHT = 1.8;
 
 export const REFERENCES: Record<RefType, ReferenceInfo> = {
-  earth:   { type: "earth",   label: "Earth-scale",             color: "#5b8cbf", realSize: 12_742_000, render: (s) => renderEarth(s) },
-  everest: { type: "everest", label: "Everest-scale",           color: "#b0b8c0", realSize: EVEREST_HEIGHT, render: (s) => renderMountain(s) },
-  statue:  { type: "statue",  label: "Statue of Liberty-scale", color: "#7ab8a0", realSize: STATUE_HEIGHT, render: (s) => renderStatue(s) },
-  human:   { type: "human",   label: "Human-scale",             color: "#c4a882", realSize: HUMAN_HEIGHT, render: (s) => renderHuman(s) },
+  heliosphere:    { type: "heliosphere",    label: "Heliosphere",             color: "#7a6fbf", realSize: HELIOSPHERE_DIAMETER, render: (s) => renderHeliosphere(s) },
+  "solar-system": { type: "solar-system",   label: "Solar system",            color: "#b8a040", realSize: SOLAR_SYSTEM_DIAMETER, render: (s) => renderSolarSystem(s) },
+  sun:            { type: "sun",            label: "The Sun",                 color: "#e8a840", realSize: SUN_DIAMETER, render: (s) => renderSun(s) },
+  earth:          { type: "earth",          label: "Earth",                   color: "#5b8cbf", realSize: EARTH_DIAMETER, render: (s) => renderEarth(s) },
+  everest:        { type: "everest",        label: "Everest",                 color: "#b0b8c0", realSize: EVEREST_HEIGHT, render: (s) => renderMountain(s) },
+  statue:         { type: "statue",         label: "Statue of Liberty",       color: "#7ab8a0", realSize: STATUE_HEIGHT, render: (s) => renderStatue(s) },
+  human:          { type: "human",          label: "Human",                   color: "#c4a882", realSize: HUMAN_HEIGHT, render: (s) => renderHuman(s) },
 };
 
 /**
  * Compute the real-world height of a cone pile (angle of repose ~33deg).
- * V = mass / density; cone V = 0.68 * r^3; h = 0.65 * r
+ * V = volume in m³; cone V = 0.68 * r³; h = 0.65 * r
  * Uses log arithmetic to avoid overflow.
  */
 function conePileHeight(logVolume: number): number {
@@ -48,25 +58,34 @@ function conePileHeight(logVolume: number): number {
 }
 
 /**
- * For Act 3: pick the reference where the pile-to-ref ratio is most useful (0.2x - 30x).
- * For Acts 1-2: always Earth (narrative, not proportional).
+ * Pick the reference object that gives the most readable pile-to-ref ratio.
+ * Thresholds chosen so every material lands in ~0.27x-8.5x range.
  */
-export function getRefType(logVolume: number, act: Act): RefType {
-  if (act <= 2) return "earth";
-
+export function getRefType(logVolume: number, _act: Act): RefType {
   const h = conePileHeight(logVolume);
-  // Pick the reference that keeps the ratio in the most readable range
-  if (h > EVEREST_HEIGHT * 0.5) return "everest";
-  if (h > HUMAN_HEIGHT * 15) return "statue";
+
+  // Walk down from largest reference; pick the first where ratio >= 0.25
+  if (h >= HELIOSPHERE_DIAMETER * 0.25) return "heliosphere";
+  // Opal (logVol ~35.7, h ~3.9 AU) is too small for the 0.25x threshold on
+  // solar system but too large for Sun (422x). Force it onto solar system;
+  // getPileHeight clamps it to 0.3x for readability.
+  if (h >= SOLAR_SYSTEM_DIAMETER * 0.05) return "solar-system";
+  if (h >= SUN_DIAMETER * 0.25) return "sun";
+  if (h >= EARTH_DIAMETER * 0.25) return "earth";
+  if (h >= EVEREST_HEIGHT * 0.25) return "everest";
+  if (h >= STATUE_HEIGHT * 0.25) return "statue";
   return "human";
 }
 
 /** Fixed display sizes for each reference type (px). The yardstick stays constant. */
 const REF_DISPLAY_SIZES: Record<RefType, number> = {
-  earth: 60,
-  everest: 60,
-  statue: 50,
-  human: 40,
+  heliosphere: 50,
+  "solar-system": 50,
+  sun: 50,
+  earth: 50,
+  everest: 50,
+  statue: 40,
+  human: 35,
 };
 
 function getRefSize(logVolume: number, act: Act): number {
@@ -76,7 +95,69 @@ function getRefSize(logVolume: number, act: Act): number {
 
 // ─── SVG silhouettes ─────────────────────────────────────────
 // Style: ghostly, low-opacity outlines on near-black (#030308).
-// Must feel like they belong next to the particle piles — ethereal, not illustrative.
+
+function renderHeliosphere(size: number) {
+  const c = "#7a6fbf";
+  return (
+    <svg width={size} height={size} viewBox="0 0 40 40" fill="none">
+      {/* Outer boundary — the heliopause */}
+      <circle cx="20" cy="20" r="18" stroke={c} strokeWidth="0.5" strokeOpacity="0.6" strokeDasharray="2 1.5" />
+      {/* Inner shock wave */}
+      <circle cx="20" cy="20" r="12" stroke={c} strokeWidth="0.4" strokeOpacity="0.4" strokeDasharray="1.5 1" />
+      {/* Solar wind region */}
+      <circle cx="20" cy="20" r="6" stroke={c} strokeWidth="0.3" strokeOpacity="0.3" />
+      {/* Sun at centre */}
+      <circle cx="20" cy="20" r="1.5" fill="#e8a840" opacity="0.7" />
+      <circle cx="20" cy="20" r="0.6" fill="#ffd080" opacity="0.9" />
+      {/* Voyager trajectory hint */}
+      <line x1="20" y1="20" x2="35" y2="10" stroke={c} strokeWidth="0.3" strokeOpacity="0.35" strokeDasharray="0.8 0.8" />
+      <circle cx="34" cy="11" r="0.6" fill={c} opacity="0.5" />
+    </svg>
+  );
+}
+
+function renderSolarSystem(size: number) {
+  const c = "#b8a040";
+  return (
+    <svg width={size} height={size} viewBox="0 0 40 40" fill="none">
+      {/* Orbits */}
+      <circle cx="20" cy="20" r="4" stroke={c} strokeWidth="0.25" strokeOpacity="0.3" />
+      <circle cx="20" cy="20" r="7" stroke={c} strokeWidth="0.25" strokeOpacity="0.3" />
+      <circle cx="20" cy="20" r="10" stroke={c} strokeWidth="0.25" strokeOpacity="0.3" />
+      <circle cx="20" cy="20" r="14" stroke={c} strokeWidth="0.3" strokeOpacity="0.35" />
+      <circle cx="20" cy="20" r="17.5" stroke={c} strokeWidth="0.3" strokeOpacity="0.4" />
+      {/* Sun */}
+      <circle cx="20" cy="20" r="1.8" fill="#e8a840" opacity="0.65" />
+      <circle cx="20" cy="20" r="0.7" fill="#ffd080" opacity="0.85" />
+      {/* Planets as dots */}
+      <circle cx="24" cy="20" r="0.4" fill={c} opacity="0.5" />
+      <circle cx="20" cy="13" r="0.5" fill={c} opacity="0.5" />
+      <circle cx="10" cy="18" r="0.6" fill="#c4a060" opacity="0.55" />
+      <circle cx="14" cy="6" r="1.0" fill="#c49848" opacity="0.5" />
+      <circle cx="37" cy="16" r="0.7" fill="#90a0b0" opacity="0.45" />
+    </svg>
+  );
+}
+
+function renderSun(size: number) {
+  const c = "#e8a840";
+  return (
+    <svg width={size} height={size} viewBox="0 0 40 40" fill="none">
+      {/* Corona */}
+      <circle cx="20" cy="20" r="17" fill={c} opacity="0.08" />
+      <circle cx="20" cy="20" r="14" fill={c} opacity="0.12" />
+      {/* Photosphere */}
+      <circle cx="20" cy="20" r="11" fill={c} opacity="0.35" stroke={c} strokeWidth="0.4" strokeOpacity="0.6" />
+      {/* Surface detail */}
+      <circle cx="16" cy="17" r="2" fill={c} opacity="0.15" />
+      <circle cx="23" cy="22" r="1.5" fill={c} opacity="0.12" />
+      {/* Bright core */}
+      <circle cx="20" cy="20" r="5" fill="#ffd080" opacity="0.25" />
+      {/* Specular */}
+      <circle cx="16" cy="15" r="2.5" fill="white" opacity="0.1" />
+    </svg>
+  );
+}
 
 function renderEarth(size: number) {
   const o = "#5b8cbf"; // ocean
@@ -87,13 +168,13 @@ function renderEarth(size: number) {
       <circle cx="20" cy="20" r="18.5" fill={o} opacity="0.15" />
       {/* Globe outline */}
       <circle cx="20" cy="20" r="16" stroke={o} strokeWidth="0.6" strokeOpacity="0.8" fill={o} fillOpacity="0.25" />
-      {/* Longitude / latitude grid — gives it that "planet" read */}
+      {/* Longitude / latitude grid */}
       <ellipse cx="20" cy="20" rx="10" ry="16" stroke={o} strokeWidth="0.3" strokeOpacity="0.5" />
       <ellipse cx="20" cy="20" rx="4" ry="16" stroke={o} strokeWidth="0.3" strokeOpacity="0.4" />
       <line x1="4" y1="20" x2="36" y2="20" stroke={o} strokeWidth="0.3" strokeOpacity="0.4" />
       <line x1="6" y1="13" x2="34" y2="13" stroke={o} strokeWidth="0.3" strokeOpacity="0.3" />
       <line x1="6" y1="27" x2="34" y2="27" stroke={o} strokeWidth="0.3" strokeOpacity="0.3" />
-      {/* Continental masses — soft filled shapes */}
+      {/* Continental masses */}
       <path d="M14 11 Q17 9 21 12 Q19 16 15 14 Z" fill={l} opacity="0.6" />
       <path d="M23 16 Q27 14 30 18 Q28 22 24 20 Z" fill={l} opacity="0.55" />
       <path d="M11 21 Q14 19 16 23 Q13 27 11 24 Z" fill={l} opacity="0.5" />
@@ -110,11 +191,11 @@ function renderMountain(size: number) {
   const r = "#8090a0";
   return (
     <svg width={w} height={h} viewBox="0 0 56 40" fill="none">
-      {/* Far ridge — barely there */}
+      {/* Far ridge */}
       <path d="M6 38 L22 16 L30 24 L42 12 L52 38 Z" fill={r} opacity="0.2" />
       {/* Main silhouette */}
       <path d="M2 38 L20 6 L28 18 L36 4 L54 38 Z" fill={r} opacity="0.4" stroke={r} strokeWidth="0.5" strokeOpacity="0.7" />
-      {/* Ridge lines for depth */}
+      {/* Ridge lines */}
       <path d="M20 6 L24 12 L28 18" stroke={r} strokeWidth="0.4" strokeOpacity="0.55" fill="none" />
       <path d="M36 4 L40 12" stroke={r} strokeWidth="0.4" strokeOpacity="0.5" fill="none" />
       {/* Snow caps */}
@@ -138,7 +219,7 @@ function renderStatue(size: number) {
       <path d="M7.5 9 L6.5 5.5 M8.5 8.5 L8 4.5 M10 8 L10 3.5 M11.5 8.5 L12 4.5 M12.5 9 L13.5 5.5" stroke={c} strokeWidth="0.5" strokeOpacity="0.7" strokeLinecap="round" />
       {/* Raised arm + torch */}
       <path d="M12.5 15 Q14 12 15 8 L15.5 5.5" stroke={c} strokeWidth="0.8" strokeOpacity="0.65" strokeLinecap="round" fill="none" />
-      {/* Torch flame — warm accent glow */}
+      {/* Torch flame */}
       <circle cx="15.5" cy="4.5" r="1.8" fill="#e8a840" opacity="0.55" />
       <circle cx="15.5" cy="4.5" r="0.7" fill="#ffd080" opacity="0.75" />
       {/* Tablet */}

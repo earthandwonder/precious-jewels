@@ -21,13 +21,13 @@ export const ACT_TITLES = {
     title: "The Cosmos Makes These by the Planet-Load",
     subtitle:
       "Every 'precious' gem you know is one of the most abundant materials in the universe.",
-    logRange: [37, 46] as const,
+    logRange: [35, 44] as const,
   },
   2: {
     title: "The Beryllium Cliff",
     subtitle:
       "Beryllium isn't forged in stars — it's made when cosmic rays smash into heavier atoms. Most gems below need beryllium to form. The rest demand an equally improbable convergence of elements.",
-    logRange: [18, 30] as const,
+    logRange: [20, 30] as const,
   },
   3: {
     title: "Life on One Planet",
@@ -41,20 +41,6 @@ export const materials: Material[] = [
   // ═══════════════════════════════════════════
   // ACT I — Cosmically abundant minerals
   // ═══════════════════════════════════════════
-  {
-    id: "olivine",
-    name: "Peridot",
-    category: "mineral",
-    act: 1,
-    logVolume: 45.5,
-    density: 3300,
-    color: "#8DB600",
-    glowColor: "#C5E17A",
-    tagline: "The most abundant gemstone in the universe",
-    description:
-      "Olivine is the dominant mineral in every rocky planet's mantle, and it condenses directly from the cooling winds of dying stars. There is more peridot in the universe than there is water on Earth — by a factor of ten thousand trillion trillion.",
-    scaleComparison: "A sphere of peridot wider than the orbit of Pluto — by a factor of a thousand.",
-  },
   {
     id: "corundum",
     name: "Ruby & Sapphire",
@@ -79,7 +65,7 @@ export const materials: Material[] = [
     density: 3800,
     color: "#7B3F61",
     glowColor: "#B5658A",
-    tagline: "Hidden deep inside every rocky world",
+    tagline: "Crushed into existence in the deep mantle of every rocky planet",
     description:
       "Garnet makes up a large share of the deep mantles of rocky planets — from 250 to 600 km down. Any world big enough to have pressure has garnet. The universe is full of rocky worlds.",
     scaleComparison: "A sphere of garnet wider than the orbit of Neptune.",
@@ -93,7 +79,7 @@ export const materials: Material[] = [
     density: 3500,
     color: "#B9F2FF",
     glowColor: "#E0F7FF",
-    tagline: "The symbol of rarity is cosmically common",
+    tagline: "Rained from methane skies, scattered through interstellar dust",
     description:
       "Diamond nanocrystals litter the interstellar medium. They rain from the methane atmospheres of ice giants. Carbon — the fourth most abundant element — becomes diamond wherever pressure and temperature align, and the universe provides both generously.",
     scaleComparison:
@@ -108,7 +94,7 @@ export const materials: Material[] = [
     density: 2650,
     color: "#9B59B6",
     glowColor: "#C39BD3",
-    tagline: "The second most abundant mineral in Earth's crust",
+    tagline: "Crystallised wherever silica and water meet inside a cooling crust",
     description:
       "Quartz needs silica-rich, differentiated crust — rarer than raw mantle minerals, but still staggeringly common across the trillions of rocky planets. Amethyst is just quartz with a trace of irradiated iron.",
     scaleComparison: "Enough amethyst to build a mountain range spanning a galaxy.",
@@ -122,7 +108,7 @@ export const materials: Material[] = [
     density: 4700,
     color: "#E8B960",
     glowColor: "#F5D89A",
-    tagline: "The oldest surviving mineral on Earth — 4.4 billion years",
+    tagline: "Crystallised 4.4 billion years ago — and survived everything since",
     description:
       "Zircon crystals are the most durable timekeepers in geology. The oldest material ever found on Earth is a zircon grain from Western Australia, 4.4 billion years old. Zirconium is a trace element cosmically, but trillions of rocky worlds each contribute their share.",
   },
@@ -148,7 +134,7 @@ export const materials: Material[] = [
     density: 2100,
     color: "#FF6F61",
     glowColor: "#FFA07A",
-    tagline: "It needs liquid water — and most worlds don't have it",
+    tagline: "Silica dissolved in water, settled into a lattice that splits light into fire",
     description:
       "Opal is silica that precipitated from water, trapping it in a lattice of nanospheres that diffract light into fire. It requires a world with liquid water — a far rarer condition than most people realise. Opal has been detected on Mars.",
   },
@@ -165,7 +151,7 @@ export const materials: Material[] = [
     density: 2700,
     color: "#50C878",
     glowColor: "#7DCEA0",
-    tagline: "The rarest element you've never heard of",
+    tagline: "Built from cosmic ray debris — beryllium, an element stars can't make",
     description:
       "Emerald's secret is beryllium — an element so cosmically rare it isn't even made inside stars. Beryllium is produced only when high-energy cosmic rays slam into heavier atoms and shatter them. Every emerald in existence is built from the debris of these collisions.",
     scaleComparison:
@@ -180,7 +166,7 @@ export const materials: Material[] = [
     density: 2700,
     color: "#DC143C",
     glowColor: "#FF4444",
-    tagline: "A thousand times rarer than diamond — even on Earth",
+    tagline: "The same impossible element, trapped in a single Utah lava flow",
     description:
       "Red beryl has the same beryllium bottleneck as emerald, but demands an additional coincidence: manganese as a chromophore, inside a very specific type of rhyolitic lava flow. On Earth, there is exactly one commercial deposit, in Utah.",
   },
@@ -193,7 +179,7 @@ export const materials: Material[] = [
     density: 3600,
     color: "#DDA0DD",
     glowColor: "#EE82EE",
-    tagline: "So rare it was misidentified for years",
+    tagline: "Four reluctant elements, forced into a crystal that almost never forms",
     description:
       "Taaffeite was first discovered in 1945 — already cut and polished, sitting in a jeweller's box, mistaken for spinel. Fewer than a thousand faceted stones are known worldwide. It needs beryllium, magnesium, and aluminium to meet in a specific crystal structure that almost never forms.",
   },
@@ -206,7 +192,7 @@ export const materials: Material[] = [
     density: 3700,
     color: "#4B0082",
     glowColor: "#8A2BE2",
-    tagline: "Two enemies forced to cooperate",
+    tagline: "Beryllium from the crust, chromium from the mantle — they almost never meet",
     description:
       "Alexandrite needs beryllium and chromium — but these two elements are geochemical enemies. Beryllium concentrates in evolved, silica-rich rocks. Chromium concentrates in primitive, iron-rich mantle rocks. They almost never meet. When they do, you get a gem that changes colour from green to red depending on the light.",
   },
@@ -219,24 +205,10 @@ export const materials: Material[] = [
     density: 3650,
     color: "#4169E1",
     glowColor: "#6495ED",
-    tagline: "One deposit. One county. One state.",
+    tagline: "Barium-rich fluids altering serpentinite, in one county in California",
     description:
       "Gem-quality benitoite comes from exactly one place on Earth: San Benito County, California. It forms when barium-rich hydrothermal fluids alter serpentinite under very specific pressure and temperature. The mine closed in 2006. Commercial production has ended permanently.",
   },
-  {
-    id: "painite",
-    name: "Painite",
-    category: "mineral",
-    act: 2,
-    logVolume: 18.4,
-    density: 4010,
-    color: "#8B4513",
-    glowColor: "#CD853F",
-    tagline: "Once the rarest mineral on Earth",
-    description:
-      "Painite held the Guinness record for rarest mineral for decades. It needs calcium, zirconium, boron, and aluminium to converge in one rock — elements with completely different geochemical affinities. Fewer than a thousand crystals have ever been found, almost all from a single region of Myanmar.",
-  },
-
   // ═══════════════════════════════════════════
   // ACT III — Biological / Earth-only
   // ═══════════════════════════════════════════
@@ -262,7 +234,7 @@ export const materials: Material[] = [
     density: 500,
     color: "#6B4423",
     glowColor: "#8B6914",
-    tagline: "Rarer than diamond",
+    tagline: "Grown by living organisms, ring by ring, on only one planet",
     description:
       "There are about 3 trillion trees on Earth, holding roughly 450 billion tonnes of wood. That sounds like a lot — until you remember that diamond exists on trillions of worlds. Wood exists on one. By cosmic measure, a wooden ring is roughly thirty orders of magnitude rarer than a diamond one.",
     scaleComparison:
@@ -277,7 +249,7 @@ export const materials: Material[] = [
     density: 2800,
     color: "#FFF5EE",
     glowColor: "#FFEFD5",
-    tagline: "Every iridescent shell — only here",
+    tagline: "Aragonite bricks, mortared by a living animal, thinner than a wavelength of light",
     description:
       "Mother-of-pearl — nacre — is aragonite crystals laid down in microscopic brick-and-mortar layers by living mollusks. The iridescence comes from the layers being thinner than a wavelength of light. No geological process produces it. Only life does.",
   },
@@ -342,7 +314,7 @@ export const materials: Material[] = [
     density: 2800,
     color: "#FF1493",
     glowColor: "#FF69B4",
-    tagline: "A gemstone from one place on Earth, and nowhere else",
+    tagline: "One extinct species, one river in Alberta, 70 million years underground",
     description:
       "Ammolite is the iridescent aragonite shell of Placenticeras ammonites, found almost exclusively in a narrow belt along the St. Mary River in southern Alberta, Canada. One species. One geological formation. One planet. Gem-grade material may run out within decades.",
   },
@@ -381,7 +353,7 @@ export const materials: Material[] = [
     density: 2700,
     color: "#FDEBD0",
     glowColor: "#FFF8DC",
-    tagline: "The rarest wearable material in the known universe",
+    tagline: "A mollusk's slow answer to a grain of sand",
     description:
       "A natural pearl forms when a living mollusk — an oyster, a mussel — wraps an irritant in layer after layer of nacre. One in ten thousand wild oysters produces a gem pearl. No other world is known to have oceans, or mollusks, or the patient biology that builds a pearl. Of everything you could wear, this is the rarest thing in all of existence.",
     scaleComparison:

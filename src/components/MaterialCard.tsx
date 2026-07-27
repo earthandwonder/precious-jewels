@@ -9,8 +9,9 @@ import MassCounter from "./MassCounter";
 import ScaleReference, { getRefType, REFERENCES } from "./ScaleReference";
 import AffiliateRow from "./AffiliateRow";
 
+/** Map logVolume to a 0.35-1.0 normalized abundance for particle count/width. */
 function abundanceToNormalized(logVolume: number): number {
-  const raw = (logVolume - 1.5) / 44;
+  const raw = (logVolume - 1.5) / 42;
   return Math.max(0.35, Math.min(1, raw));
 }
 
@@ -48,12 +49,10 @@ function getParticleStyle(material: Material): ParticleStyle {
     case "alexandrite":
     case "benitoite":
     case "taaffeite":
-    case "painite":
     case "garnet":
     case "zircon":
     case "corundum":
     case "jadeite":
-    case "olivine":
     case "moldavite":
       return { particleShape: "chunk", colorJitter: 0.15, sizeRange: [0.5, 1.4] };
 
@@ -106,26 +105,27 @@ function conePileHeight(logVolume: number): number {
 }
 
 const REF_DISPLAY_SIZES: Record<string, number> = {
+  heliosphere: 50, "solar-system": 50, sun: 50,
   earth: 50, everest: 50, statue: 40, human: 35,
 };
 
-function abundanceToHeight(abundance: number): number {
-  return Math.round(80 + abundance * abundance * 160);
-}
-
+/**
+ * All acts now use real proportional sizing.
+ * Pile height in px = reference px size * (real pile height / real reference size).
+ * Clamped to 0.25x-9x to stay readable. Opal is special-cased (true ratio 0.065x,
+ * clamped to 0.3x for readability).
+ */
 function getPileHeight(material: Material, isMobile: boolean): number {
-  const mobileCap = 160;
-
-  if (material.act <= 2) {
-    const h = abundanceToHeight(abundanceToNormalized(material.logVolume));
-    return isMobile ? Math.min(h, mobileCap) : h;
-  }
+  const mobileCap = 200;
 
   const realH = conePileHeight(material.logVolume);
   const refType = getRefType(material.logVolume, material.act);
   const refRealSize = REFERENCES[refType].realSize;
   const realRatio = realH / refRealSize;
-  const clampedRatio = Math.max(0.5, Math.min(6, realRatio));
+
+  // Opal: true ratio is 0.065x solar system, clamp to 0.3x for readability
+  const minRatio = material.id === "opal" ? 0.3 : 0.25;
+  const clampedRatio = Math.max(minRatio, Math.min(9, realRatio));
   const refPx = REF_DISPLAY_SIZES[refType];
   const h = Math.round(refPx * clampedRatio);
   return isMobile ? Math.min(h, mobileCap) : h;
@@ -162,9 +162,7 @@ export default function MaterialCard({
   const active = hasAnimated;
 
   const pileHeight = getPileHeight(material, isMobile);
-  const abundance = material.act === 3
-    ? Math.max(0.35, Math.min(1, pileHeight / 300))
-    : abundanceToNormalized(material.logVolume);
+  const abundance = abundanceToNormalized(material.logVolume);
   const isWarm = material.act === 3;
   const tint = isWarm
     ? "rgba(255, 200, 150,"
