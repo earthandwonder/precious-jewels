@@ -43,13 +43,11 @@ function getParticleStyle(material: Material): ParticleStyle {
 
     // Faceted crystals / angular chunks
     case "diamond":
-    case "quartz":
     case "emerald":
     case "red-beryl":
     case "alexandrite":
     case "benitoite":
     case "taaffeite":
-    case "garnet":
     case "zircon":
     case "corundum":
     case "jadeite":
@@ -259,10 +257,10 @@ export default function MaterialCard({
 
       </div>
 
-      {/* Share button — pinned to bottom */}
+      {/* Share button */}
       <button
         type="button"
-        className={`snap-animate snap-animate-delay-7 absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-1.5 text-xs md:text-sm tracking-wider uppercase transition-opacity cursor-pointer ${active ? "is-active" : ""}`}
+        className={`snap-animate snap-animate-delay-7 mt-4 md:mt-6 flex items-center gap-1.5 text-xs md:text-sm tracking-wider uppercase transition-opacity cursor-pointer ${active ? "is-active" : ""}`}
         style={{ color: `${tint} 0.5)`, background: "none", border: "none", padding: "4px 8px" }}
         onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.8")}
         onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
