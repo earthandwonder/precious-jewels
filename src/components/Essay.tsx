@@ -7,6 +7,7 @@ import Interstitial from "./Interstitial";
 import ScrollProgress from "./ScrollProgress";
 import ScaleTransition from "./ScaleTransition";
 import { getRefType } from "./ScaleReference";
+import ShopSection from "./ShopSection";
 
 function ActHeader({ act }: { act: Act }) {
   const info = ACT_TITLES[act];
@@ -182,6 +183,8 @@ export default function Essay() {
           </p>
         </div>
       </footer>
+
+      <ShopSection />
     </>
   );
 }

@@ -2,12 +2,30 @@
 
 import { useRef, useEffect, useState } from "react";
 import type { Material } from "@/data/materials";
+import { affiliateProducts } from "@/data/products";
 import ParticlePile from "./ParticlePile";
+import type { MaterialFeel } from "./ParticlePile";
 import MassCounter from "./MassCounter";
 import ScaleReference from "./ScaleReference";
+import AffiliateRow from "./AffiliateRow";
 
 function abundanceToNormalized(logMass: number): number {
   return Math.max(0, Math.min(1, (logMass - 5) / 44));
+}
+
+/** Map abundance to a dramatic canvas height range */
+function getMaterialFeel(material: Material): MaterialFeel {
+  // Heavy metals and dense minerals: sluggish, satisfying thud
+  if (material.density >= 3800) return "heavy";
+  // Biological: soft, bouncy
+  if (material.category === "biological") return "organic";
+  // Impact glass
+  if (material.category === "earth-impact") return "glassy";
+  // Gems: sparkly and explosive
+  if (["diamond", "opal", "emerald", "alexandrite", "benitoite", "taaffeite", "red-beryl"].includes(material.id))
+    return "sparkly";
+  // Default mineral
+  return "sparkly";
 }
 
 /** Map abundance to a dramatic canvas height range */
@@ -27,11 +45,9 @@ export default function MaterialCard({ material }: { material: Material }) {
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
+        setIsVisible(entry.isIntersecting);
       },
-      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.05, rootMargin: "100px 0px 100px 0px" }
     );
 
     observer.observe(el);
@@ -66,6 +82,8 @@ export default function MaterialCard({ material }: { material: Material }) {
             abundance={abundance}
             height={pileHeight}
             isVisible={isVisible}
+            feel={getMaterialFeel(material)}
+            density={material.density}
           />
         </div>
 
@@ -117,6 +135,14 @@ export default function MaterialCard({ material }: { material: Material }) {
           >
             {material.scaleComparison}
           </p>
+        )}
+
+        {affiliateProducts[material.id] && (
+          <AffiliateRow
+            products={affiliateProducts[material.id]}
+            glowColor={material.glowColor}
+            materialColor={material.color}
+          />
         )}
       </div>
     </div>

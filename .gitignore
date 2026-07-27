@@ -43,3 +43,9 @@ next-env.d.ts
 # playwright / screenshots
 .playwright-mcp/
 screenshots/
+
+# python venv
+.venv/
+
+# raw product images (pre-processing)
+public/samples/raw/
