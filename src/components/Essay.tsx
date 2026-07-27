@@ -41,8 +41,9 @@ function buildSegments(): Segment[] {
   // Interstitial 1->2
   segments.push({ type: "interstitial", key: "1-2" });
 
-  // Act 2 materials
-  addMaterialsWithTransitions(segments, act2);
+  // Act 2 materials (pass last act1 material so solar-system → sun transition fires)
+  const act1Last = act1[act1.length - 1];
+  addMaterialsWithTransitions(segments, act2, act1Last);
 
   // Interstitial 2->3
   segments.push({ type: "interstitial", key: "2-3" });
