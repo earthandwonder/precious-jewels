@@ -244,9 +244,9 @@ export const materials: Material[] = [
     density: 2700,
     color: "#DC143C",
     glowColor: "#FF4444",
-    tagline: "The same impossible element, trapped in a single Utah lava flow",
+    tagline: "The same impossible element, plus one more coincidence",
     description:
-      "Same beryllium bottleneck as emerald, plus an additional coincidence: manganese, inside a very specific type of rhyolitic lava flow. One red beryl crystal for every 150,000 gem diamonds.",
+      "Same beryllium bottleneck as emerald, plus manganese inside a very specific type of rhyolitic lava flow. On Earth, there's one commercial deposit — in Utah. But trillions of rocky worlds each roll those dice. One red beryl crystal for every 150,000 gem diamonds.",
     derivation: {
       steps: [
         "Same Be bottleneck as emerald, plus Mn in rhyolitic lava. ~1,000× rarer — one commercial deposit exists on Earth.",
@@ -268,7 +268,7 @@ export const materials: Material[] = [
     glowColor: "#EE82EE",
     tagline: "Four reluctant elements, forced into a crystal that almost never forms",
     description:
-      "First discovered in 1945 — already cut and polished, sitting in a jeweller's box, mistaken for spinel. Fewer than a thousand faceted stones are known worldwide.",
+      "First discovered in 1945 — already cut and polished, sitting in a jeweller's box, mistaken for spinel. Fewer than a thousand faceted stones are known on Earth. The crystal structure almost never nucleates — but across enough worlds, almost never still adds up.",
     derivation: {
       steps: [
         "BeMgAl₄O₈ — same Be scarcity, but the crystal structure almost never nucleates. <1,000 faceted stones known.",
@@ -308,9 +308,9 @@ export const materials: Material[] = [
     density: 3650,
     color: "#4169E1",
     glowColor: "#6495ED",
-    tagline: "Barium-rich fluids altering serpentinite, in one county in California",
+    tagline: "Barium-rich fluids altering serpentinite under exact pressure and temperature",
     description:
-      "The mine closed in 2006. Commercial production has ended permanently. What exists is all there will ever be.",
+      "On Earth, gem-quality benitoite comes from one county in California. The mine closed in 2006. But the geology that made it — serpentinite, barium, heat — isn't unique to Earth. Across trillions of worlds, similar accidents add up.",
     derivation: {
       steps: [
         "BaTiSi₃O₉ — not beryllium-limited but equally rare. One gem source on Earth (hundreds of kg total production).",
