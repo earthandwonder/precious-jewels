@@ -260,7 +260,7 @@ export default function ParticlePile({
   const largeCap = height > 400 ? 800 : 600;
   const particleCount = Math.min(
     mobile ? Math.floor(300 * countMultiplier) : Math.floor(largeCap * countMultiplier),
-    Math.max(80, Math.floor((150 + abundance * 400) * areaFactor * baseMobile * countMultiplier))
+    Math.max(20, Math.floor((60 + abundance * 540) * areaFactor * baseMobile * countMultiplier))
   );
 
   const rgb = hexToRgb(color);

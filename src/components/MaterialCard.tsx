@@ -9,10 +9,12 @@ import MassCounter from "./MassCounter";
 import ScaleReference, { getRefType, REFERENCES } from "./ScaleReference";
 import AffiliateRow from "./AffiliateRow";
 
-/** Map logVolume to a 0.35-1.0 normalized abundance for particle count/width. */
+/** Map logVolume to a 0.08-1.0 normalized abundance for particle count/width.
+ *  Power curve (^0.7) spreads the mid-range so rare materials look visibly smaller. */
 function abundanceToNormalized(logVolume: number): number {
   const raw = (logVolume - 1.5) / 42;
-  return Math.max(0.35, Math.min(1, raw));
+  const curved = Math.pow(Math.max(0, Math.min(1, raw)), 0.7);
+  return Math.max(0.08, curved);
 }
 
 interface ParticleStyle {
@@ -26,15 +28,15 @@ function getParticleStyle(material: Material): ParticleStyle {
   switch (material.id) {
     // Logs / elongated pieces
     case "wood":
-      return { particleShape: "log", colorJitter: 0.25, sizeRange: [0.3, 0.8], countMultiplier: 2 };
+      return { particleShape: "log", colorJitter: 0.25, sizeRange: [0.3, 0.8] };
 
     // Flat shards / shell fragments
     case "ammolite":
-      return { particleShape: "shard", colorJitter: 0.2, sizeRange: [0.3, 0.8], countMultiplier: 2 };
+      return { particleShape: "shard", colorJitter: 0.2, sizeRange: [0.3, 0.8] };
 
     // Branching / irregular organic
     case "coral":
-      return { particleShape: "log", colorJitter: 0.15, sizeRange: [0.3, 0.8], countMultiplier: 2 };
+      return { particleShape: "log", colorJitter: 0.15, sizeRange: [0.3, 0.8] };
 
     // Faceted crystals / angular chunks
     case "diamond":
@@ -54,12 +56,12 @@ function getParticleStyle(material: Material): ParticleStyle {
 
     // Smooth round things
     case "pearl":
-      return { particleShape: "circle", colorJitter: 0.08, sizeRange: [0.2, 0.4], countMultiplier: 4 };
+      return { particleShape: "circle", colorJitter: 0.08, sizeRange: [0.2, 0.4] };
 
     // Rounded lumps
     case "amber":
     case "amber-inclusion":
-      return { particleShape: "circle", colorJitter: 0.2, sizeRange: [0.3, 0.8], countMultiplier: 2 };
+      return { particleShape: "circle", colorJitter: 0.2, sizeRange: [0.3, 0.8] };
 
     // Fossils — rounded irregular
     case "ammonite":
