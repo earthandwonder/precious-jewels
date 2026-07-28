@@ -12,13 +12,8 @@ const orbitPositions = [
 ];
 
 /**
- * Identity widget — the arrow, face, and orbiting icons in the top-left.
+ * Identity widget — face and orbiting icons in the top-left.
  * Clicking the face opens the identity panel (sidebar).
- *
- * @param currentSlug — slug of the current page/project, used to mark "You are here"
- *                       in the panel. Pass undefined on the homepage.
- * @param basePath — base path prefix for assets (e.g. "/p/abundant-gems"). Defaults to "".
- * @param subscribeEndpoint — URL for the subscribe POST. Defaults to "/api/subscribe".
  */
 export function IdentityWidget({
   currentSlug,
@@ -45,29 +40,7 @@ export function IdentityWidget({
 
   return (
     <>
-      <div className="fixed top-4 left-4 z-40 flex items-center gap-1">
-        {/* Back arrow */}
-        <a
-          href="https://benmccarthy.com.au"
-          className="flex items-center justify-center w-6 h-6 transition-opacity opacity-40 hover:opacity-80"
-          aria-label="Back to benmccarthy.com.au"
-        >
-          <svg
-            width="14"
-            height="14"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            style={{ color: "rgba(155, 155, 170, 0.8)" }}
-          >
-            <path d="M19 12H5" />
-            <path d="M12 19l-7-7 7-7" />
-          </svg>
-        </a>
-
+      <div className="fixed top-4 left-4 z-40">
         {/* Face with orbiting icons */}
         <button
           onClick={() => setPanelOpen(true)}
