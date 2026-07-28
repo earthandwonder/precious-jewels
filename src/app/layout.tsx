@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, JetBrains_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
-import { IdentityWidget } from "@/components/identity-widget";
 import PageviewTracker from "@/components/PageviewTracker";
 
 const jakartaSans = Plus_Jakarta_Sans({
@@ -61,13 +60,18 @@ export default function RootLayout({
       className={`${jakartaSans.variable} ${jetbrainsMono.variable} ${playfair.variable} antialiased`}
     >
       <body>
-        <IdentityWidget
-          currentSlug="abundant-gems"
-          basePath={process.env.NEXT_PUBLIC_BASE_PATH || ""}
-          subscribeEndpoint="/api/subscribe"
-        />
         <PageviewTracker />
         {children}
+        {/* @ts-expect-error web component */}
+        <bm-capture
+          mode="relationship"
+          source="abundant-gems"
+          variant="invite-a"
+          reveal-at="30%"
+          expand-at="60%"
+          theme="dark"
+        />
+        <script src="https://benmccarthy.com.au/shared/capture.js" defer />
       </body>
     </html>
   );

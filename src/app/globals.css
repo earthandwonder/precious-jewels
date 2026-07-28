@@ -303,28 +303,3 @@ body {
   font-family: var(--font-serif), Georgia, serif;
   font-variant-numeric: oldstyle-nums;
 }
-
-/* ─── Identity widget panel animations ─── */
-@keyframes identity-slideInLeft {
-  from {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes identity-fadeExpand {
-  from {
-    opacity: 0;
-    transform: scaleX(0.8);
-    transform-origin: left;
-  }
-  to {
-    opacity: 1;
-    transform: scaleX(1);
-    transform-origin: left;
-  }
-}
