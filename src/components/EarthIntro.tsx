@@ -42,7 +42,7 @@ export default function EarthIntro({ isActive }: { isActive: boolean }) {
   const labelOpacity = Math.max(0, Math.min(1, (progress - 0.5) / 0.2));
   const textOpacity = Math.max(0, Math.min(1, (progress - 0.65) / 0.2));
 
-  const c = "#7a6fbf";
+  const c = "#9a8edf";
 
   return (
     <div className="flex flex-col items-center justify-center px-6 w-full h-full">
@@ -55,25 +55,25 @@ export default function EarthIntro({ isActive }: { isActive: boolean }) {
         style={{ opacity: Math.max(0.3, Math.min(1, progress / 0.3)) }}
       >
         {/* Outer boundary — the heliopause */}
-        <circle cx="20" cy="20" r="18" stroke={c} strokeWidth="0.5" strokeOpacity="0.8" strokeDasharray="2 1.5" />
+        <circle cx="20" cy="20" r="18" stroke={c} strokeWidth="0.7" strokeOpacity="1" strokeDasharray="2 1.5" />
         {/* Inner shock wave */}
-        <circle cx="20" cy="20" r="12" stroke={c} strokeWidth="0.4" strokeOpacity="0.6" strokeDasharray="1.5 1" />
+        <circle cx="20" cy="20" r="12" stroke={c} strokeWidth="0.5" strokeOpacity="0.85" strokeDasharray="1.5 1" />
         {/* Solar wind region */}
-        <circle cx="20" cy="20" r="6" stroke={c} strokeWidth="0.3" strokeOpacity="0.5" />
+        <circle cx="20" cy="20" r="6" stroke={c} strokeWidth="0.4" strokeOpacity="0.7" />
         {/* Sun at centre */}
-        <circle cx="20" cy="20" r="1.5" fill="#e8a840" opacity="0.8" />
-        <circle cx="20" cy="20" r="0.6" fill="#ffd080" opacity="0.9" />
+        <circle cx="20" cy="20" r="1.5" fill="#e8a840" opacity="1" />
+        <circle cx="20" cy="20" r="0.6" fill="#ffd080" opacity="1" />
         {/* Voyager trajectory hint */}
-        <line x1="20" y1="20" x2="35" y2="10" stroke={c} strokeWidth="0.3" strokeOpacity="0.6" strokeDasharray="0.8 0.8" />
-        <circle cx="34" cy="11" r="0.6" fill={c} opacity="0.75" />
+        <line x1="20" y1="20" x2="35" y2="10" stroke={c} strokeWidth="0.4" strokeOpacity="0.8" strokeDasharray="0.8 0.8" />
+        <circle cx="34" cy="11" r="0.8" fill={c} opacity="0.9" />
       </svg>
 
       {/* Label */}
       <p
         className="act-number mt-4 tracking-[0.3em]"
         style={{
-          opacity: labelOpacity * 0.9,
-          color: "rgba(160, 150, 220, 0.9)",
+          opacity: labelOpacity,
+          color: "rgba(180, 170, 240, 1)",
         }}
       >
         Voyager 1

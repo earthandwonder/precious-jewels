@@ -37,8 +37,8 @@ const STATUE_HEIGHT = 93;
 const HUMAN_HEIGHT = 1.8;
 
 export const REFERENCES: Record<RefType, ReferenceInfo> = {
-  heliosphere:    { type: "heliosphere",    label: "Voyager-scale",        color: "#7a6fbf", realSize: HELIOSPHERE_DIAMETER, render: (s) => renderHeliosphere(s) },
-  "solar-system": { type: "solar-system",   label: "Solar system-scale",       color: "#b8a040", realSize: SOLAR_SYSTEM_DIAMETER, render: (s) => renderSolarSystem(s) },
+  heliosphere:    { type: "heliosphere",    label: "Voyager-scale",        color: "#9a8edf", realSize: HELIOSPHERE_DIAMETER, render: (s) => renderHeliosphere(s) },
+  "solar-system": { type: "solar-system",   label: "Solar system-scale",       color: "#d4be58", realSize: SOLAR_SYSTEM_DIAMETER, render: (s) => renderSolarSystem(s) },
   sun:            { type: "sun",            label: "Sun-scale",                color: "#e8a840", realSize: SUN_DIAMETER, render: (s) => renderSun(s) },
   earth:          { type: "earth",          label: "Earth-scale",              color: "#5b8cbf", realSize: EARTH_DIAMETER, render: (s) => renderEarth(s) },
   everest:        { type: "everest",        label: "Everest-scale",            color: "#b0b8c0", realSize: EVEREST_HEIGHT, render: (s) => renderMountain(s) },
@@ -97,44 +97,44 @@ function getRefSize(logVolume: number, act: Act): number {
 // Style: ghostly, low-opacity outlines on near-black (#030308).
 
 function renderHeliosphere(size: number) {
-  const c = "#7a6fbf";
+  const c = "#9a8edf";
   return (
     <svg width={size} height={size} viewBox="0 0 40 40" fill="none">
       {/* Outer boundary — the heliopause */}
-      <circle cx="20" cy="20" r="18" stroke={c} strokeWidth="0.5" strokeOpacity="0.8" strokeDasharray="2 1.5" />
+      <circle cx="20" cy="20" r="18" stroke={c} strokeWidth="0.7" strokeOpacity="1" strokeDasharray="2 1.5" />
       {/* Inner shock wave */}
-      <circle cx="20" cy="20" r="12" stroke={c} strokeWidth="0.4" strokeOpacity="0.65" strokeDasharray="1.5 1" />
+      <circle cx="20" cy="20" r="12" stroke={c} strokeWidth="0.5" strokeOpacity="0.85" strokeDasharray="1.5 1" />
       {/* Solar wind region */}
-      <circle cx="20" cy="20" r="6" stroke={c} strokeWidth="0.3" strokeOpacity="0.5" />
+      <circle cx="20" cy="20" r="6" stroke={c} strokeWidth="0.4" strokeOpacity="0.7" />
       {/* Sun at centre */}
-      <circle cx="20" cy="20" r="1.5" fill="#e8a840" opacity="0.85" />
-      <circle cx="20" cy="20" r="0.6" fill="#ffd080" opacity="0.95" />
+      <circle cx="20" cy="20" r="1.5" fill="#e8a840" opacity="1" />
+      <circle cx="20" cy="20" r="0.6" fill="#ffd080" opacity="1" />
       {/* Voyager trajectory hint */}
-      <line x1="20" y1="20" x2="35" y2="10" stroke={c} strokeWidth="0.3" strokeOpacity="0.6" strokeDasharray="0.8 0.8" />
-      <circle cx="34" cy="11" r="0.6" fill={c} opacity="0.75" />
+      <line x1="20" y1="20" x2="35" y2="10" stroke={c} strokeWidth="0.4" strokeOpacity="0.8" strokeDasharray="0.8 0.8" />
+      <circle cx="34" cy="11" r="0.8" fill={c} opacity="0.9" />
     </svg>
   );
 }
 
 function renderSolarSystem(size: number) {
-  const c = "#b8a040";
+  const c = "#d4be58";
   return (
     <svg width={size} height={size} viewBox="0 0 40 40" fill="none">
       {/* Orbits */}
-      <circle cx="20" cy="20" r="4" stroke={c} strokeWidth="0.25" strokeOpacity="0.55" />
-      <circle cx="20" cy="20" r="7" stroke={c} strokeWidth="0.25" strokeOpacity="0.55" />
-      <circle cx="20" cy="20" r="10" stroke={c} strokeWidth="0.25" strokeOpacity="0.55" />
-      <circle cx="20" cy="20" r="14" stroke={c} strokeWidth="0.3" strokeOpacity="0.6" />
-      <circle cx="20" cy="20" r="17.5" stroke={c} strokeWidth="0.3" strokeOpacity="0.65" />
+      <circle cx="20" cy="20" r="4" stroke={c} strokeWidth="0.35" strokeOpacity="0.75" />
+      <circle cx="20" cy="20" r="7" stroke={c} strokeWidth="0.35" strokeOpacity="0.75" />
+      <circle cx="20" cy="20" r="10" stroke={c} strokeWidth="0.35" strokeOpacity="0.75" />
+      <circle cx="20" cy="20" r="14" stroke={c} strokeWidth="0.4" strokeOpacity="0.8" />
+      <circle cx="20" cy="20" r="17.5" stroke={c} strokeWidth="0.4" strokeOpacity="0.85" />
       {/* Sun */}
-      <circle cx="20" cy="20" r="1.8" fill="#e8a840" opacity="0.85" />
-      <circle cx="20" cy="20" r="0.7" fill="#ffd080" opacity="0.9" />
+      <circle cx="20" cy="20" r="1.8" fill="#e8a840" opacity="1" />
+      <circle cx="20" cy="20" r="0.7" fill="#ffd080" opacity="1" />
       {/* Planets as dots */}
-      <circle cx="24" cy="20" r="0.4" fill={c} opacity="0.75" />
-      <circle cx="20" cy="13" r="0.5" fill={c} opacity="0.75" />
-      <circle cx="10" cy="18" r="0.6" fill="#c4a060" opacity="0.75" />
-      <circle cx="14" cy="6" r="1.0" fill="#c49848" opacity="0.7" />
-      <circle cx="37" cy="16" r="0.7" fill="#90a0b0" opacity="0.7" />
+      <circle cx="24" cy="20" r="0.5" fill={c} opacity="0.9" />
+      <circle cx="20" cy="13" r="0.6" fill={c} opacity="0.9" />
+      <circle cx="10" cy="18" r="0.7" fill="#c4a060" opacity="0.9" />
+      <circle cx="14" cy="6" r="1.1" fill="#c49848" opacity="0.85" />
+      <circle cx="37" cy="16" r="0.8" fill="#90a0b0" opacity="0.85" />
     </svg>
   );
 }
@@ -268,7 +268,7 @@ export default function ScaleReference({ logVolume, act, pileHeight }: ScaleRefe
       {ref.render(size)}
       <span
         className="text-xs tracking-wider uppercase whitespace-nowrap"
-        style={{ color: ref.color, opacity: 0.9 }}
+        style={{ color: ref.color, opacity: 1 }}
       >
         {ref.label}
       </span>
