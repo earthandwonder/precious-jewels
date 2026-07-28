@@ -43,12 +43,12 @@ function getParticleStyle(material: Material): ParticleStyle {
 
     // Faceted crystals / angular chunks
     case "diamond":
+    case "quartz":
     case "emerald":
     case "red-beryl":
     case "alexandrite":
     case "benitoite":
     case "taaffeite":
-    case "zircon":
     case "corundum":
     case "jadeite":
     case "moldavite":

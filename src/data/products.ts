@@ -89,14 +89,6 @@ export const shopProducts: Record<string, Product[]> = {
       imageUrl: "/p/abundant-gems/samples/jade.png",
     },
   ],
-  garnet: [
-    {
-      name: "Sterling Silver Natural Garnet Stud Earrings",
-      price: "$110",
-      url: "https://www.etsy.com/au/listing/1641858407/sterling-silver-natural-garnet-stud",
-      imageUrl: "/p/abundant-gems/samples/garnet1.png",
-    },
-  ],
 };
 
 /**

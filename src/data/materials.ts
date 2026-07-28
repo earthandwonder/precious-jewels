@@ -71,29 +71,6 @@ export const materials: Material[] = [
     },
   },
   {
-    id: "garnet",
-    name: "Garnet",
-    category: "mineral",
-    act: 1,
-    logVolume: 42.4,
-    density: 3800,
-    color: "#7B3F61",
-    glowColor: "#B5658A",
-    tagline: "Crushed into existence in the deep mantle of every rocky planet",
-    description:
-      "Any world big enough to have pressure has garnet — from 250 to 600 km down. The universe is full of rocky worlds.",
-    scaleComparison: "A sphere of garnet wider than the orbit of Neptune.",
-    derivation: {
-      steps: [
-        "~20-25% of upper mantle/transition zone. ~3 × 10²³ kg per Earth × ~10²³ rocky planets.",
-      ],
-      sources: [
-        "Stixrude & Lithgow-Bertelloni (2012) — mantle mineralogy",
-        "Cassan et al. (2012) Nature — rocky planet frequency",
-      ],
-    },
-  },
-  {
     id: "diamond",
     name: "Diamond",
     category: "mineral",
@@ -138,28 +115,6 @@ export const materials: Material[] = [
       ],
       sources: [
         "Wedepohl (1995) Geochimica — continental crust composition",
-      ],
-    },
-  },
-  {
-    id: "zircon",
-    name: "Zircon",
-    category: "mineral",
-    act: 1,
-    logVolume: 39.3,
-    density: 4700,
-    color: "#E8B960",
-    glowColor: "#F5D89A",
-    tagline: "Crystallised 4.4 billion years ago — and survived everything since",
-    description:
-      "Zircon crystals are the most durable timekeepers in geology. The oldest material ever found on Earth is a zircon grain from Western Australia, 4.4 billion years old. Zirconium is a trace element cosmically, but trillions of rocky worlds each contribute their share.",
-    derivation: {
-      steps: [
-        "Zr: ~10 ppm of Earth's mass → ~9 × 10¹⁹ kg of ZrSiO₄ per planet × 10²³ planets.",
-      ],
-      sources: [
-        "Wilde et al. (2001) Nature — Jack Hills zircon (4.404 Ga)",
-        "Lodders et al. (2009) — solar system abundances",
       ],
     },
   },
