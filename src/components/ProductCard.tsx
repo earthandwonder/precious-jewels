@@ -39,18 +39,18 @@ export default function ProductCard({
               src={product.imageUrl}
               alt=""
               aria-hidden
-              className="absolute z-0 max-h-36 max-w-36 md:max-h-44 md:max-w-44 object-contain transition-opacity duration-500 opacity-45 group-hover:opacity-60"
+              className="absolute z-0 max-h-40 md:max-h-48 object-contain transition-opacity duration-500 opacity-55 group-hover:opacity-70"
               style={{
-                filter: `blur(14px) brightness(1.3) saturate(1.5)`,
+                filter: `blur(18px) brightness(1.4) saturate(1.6)`,
               }}
             />
             {/* Actual product image */}
             <img
               src={product.imageUrl}
               alt=""
-              className="relative z-10 max-h-36 max-w-36 md:max-h-44 md:max-w-44 object-contain transition-transform duration-300 group-hover:scale-105"
+              className="relative z-10 max-h-40 md:max-h-48 object-contain transition-transform duration-300 group-hover:scale-105"
               style={{
-                filter: `brightness(1.12) drop-shadow(0 0 6px rgba(${rgb},0.3))`,
+                filter: `brightness(1.12) drop-shadow(0 0 8px rgba(${rgb},0.4))`,
               }}
               loading="lazy"
             />
@@ -82,11 +82,11 @@ export default function ProductCard({
 
       {/* Button to the right */}
       <span
-        className="z-20 inline-flex items-center gap-1.5 px-4 py-2 text-sm md:text-base font-medium tracking-wider uppercase transition-all duration-300 group-hover:brightness-125 whitespace-nowrap"
+        className="z-20 inline-flex items-center gap-1.5 px-4 py-2 text-xs md:text-sm tracking-wider uppercase transition-all duration-300 group-hover:brightness-125 whitespace-nowrap"
         style={{
           color: materialColor,
-          border: `1.5px solid ${materialColor}`,
-          background: "rgba(3, 3, 8, 0.5)",
+          border: `1px solid ${materialColor}40`,
+          background: "rgba(3, 3, 8, 0.4)",
         }}
       >
         See on Etsy
