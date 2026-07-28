@@ -31,17 +31,17 @@ export default function ProductCard({
       className="group relative flex items-center gap-3 md:gap-4 max-w-full"
     >
       {/* Image */}
-      <div className="relative shrink w-32 h-32 min-w-[8rem] md:w-48 md:h-48 flex items-center justify-center overflow-hidden">
+      <div className="relative shrink w-32 h-32 min-w-[8rem] md:w-48 md:h-48 flex items-center justify-center overflow-visible">
         {product.imageUrl ? (
           <>
-            {/* Glow — a blurred copy of the image itself */}
+            {/* Glow — a smaller, heavily blurred copy so it doesn't clip at edges */}
             <img
               src={product.imageUrl}
               alt=""
               aria-hidden
-              className="absolute z-0 max-h-32 md:max-h-48 object-contain transition-opacity duration-500 opacity-70 group-hover:opacity-85"
+              className="absolute z-0 max-h-24 md:max-h-36 object-contain transition-opacity duration-500 opacity-75 group-hover:opacity-90"
               style={{
-                filter: `blur(22px) brightness(1.6) saturate(1.8)`,
+                filter: `blur(16px) brightness(1.8) saturate(1.8)`,
               }}
             />
             {/* Actual product image */}
