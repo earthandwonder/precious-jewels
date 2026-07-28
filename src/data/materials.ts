@@ -254,27 +254,6 @@ export const materials: Material[] = [
       ],
     },
   },
-  {
-    id: "benitoite",
-    name: "Benitoite",
-    category: "mineral",
-    act: 2,
-    logVolume: 20.4,
-    density: 3650,
-    color: "#60A5FA",
-    glowColor: "#93C5FD",
-    tagline: "Barium-rich fluids altering serpentinite under exact pressure and temperature",
-    description:
-      "On Earth, gem-quality benitoite comes from one county in California. The mine closed in 2006. But the geology that made it — serpentinite, barium, heat — isn't unique to Earth. Across trillions of worlds, similar accidents add up.",
-    derivation: {
-      steps: [
-        "BaTiSi₃O₉ — not beryllium-limited but equally rare. One gem source on Earth (hundreds of kg total production).",
-      ],
-      sources: [
-        "ResearchGate — '100-year history of the Benitoite Gem mine'",
-      ],
-    },
-  },
   // ═══════════════════════════════════════════
   // ACT III — Biological / Earth-only
   // ═══════════════════════════════════════════
@@ -320,69 +299,6 @@ export const materials: Material[] = [
       ],
       sources: [
         "Ammonoid range: ~400 Ma to 66 Ma (K-Pg extinction)",
-      ],
-    },
-  },
-  {
-    id: "shell",
-    name: "Shell & Nacre",
-    category: "biological",
-    act: 3,
-    logVolume: 10.6,
-    density: 2800,
-    color: "#FFF5EE",
-    glowColor: "#FFEFD5",
-    tagline: "Aragonite bricks, mortared by a living animal, thinner than a wavelength of light",
-    description:
-      "Nacre is aragonite crystals laid down in microscopic brick-and-mortar layers by living mollusks. No geological process produces it. Only life does.",
-    derivation: {
-      steps: [
-        "Fermi estimate — no published total. Marine molluscs produce vast CaCO₃; fossil shell beds are enormous.",
-      ],
-      sources: [
-        "Nacre structure well-characterised in materials science literature",
-      ],
-    },
-  },
-  {
-    id: "petrified-wood",
-    name: "Petrified Wood",
-    category: "biological",
-    act: 3,
-    logVolume: 8.6,
-    density: 2600,
-    color: "#D4845A",
-    glowColor: "#E8A878",
-    tagline: "Trees turned to stone, cell by cell",
-    description:
-      "Silica-rich groundwater slowly replaces every cell of a buried tree with quartz, preserving the grain, the rings, even the bark.",
-    derivation: {
-      steps: [
-        "Fermi estimate. Deposits worldwide. ~3 OoM below living wood — only a tiny fraction gets silicified.",
-      ],
-      sources: [
-        "Quartz replacement process well-documented in geology",
-      ],
-    },
-  },
-  {
-    id: "jet",
-    name: "Jet",
-    category: "biological",
-    act: 3,
-    logVolume: 5.9,
-    density: 1300,
-    color: "#A0A0A0",
-    glowColor: "#C0C0C0",
-    tagline: "Fossilised driftwood from the Jurassic",
-    description:
-      "Jet is ancient conifer wood, compressed under ocean sediments for 180 million years until it became a hard, lustrous black stone. Queen Victoria made it famous as mourning jewellery. It is fossilised biology — doubly rare.",
-    derivation: {
-      steps: [
-        "Fermi estimate. Major deposits: Whitby (UK, ~182 Ma), Asturias (Spain). No published global total.",
-      ],
-      sources: [
-        "Whitby jet: Toarcian age, well-dated at ~181-182 Ma",
       ],
     },
   },

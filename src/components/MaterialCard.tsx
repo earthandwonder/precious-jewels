@@ -26,14 +26,9 @@ function getParticleStyle(material: Material): ParticleStyle {
   switch (material.id) {
     // Logs / elongated pieces
     case "wood":
-    case "petrified-wood":
       return { particleShape: "log", colorJitter: 0.25, sizeRange: [0.3, 0.8], countMultiplier: 2 };
-    case "jet":
-      return { particleShape: "log", colorJitter: 0.25, sizeRange: [0.6, 1.8] };
 
     // Flat shards / shell fragments
-    case "shell":
-      return { particleShape: "shard", colorJitter: 0.2, sizeRange: [0.15, 0.4], countMultiplier: 4 };
     case "ammolite":
       return { particleShape: "shard", colorJitter: 0.2, sizeRange: [0.3, 0.8], countMultiplier: 2 };
 
@@ -47,7 +42,6 @@ function getParticleStyle(material: Material): ParticleStyle {
     case "emerald":
     case "red-beryl":
     case "alexandrite":
-    case "benitoite":
     case "taaffeite":
     case "corundum":
     case "jadeite":
@@ -86,7 +80,6 @@ function getMaterialFeel(material: Material): MaterialFeel {
       "opal",
       "emerald",
       "alexandrite",
-      "benitoite",
       "taaffeite",
       "red-beryl",
     ].includes(material.id)
