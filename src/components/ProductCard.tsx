@@ -85,7 +85,7 @@ export default function ProductCard({
         className="z-20 inline-flex items-center gap-1.5 px-3 py-1.5 text-xs md:text-sm tracking-wider uppercase transition-all duration-300 group-hover:opacity-100 whitespace-nowrap"
         style={{
           color: materialColor,
-          opacity: 0.85,
+          opacity: 1,
           background: "none",
         }}
       >

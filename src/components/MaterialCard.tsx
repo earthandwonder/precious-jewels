@@ -182,7 +182,7 @@ export default function MaterialCard({
   // Accent = material.color (title + counter value)
   // Tint = warm or cool neutral (tagline, description, share — varied by opacity)
   const isWarm = material.act === 3;
-  const tintBase = isWarm ? "235, 225, 210" : "215, 225, 240";
+  const tintBase = isWarm ? "245, 238, 225" : "230, 238, 248";
 
   const hasProducts = !!inlineProducts[material.id];
 
@@ -243,7 +243,7 @@ export default function MaterialCard({
         {/* Zone 3: Description + product + share — separated from identity */}
         <p
           className={`snap-animate snap-animate-delay-5 text-sm md:text-base leading-[1.7] md:leading-[1.8] mt-4 md:mt-6 max-w-md mx-auto ${active ? "is-active" : ""}`}
-          style={{ color: `rgba(${tintBase}, 0.9)` }}
+          style={{ color: `rgba(${tintBase}, 1)` }}
         >
           {material.description}
         </p>
@@ -264,7 +264,7 @@ export default function MaterialCard({
       <button
         type="button"
         className={`snap-animate snap-animate-delay-7 mt-5 md:mt-8 flex items-center gap-1.5 text-xs md:text-sm tracking-wider uppercase transition-opacity cursor-pointer ${active ? "is-active" : ""}`}
-        style={{ color: `rgba(${tintBase}, 0.6)`, background: "none", border: "none", padding: "4px 8px" }}
+        style={{ color: `rgba(${tintBase}, 0.75)`, background: "none", border: "none", padding: "4px 8px" }}
         onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.8")}
         onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
         onClick={() => {
