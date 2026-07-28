@@ -271,7 +271,7 @@ export default function ParticlePile({
       const pileWidth = width * (0.3 + abundance * 0.5) * pileScale;
       const pileHeight = h * (0.35 + abundance * 0.3) * pileScale;
       const centerX = width / 2;
-      const groundY = h * 0.88;
+      const groundY = h * 0.96;
 
       for (let i = 0; i < particleCount; i++) {
         // Place particles uniformly inside a triangular pile shape.
@@ -330,7 +330,7 @@ export default function ParticlePile({
       const h = canvas.height / dpr;
       const cx = blastX ?? w / 2;
       const cy = blastY ?? h * 0.7;
-      const groundY = h * 0.88;
+      const groundY = h * 0.96;
 
       const blastRadius = 30;
 
@@ -441,7 +441,7 @@ export default function ParticlePile({
 
       ctx.clearRect(0, 0, rect.width, rect.height);
 
-      const groundY = rect.height * 0.88;
+      const groundY = rect.height * 0.96;
 
       applyPointerRepulsion();
 
