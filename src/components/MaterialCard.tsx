@@ -101,7 +101,7 @@ const REF_DISPLAY_SIZES: Record<string, number> = {
  * clamped to 0.3x for readability).
  */
 function getPileHeight(material: Material, isMobile: boolean): number {
-  const mobileCap = 400;
+  const mobileCap = 220;
 
   const realH = conePileHeight(material.logVolume);
   const refType = getRefType(material.logVolume, material.act);
@@ -177,7 +177,8 @@ export default function MaterialCard({
     <div className="material-card relative w-full max-w-[100vw] h-full flex flex-col items-center justify-center px-4 md:px-6 py-6 md:py-0 overflow-hidden">
       {/* Zone 1: Visual — pile + reference */}
       <div
-        className={`snap-animate snap-animate-delay-1 flex items-end justify-center gap-2 md:gap-3 mb-6 md:mb-10 overflow-visible ${active ? "is-active" : ""}`}
+        className={`snap-animate snap-animate-delay-1 flex items-end justify-center gap-2 md:gap-3 mb-4 md:mb-10 shrink min-h-0 overflow-visible ${active ? "is-active" : ""}`}
+        style={{ maxHeight: isMobile ? '40vh' : undefined }}
       >
         <div className="flex-shrink-0">
           <ScaleReference
@@ -221,7 +222,7 @@ export default function MaterialCard({
         </div>
 
         <p
-          className={`snap-animate snap-animate-delay-4 font-editorial text-lg md:text-xl italic mt-2 md:mt-3 leading-relaxed ${active ? "is-active" : ""}`}
+          className={`snap-animate snap-animate-delay-4 font-editorial text-base md:text-xl italic mt-1 md:mt-3 leading-relaxed ${active ? "is-active" : ""}`}
           style={{ color: `rgba(${tintBase}, 1)` }}
         >
           {material.tagline}
@@ -229,14 +230,14 @@ export default function MaterialCard({
 
         {/* Zone 3: Description + product + share — separated from identity */}
         <p
-          className={`snap-animate snap-animate-delay-5 text-base md:text-lg leading-[1.7] md:leading-[1.8] mt-4 md:mt-6 max-w-md mx-auto ${active ? "is-active" : ""}`}
+          className={`snap-animate snap-animate-delay-5 text-sm md:text-lg leading-[1.6] md:leading-[1.8] mt-2 md:mt-6 max-w-md mx-auto ${active ? "is-active" : ""}`}
           style={{ color: `rgba(${tintBase}, 1)` }}
         >
           {material.description}
         </p>
 
         {hasProducts && (
-          <div className={`snap-animate snap-animate-delay-6 mt-6 md:mt-8 hover:opacity-100 transition-opacity ${active ? "is-active" : ""}`}>
+          <div className={`snap-animate snap-animate-delay-6 mt-3 md:mt-8 hover:opacity-100 transition-opacity ${active ? "is-active" : ""}`}>
             <AffiliateRow
               products={inlineProducts[material.id]}
               glowColor={material.glowColor}
@@ -250,7 +251,7 @@ export default function MaterialCard({
       {/* Share button */}
       <button
         type="button"
-        className={`snap-animate snap-animate-delay-7 mt-5 md:mt-8 flex items-center gap-1.5 text-xs md:text-sm tracking-wider uppercase transition-opacity cursor-pointer ${active ? "is-active" : ""}`}
+        className={`snap-animate snap-animate-delay-7 mt-3 md:mt-8 flex items-center gap-1.5 text-xs md:text-sm tracking-wider uppercase transition-opacity cursor-pointer ${active ? "is-active" : ""}`}
         style={{ color: `rgba(${tintBase}, 0.75)`, background: "none", border: "none", padding: "4px 8px" }}
         onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.8")}
         onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
