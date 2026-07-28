@@ -19,7 +19,7 @@ export function IdentityPanel({
 }) {
   const [email, setEmail] = useState("");
   const [subState, setSubState] = useState<
-    "idle" | "input" | "loading" | "done" | "error"
+    "idle" | "loading" | "done" | "error"
   >("idle");
 
   const close = useCallback(() => onClose(), [onClose]);
@@ -89,37 +89,11 @@ export function IdentityPanel({
             "identity-slideInLeft 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards",
         }}
       >
-        {/* Top bar */}
-        <div className="flex items-center justify-between px-6 pt-5 pb-3 shrink-0">
-          <a
-            href="https://benmccarthy.com.au"
-            className="flex items-center gap-1.5 text-[0.72rem] tracking-[0.04em] transition-colors"
-            style={{ color: "rgba(232, 230, 227, 0.5)" }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.color = "rgba(253, 235, 208, 0.85)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.color = "rgba(232, 230, 227, 0.5)";
-            }}
-          >
-            <svg
-              width="12"
-              height="12"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M19 12H5" />
-              <path d="M12 19l-7-7 7-7" />
-            </svg>
-            benmccarthy.com.au
-          </a>
+        {/* Top bar — close button only */}
+        <div className="flex items-center justify-end px-6 pt-5 pb-3 shrink-0">
           <button
             onClick={close}
-            className="text-[rgba(232,230,227,0.4)] hover:text-[rgba(232,230,227,0.8)] transition-colors cursor-pointer p-1"
+            className="text-[rgba(232,230,227,0.5)] hover:text-[rgba(232,230,227,0.9)] transition-colors cursor-pointer p-1"
             aria-label="Close"
           >
             <svg
@@ -141,9 +115,9 @@ export function IdentityPanel({
           <div>
             <div className="flex items-center gap-4 mb-4">
               <div
-                className="w-14 h-14 rounded-full overflow-hidden border border-white/12 shrink-0"
+                className="w-14 h-14 rounded-full overflow-hidden border border-white/15 shrink-0"
                 style={{
-                  boxShadow: "0 0 24px rgba(253, 235, 208, 0.04)",
+                  boxShadow: "0 0 24px rgba(253, 235, 208, 0.06)",
                 }}
               >
                 <Image
@@ -158,7 +132,7 @@ export function IdentityPanel({
                 <h2
                   className="text-lg"
                   style={{
-                    color: "rgba(232, 230, 227, 0.95)",
+                    color: "rgba(255, 255, 255, 0.95)",
                     fontFamily:
                       "var(--font-display), var(--font-editorial), serif",
                   }}
@@ -167,11 +141,11 @@ export function IdentityPanel({
                 </h2>
                 <p
                   className="text-[0.75rem] leading-snug mt-0.5"
-                  style={{ color: "rgba(232, 230, 227, 0.6)" }}
+                  style={{ color: "rgba(232, 230, 227, 0.75)" }}
                 >
-                  I write about how strange and vast
+                  I make interactive essays about
                   <br />
-                  the universe really is.
+                  the wonder of the universe.
                 </p>
               </div>
             </div>
@@ -181,14 +155,14 @@ export function IdentityPanel({
               className="h-px my-5"
               style={{
                 background:
-                  "linear-gradient(90deg, rgba(253, 235, 208, 0.15), transparent)",
+                  "linear-gradient(90deg, rgba(253, 235, 208, 0.2), transparent)",
               }}
             />
 
             {/* Project links */}
             <p
               className="text-[0.65rem] tracking-[0.18em] uppercase mb-3"
-              style={{ color: "rgba(232, 230, 227, 0.4)" }}
+              style={{ color: "rgba(232, 230, 227, 0.55)" }}
             >
               More pieces
             </p>
@@ -209,7 +183,7 @@ export function IdentityPanel({
                     onMouseEnter={(e) => {
                       if (!isCurrent)
                         e.currentTarget.style.background =
-                          "rgba(255,255,255,0.04)";
+                          "rgba(255,255,255,0.05)";
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.background = "transparent";
@@ -226,8 +200,8 @@ export function IdentityPanel({
                         className="text-[0.82rem] leading-tight"
                         style={{
                           color: isCurrent
-                            ? "rgba(253, 235, 208, 0.5)"
-                            : "rgba(253, 235, 208, 0.9)",
+                            ? "rgba(255, 255, 255, 0.45)"
+                            : "rgba(255, 255, 255, 0.92)",
                         }}
                       >
                         {p.title}
@@ -237,7 +211,7 @@ export function IdentityPanel({
                         style={{
                           color: isCurrent
                             ? "rgba(232, 230, 227, 0.35)"
-                            : "rgba(232, 230, 227, 0.55)",
+                            : "rgba(232, 230, 227, 0.65)",
                         }}
                       >
                         {isCurrent ? "You are here" : p.desc}
@@ -253,8 +227,8 @@ export function IdentityPanel({
                         strokeWidth="1.5"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className="shrink-0 opacity-0 group-hover/row:opacity-50 transition-opacity"
-                        style={{ color: "rgba(253, 235, 208, 0.7)" }}
+                        className="shrink-0 opacity-0 group-hover/row:opacity-60 transition-opacity"
+                        style={{ color: "rgba(255, 255, 255, 0.7)" }}
                       >
                         <path d="M5 12h14" />
                         <path d="M12 5l7 7-7 7" />
@@ -264,6 +238,21 @@ export function IdentityPanel({
                 );
               })}
             </div>
+
+            {/* View all link */}
+            <a
+              href="https://benmccarthy.com.au"
+              className="inline-block mt-3 ml-10 text-[0.72rem] tracking-[0.02em] transition-colors"
+              style={{ color: "rgba(232, 230, 227, 0.5)" }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = "rgba(255, 255, 255, 0.9)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = "rgba(232, 230, 227, 0.5)";
+              }}
+            >
+              View all &rarr;
+            </a>
           </div>
 
           {/* Bottom: subscribe */}
@@ -272,115 +261,78 @@ export function IdentityPanel({
               className="h-px mb-5"
               style={{
                 background:
-                  "linear-gradient(90deg, rgba(253, 235, 208, 0.1), transparent)",
+                  "linear-gradient(90deg, rgba(253, 235, 208, 0.15), transparent)",
               }}
             />
 
             {subState === "done" ? (
               <p
                 className="text-[0.82rem]"
-                style={{ color: "rgba(253, 235, 208, 0.85)" }}
+                style={{ color: "rgba(255, 255, 255, 0.9)" }}
               >
                 You&rsquo;re on the list.
               </p>
-            ) : subState === "idle" ? (
-              <button
-                onClick={() => setSubState("input")}
-                className="flex items-center gap-2 px-4 py-2.5 text-[0.8rem] tracking-wide cursor-pointer transition-all duration-300"
-                style={{
-                  border: "1px solid rgba(253, 235, 208, 0.25)",
-                  color: "rgba(253, 235, 208, 0.8)",
-                  background: "rgba(253, 235, 208, 0.04)",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor =
-                    "rgba(253, 235, 208, 0.4)";
-                  e.currentTarget.style.color = "rgba(253, 235, 208, 1)";
-                  e.currentTarget.style.background =
-                    "rgba(253, 235, 208, 0.08)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor =
-                    "rgba(253, 235, 208, 0.25)";
-                  e.currentTarget.style.color = "rgba(253, 235, 208, 0.8)";
-                  e.currentTarget.style.background =
-                    "rgba(253, 235, 208, 0.04)";
-                }}
-              >
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <rect x="2" y="4" width="20" height="16" rx="2" />
-                  <path d="M22 4L12 13 2 4" />
-                </svg>
-                Subscribe
-              </button>
             ) : (
-              <form
-                onSubmit={handleSubscribe}
-                className="flex gap-2"
-                style={{
-                  animation:
-                    "identity-fadeExpand 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards",
-                }}
-              >
-                <input
-                  type="email"
-                  required
-                  autoFocus
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="you@example.com"
-                  className="flex-1 min-w-0 px-3 py-2.5 text-[0.8rem] outline-none transition-colors"
-                  style={{
-                    background: "rgba(255, 255, 255, 0.05)",
-                    border: "1px solid rgba(255, 255, 255, 0.12)",
-                    color: "rgba(232, 230, 227, 0.95)",
-                  }}
-                  onFocus={(e) => {
-                    e.currentTarget.style.borderColor =
-                      "rgba(253, 235, 208, 0.35)";
-                  }}
-                  onBlur={(e) => {
-                    e.currentTarget.style.borderColor =
-                      "rgba(255, 255, 255, 0.12)";
-                  }}
-                />
-                <button
-                  type="submit"
-                  disabled={subState === "loading"}
-                  className="px-4 py-2.5 text-[0.8rem] tracking-wide cursor-pointer disabled:opacity-50 transition-colors shrink-0"
-                  style={{
-                    background: "rgba(253, 235, 208, 0.12)",
-                    border: "1px solid rgba(253, 235, 208, 0.25)",
-                    color: "rgba(253, 235, 208, 0.95)",
-                  }}
-                  onMouseEnter={(e) => {
-                    if (subState !== "loading") {
-                      e.currentTarget.style.background =
-                        "rgba(253, 235, 208, 0.18)";
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background =
-                      "rgba(253, 235, 208, 0.12)";
-                  }}
+              <>
+                <p
+                  className="text-[0.78rem] leading-relaxed mb-3"
+                  style={{ color: "rgba(232, 230, 227, 0.7)" }}
                 >
-                  {subState === "loading" ? "..." : "Go"}
-                </button>
-              </form>
-            )}
-            {subState === "error" && (
-              <p className="text-xs mt-2" style={{ color: "#e57373" }}>
-                Something went wrong. Try again.
-              </p>
+                  The world is full of wonder and mystery.
+                  <br />
+                  Get the next piece by email.
+                </p>
+                <form onSubmit={handleSubscribe} className="flex gap-2">
+                  <input
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="you@example.com"
+                    className="flex-1 min-w-0 px-3 py-2.5 text-[0.8rem] outline-none transition-colors"
+                    style={{
+                      background: "rgba(255, 255, 255, 0.06)",
+                      border: "1px solid rgba(255, 255, 255, 0.15)",
+                      color: "rgba(255, 255, 255, 0.95)",
+                    }}
+                    onFocus={(e) => {
+                      e.currentTarget.style.borderColor =
+                        "rgba(253, 235, 208, 0.4)";
+                    }}
+                    onBlur={(e) => {
+                      e.currentTarget.style.borderColor =
+                        "rgba(255, 255, 255, 0.15)";
+                    }}
+                  />
+                  <button
+                    type="submit"
+                    disabled={subState === "loading"}
+                    className="px-4 py-2.5 text-[0.8rem] tracking-wide cursor-pointer disabled:opacity-50 transition-colors shrink-0"
+                    style={{
+                      background: "rgba(253, 235, 208, 0.14)",
+                      border: "1px solid rgba(253, 235, 208, 0.3)",
+                      color: "rgba(253, 235, 208, 0.95)",
+                    }}
+                    onMouseEnter={(e) => {
+                      if (subState !== "loading") {
+                        e.currentTarget.style.background =
+                          "rgba(253, 235, 208, 0.22)";
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background =
+                        "rgba(253, 235, 208, 0.14)";
+                    }}
+                  >
+                    {subState === "loading" ? "..." : "Go"}
+                  </button>
+                </form>
+                {subState === "error" && (
+                  <p className="text-xs mt-2" style={{ color: "#e57373" }}>
+                    Something went wrong. Try again.
+                  </p>
+                )}
+              </>
             )}
           </div>
         </div>
