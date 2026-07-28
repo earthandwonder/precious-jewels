@@ -304,10 +304,10 @@ body {
   font-variant-numeric: oldstyle-nums;
 }
 
-/* ─── Author panel slide-in ─── */
-@keyframes slideIn {
+/* ─── Author panel slide-in (from left) ─── */
+@keyframes slideInLeft {
   from {
-    transform: translateX(100%);
+    transform: translateX(-100%);
     opacity: 0;
   }
   to {
