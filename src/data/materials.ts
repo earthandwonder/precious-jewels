@@ -352,8 +352,8 @@ export const materials: Material[] = [
     act: 3,
     logVolume: 3.6,
     density: 2800,
-    color: "#FF1493",
-    glowColor: "#FF69B4",
+    color: "#4CC88A",
+    glowColor: "#3DBFA0",
     tagline: "One extinct species, one river in Alberta, 70 million years underground",
     description:
       "The iridescent shell of one extinct ammonite species, found in a narrow belt along the St. Mary River. Gem-grade material may run out within decades.",
