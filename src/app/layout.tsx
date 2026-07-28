@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, JetBrains_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import SiteHeader from "@/components/SiteHeader";
+import PageviewTracker from "@/components/PageviewTracker";
 
 const jakartaSans = Plus_Jakarta_Sans({
   variable: "--font-jakarta-sans",
@@ -58,7 +60,11 @@ export default function RootLayout({
       lang="en"
       className={`${jakartaSans.variable} ${jetbrainsMono.variable} ${playfair.variable} antialiased`}
     >
-      <body>{children}</body>
+      <body>
+        <SiteHeader />
+        <PageviewTracker />
+        {children}
+      </body>
     </html>
   );
 }

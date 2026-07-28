@@ -154,14 +154,14 @@ body {
   opacity: 0.3;
 }
 
-/* ─── Scroll progress bar ─── */
-.scroll-progress {
+/* ─── Scroll progress bar (vertical, right edge) ─── */
+.scroll-progress-vertical {
   position: fixed;
   top: 0;
-  left: 0;
-  height: 2px;
+  right: 0;
+  width: 2px;
   z-index: 50;
-  transition: width 0.3s ease-out;
+  transition: height 0.3s ease-out;
   overflow: visible;
 }
 
@@ -302,4 +302,29 @@ body {
 .ranking-number {
   font-family: var(--font-serif), Georgia, serif;
   font-variant-numeric: oldstyle-nums;
+}
+
+/* ─── Author panel slide-in ─── */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeExpand {
+  from {
+    opacity: 0;
+    transform: scaleX(0.8);
+    transform-origin: left;
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+    transform-origin: left;
+  }
 }

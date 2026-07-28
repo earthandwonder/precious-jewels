@@ -48,7 +48,7 @@ export default function ProductCard({
             <img
               src={product.imageUrl}
               alt=""
-              className="relative z-10 max-h-32 md:max-h-48 object-contain transition-transform duration-300 group-hover:scale-105"
+              className="relative z-10 max-h-28 md:max-h-44 object-contain transition-transform duration-300 group-hover:scale-105"
               style={{
                 filter: `brightness(1.12) drop-shadow(0 0 8px rgba(${rgb},0.4))`,
               }}

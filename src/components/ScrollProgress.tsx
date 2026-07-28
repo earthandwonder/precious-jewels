@@ -3,10 +3,10 @@
 export default function ScrollProgress({ progress }: { progress: number }) {
   return (
     <div
-      className="scroll-progress"
+      className="scroll-progress-vertical"
       style={{
-        width: `${progress}%`,
-        background: `linear-gradient(90deg, rgba(185, 242, 255, 0.3), #B9F2FF)`,
+        height: `${progress}%`,
+        background: `linear-gradient(180deg, rgba(185, 242, 255, 0.3), #B9F2FF)`,
         boxShadow: `0 0 6px rgba(185, 242, 255, 0.5), 0 0 12px rgba(185, 242, 255, 0.2)`,
       }}
     >
@@ -14,8 +14,8 @@ export default function ScrollProgress({ progress }: { progress: number }) {
       <div
         style={{
           position: "absolute",
-          right: -4,
-          top: -3,
+          bottom: -4,
+          left: -3,
           width: 8,
           height: 8,
           background: "#E0F7FF",
