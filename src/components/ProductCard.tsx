@@ -31,7 +31,7 @@ export default function ProductCard({
       className="group relative flex items-center gap-3 md:gap-4 overflow-visible"
     >
       {/* Image */}
-      <div className="relative flex-shrink-0 w-24 h-24 md:w-32 md:h-32 flex items-center justify-center">
+      <div className="relative flex-shrink-0 w-40 h-40 md:w-48 md:h-48 flex items-center justify-center">
         {product.imageUrl ? (
           <>
             {/* Glow — a blurred copy of the image itself */}
@@ -39,18 +39,18 @@ export default function ProductCard({
               src={product.imageUrl}
               alt=""
               aria-hidden
-              className="absolute z-0 max-h-20 max-w-20 md:max-h-28 md:max-w-28 object-contain transition-opacity duration-500 opacity-30 group-hover:opacity-50"
+              className="absolute z-0 max-h-36 max-w-36 md:max-h-44 md:max-w-44 object-contain transition-opacity duration-500 opacity-45 group-hover:opacity-60"
               style={{
-                filter: `blur(10px) brightness(1.2) saturate(1.4)`,
+                filter: `blur(14px) brightness(1.3) saturate(1.5)`,
               }}
             />
             {/* Actual product image */}
             <img
               src={product.imageUrl}
               alt=""
-              className="relative z-10 max-h-20 max-w-20 md:max-h-28 md:max-w-28 object-contain transition-transform duration-300 group-hover:scale-105"
+              className="relative z-10 max-h-36 max-w-36 md:max-h-44 md:max-w-44 object-contain transition-transform duration-300 group-hover:scale-105"
               style={{
-                filter: `drop-shadow(0 0 4px rgba(${rgb},0.2))`,
+                filter: `brightness(1.12) drop-shadow(0 0 6px rgba(${rgb},0.3))`,
               }}
               loading="lazy"
             />

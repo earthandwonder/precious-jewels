@@ -420,7 +420,7 @@ export const materials: Material[] = [
     glowColor: "#FFF8DC",
     tagline: "A mollusk's slow answer to a grain of sand",
     description:
-      "One in ten thousand wild oysters produces a gem pearl. Every natural pearl that has ever existed would fit inside a single room. Of everything you could wear, this is the rarest thing in all of existence.",
+      "One in ten thousand wild oysters produces a gem pearl. Every natural pearl that has ever existed would fit inside a single room. Of everything you could wear, this is the rarest gemstone in all of existence.",
     scaleComparison:
       "Every natural pearl that has ever existed would fit inside a single room.",
     derivation: {
