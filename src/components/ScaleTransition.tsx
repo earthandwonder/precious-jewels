@@ -81,7 +81,7 @@ function ZoomTransition({
           {from.render(Math.round(fromScale))}
           {phase1 < 0.4 && (
             <span
-              className="mt-2 text-xs tracking-wider uppercase"
+              className="mt-2 text-xs font-medium tracking-wider uppercase"
               style={{ color: from.color, opacity: 0.95 }}
             >
               {from.label}
@@ -102,10 +102,10 @@ function ZoomTransition({
           </span>
           {contextText && (
             <p
-              className="font-editorial text-base md:text-lg italic mt-6 max-w-sm text-center leading-relaxed"
+              className="font-editorial text-lg md:text-xl italic mt-6 max-w-sm text-center leading-relaxed"
               style={{
-                opacity: Math.max(0, toOpacity - 0.3) * 0.95,
-                color: "rgba(210, 222, 238, 0.95)",
+                opacity: Math.max(0, toOpacity - 0.3),
+                color: "rgba(235, 240, 248, 1)",
               }}
             >
               {contextText}

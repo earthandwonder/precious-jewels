@@ -222,7 +222,7 @@ export default function MaterialCard({
           {material.name}
         </h3>
 
-        <div className={`snap-animate snap-animate-delay-3 ${active ? "is-active" : ""}`}>
+        <div className={`snap-animate snap-animate-delay-3 mt-3 md:mt-4 ${active ? "is-active" : ""}`}>
           <MassCounter logVolume={material.logVolume} density={material.density} color={material.color} act={material.act} derivation={material.derivation} scaleNote={getScaleNote(material)} />
         </div>
 
