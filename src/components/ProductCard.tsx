@@ -82,17 +82,17 @@ export default function ProductCard({
 
       {/* Button to the right */}
       <span
-        className="z-20 inline-flex items-center gap-1.5 px-3 py-1.5 text-xs md:text-sm tracking-wider uppercase transition-all duration-300 group-hover:brightness-125 backdrop-blur-sm whitespace-nowrap"
+        className="z-20 inline-flex items-center gap-1.5 px-3 py-1.5 text-xs md:text-sm tracking-wider uppercase transition-all duration-300 group-hover:opacity-100 whitespace-nowrap"
         style={{
-          border: `1.5px solid ${materialColor}90`,
           color: materialColor,
-          background: `rgba(3, 3, 8, 0.6)`,
+          opacity: 0.65,
+          background: "none",
         }}
       >
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        See on Etsy
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
           <path d="M7 17l9.2-9.2M17 17V7H7" />
         </svg>
-        See on Etsy
       </span>
     </a>
   );

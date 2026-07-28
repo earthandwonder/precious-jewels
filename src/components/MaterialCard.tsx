@@ -177,18 +177,20 @@ export default function MaterialCard({
   const canvasHeight = Math.max(minCanvasHeight, pileHeight);
   const pileScale = pileHeight / canvasHeight;
   const abundance = abundanceToNormalized(material.logVolume);
+
+  // Two-colour system: accent + tint
+  // Accent = material.color (title + counter value)
+  // Tint = warm or cool neutral (tagline, description, share — varied by opacity)
   const isWarm = material.act === 3;
-  const tint = isWarm
-    ? "rgba(255, 200, 150,"
-    : "rgba(150, 180, 220,";
+  const tintBase = isWarm ? "200, 190, 170" : "180, 195, 215";
 
   const hasProducts = !!inlineProducts[material.id];
 
   return (
     <div className="material-card relative w-full h-full flex flex-col items-center justify-center px-4 md:px-6 py-6 md:py-0 overflow-hidden">
-      {/* Visual: pile + reference */}
+      {/* Zone 1: Visual — pile + reference */}
       <div
-        className={`snap-animate snap-animate-delay-1 flex items-end justify-center gap-2 md:gap-3 mb-3 md:mb-6 overflow-visible ${active ? "is-active" : ""}`}
+        className={`snap-animate snap-animate-delay-1 flex items-end justify-center gap-2 md:gap-3 mb-6 md:mb-10 overflow-visible ${active ? "is-active" : ""}`}
       >
         <div className="flex-shrink-0">
           <ScaleReference
@@ -218,7 +220,7 @@ export default function MaterialCard({
         </div>
       </div>
 
-      {/* Text block */}
+      {/* Zone 2: Identity — title, counter, tagline */}
       <div className="text-center max-w-lg mx-auto">
         <h3
           className={`snap-animate snap-animate-delay-2 font-editorial text-2xl md:text-4xl lg:text-5xl font-medium tracking-tight leading-[1.1] ${active ? "is-active" : ""}`}
@@ -232,21 +234,22 @@ export default function MaterialCard({
         </div>
 
         <p
-          className={`snap-animate snap-animate-delay-4 font-editorial text-base md:text-xl italic mt-1 md:mt-2 mb-2 md:mb-3 leading-relaxed ${active ? "is-active" : ""}`}
-          style={{ color: `${tint} 1)` }}
+          className={`snap-animate snap-animate-delay-4 font-editorial text-base md:text-xl italic mt-2 md:mt-3 leading-relaxed ${active ? "is-active" : ""}`}
+          style={{ color: `rgba(${tintBase}, 0.85)` }}
         >
           {material.tagline}
         </p>
 
+        {/* Zone 3: Description + product + share — separated from identity */}
         <p
-          className={`snap-animate snap-animate-delay-5 text-sm md:text-base leading-[1.7] md:leading-[1.8] mt-1 md:mt-3 max-w-md mx-auto ${active ? "is-active" : ""}`}
-          style={{ color: `${tint} 0.95)` }}
+          className={`snap-animate snap-animate-delay-5 text-sm md:text-base leading-[1.7] md:leading-[1.8] mt-4 md:mt-6 max-w-md mx-auto ${active ? "is-active" : ""}`}
+          style={{ color: `rgba(${tintBase}, 0.7)` }}
         >
           {material.description}
         </p>
 
         {hasProducts && (
-          <div className={`snap-animate snap-animate-delay-6 mt-3 md:mt-4 opacity-85 hover:opacity-100 transition-opacity ${active ? "is-active" : ""}`}>
+          <div className={`snap-animate snap-animate-delay-6 mt-6 md:mt-8 opacity-85 hover:opacity-100 transition-opacity ${active ? "is-active" : ""}`}>
             <AffiliateRow
               products={inlineProducts[material.id]}
               glowColor={material.glowColor}
@@ -260,8 +263,8 @@ export default function MaterialCard({
       {/* Share button */}
       <button
         type="button"
-        className={`snap-animate snap-animate-delay-7 mt-4 md:mt-6 flex items-center gap-1.5 text-xs md:text-sm tracking-wider uppercase transition-opacity cursor-pointer ${active ? "is-active" : ""}`}
-        style={{ color: `${tint} 0.75)`, background: "none", border: "none", padding: "4px 8px" }}
+        className={`snap-animate snap-animate-delay-7 mt-5 md:mt-8 flex items-center gap-1.5 text-xs md:text-sm tracking-wider uppercase transition-opacity cursor-pointer ${active ? "is-active" : ""}`}
+        style={{ color: `rgba(${tintBase}, 0.4)`, background: "none", border: "none", padding: "4px 8px" }}
         onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.8")}
         onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
         onClick={() => {

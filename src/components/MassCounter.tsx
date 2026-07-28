@@ -12,13 +12,24 @@ interface MassCounterProps {
   scaleNote?: string;
 }
 
-function superscript(n: number): string {
+/** Render 10^n as JSX with a proper <sup> tag instead of Unicode superscripts. */
+function TenPow({ n }: { n: number }) {
+  return (
+    <span>
+      10<sup className="relative text-[0.65em]" style={{ verticalAlign: "super", lineHeight: 0 }}>{n}</sup>
+    </span>
+  );
+}
+
+/** Plain-text version for derivation panel (no JSX). */
+function tenPowText(n: number): string {
   const map: Record<string, string> = {
     "0": "\u2070", "1": "\u00B9", "2": "\u00B2", "3": "\u00B3",
     "4": "\u2074", "5": "\u2075", "6": "\u2076", "7": "\u2077",
     "8": "\u2078", "9": "\u2079",
   };
-  return String(n).split("").map(c => map[c] ?? c).join("");
+  const sup = String(n).split("").map(c => map[c] ?? c).join("");
+  return `10${sup}`;
 }
 
 /**
@@ -27,18 +38,17 @@ function superscript(n: number): string {
  * Part 2 (logMass 27-38): kg
  * Part 3 (logMass 5-16): tonnes
  */
-function formatMass(logMass: number, act: Act): { value: string; unit: string } {
+function formatMass(logMass: number, act: Act): { value: React.ReactNode; unit: string } {
   if (act === 1) {
-    // Earth mass ≈ 5.97 × 10^24 kg → logEarth ≈ 24.8
     const earthExp = Math.round(logMass - 24.8);
     if (earthExp <= 0) {
       return { value: "~1", unit: "Earth-mass" };
     }
-    return { value: `~10${superscript(earthExp)}`, unit: "Earth-masses" };
+    return { value: <span>~<TenPow n={earthExp} /></span>, unit: "Earth-masses" };
   }
 
   if (act === 2) {
-    return { value: `~10${superscript(Math.round(logMass))}`, unit: "kg" };
+    return { value: <span>~<TenPow n={Math.round(logMass)} /></span>, unit: "kg" };
   }
 
   // Act 3: tonnes (logMass is in kg, so subtract 3 for tonnes)
@@ -46,7 +56,7 @@ function formatMass(logMass: number, act: Act): { value: string; unit: string } 
   if (logTonnes >= 9) {
     const billionExp = Math.round(logTonnes - 9);
     if (billionExp === 0) return { value: "~1", unit: "billion tonnes" };
-    return { value: `~10${superscript(billionExp)}`, unit: "billion tonnes" };
+    return { value: <span>~<TenPow n={billionExp} /></span>, unit: "billion tonnes" };
   }
   if (logTonnes >= 6) {
     const millionExp = Math.round(logTonnes - 6);
@@ -79,27 +89,27 @@ export default function MassCounter({ logVolume, density, color, act, derivation
 
   const hasDerivation = derivation && derivation.steps.length > 0;
 
-  // Auto-generate bridge line connecting raw mass → displayed value
+  // Auto-generate bridge line connecting raw mass -> displayed value (plain text for panel)
   const bridgeLine = (() => {
     const roundedLog = Math.round(logMass);
     if (act === 1) {
       const earthExp = Math.round(logMass - 24.8);
-      return `Total estimated mass: ~10${superscript(roundedLog)} kg ÷ Earth mass (6 × 10${superscript(24)} kg) ≈ 10${superscript(earthExp)} Earth-masses`;
+      return `Total estimated mass: ~${tenPowText(roundedLog)} kg \u00F7 Earth mass (6 \u00D7 ${tenPowText(24)} kg) \u2248 ${tenPowText(earthExp)} Earth-masses`;
     }
     if (act === 2) {
-      return `Total estimated mass: ~10${superscript(roundedLog)} kg`;
+      return `Total estimated mass: ~${tenPowText(roundedLog)} kg`;
     }
-    // Act 3 — show tonnes
+    // Act 3
     const logTonnes = logMass - 3;
     if (logTonnes >= 6) {
-      return `Total estimated mass: ~10${superscript(roundedLog)} kg = ~10${superscript(Math.round(logTonnes))} tonnes`;
+      return `Total estimated mass: ~${tenPowText(roundedLog)} kg = ~${tenPowText(Math.round(logTonnes))} tonnes`;
     }
     const tonnes = Math.round(10 ** logTonnes);
-    return `Total estimated mass: ~10${superscript(roundedLog)} kg ≈ ${tonnes.toLocaleString()} tonnes`;
+    return `Total estimated mass: ~${tenPowText(roundedLog)} kg \u2248 ${tonnes.toLocaleString()} tonnes`;
   })();
 
   return (
-    <div className="my-1.5 md:my-3">
+    <div className="my-2 md:my-4">
       <button
         type="button"
         onClick={hasDerivation ? () => setExpanded(!expanded) : undefined}
@@ -116,7 +126,7 @@ export default function MassCounter({ logVolume, density, color, act, derivation
         >
           {value}
         </span>
-        <span className="text-sm" style={{ color: "rgba(200, 210, 220, 0.8)" }}>
+        <span className="text-sm" style={{ color: "rgba(200, 210, 220, 0.55)" }}>
           {unit}<span style={{ opacity: 0.7 }}>*</span>
         </span>
         {hasDerivation && (
