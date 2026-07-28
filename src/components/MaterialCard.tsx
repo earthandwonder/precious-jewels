@@ -182,7 +182,7 @@ export default function MaterialCard({
   // Accent = material.color (title + counter value)
   // Tint = warm or cool neutral (tagline, description, share — varied by opacity)
   const isWarm = material.act === 3;
-  const tintBase = isWarm ? "200, 190, 170" : "180, 195, 215";
+  const tintBase = isWarm ? "235, 225, 210" : "215, 225, 240";
 
   const hasProducts = !!inlineProducts[material.id];
 
@@ -235,7 +235,7 @@ export default function MaterialCard({
 
         <p
           className={`snap-animate snap-animate-delay-4 font-editorial text-base md:text-xl italic mt-2 md:mt-3 leading-relaxed ${active ? "is-active" : ""}`}
-          style={{ color: `rgba(${tintBase}, 0.85)` }}
+          style={{ color: `rgba(${tintBase}, 1)` }}
         >
           {material.tagline}
         </p>
@@ -243,13 +243,13 @@ export default function MaterialCard({
         {/* Zone 3: Description + product + share — separated from identity */}
         <p
           className={`snap-animate snap-animate-delay-5 text-sm md:text-base leading-[1.7] md:leading-[1.8] mt-4 md:mt-6 max-w-md mx-auto ${active ? "is-active" : ""}`}
-          style={{ color: `rgba(${tintBase}, 0.7)` }}
+          style={{ color: `rgba(${tintBase}, 0.9)` }}
         >
           {material.description}
         </p>
 
         {hasProducts && (
-          <div className={`snap-animate snap-animate-delay-6 mt-6 md:mt-8 opacity-85 hover:opacity-100 transition-opacity ${active ? "is-active" : ""}`}>
+          <div className={`snap-animate snap-animate-delay-6 mt-6 md:mt-8 hover:opacity-100 transition-opacity ${active ? "is-active" : ""}`}>
             <AffiliateRow
               products={inlineProducts[material.id]}
               glowColor={material.glowColor}
@@ -264,7 +264,7 @@ export default function MaterialCard({
       <button
         type="button"
         className={`snap-animate snap-animate-delay-7 mt-5 md:mt-8 flex items-center gap-1.5 text-xs md:text-sm tracking-wider uppercase transition-opacity cursor-pointer ${active ? "is-active" : ""}`}
-        style={{ color: `rgba(${tintBase}, 0.4)`, background: "none", border: "none", padding: "4px 8px" }}
+        style={{ color: `rgba(${tintBase}, 0.6)`, background: "none", border: "none", padding: "4px 8px" }}
         onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.8")}
         onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
         onClick={() => {

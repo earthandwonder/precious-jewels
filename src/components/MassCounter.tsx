@@ -121,20 +121,20 @@ export default function MassCounter({ logVolume, density, color, act, derivation
           className={`font-mono font-bold tracking-wider ${fontSize} ${isUncountable ? "count-pulse" : ""}`}
           style={{
             color,
-            opacity: isUncountable ? 0.9 : 0.75,
+            opacity: isUncountable ? 1 : 0.9,
           }}
         >
           {value}
         </span>
-        <span className="text-sm" style={{ color: "rgba(200, 210, 220, 0.55)" }}>
-          {unit}<span style={{ opacity: 0.7 }}>*</span>
+        <span className="text-sm" style={{ color: "rgba(220, 225, 235, 0.85)" }}>
+          {unit}<span style={{ opacity: 0.8 }}>*</span>
         </span>
         {hasDerivation && (
           <span
             className="text-xs ml-1 transition-transform duration-200"
             style={{
               color,
-              opacity: 0.45,
+              opacity: 0.6,
               transform: expanded ? "rotate(180deg)" : "rotate(0deg)",
               display: "inline-block",
             }}
@@ -148,16 +148,16 @@ export default function MassCounter({ logVolume, density, color, act, derivation
         <div
           className="mt-2 mx-auto max-w-sm text-left rounded px-3 py-2"
           style={{
-            background: "rgba(255,255,255,0.03)",
-            border: `1px solid rgba(255,255,255,0.06)`,
+            background: "rgba(255,255,255,0.06)",
+            border: `1px solid rgba(255,255,255,0.1)`,
           }}
         >
           {/* Asterisk note */}
           <p
             className="text-xs md:text-sm leading-[1.4] italic mb-2 pb-2"
             style={{
-              color: "rgba(200, 210, 220, 0.6)",
-              borderBottom: "1px solid rgba(255,255,255,0.06)",
+              color: "rgba(215, 220, 230, 0.8)",
+              borderBottom: "1px solid rgba(255,255,255,0.1)",
             }}
           >
             * Estimated total mass across the observable universe.
@@ -168,8 +168,8 @@ export default function MassCounter({ logVolume, density, color, act, derivation
             className="text-xs md:text-sm font-mono leading-[1.5] mb-2 pb-2"
             style={{
               color,
-              opacity: 0.75,
-              borderBottom: "1px solid rgba(255,255,255,0.06)",
+              opacity: 0.9,
+              borderBottom: "1px solid rgba(255,255,255,0.1)",
             }}
           >
             {bridgeLine}
@@ -177,7 +177,7 @@ export default function MassCounter({ logVolume, density, color, act, derivation
 
           <p
             className="text-xs uppercase tracking-[0.15em] mb-1.5"
-            style={{ color, opacity: 0.65 }}
+            style={{ color, opacity: 0.85 }}
           >
             How we got this number
           </p>
@@ -186,7 +186,7 @@ export default function MassCounter({ logVolume, density, color, act, derivation
               <li
                 key={i}
                 className="text-xs md:text-sm leading-[1.5]"
-                style={{ color: "rgba(200, 210, 220, 0.7)" }}
+                style={{ color: "rgba(215, 220, 230, 0.9)" }}
               >
                 {step}
               </li>
@@ -194,10 +194,10 @@ export default function MassCounter({ logVolume, density, color, act, derivation
           </ul>
           {derivation.sources.length > 0 && (
             <>
-              <hr className="my-2 border-0" style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }} />
+              <hr className="my-2 border-0" style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }} />
               <p
                 className="text-xs uppercase tracking-[0.15em] mb-1"
-                style={{ color, opacity: 0.6 }}
+                style={{ color, opacity: 0.8 }}
               >
                 Sources
               </p>
@@ -206,7 +206,7 @@ export default function MassCounter({ logVolume, density, color, act, derivation
                   <li
                     key={i}
                     className="text-xs md:text-sm leading-[1.4] italic"
-                    style={{ color: "rgba(200, 210, 220, 0.6)" }}
+                    style={{ color: "rgba(215, 220, 230, 0.75)" }}
                   >
                     {src}
                   </li>
@@ -216,10 +216,10 @@ export default function MassCounter({ logVolume, density, color, act, derivation
           )}
           {scaleNote && (
             <>
-              <hr className="my-2 border-0" style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }} />
+              <hr className="my-2 border-0" style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }} />
               <p
                 className="text-xs md:text-sm leading-[1.4] italic"
-                style={{ color: "rgba(200, 210, 220, 0.6)" }}
+                style={{ color: "rgba(215, 220, 230, 0.75)" }}
               >
                 {scaleNote}
               </p>

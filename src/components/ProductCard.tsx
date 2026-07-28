@@ -61,7 +61,7 @@ export default function ProductCard({
             height="40"
             viewBox="0 0 64 64"
             fill="none"
-            className="relative z-10 opacity-25"
+            className="relative z-10 opacity-40"
           >
             <path
               d="M32 4L56 24L32 60L8 24L32 4Z"
@@ -85,7 +85,7 @@ export default function ProductCard({
         className="z-20 inline-flex items-center gap-1.5 px-3 py-1.5 text-xs md:text-sm tracking-wider uppercase transition-all duration-300 group-hover:opacity-100 whitespace-nowrap"
         style={{
           color: materialColor,
-          opacity: 0.65,
+          opacity: 0.85,
           background: "none",
         }}
       >
