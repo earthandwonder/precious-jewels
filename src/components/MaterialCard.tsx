@@ -101,7 +101,7 @@ const REF_DISPLAY_SIZES: Record<string, number> = {
  * clamped to 0.3x for readability).
  */
 function getPileHeight(material: Material, isMobile: boolean): number {
-  const mobileCap = 220;
+  const mobileCap = 400;
 
   const realH = conePileHeight(material.logVolume);
   const refType = getRefType(material.logVolume, material.act);
@@ -175,10 +175,14 @@ export default function MaterialCard({
 
   return (
     <div className="material-card relative w-full max-w-[100vw] h-full flex flex-col items-center justify-center px-4 md:px-6 py-6 md:py-0 overflow-hidden">
-      {/* Zone 1: Visual — pile + reference */}
+      {/* Zone 1: Visual — pile + reference, scaled to fit on mobile */}
       <div
-        className={`snap-animate snap-animate-delay-1 flex items-end justify-center gap-2 md:gap-3 mb-4 md:mb-10 shrink min-h-0 overflow-visible ${active ? "is-active" : ""}`}
-        style={{ maxHeight: isMobile ? '40vh' : undefined }}
+        className={`snap-animate snap-animate-delay-1 flex items-end justify-center gap-2 md:gap-3 mb-4 md:mb-10 overflow-visible ${active ? "is-active" : ""}`}
+        style={isMobile && canvasHeight > 200 ? {
+          height: 200,
+          transform: `scale(${200 / canvasHeight})`,
+          transformOrigin: 'center bottom',
+        } : undefined}
       >
         <div className="flex-shrink-0">
           <ScaleReference
