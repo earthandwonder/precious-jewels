@@ -102,6 +102,9 @@ const REF_DISPLAY_SIZES: Record<string, number> = {
  */
 function getPileHeight(material: Material, isMobile: boolean): number {
   const mobileCap = 400;
+  // Cap desktop piles so the card (pile + text) fits the viewport.
+  // ~45% of viewport leaves room for title, description, and affiliate row.
+  const desktopCap = typeof window !== "undefined" ? Math.round(window.innerHeight * 0.45) : 400;
 
   const realH = conePileHeight(material.logVolume);
   const refType = getRefType(material.logVolume, material.act);
@@ -113,7 +116,7 @@ function getPileHeight(material: Material, isMobile: boolean): number {
   const clampedRatio = Math.max(minRatio, Math.min(9, realRatio));
   const refPx = REF_DISPLAY_SIZES[refType];
   const h = Math.round(refPx * clampedRatio);
-  return isMobile ? Math.min(h, mobileCap) : h;
+  return isMobile ? Math.min(h, mobileCap) : Math.min(h, desktopCap);
 }
 
 /** Returns a disclaimer string if the pile is visually enlarged beyond its true ratio. */

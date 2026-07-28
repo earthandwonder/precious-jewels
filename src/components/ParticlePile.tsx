@@ -248,6 +248,7 @@ export default function ParticlePile({
   });
   const timeRef = useRef(0);
   const disturbedRef = useRef(false);
+  const sizeRef = useRef<{ w: number; h: number }>({ w: 0, h: 0 });
 
   const physics = FEEL_PHYSICS[feel];
 
@@ -421,14 +422,18 @@ export default function ParticlePile({
     if (!ctx) return;
 
     const dpr = window.devicePixelRatio || 1;
-    const rect = canvas.getBoundingClientRect();
-    canvas.width = rect.width * dpr;
-    canvas.height = rect.height * dpr;
+    // Use clientWidth/Height (CSS layout size) instead of getBoundingClientRect()
+    // which returns dimensions affected by ancestor CSS transforms (e.g. mobile scale).
+    const cssW = canvas.clientWidth;
+    const cssH = canvas.clientHeight;
+    canvas.width = cssW * dpr;
+    canvas.height = cssH * dpr;
     ctx.scale(dpr, dpr);
 
-    if (!initializedRef.current) {
-      particlesRef.current = initParticles(rect.width, rect.height);
+    if (!initializedRef.current || sizeRef.current.w !== cssW || sizeRef.current.h !== cssH) {
+      particlesRef.current = initParticles(cssW, cssH);
       initializedRef.current = true;
+      sizeRef.current = { w: cssW, h: cssH };
     }
 
     const glowRgb = hexToRgb(glowColor);
@@ -439,9 +444,9 @@ export default function ParticlePile({
     const draw = () => {
       timeRef.current += 0.016;
 
-      ctx.clearRect(0, 0, rect.width, rect.height);
+      ctx.clearRect(0, 0, cssW, cssH);
 
-      const groundY = rect.height * 0.96;
+      const groundY = cssH * 0.96;
 
       applyPointerRepulsion();
 
@@ -524,9 +529,9 @@ export default function ParticlePile({
 
         // Fade if off-screen
         if (
-          p.y > rect.height + 20 ||
+          p.y > cssH + 20 ||
           p.x < -20 ||
-          p.x > rect.width + 20
+          p.x > cssW + 20
         ) {
           p.opacity = Math.max(0, p.opacity - 0.02);
         }
@@ -634,7 +639,13 @@ export default function ParticlePile({
 
     const getCanvasPos = (clientX: number, clientY: number) => {
       const rect = canvas.getBoundingClientRect();
-      return { x: clientX - rect.left, y: clientY - rect.top };
+      // Scale pointer coords to canvas CSS space (accounts for ancestor transforms)
+      const scaleX = canvas.clientWidth / rect.width;
+      const scaleY = canvas.clientHeight / rect.height;
+      return {
+        x: (clientX - rect.left) * scaleX,
+        y: (clientY - rect.top) * scaleY,
+      };
     };
 
     const onPointerDown = (e: PointerEvent) => {
@@ -690,7 +701,12 @@ export default function ParticlePile({
     if (!canvas) return;
 
     const rect = canvas.getBoundingClientRect();
-    scatter(e.clientX - rect.left, e.clientY - rect.top);
+    const scaleX = canvas.clientWidth / rect.width;
+    const scaleY = canvas.clientHeight / rect.height;
+    scatter(
+      (e.clientX - rect.left) * scaleX,
+      (e.clientY - rect.top) * scaleY,
+    );
     kickAnimation();
   };
 
