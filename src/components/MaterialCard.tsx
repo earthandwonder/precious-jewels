@@ -234,7 +234,7 @@ export default function MaterialCard({
         </div>
 
         <p
-          className={`snap-animate snap-animate-delay-4 font-editorial text-base md:text-xl italic mt-2 md:mt-3 leading-relaxed ${active ? "is-active" : ""}`}
+          className={`snap-animate snap-animate-delay-4 font-editorial text-lg md:text-xl italic mt-2 md:mt-3 leading-relaxed ${active ? "is-active" : ""}`}
           style={{ color: `rgba(${tintBase}, 1)` }}
         >
           {material.tagline}
@@ -242,7 +242,7 @@ export default function MaterialCard({
 
         {/* Zone 3: Description + product + share — separated from identity */}
         <p
-          className={`snap-animate snap-animate-delay-5 text-sm md:text-base leading-[1.7] md:leading-[1.8] mt-4 md:mt-6 max-w-md mx-auto ${active ? "is-active" : ""}`}
+          className={`snap-animate snap-animate-delay-5 text-base md:text-lg leading-[1.7] md:leading-[1.8] mt-4 md:mt-6 max-w-md mx-auto ${active ? "is-active" : ""}`}
           style={{ color: `rgba(${tintBase}, 1)` }}
         >
           {material.description}
