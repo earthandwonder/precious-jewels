@@ -304,8 +304,8 @@ body {
   font-variant-numeric: oldstyle-nums;
 }
 
-/* ─── Author panel slide-in (from left) ─── */
-@keyframes slideInLeft {
+/* ─── Identity widget panel animations ─── */
+@keyframes identity-slideInLeft {
   from {
     transform: translateX(-100%);
     opacity: 0;
@@ -316,7 +316,7 @@ body {
   }
 }
 
-@keyframes fadeExpand {
+@keyframes identity-fadeExpand {
   from {
     opacity: 0;
     transform: scaleX(0.8);

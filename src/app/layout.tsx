@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, JetBrains_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
-import SiteHeader from "@/components/SiteHeader";
+import { IdentityWidget } from "@/components/identity-widget";
 import PageviewTracker from "@/components/PageviewTracker";
 
 const jakartaSans = Plus_Jakarta_Sans({
@@ -61,7 +61,11 @@ export default function RootLayout({
       className={`${jakartaSans.variable} ${jetbrainsMono.variable} ${playfair.variable} antialiased`}
     >
       <body>
-        <SiteHeader />
+        <IdentityWidget
+          currentSlug="abundant-gems"
+          basePath={process.env.NEXT_PUBLIC_BASE_PATH || ""}
+          subscribeEndpoint="/api/subscribe"
+        />
         <PageviewTracker />
         {children}
       </body>
