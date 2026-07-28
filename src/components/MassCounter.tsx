@@ -116,8 +116,8 @@ export default function MassCounter({ logVolume, density, color, act, derivation
         >
           {value}
         </span>
-        <span className="text-sm text-muted">
-          {unit}<span style={{ opacity: 0.55 }}>*</span>
+        <span className="text-sm" style={{ color: "rgba(200, 210, 220, 0.8)" }}>
+          {unit}<span style={{ opacity: 0.7 }}>*</span>
         </span>
         {hasDerivation && (
           <span

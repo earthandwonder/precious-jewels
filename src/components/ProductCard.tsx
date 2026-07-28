@@ -82,10 +82,10 @@ export default function ProductCard({
 
       {/* Button to the right */}
       <span
-        className="z-20 inline-flex items-center px-2 py-0.5 text-[10px] md:text-xs tracking-wider uppercase transition-all duration-300 opacity-40 group-hover:opacity-80 backdrop-blur-sm whitespace-nowrap"
+        className="z-20 inline-flex items-center px-2 py-0.5 text-[10px] md:text-xs tracking-wider uppercase transition-all duration-300 opacity-70 group-hover:opacity-100 backdrop-blur-sm whitespace-nowrap"
         style={{
           border: `1px solid ${materialColor}40`,
-          color: `${materialColor}CC`,
+          color: materialColor,
           background: `rgba(3, 3, 8, 0.5)`,
         }}
       >

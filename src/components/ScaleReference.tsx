@@ -101,17 +101,17 @@ function renderHeliosphere(size: number) {
   return (
     <svg width={size} height={size} viewBox="0 0 40 40" fill="none">
       {/* Outer boundary — the heliopause */}
-      <circle cx="20" cy="20" r="18" stroke={c} strokeWidth="0.5" strokeOpacity="0.6" strokeDasharray="2 1.5" />
+      <circle cx="20" cy="20" r="18" stroke={c} strokeWidth="0.5" strokeOpacity="0.8" strokeDasharray="2 1.5" />
       {/* Inner shock wave */}
-      <circle cx="20" cy="20" r="12" stroke={c} strokeWidth="0.4" strokeOpacity="0.4" strokeDasharray="1.5 1" />
+      <circle cx="20" cy="20" r="12" stroke={c} strokeWidth="0.4" strokeOpacity="0.65" strokeDasharray="1.5 1" />
       {/* Solar wind region */}
-      <circle cx="20" cy="20" r="6" stroke={c} strokeWidth="0.3" strokeOpacity="0.3" />
+      <circle cx="20" cy="20" r="6" stroke={c} strokeWidth="0.3" strokeOpacity="0.5" />
       {/* Sun at centre */}
-      <circle cx="20" cy="20" r="1.5" fill="#e8a840" opacity="0.7" />
-      <circle cx="20" cy="20" r="0.6" fill="#ffd080" opacity="0.9" />
+      <circle cx="20" cy="20" r="1.5" fill="#e8a840" opacity="0.85" />
+      <circle cx="20" cy="20" r="0.6" fill="#ffd080" opacity="0.95" />
       {/* Voyager trajectory hint */}
-      <line x1="20" y1="20" x2="35" y2="10" stroke={c} strokeWidth="0.3" strokeOpacity="0.35" strokeDasharray="0.8 0.8" />
-      <circle cx="34" cy="11" r="0.6" fill={c} opacity="0.5" />
+      <line x1="20" y1="20" x2="35" y2="10" stroke={c} strokeWidth="0.3" strokeOpacity="0.6" strokeDasharray="0.8 0.8" />
+      <circle cx="34" cy="11" r="0.6" fill={c} opacity="0.75" />
     </svg>
   );
 }
@@ -121,20 +121,20 @@ function renderSolarSystem(size: number) {
   return (
     <svg width={size} height={size} viewBox="0 0 40 40" fill="none">
       {/* Orbits */}
-      <circle cx="20" cy="20" r="4" stroke={c} strokeWidth="0.25" strokeOpacity="0.3" />
-      <circle cx="20" cy="20" r="7" stroke={c} strokeWidth="0.25" strokeOpacity="0.3" />
-      <circle cx="20" cy="20" r="10" stroke={c} strokeWidth="0.25" strokeOpacity="0.3" />
-      <circle cx="20" cy="20" r="14" stroke={c} strokeWidth="0.3" strokeOpacity="0.35" />
-      <circle cx="20" cy="20" r="17.5" stroke={c} strokeWidth="0.3" strokeOpacity="0.4" />
+      <circle cx="20" cy="20" r="4" stroke={c} strokeWidth="0.25" strokeOpacity="0.55" />
+      <circle cx="20" cy="20" r="7" stroke={c} strokeWidth="0.25" strokeOpacity="0.55" />
+      <circle cx="20" cy="20" r="10" stroke={c} strokeWidth="0.25" strokeOpacity="0.55" />
+      <circle cx="20" cy="20" r="14" stroke={c} strokeWidth="0.3" strokeOpacity="0.6" />
+      <circle cx="20" cy="20" r="17.5" stroke={c} strokeWidth="0.3" strokeOpacity="0.65" />
       {/* Sun */}
-      <circle cx="20" cy="20" r="1.8" fill="#e8a840" opacity="0.65" />
-      <circle cx="20" cy="20" r="0.7" fill="#ffd080" opacity="0.85" />
+      <circle cx="20" cy="20" r="1.8" fill="#e8a840" opacity="0.85" />
+      <circle cx="20" cy="20" r="0.7" fill="#ffd080" opacity="0.9" />
       {/* Planets as dots */}
-      <circle cx="24" cy="20" r="0.4" fill={c} opacity="0.5" />
-      <circle cx="20" cy="13" r="0.5" fill={c} opacity="0.5" />
-      <circle cx="10" cy="18" r="0.6" fill="#c4a060" opacity="0.55" />
-      <circle cx="14" cy="6" r="1.0" fill="#c49848" opacity="0.5" />
-      <circle cx="37" cy="16" r="0.7" fill="#90a0b0" opacity="0.45" />
+      <circle cx="24" cy="20" r="0.4" fill={c} opacity="0.75" />
+      <circle cx="20" cy="13" r="0.5" fill={c} opacity="0.75" />
+      <circle cx="10" cy="18" r="0.6" fill="#c4a060" opacity="0.75" />
+      <circle cx="14" cy="6" r="1.0" fill="#c49848" opacity="0.7" />
+      <circle cx="37" cy="16" r="0.7" fill="#90a0b0" opacity="0.7" />
     </svg>
   );
 }

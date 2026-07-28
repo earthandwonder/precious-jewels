@@ -55,17 +55,17 @@ export default function EarthIntro({ isActive }: { isActive: boolean }) {
         style={{ opacity: Math.max(0.3, Math.min(1, progress / 0.3)) }}
       >
         {/* Outer boundary — the heliopause */}
-        <circle cx="20" cy="20" r="18" stroke={c} strokeWidth="0.5" strokeOpacity="0.55" strokeDasharray="2 1.5" />
+        <circle cx="20" cy="20" r="18" stroke={c} strokeWidth="0.5" strokeOpacity="0.8" strokeDasharray="2 1.5" />
         {/* Inner shock wave */}
-        <circle cx="20" cy="20" r="12" stroke={c} strokeWidth="0.4" strokeOpacity="0.35" strokeDasharray="1.5 1" />
+        <circle cx="20" cy="20" r="12" stroke={c} strokeWidth="0.4" strokeOpacity="0.6" strokeDasharray="1.5 1" />
         {/* Solar wind region */}
-        <circle cx="20" cy="20" r="6" stroke={c} strokeWidth="0.3" strokeOpacity="0.25" />
+        <circle cx="20" cy="20" r="6" stroke={c} strokeWidth="0.3" strokeOpacity="0.5" />
         {/* Sun at centre */}
-        <circle cx="20" cy="20" r="1.5" fill="#e8a840" opacity="0.6" />
-        <circle cx="20" cy="20" r="0.6" fill="#ffd080" opacity="0.8" />
+        <circle cx="20" cy="20" r="1.5" fill="#e8a840" opacity="0.8" />
+        <circle cx="20" cy="20" r="0.6" fill="#ffd080" opacity="0.9" />
         {/* Voyager trajectory hint */}
-        <line x1="20" y1="20" x2="35" y2="10" stroke={c} strokeWidth="0.3" strokeOpacity="0.35" strokeDasharray="0.8 0.8" />
-        <circle cx="34" cy="11" r="0.6" fill={c} opacity="0.5" />
+        <line x1="20" y1="20" x2="35" y2="10" stroke={c} strokeWidth="0.3" strokeOpacity="0.6" strokeDasharray="0.8 0.8" />
+        <circle cx="34" cy="11" r="0.6" fill={c} opacity="0.75" />
       </svg>
 
       {/* Label */}
@@ -84,10 +84,10 @@ export default function EarthIntro({ isActive }: { isActive: boolean }) {
         className="font-editorial text-xl md:text-2xl italic mt-6 max-w-md text-center leading-relaxed"
         style={{
           opacity: textOpacity,
-          color: "rgba(210, 222, 238, 0.85)",
+          color: "rgba(210, 222, 238, 0.95)",
         }}
       >
-        We can actually estimate this. This is the bubble of solar wind around our Sun — Voyager 1 just barely crossed its edge. How much of each gem could you fit inside it?
+        We can estimate this. This is the bubble of solar wind around our Sun — Voyager 1 just barely crossed its edge. How much of each gem could you fit inside it?
       </p>
     </div>
   );

@@ -82,7 +82,7 @@ function ZoomTransition({
           {phase1 < 0.4 && (
             <span
               className="mt-2 text-xs tracking-wider uppercase"
-              style={{ color: from.color, opacity: 0.8 }}
+              style={{ color: from.color, opacity: 0.95 }}
             >
               {from.label}
             </span>
@@ -96,7 +96,7 @@ function ZoomTransition({
           {to.render(toSize)}
           <span
             className="mt-2 text-xs tracking-wider uppercase"
-            style={{ color: to.color, opacity: 0.8 * toOpacity }}
+            style={{ color: to.color, opacity: 0.95 * toOpacity }}
           >
             {to.label}
           </span>
@@ -104,8 +104,8 @@ function ZoomTransition({
             <p
               className="font-editorial text-base md:text-lg italic mt-6 max-w-sm text-center leading-relaxed"
               style={{
-                opacity: Math.max(0, toOpacity - 0.3) * 0.85,
-                color: "rgba(210, 222, 238, 0.85)",
+                opacity: Math.max(0, toOpacity - 0.3) * 0.95,
+                color: "rgba(210, 222, 238, 0.95)",
               }}
             >
               {contextText}
