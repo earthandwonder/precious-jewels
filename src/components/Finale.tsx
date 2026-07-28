@@ -57,19 +57,32 @@ export default function Finale({ isActive }: { isActive: boolean }) {
           The rarest wearable material in the known universe
         </p>
 
-        {/* Pearl glow circle */}
+        {/* Pearl image with glow backdrop */}
         <div className="flex justify-center mb-12">
           <div
-            className="finale-pearl-glow rounded-full"
+            className="relative"
             style={{
-              width: 120,
-              height: 120,
+              width: 140,
+              height: 140,
               opacity: glowOpacity,
               transform: `scale(${glowScale})`,
-              background:
-                "radial-gradient(circle at 40% 35%, rgba(255, 252, 245, 0.25), rgba(253, 235, 208, 0.12) 50%, rgba(253, 235, 208, 0.03) 80%, transparent)",
             }}
-          />
+          >
+            <div
+              className="absolute inset-0 rounded-full"
+              style={{
+                background:
+                  "radial-gradient(circle, rgba(253, 235, 208, 0.25) 0%, rgba(253, 235, 208, 0.08) 50%, transparent 70%)",
+                transform: "scale(1.5)",
+              }}
+            />
+            <img
+              src="/p/abundant-gems/pearl.png"
+              alt="A natural pearl"
+              className="relative w-full h-full object-contain drop-shadow-[0_0_30px_rgba(253,235,208,0.3)]"
+              draggable={false}
+            />
+          </div>
         </div>
 
         <p
