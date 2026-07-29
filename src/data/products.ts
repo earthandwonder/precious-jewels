@@ -19,10 +19,10 @@ export const inlineProducts: Record<string, Product[]> = {
   ],
   moldavite: [
     {
-      name: "Raw Moldavite Pendant — 925 Sterling Silver",
-      price: "$37",
-      url: "https://www.etsy.com/au/listing/4395103239/raw-moldavite-pendant-925-sterling",
-      imageUrl: "/p/abundant-gems/samples/moldavite.png",
+      name: "AAA Raw Moldavite — Museum Piece",
+      price: "$89",
+      url: "https://www.etsy.com/au/listing/1547899512/aaa-raw-moldavite-museum-piece",
+      imageUrl: "/p/abundant-gems/samples/moldavite2.png",
     },
   ],
   alexandrite: [
@@ -43,18 +43,18 @@ export const inlineProducts: Record<string, Product[]> = {
   ],
   "amber-inclusion": [
     {
-      name: "Baltic Amber Pendant with Insect Inclusions — Sterling Silver",
-      price: "$60",
-      url: "https://www.etsy.com/au/listing/4464038627/baltic-amber-with-insect-inclusions-925",
-      imageUrl: "/p/abundant-gems/samples/amber-inclusion1.png",
+      name: "Baltic Amber with Insect Inclusion — Natural Fossil Specimen",
+      price: "$45",
+      url: "https://www.etsy.com/au/listing/4366141942/rare-caddisfly-inclusion-amber-cabochon",
+      imageUrl: "/p/abundant-gems/samples/amber-inclusion3.png",
     },
   ],
   pearl: [
     {
-      name: "Freshwater Pearl Pendant — Sterling Silver Chain",
-      price: "$57",
-      url: "https://www.etsy.com/au/listing/1280195347/18-925-sterling-silver-necklace-with-a",
-      imageUrl: "/p/abundant-gems/samples/pearl1.png",
+      name: "14.8mm White Round Edison Pearl — Loose Freshwater",
+      price: "$584",
+      url: "https://www.etsy.com/au/listing/1816210836/148mm-white-round-edison-pearl-loose",
+      imageUrl: "/p/abundant-gems/samples/pearl-edison-macro.png",
     },
   ],
 };
