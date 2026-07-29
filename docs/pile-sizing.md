@@ -64,11 +64,9 @@ const mobileCap = 400;
 
 ### "Pile is clipped on the sides"
 
-The cone base width is `pileHeight × 3`. Make sure these are all `overflow-visible`:
-- `.material-card` (the outer card)
-- `.snap-animate` zone (the visual row)
+**Desktop**: The cone base width is `pileHeight × 3`. The flex-1 pile container has `maxWidth: pileHeight * 3` and `overflow-visible` on parents lets it spread. On wide screens this just works.
 
-The visual zone needs `w-full` so the flex-1 pile container can grow to its `maxWidth`.
+**Mobile**: `overflow-visible` on parent divs does NOT help canvas elements — canvas always clips to its own pixel buffer. Instead, `ParticlePile.tsx` caps `pileW` to the canvas width: `Math.min(pileH * 3, width)`. This makes the pile steeper on narrow screens but ensures no particles are clipped. The same particle count fills a narrower cone, so piles look denser on mobile.
 
 ### "Reference object is the wrong size"
 
