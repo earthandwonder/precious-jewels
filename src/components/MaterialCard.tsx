@@ -80,7 +80,7 @@ function getPileShrink(id: string, mobile: boolean): number {
         return 1;
     }
   }
-  // Desktop: moderate reduction
+  // Desktop: stronger reduction
   switch (id) {
     case "corundum": // ruby & sapphire
     case "diamond":
@@ -89,7 +89,7 @@ function getPileShrink(id: string, mobile: boolean): number {
     case "alexandrite":
     case "ammolite":
     case "amber-inclusion":
-      return 0.7;
+      return 0.5;
     default:
       return 1;
   }
