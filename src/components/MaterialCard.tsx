@@ -202,7 +202,7 @@ export default function MaterialCard({
         <div
           className="flex-1"
           style={{
-            maxWidth: Math.max(240, Math.min(960, canvasHeight * 2)),
+            maxWidth: Math.max(240, pileHeight * 3),
           }}
         >
           <ParticlePile
