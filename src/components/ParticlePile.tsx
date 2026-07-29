@@ -269,9 +269,9 @@ export default function ParticlePile({
     (width: number, h: number) => {
       const particles: Particle[] = [];
       // Physics-consistent cone: angle of repose ~33° → base diameter ≈ 3× height.
-      // pileScale encodes the ratio of pile height to canvas height.
+      // Clamped to canvas width so large piles don't spill off-screen.
       const pileH = h * pileScale;
-      const pileW = pileH * 3; // cone base diameter from angle of repose
+      const pileW = Math.min(pileH * 3, width * 0.85);
       const centerX = width / 2;
       const groundY = h * 0.96;
 
