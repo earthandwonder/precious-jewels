@@ -15,6 +15,7 @@ interface ScaleReferenceProps {
   logVolume: number;
   act: Act;
   pileHeight: number;
+  sizeFactor?: number;
 }
 
 export type RefType = "heliosphere" | "solar-system" | "sun" | "earth" | "everest" | "statue" | "human";
@@ -258,10 +259,10 @@ function renderHuman(size: number) {
 
 // ─── Component ────────────────────────────────────────────────
 
-export default function ScaleReference({ logVolume, act, pileHeight }: ScaleReferenceProps) {
+export default function ScaleReference({ logVolume, act, pileHeight, sizeFactor = 1 }: ScaleReferenceProps) {
   const refType = getRefType(logVolume, act);
   const ref = REFERENCES[refType];
-  const size = getRefSize(logVolume, act);
+  const size = getRefSize(logVolume, act) * sizeFactor;
 
   return (
     <div className="flex flex-col items-center justify-end gap-1" style={{ minWidth: size * 0.4 }}>

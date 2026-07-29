@@ -58,6 +58,29 @@ function getParticleStyle(material: Material): ParticleStyle {
   }
 }
 
+/**
+ * Mobile shrink factor: scales both pile AND reference object proportionally
+ * so their ratio stays locked. 1 = no change, 0.5 = half size.
+ */
+function getMobileShrink(id: string): number {
+  switch (id) {
+    // Way too big on mobile — halve them
+    case "corundum": // ruby & sapphire
+    case "emerald":
+    case "taaffeite":
+    case "alexandrite":
+    case "ammolite":
+    case "amber-inclusion":
+      return 0.5;
+    // Too big but not as extreme — intermediate reduction
+    case "diamond":
+    case "quartz":
+      return 0.7;
+    default:
+      return 1;
+  }
+}
+
 function getMaterialFeel(material: Material): MaterialFeel {
   if (material.density >= 3800) return "heavy";
   if (material.category === "biological") return "organic";
@@ -141,7 +164,7 @@ function useIsMobile() {
 function useDesktopCap() {
   const [cap, setCap] = useState(400);
   useEffect(() => {
-    const update = () => setCap(Math.round(window.innerHeight * 0.45));
+    const update = () => setCap(Math.round(window.innerHeight * 0.35));
     update();
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
@@ -168,8 +191,10 @@ export default function MaterialCard({
 
   const active = hasAnimated;
 
-  const pileHeight = getPileHeight(material, isMobile, desktopCap);
-  const minCanvasHeight = 160;
+  const mobileShrink = isMobile ? getMobileShrink(material.id) : 1;
+  const rawPileHeight = getPileHeight(material, isMobile, desktopCap);
+  const pileHeight = Math.round(rawPileHeight * mobileShrink);
+  const minCanvasHeight = Math.round(160 * mobileShrink);
   const canvasHeight = Math.max(minCanvasHeight, pileHeight);
   const pileScale = pileHeight / canvasHeight;
 
@@ -197,6 +222,7 @@ export default function MaterialCard({
             logVolume={material.logVolume}
             act={material.act}
             pileHeight={pileHeight}
+            sizeFactor={mobileShrink}
           />
         </div>
 
