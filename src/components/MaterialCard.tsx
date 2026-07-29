@@ -167,7 +167,7 @@ function useIsMobile() {
 function useDesktopCap() {
   const [cap, setCap] = useState(400);
   useEffect(() => {
-    const update = () => setCap(Math.round(window.innerHeight * 0.28));
+    const update = () => setCap(Math.round(window.innerHeight * 0.22));
     update();
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
@@ -213,7 +213,7 @@ export default function MaterialCard({
     <div className="material-card relative w-full max-w-[100vw] h-full flex flex-col items-center justify-center gap-6 md:gap-10 px-4 md:px-6 pt-10 pb-4 md:py-0 overflow-visible">
       {/* Zone 1: Visual — pile + reference, scaled to fit on mobile */}
       <div
-        className={`snap-animate snap-animate-delay-1 flex items-end justify-center gap-2 md:gap-3 overflow-visible ${active ? "is-active" : ""}`}
+        className={`snap-animate snap-animate-delay-1 w-full flex items-end justify-center gap-2 md:gap-3 overflow-visible ${active ? "is-active" : ""}`}
         style={isMobile && canvasHeight > 200 ? {
           height: 200,
           transform: `scale(${200 / canvasHeight})`,
