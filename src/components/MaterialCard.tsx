@@ -9,13 +9,6 @@ import MassCounter from "./MassCounter";
 import ScaleReference, { getRefType, REFERENCES } from "./ScaleReference";
 import AffiliateRow from "./AffiliateRow";
 
-/** Map logVolume to a 0.08-1.0 normalized abundance for particle count/width.
- *  Power curve (^0.7) spreads the mid-range so rare materials look visibly smaller. */
-function abundanceToNormalized(logVolume: number): number {
-  const raw = (logVolume - 1.5) / 42;
-  const curved = Math.pow(Math.max(0, Math.min(1, raw)), 0.7);
-  return Math.max(0.08, curved);
-}
 
 interface ParticleStyle {
   particleShape: ParticleShape;
@@ -178,7 +171,6 @@ export default function MaterialCard({
   const minCanvasHeight = 160;
   const canvasHeight = Math.max(minCanvasHeight, pileHeight);
   const pileScale = pileHeight / canvasHeight;
-  const abundance = abundanceToNormalized(material.logVolume);
 
   // Two-colour system: accent + tint
   // Accent = material.color (title + counter value)
@@ -210,13 +202,12 @@ export default function MaterialCard({
         <div
           className="flex-1"
           style={{
-            maxWidth: Math.max(240, Math.min(720 + abundance * 240, canvasHeight * 2)),
+            maxWidth: Math.max(240, Math.min(960, canvasHeight * 3)),
           }}
         >
           <ParticlePile
             color={material.color}
             glowColor={material.glowColor}
-            abundance={abundance}
             height={canvasHeight}
             isVisible={active}
             feel={getMaterialFeel(material)}

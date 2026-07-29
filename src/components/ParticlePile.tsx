@@ -44,8 +44,6 @@ export type ParticleShape = "circle" | "chunk" | "shard" | "log";
 interface ParticlePileProps {
   color: string;
   glowColor: string;
-  /** 0-1: how abundant (1 = huge pile, 0 = a few specks) */
-  abundance: number;
   /** Canvas height in px */
   height: number;
   isVisible: boolean;
@@ -223,7 +221,6 @@ function drawHighlight(
 export default function ParticlePile({
   color,
   glowColor,
-  abundance,
   height,
   isVisible,
   feel = "sparkly",
@@ -255,22 +252,26 @@ export default function ParticlePile({
   const weightFactor = Math.max(0.5, Math.min(1.5, density / 3000));
 
   const mobile = typeof window !== "undefined" && isMobile();
-  const areaFactor = Math.min(2, Math.max(1, height / 100));
-  const baseMobile = mobile ? 0.5 : 1;
-  // Bump cap for large canvases (height > 400px gets up to 800)
-  const largeCap = height > 400 ? 800 : 600;
-  const particleCount = Math.min(
-    mobile ? Math.floor(300 * countMultiplier) : Math.floor(largeCap * countMultiplier),
-    Math.max(20, Math.floor((60 + abundance * 540) * areaFactor * baseMobile * countMultiplier))
-  );
+  // Target a consistent particle density within the pile.
+  // Pile visible area ∝ pileScale² × canvas area. We want the pile
+  // to look equally dense regardless of how much canvas it occupies,
+  // so we scale count by pileScale² × height² (proxy for canvas area).
+  const pileAreaPx = pileScale * pileScale * height * height;
+  const densityFactor = mobile ? 0.003 : 0.005;
+  const particleCount = Math.max(30, Math.min(
+    mobile ? 400 : 800,
+    Math.floor(pileAreaPx * densityFactor * countMultiplier)
+  ));
 
   const rgb = hexToRgb(color);
 
   const initParticles = useCallback(
     (width: number, h: number) => {
       const particles: Particle[] = [];
-      const pileWidth = width * (0.3 + abundance * 0.5) * pileScale;
-      const pileHeight = h * (0.35 + abundance * 0.3) * pileScale;
+      // Physics-consistent cone: angle of repose ~33° → base diameter ≈ 3× height.
+      // pileScale encodes the ratio of pile height to canvas height.
+      const pileH = h * pileScale;
+      const pileW = pileH * 3; // cone base diameter from angle of repose
       const centerX = width / 2;
       const groundY = h * 0.96;
 
@@ -280,13 +281,13 @@ export default function ParticlePile({
         // allow x-spread proportional to how close to the ground we are.
         const hFrac = Math.random();          // 0..1, height within pile
         const widthAtH = 1 - hFrac;           // triangle: wider at bottom
-        const xSpread = (Math.random() - 0.5) * pileWidth * widthAtH;
+        const xSpread = (Math.random() - 0.5) * pileW * widthAtH;
         const x = centerX + xSpread;
-        const y = groundY - hFrac * pileHeight;
+        const y = groundY - hFrac * pileH;
 
-        // Size variance
+        // Size variance — particle radius scales with pile size
         const sizeMult = sizeRange[0] + Math.random() * (sizeRange[1] - sizeRange[0]);
-        const rawRadius = (3.0 + Math.random() * 2.0 + abundance * 5.0) * pileScale;
+        const rawRadius = (3.0 + Math.random() * 2.0) * Math.max(0.5, pileScale);
         const baseRadius = Math.max(2, rawRadius);
 
         // Colour jitter: shift lightness uniformly + tiny per-channel noise
@@ -318,7 +319,7 @@ export default function ParticlePile({
       }
       return particles;
     },
-    [particleCount, abundance, rgb.r, rgb.g, rgb.b, colorJitter, sizeRange, particleShape, pileScale]
+    [particleCount, rgb.r, rgb.g, rgb.b, colorJitter, sizeRange, particleShape, pileScale]
   );
 
   const scatter = useCallback(
@@ -630,7 +631,7 @@ export default function ParticlePile({
     return () => {
       if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
     };
-  }, [isVisible, color, glowColor, abundance, initParticles, physics, weightFactor, applyPointerRepulsion, particleShape]);
+  }, [isVisible, color, glowColor, initParticles, physics, weightFactor, applyPointerRepulsion, particleShape]);
 
   // Pointer event handlers
   useEffect(() => {
@@ -711,7 +712,7 @@ export default function ParticlePile({
   };
 
   const glowRgb = hexToRgb(glowColor);
-  const glowOpacity = 0.06 + abundance * 0.12;
+  const glowOpacity = 0.06 + pileScale * 0.12;
 
   return (
     <div className="relative overflow-visible" style={{ height }}>
