@@ -14,7 +14,7 @@ export const inlineProducts: Record<string, Product[]> = {
       name: "Black Fire Opal Pendant — Gold Vermeil",
       price: "$60",
       url: "https://www.etsy.com/au/listing/4445734533/large-black-opal-pendant-gold-vermeil",
-      imageUrl: "/p/abundant-gems/samples/opal2.png",
+      imageUrl: "/p/abundant-gems/samples/opal3.png",
     },
   ],
   moldavite: [
