@@ -61,6 +61,7 @@ function getParticleStyle(material: Material): ParticleStyle {
 /**
  * Mobile shrink factor: scales both pile AND reference object proportionally
  * so their ratio stays locked. 1 = no change, 0.5 = half size.
+ * Desktop uses only the viewport cap — no per-material shrink.
  */
 function getMobileShrink(id: string): number {
   switch (id) {
