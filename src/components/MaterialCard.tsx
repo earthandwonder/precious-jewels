@@ -80,19 +80,8 @@ function getPileShrink(id: string, mobile: boolean): number {
         return 1;
     }
   }
-  // Desktop: stronger reduction
-  switch (id) {
-    case "corundum": // ruby & sapphire
-    case "diamond":
-    case "quartz":
-    case "emerald":
-    case "alexandrite":
-    case "ammolite":
-    case "amber-inclusion":
-      return 0.5;
-    default:
-      return 1;
-  }
+  // Desktop: no per-material shrink, rely on viewport cap + overflow-visible
+  return 1;
 }
 
 function getMaterialFeel(material: Material): MaterialFeel {
@@ -221,7 +210,7 @@ export default function MaterialCard({
   const hasProducts = !!inlineProducts[material.id];
 
   return (
-    <div className="material-card relative w-full max-w-[100vw] h-full flex flex-col items-center justify-center gap-6 md:gap-10 px-4 md:px-6 pt-10 pb-4 md:py-0 overflow-hidden">
+    <div className="material-card relative w-full max-w-[100vw] h-full flex flex-col items-center justify-center gap-6 md:gap-10 px-4 md:px-6 pt-10 pb-4 md:py-0 overflow-visible">
       {/* Zone 1: Visual — pile + reference, scaled to fit on mobile */}
       <div
         className={`snap-animate snap-animate-delay-1 flex items-end justify-center gap-2 md:gap-3 overflow-visible ${active ? "is-active" : ""}`}
