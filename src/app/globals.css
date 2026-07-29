@@ -304,8 +304,9 @@ body {
   font-variant-numeric: oldstyle-nums;
 }
 
-/* ─── Capture bar top edge ─── */
-bm-capture {
-  border-top: 1px solid rgba(255, 236, 210, 0.18);
-  box-shadow: 0 -4px 20px rgba(255, 236, 210, 0.06);
+/* ─── Capture bar border ─── */
+.bm-bar {
+  border: 1px solid rgba(255, 236, 210, 0.35) !important;
+  border-bottom: none !important;
+  box-shadow: 0 -4px 20px rgba(255, 236, 210, 0.1) !important;
 }
