@@ -100,11 +100,8 @@ const REF_DISPLAY_SIZES: Record<string, number> = {
  * Clamped to 0.25x-9x to stay readable. Opal is special-cased (true ratio 0.065x,
  * clamped to 0.3x for readability).
  */
-function getPileHeight(material: Material, isMobile: boolean): number {
+function getPileHeight(material: Material, isMobile: boolean, desktopCap: number): number {
   const mobileCap = 400;
-  // Cap desktop piles so the card (pile + text) fits the viewport.
-  // ~45% of viewport leaves room for title, description, and affiliate row.
-  const desktopCap = typeof window !== "undefined" ? Math.round(window.innerHeight * 0.45) : 400;
 
   const realH = conePileHeight(material.logVolume);
   const refType = getRefType(material.logVolume, material.act);
@@ -144,6 +141,20 @@ function useIsMobile() {
   return mobile;
 }
 
+// Cap desktop piles so the card (pile + text) fits the viewport.
+// ~45% of viewport leaves room for title, description, and affiliate row.
+// Starts at 400 (matches server render) then updates after hydration.
+function useDesktopCap() {
+  const [cap, setCap] = useState(400);
+  useEffect(() => {
+    const update = () => setCap(Math.round(window.innerHeight * 0.45));
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+  return cap;
+}
+
 export default function MaterialCard({
   material,
   isActive,
@@ -153,6 +164,7 @@ export default function MaterialCard({
 }) {
   const [hasAnimated, setHasAnimated] = useState(false);
   const isMobile = useIsMobile();
+  const desktopCap = useDesktopCap();
 
   useEffect(() => {
     if (isActive && !hasAnimated) {
@@ -162,7 +174,7 @@ export default function MaterialCard({
 
   const active = hasAnimated;
 
-  const pileHeight = getPileHeight(material, isMobile);
+  const pileHeight = getPileHeight(material, isMobile, desktopCap);
   const minCanvasHeight = 160;
   const canvasHeight = Math.max(minCanvasHeight, pileHeight);
   const pileScale = pileHeight / canvasHeight;
