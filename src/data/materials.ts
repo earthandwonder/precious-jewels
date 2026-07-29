@@ -362,9 +362,9 @@ export const materials: Material[] = [
     density: 2800,
     color: "#4CC88A",
     glowColor: "#3DBFA0",
-    tagline: "One extinct species, one river in Alberta, 70 million years underground",
+    tagline: "One extinct species, one river, 70 million years",
     description:
-      "The iridescent shell of one extinct ammonite species, found in a narrow belt along the St. Mary River. Gem-grade material may run out within decades.",
+      "The iridescent shell of one extinct ammonite, found along a narrow belt of Alberta's St. Mary River. Gem-grade material may run out within decades.",
     derivation: {
       steps: [
         "Fermi estimate. Bearpaw Formation, Alberta — sole significant source. No published total tonnage.",
@@ -387,7 +387,7 @@ export const materials: Material[] = [
     glowColor: "#E6A800",
     tagline: "A whole creature, frozen in tree resin for 40 million years",
     description:
-      "Only about one in a thousand pieces of amber contains an insect. Of those, only 10% are well-enough preserved to identify. Each one is a time capsule: a creature that landed on a sticky wound on a tree and never left.",
+      "One in a thousand pieces of amber contains an insect. Of those, only 10% are preserved well enough to identify. Each one is a creature that landed on a sticky wound on a tree and never left.",
     derivation: {
       steps: [
         "Total amber ≈ 10⁶ tonnes. ~1 in 1,000 pieces contains an insect → ~1,000 tonnes.",
@@ -409,7 +409,7 @@ export const materials: Material[] = [
     glowColor: "#A3E635",
     tagline: "Earth's crust, turned to glass by a cosmic impact",
     description:
-      "14.8 million years ago, an asteroid slammed into what is now Bavaria with enough force to vaporise the ground. The molten glass rained across central Europe and solidified mid-flight. About 275 tonnes survive today. Erosion has destroyed 99% of what was created. No more will ever form — unless another asteroid hits.",
+      "An asteroid vaporised Bavarian ground 14.8 million years ago. The molten glass solidified mid-flight over central Europe. 275 tonnes survive. No more will ever form.",
     derivation: {
       steps: [
         "~275 tonnes survive (Trnka & Houzar 2002). Ries impact dated to 14.808 ± 0.038 Ma.",
@@ -431,7 +431,7 @@ export const materials: Material[] = [
     glowColor: "#FFF8DC",
     tagline: "A mollusk's slow answer to a grain of sand",
     description:
-      "One in ten thousand wild oysters produces a gem pearl. Every natural pearl that has ever existed would fit inside a single room. Of everything you could wear, this is the rarest gemstone in all of existence.",
+      "One in ten thousand wild oysters produces a gem pearl. Every natural pearl ever formed would fit inside a single room. Of everything you could wear, this is the rarest in existence.",
     scaleComparison:
       "Every natural pearl that has ever existed would fit inside a single room.",
     derivation: {
