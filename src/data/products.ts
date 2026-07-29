@@ -11,9 +11,9 @@ import type { Product } from "@/components/ProductCard";
 export const inlineProducts: Record<string, Product[]> = {
   opal: [
     {
-      name: "Black Fire Opal Pendant — Gold Vermeil",
-      price: "$60",
-      url: "https://www.etsy.com/au/listing/4445734533/large-black-opal-pendant-gold-vermeil",
+      name: "Lightning Ridge Black Opal — 9.89ct Natural Solid",
+      price: "$2,860",
+      url: "https://www.etsy.com/au/listing/1275994599/169-x-13mm-989ct-australian-black-opal",
       imageUrl: "/p/abundant-gems/samples/opal3.png",
     },
   ],

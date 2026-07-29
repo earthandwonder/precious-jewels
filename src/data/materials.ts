@@ -147,8 +147,8 @@ export const materials: Material[] = [
     act: 1,
     logVolume: 35.7,
     density: 2100,
-    color: "#FF6F61",
-    glowColor: "#FFA07A",
+    color: "#00B4D8",
+    glowColor: "#48CAE4",
     tagline: "Silica dissolved in water, settled into a lattice that splits light into fire",
     description:
       "It requires a world with liquid water — a far rarer condition than most people realise. Opal has been detected on Mars.",
