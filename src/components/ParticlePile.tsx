@@ -279,7 +279,7 @@ export default function ParticlePile({
         // Place particles uniformly inside a triangular pile shape.
         // Pick a random height fraction (0 = ground, 1 = apex), then
         // allow x-spread proportional to how close to the ground we are.
-        const hFrac = Math.random();          // 0..1, height within pile
+        const hFrac = 1 - Math.sqrt(Math.random()); // area-uniform: more near base
         const widthAtH = 1 - hFrac;           // triangle: wider at bottom
         const xSpread = (Math.random() - 0.5) * pileW * widthAtH;
         const x = centerX + xSpread;
