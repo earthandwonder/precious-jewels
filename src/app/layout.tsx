@@ -70,7 +70,7 @@ export default function RootLayout({
           reveal-at="30%"
           expand-at="60%"
           theme="dark"
-          genesis="I found a paper ranking mineral rarity across the entire galaxy and couldn't stop thinking about it. Which gemstones are common on every rocky world? Which ones are vanishingly rare? This piece is my attempt to let you stand where I stood when it hit me."
+          genesis="I saw a post on Reddit: 'Throughout the entire galaxy, wood is probably more rare than diamonds.' I wanted to see what that would actually look like."
         />
         <script src="https://benmccarthy.com.au/shared/capture.js" defer />
       </body>
