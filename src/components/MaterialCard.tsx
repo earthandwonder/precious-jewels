@@ -59,23 +59,37 @@ function getParticleStyle(material: Material): ParticleStyle {
 }
 
 /**
- * Mobile shrink factor: scales both pile AND reference object proportionally
- * so their ratio stays locked. 1 = no change, 0.5 = half size.
- * Desktop uses only the viewport cap — no per-material shrink.
+ * Per-material shrink factor: scales both pile AND reference object
+ * proportionally so their ratio stays locked. 1 = no change.
  */
-function getMobileShrink(id: string): number {
+function getPileShrink(id: string, mobile: boolean): number {
+  if (mobile) {
+    switch (id) {
+      case "corundum": // ruby & sapphire
+      case "emerald":
+      case "taaffeite":
+      case "alexandrite":
+      case "ammolite":
+      case "amber-inclusion":
+      case "moldavite":
+        return 0.35;
+      case "diamond":
+      case "quartz":
+        return 0.85;
+      default:
+        return 1;
+    }
+  }
+  // Desktop: moderate reduction
   switch (id) {
     case "corundum": // ruby & sapphire
+    case "diamond":
+    case "quartz":
     case "emerald":
-    case "taaffeite":
     case "alexandrite":
     case "ammolite":
     case "amber-inclusion":
-    case "moldavite":
-      return 0.35;
-    case "diamond":
-    case "quartz":
-      return 0.85;
+      return 0.7;
     default:
       return 1;
   }
@@ -191,10 +205,10 @@ export default function MaterialCard({
 
   const active = hasAnimated;
 
-  const mobileShrink = isMobile ? getMobileShrink(material.id) : 1;
+  const pileShrink = getPileShrink(material.id, isMobile);
   const rawPileHeight = getPileHeight(material, isMobile, desktopCap);
-  const pileHeight = Math.round(rawPileHeight * mobileShrink);
-  const minCanvasHeight = Math.round(160 * mobileShrink);
+  const pileHeight = Math.round(rawPileHeight * pileShrink);
+  const minCanvasHeight = Math.round(160 * pileShrink);
   const canvasHeight = Math.max(minCanvasHeight, pileHeight);
   const pileScale = pileHeight / canvasHeight;
 
@@ -222,7 +236,7 @@ export default function MaterialCard({
             logVolume={material.logVolume}
             act={material.act}
             pileHeight={pileHeight}
-            sizeFactor={mobileShrink}
+            sizeFactor={pileShrink}
           />
         </div>
 
