@@ -164,7 +164,7 @@ function useIsMobile() {
 function useDesktopCap() {
   const [cap, setCap] = useState(400);
   useEffect(() => {
-    const update = () => setCap(Math.round(window.innerHeight * 0.35));
+    const update = () => setCap(Math.round(window.innerHeight * 0.28));
     update();
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
