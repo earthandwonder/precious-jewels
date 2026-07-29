@@ -287,9 +287,7 @@ export default function ParticlePile({
 
         // Size variance — particle radius scales with pile size
         const sizeMult = sizeRange[0] + Math.random() * (sizeRange[1] - sizeRange[0]);
-        // Subtle inverse scale: smaller piles get marginally larger particles
-        const scaleFactor = 0.9 + 0.1 / Math.max(0.3, pileScale);
-        const rawRadius = (3.5 + Math.random() * 2.5) * scaleFactor;
+        const rawRadius = 3.5 + Math.random() * 2.5;
         const baseRadius = Math.max(2.5, rawRadius);
 
         // Colour jitter: shift lightness uniformly + tiny per-channel noise
