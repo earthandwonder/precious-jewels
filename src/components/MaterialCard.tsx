@@ -246,10 +246,12 @@ export default function MaterialCard({
         >
           {material.tagline}
         </p>
+      </div>
 
-        {/* Zone 3: Description + product — separated from identity */}
+      {/* Zone 3: Description + product — separated from identity */}
+      <div className="text-center max-w-lg mx-auto">
         <p
-          className={`snap-animate snap-animate-delay-5 text-sm md:text-lg leading-[1.6] md:leading-[1.8] mt-2 md:mt-6 max-w-md mx-auto ${active ? "is-active" : ""}`}
+          className={`snap-animate snap-animate-delay-5 text-sm md:text-lg leading-[1.6] md:leading-[1.8] max-w-md mx-auto ${active ? "is-active" : ""}`}
           style={{ color: `rgba(${tintBase}, 1)` }}
         >
           {material.description}
@@ -264,7 +266,6 @@ export default function MaterialCard({
             />
           </div>
         )}
-
       </div>
 
     </div>
