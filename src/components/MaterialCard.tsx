@@ -22,28 +22,29 @@ function getParticleStyle(material: Material): ParticleStyle {
     case "corundum":
       return { particleShape: "chunk", colorJitter: 0.15, sizeRange: [1.2, 2.5], countMultiplier: 1.5 };
     case "diamond":
+      return { particleShape: "chunk", colorJitter: 0.15, sizeRange: [1.1, 2.3] };
     case "quartz":
-      return { particleShape: "chunk", colorJitter: 0.15, sizeRange: [0.9, 2.0] };
+      return { particleShape: "chunk", colorJitter: 0.15, sizeRange: [1.1, 2.3], countMultiplier: 2.0 };
     case "emerald":
-      return { particleShape: "chunk", colorJitter: 0.15, sizeRange: [1.0, 2.2], countMultiplier: 2.5 };
+      return { particleShape: "chunk", colorJitter: 0.15, sizeRange: [1.2, 2.5], countMultiplier: 3.5 };
     case "red-beryl":
-      return { particleShape: "chunk", colorJitter: 0.15, sizeRange: [0.5, 1.4], countMultiplier: 3.0 };
+      return { particleShape: "chunk", colorJitter: 0.15, sizeRange: [0.7, 1.7], countMultiplier: 3.0 };
     case "alexandrite":
-      return { particleShape: "chunk", colorJitter: 0.15, sizeRange: [1.0, 2.2], countMultiplier: 1.5 };
+      return { particleShape: "chunk", colorJitter: 0.15, sizeRange: [1.2, 2.5], countMultiplier: 2.5 };
     case "taaffeite":
-      return { particleShape: "chunk", colorJitter: 0.15, sizeRange: [1.0, 2.2], countMultiplier: 1.5 };
+      return { particleShape: "chunk", colorJitter: 0.15, sizeRange: [1.2, 2.5], countMultiplier: 2.5 };
     case "jadeite":
       return { particleShape: "chunk", colorJitter: 0.15, sizeRange: [0.8, 1.8], countMultiplier: 3.0 };
     case "moldavite":
       return { particleShape: "chunk", colorJitter: 0.15, sizeRange: [0.5, 1.4], countMultiplier: 2.5 };
     case "opal":
-      return { particleShape: "chunk", colorJitter: 0.35, sizeRange: [0.7, 1.4], countMultiplier: 3.5 };
+      return { particleShape: "chunk", colorJitter: 0.35, sizeRange: [0.9, 1.8], countMultiplier: 5.0 };
     case "wood":
-      return { particleShape: "log", colorJitter: 0.25, sizeRange: [0.4, 1.0], countMultiplier: 3.0 };
+      return { particleShape: "log", colorJitter: 0.25, sizeRange: [0.6, 1.3], countMultiplier: 3.0 };
     case "ammolite":
-      return { particleShape: "shard", colorJitter: 0.2, sizeRange: [1.0, 2.2], countMultiplier: 8 };
+      return { particleShape: "shard", colorJitter: 0.2, sizeRange: [1.2, 2.5], countMultiplier: 10 };
     case "coral":
-      return { particleShape: "log", colorJitter: 0.15, sizeRange: [0.3, 0.8], countMultiplier: 6.0 };
+      return { particleShape: "log", colorJitter: 0.15, sizeRange: [0.5, 1.1], countMultiplier: 6.0 };
     case "amber":
       return { particleShape: "circle", colorJitter: 0.2, sizeRange: [0.3, 0.8], countMultiplier: 5.0 };
     case "amber-inclusion":
