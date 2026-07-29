@@ -253,14 +253,14 @@ export default function ParticlePile({
 
   const mobile = typeof window !== "undefined" && isMobile();
   // Target a consistent particle density within the pile.
-  // Pile visible area ∝ pileScale² × canvas area. We want the pile
-  // to look equally dense regardless of how much canvas it occupies,
-  // so we scale count by pileScale² × height² (proxy for canvas area).
-  const pileAreaPx = pileScale * pileScale * height * height;
-  const densityFactor = mobile ? 0.003 : 0.005;
+  // Triangle area = 0.5 × base × height = 1.5 × pileH².
+  // We want enough particles to fill it densely.
+  const pileH = pileScale * height;
+  const pileTriArea = 1.5 * pileH * pileH;
+  const densityFactor = mobile ? 0.008 : 0.012;
   const particleCount = Math.max(30, Math.min(
-    mobile ? 400 : 800,
-    Math.floor(pileAreaPx * densityFactor * countMultiplier)
+    mobile ? 600 : 1200,
+    Math.floor(pileTriArea * densityFactor * countMultiplier)
   ));
 
   const rgb = hexToRgb(color);
@@ -287,8 +287,8 @@ export default function ParticlePile({
 
         // Size variance — particle radius scales with pile size
         const sizeMult = sizeRange[0] + Math.random() * (sizeRange[1] - sizeRange[0]);
-        const rawRadius = (3.0 + Math.random() * 2.0) * Math.max(0.5, pileScale);
-        const baseRadius = Math.max(2, rawRadius);
+        const rawRadius = (5.0 + Math.random() * 3.0) * Math.max(0.5, pileScale);
+        const baseRadius = Math.max(2.5, rawRadius);
 
         // Colour jitter: shift lightness uniformly + tiny per-channel noise
         const lightnessShift = (Math.random() - 0.5) * 2 * colorJitter * 60;
