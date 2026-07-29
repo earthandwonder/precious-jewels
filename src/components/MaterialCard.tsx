@@ -65,18 +65,17 @@ function getParticleStyle(material: Material): ParticleStyle {
  */
 function getMobileShrink(id: string): number {
   switch (id) {
-    // Way too big on mobile — halve them
     case "corundum": // ruby & sapphire
     case "emerald":
     case "taaffeite":
     case "alexandrite":
     case "ammolite":
     case "amber-inclusion":
-      return 0.5;
-    // Too big but not as extreme — intermediate reduction
+    case "moldavite":
+      return 0.35;
     case "diamond":
     case "quartz":
-      return 0.7;
+      return 0.85;
     default:
       return 1;
   }
