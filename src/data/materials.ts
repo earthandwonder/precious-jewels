@@ -246,9 +246,9 @@ export const materials: Material[] = [
     density: 3700,
     color: "#A855F4",
     glowColor: "#C084FC",
-    tagline: "Beryllium from the crust, chromium from the mantle — they almost never meet",
+    tagline: "Beryllium from the crust, chromium from the mantle — they rarely meet",
     description:
-      "When they do meet, you get a gem that changes colour from green to red depending on the light. Geochemical enemies producing something beautiful.",
+      "When they do, you get a gem that shifts from green to red depending on the light. Geochemical enemies producing something beautiful.",
     derivation: {
       steps: [
         "BeAl₂O₄ + Cr³⁺. Be lives in felsic rocks, Cr in mafic — they converge only at pegmatite-ultramafic contacts.",
@@ -387,7 +387,7 @@ export const materials: Material[] = [
     glowColor: "#E6A800",
     tagline: "A whole creature, frozen in tree resin for 40 million years",
     description:
-      "One in a thousand pieces of amber contains an insect. Of those, only 10% are preserved well enough to identify. Each one is a creature that landed on a sticky wound on a tree and never left.",
+      "One in a thousand pieces of amber contains an insect. Only 10% are preserved well enough to identify. Each one landed on a sticky wound on a tree and never left.",
     derivation: {
       steps: [
         "Total amber ≈ 10⁶ tonnes. ~1 in 1,000 pieces contains an insect → ~1,000 tonnes.",
