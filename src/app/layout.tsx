@@ -67,8 +67,8 @@ export default function RootLayout({
           mode="relationship"
           source="abundant-gems"
           variant="invite-a"
-          reveal-at="30%"
-          expand-at="100%"
+          reveal-at="50%"
+          expand-at="captureExpand"
           theme="dark"
           genesis="I saw a post on Reddit: 'Throughout the entire galaxy, wood is probably more rare than diamonds.' I wanted to see what that would actually look like."
         />

@@ -304,9 +304,24 @@ body {
   font-variant-numeric: oldstyle-nums;
 }
 
-/* ─── Capture bar border ─── */
+/* ─── Capture bar styling ─── */
+@media (min-width: 640px) {
+  .bm-capture-portal {
+    left: auto !important;
+    right: 1rem !important;
+    max-width: 24rem !important;
+  }
+}
+
 .bm-bar {
   border: 1px solid rgba(255, 236, 210, 0.35) !important;
   border-bottom: none !important;
+  box-shadow: 0 -4px 20px rgba(255, 236, 210, 0.1) !important;
+}
+
+.bm-room {
+  border: 1px solid rgba(255, 236, 210, 0.35) !important;
+  border-bottom: none !important;
+  border-radius: 12px 12px 0 0 !important;
   box-shadow: 0 -4px 20px rgba(255, 236, 210, 0.1) !important;
 }
