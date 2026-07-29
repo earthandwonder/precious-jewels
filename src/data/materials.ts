@@ -135,7 +135,8 @@ export const materials: Material[] = [
         "~10-30% of rocky planets have plate tectonics. ~10²⁰ kg jadeite-facies material per tectonic world × ~10²² planets.",
       ],
       sources: [
-        "Jadeite stability field in subduction zones — standard petrology",
+        "Harlow & Sorensen (2005) Lithos — jadeite formation in subduction zones",
+        "Valencia et al. (2007) ApJ — plate tectonics likelihood on super-Earths",
       ],
     },
   },
@@ -208,7 +209,8 @@ export const materials: Material[] = [
         "Utah Geological Survey: 1 red beryl crystal per 150,000 gem diamonds.",
       ],
       sources: [
-        "Utah Geological Survey — red beryl rarity",
+        "Keith et al. (1994) Utah Geological Survey Bulletin 126 — geology of the Wah Wah Mountains red beryl deposit",
+        "Shigley et al. (2003) Gems & Gemology — red beryl from Utah",
       ],
     },
   },
@@ -226,10 +228,12 @@ export const materials: Material[] = [
       "First discovered in 1945 — already cut and polished, sitting in a jeweller's box, mistaken for spinel. Fewer than a thousand faceted stones are known on Earth. The crystal structure almost never nucleates — but across enough worlds, almost never still adds up.",
     derivation: {
       steps: [
-        "BeMgAl₄O₈ — same Be scarcity, but the crystal structure almost never nucleates. <1,000 faceted stones known.",
+        "BeMgAl₄O₈ — same Be scarcity, but the crystal structure almost never nucleates. Hundreds to low-thousands of faceted stones known as of 2026.",
       ],
       sources: [
-        "GIA and gemological literature — specimen counts",
+        "Schmetzer et al. (2005) Journal of Gemmology — taaffeite-group mineral identification",
+        "Okrusch et al. (2003) European Journal of Mineralogy — crystal chemistry of taaffeite",
+        "Fermi estimate — no published global total; specimen counts from dealer and auction records",
       ],
     },
   },
@@ -250,7 +254,8 @@ export const materials: Material[] = [
         "BeAl₂O₄ + Cr³⁺. Be lives in felsic rocks, Cr in mafic — they converge only at pegmatite-ultramafic contacts.",
       ],
       sources: [
-        "GeologyScience — alexandrite formation",
+        "Giuliani et al. (2019) Mineralium Deposita — chrysoberyl and alexandrite formation at emerald deposits",
+        "Franz & Morteani (2002) Reviews in Mineralogy — beryllium mineralogy and geochemistry",
       ],
     },
   },
@@ -298,7 +303,8 @@ export const materials: Material[] = [
         "Fermi estimate — no published total exists. Most shells dissolved or were subducted; revised down from earlier estimate.",
       ],
       sources: [
-        "Ammonoid range: ~400 Ma to 66 Ma (K-Pg extinction)",
+        "Landman et al. (1996) Ammonoid Paleobiology — Plenum Press",
+        "Fermi estimate — no published global fossil tonnage; range ~400 Ma to 66 Ma (K-Pg extinction)",
       ],
     },
   },
@@ -319,7 +325,8 @@ export const materials: Material[] = [
         "Baltic deposit: ~640,000 tonnes. Other deposits (Dominican Republic, Myanmar, etc.) add ~300,000+ tonnes.",
       ],
       sources: [
-        "Baltic amber tonnage widely cited in geological literature",
+        "Weitschat & Wichard (2002) Atlas of Plants and Animals in Baltic Amber — Pfeil Verlag",
+        "Kosmowska-Ceranowicz (1999) Investigations into Amber — Museum of the Earth, Warsaw",
       ],
     },
   },
@@ -340,8 +347,9 @@ export const materials: Material[] = [
         "Fermi estimate — no published global biomass. Peak catches ~98 t/year (1978); millennia of deep-water growth.",
       ],
       sources: [
-        "FAO data — red coral catch decline ~80% since 1978",
-        "Santangelo & Bramanti — population studies",
+        "FAO FishStatJ — Corallium spp. global catch data (1950–2024)",
+        "Santangelo & Bramanti (2010) Marine Ecology — demography of Corallium rubrum populations",
+        "Fermi estimate — no published global standing biomass",
       ],
     },
   },
@@ -362,7 +370,9 @@ export const materials: Material[] = [
         "Fermi estimate. Bearpaw Formation, Alberta — sole significant source. No published total tonnage.",
       ],
       sources: [
-        "GIA and Alberta government geological surveys",
+        "Mychaluk (2009) Gems & Gemology — ammolite update from the Bearpaw Formation",
+        "Pana & Olson (2009) Alberta Geological Survey — Campanian ammonites and ammolite",
+        "Fermi estimate — no published reserve tonnage",
       ],
     },
   },
@@ -383,7 +393,8 @@ export const materials: Material[] = [
         "Total amber ≈ 10⁶ tonnes. ~1 in 1,000 pieces contains an insect → ~1,000 tonnes.",
       ],
       sources: [
-        "1-in-1,000 ratio — amber and entomological literature",
+        "Poinar (1992) Life in Amber — Stanford University Press (inclusion frequency estimates)",
+        "Grimaldi (1996) Amber: Window to the Past — American Museum of Natural History",
       ],
     },
   },
@@ -428,7 +439,9 @@ export const materials: Material[] = [
         "1 in 10,000 wild oysters produces a gem pearl. Total surviving natural pearls: Fermi estimate ~100 tonnes.",
       ],
       sources: [
-        "GIA — 1-in-10,000 gem pearl ratio",
+        "Strack (2006) Pearls — Rühle-Diebener Verlag (gem pearl frequency in wild populations)",
+        "Southgate & Lucas (2008) The Pearl Oyster — Elsevier",
+        "Fermi estimate — no published global total; ratio widely cited in GIA and gemological literature",
       ],
     },
   },
