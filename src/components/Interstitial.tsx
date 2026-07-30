@@ -6,6 +6,7 @@ interface InterstitialProps {
   heading: string;
   body: string;
   partLabel?: string;
+  transitionKey?: string;
   isActive: boolean;
 }
 
@@ -13,6 +14,7 @@ export default function Interstitial({
   heading,
   body,
   partLabel,
+  transitionKey,
   isActive,
 }: InterstitialProps) {
   const [hasAnimated, setHasAnimated] = useState(false);
@@ -22,6 +24,15 @@ export default function Interstitial({
       setHasAnimated(true);
     }
   }, [isActive, hasAnimated]);
+
+  // Auto-expand the capture panel at the Act 2→3 transition (peak wonder)
+  useEffect(() => {
+    if (!hasAnimated || transitionKey !== "2-3") return;
+    const timer = setTimeout(() => {
+      window.dispatchEvent(new Event("captureExpand"));
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, [hasAnimated, transitionKey]);
 
   const active = hasAnimated;
 

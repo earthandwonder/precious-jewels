@@ -145,6 +145,7 @@ export default function Essay() {
                   <Interstitial
                     {...interstitials[segment.key]}
                     partLabel={segment.key === "1-2" ? "Part II" : "Part III"}
+                    transitionKey={segment.key}
                     isActive={isActive}
                   />
                 </div>

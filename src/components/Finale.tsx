@@ -16,15 +16,6 @@ export default function Finale({ isActive }: { isActive: boolean }) {
     }
   }, [isActive, hasAnimated]);
 
-  // Trigger capture bar expansion after the reveal has had time to land
-  useEffect(() => {
-    if (!hasAnimated) return;
-    const timer = setTimeout(() => {
-      window.dispatchEvent(new Event("captureExpand"));
-    }, 5000);
-    return () => clearTimeout(timer);
-  }, [hasAnimated]);
-
   useEffect(() => {
     if (!hasAnimated) return;
 
