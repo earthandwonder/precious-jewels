@@ -81,19 +81,24 @@ export default function ProductCard({
       </div>
 
       {/* Button to the right */}
-      <span
-        className="z-20 inline-flex items-center gap-1.5 px-4 py-2 text-xs md:text-sm tracking-wider uppercase transition-all duration-300 group-hover:brightness-125 whitespace-nowrap"
-        style={{
-          color: materialColor,
-          border: `1px solid ${materialColor}40`,
-          background: "rgba(3, 3, 8, 0.4)",
-        }}
-      >
-        See on Etsy
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M7 17l9.2-9.2M17 17V7H7" />
-        </svg>
-      </span>
+      <div className="z-20 flex flex-col items-center gap-1">
+        <span
+          className="inline-flex items-center gap-1.5 px-4 py-2 text-xs md:text-sm tracking-wider uppercase transition-all duration-300 group-hover:brightness-125 whitespace-nowrap"
+          style={{
+            color: materialColor,
+            border: `1px solid ${materialColor}40`,
+            background: "rgba(3, 3, 8, 0.4)",
+          }}
+        >
+          See on Etsy
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M7 17l9.2-9.2M17 17V7H7" />
+          </svg>
+        </span>
+        <span className="text-[10px] tracking-wide opacity-50" style={{ color: materialColor }}>
+          Affiliate link
+        </span>
+      </div>
     </a>
   );
 }

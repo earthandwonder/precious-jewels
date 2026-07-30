@@ -221,8 +221,8 @@ export const materials: Material[] = [
     act: 2,
     logVolume: 24.4,
     density: 3600,
-    color: "#DDA0DD",
-    glowColor: "#EE82EE",
+    color: "#B0B8C8",
+    glowColor: "#C8D0E0",
     tagline: "Four reluctant elements, forced into a crystal that almost never forms",
     description:
       "First discovered in 1945 — already cut and polished, sitting in a jeweller's box, mistaken for spinel. Fewer than a thousand faceted stones are known on Earth. The crystal structure almost never nucleates — but across enough worlds, almost never still adds up.",
