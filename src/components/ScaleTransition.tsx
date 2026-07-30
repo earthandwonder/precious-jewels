@@ -24,6 +24,13 @@ export default function ScaleTransition({ fromRef, toRef, isActive }: ScaleTrans
     }
   }, [isActive, hasAnimated]);
 
+  // Reveal the email capture pill when the solar-system → sun transition is active
+  useEffect(() => {
+    if (isActive && fromRef === "solar-system" && toRef === "sun") {
+      window.dispatchEvent(new Event("captureReveal"));
+    }
+  }, [isActive, fromRef, toRef]);
+
   useEffect(() => {
     if (!hasAnimated) return;
 

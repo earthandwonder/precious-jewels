@@ -63,7 +63,7 @@ export default function Finale({ isActive }: { isActive: boolean }) {
             opacity: labelOpacity,
           }}
         >
-          The rarest wearable material in the known universe
+          The rarest gemstone in the known universe
         </p>
 
         {/* Pearl image with glow backdrop */}
