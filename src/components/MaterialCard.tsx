@@ -210,7 +210,7 @@ export default function MaterialCard({
   const hasProducts = !!inlineProducts[material.id];
 
   return (
-    <div className="material-card relative w-full max-w-[100vw] h-full flex flex-col items-center justify-center gap-6 md:gap-10 px-4 md:px-6 pt-10 pb-4 md:py-0 overflow-visible">
+    <div className="material-card relative w-full max-w-[100vw] h-full flex flex-col items-center justify-center gap-6 md:gap-10 px-4 md:px-6 pt-10 pb-4 md:py-0 overflow-hidden">
       {/* Zone 1: Visual — pile + reference, scaled to fit on mobile */}
       <div
         className={`snap-animate snap-animate-delay-1 w-full flex items-end justify-center gap-2 md:gap-3 overflow-visible ${active ? "is-active" : ""}`}
