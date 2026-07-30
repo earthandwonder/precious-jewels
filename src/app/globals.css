@@ -309,13 +309,10 @@ body {
 }
 
 /* ─── Capture bar styling ─── */
-.bm-capture-portal {
-  left: auto !important;
-  right: 1rem !important;
-}
-
 @media (min-width: 640px) {
   .bm-capture-portal {
+    left: auto !important;
+    right: 1rem !important;
     max-width: 24rem !important;
   }
 }
