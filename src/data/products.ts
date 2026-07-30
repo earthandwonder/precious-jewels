@@ -57,6 +57,22 @@ export const inlineProducts: Record<string, Product[]> = {
       imageUrl: "/p/abundant-gems/samples/pearl-edison-macro.png",
     },
   ],
+  "red-beryl": [
+    {
+      name: "Rare Bixbite Red Beryl Crystal From Utah — 0.24ct",
+      price: "$55",
+      url: "https://www.etsy.com/au/listing/4543519356/nice-rare-gem-bixbite-red-emerald-beryl",
+      imageUrl: "/p/abundant-gems/samples/red-beryl1.png",
+    },
+  ],
+  taaffeite: [
+    {
+      name: "Rare Gem Taaffeite Cut Stone From Mogok — 0.63ct",
+      price: "$235",
+      url: "https://www.etsy.com/au/listing/4469694679/063-carat-rare-gem-taaffeite-cut-stone",
+      imageUrl: "/p/abundant-gems/samples/taaffeite4.png",
+    },
+  ],
 };
 
 /**
