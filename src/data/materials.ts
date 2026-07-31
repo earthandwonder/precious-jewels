@@ -271,7 +271,7 @@ export const materials: Material[] = [
     tagline:
       "The Guinness record holder for rarest mineral. But minerals form on trillions of worlds.",
     description:
-      "For twenty-eight years after its discovery, only one crystal existed. On Earth, fewer than a thousand crystals have turned up — all from one region in Myanmar. But painite is still a mineral. Its ingredients exist on trillions of rocky worlds. Multiply out, and you get a pile the size of the Moon. What comes next doesn't get that multiplier.",
+      "For twenty-eight years after its discovery, only one crystal existed. On Earth, fewer than a thousand crystals have turned up. But painite is still a mineral. Its ingredients exist on trillions of rocky worlds. What comes next doesn't get that multiplier.",
     derivation: {
       steps: [
         "CaZrBAl₉O₁₈. Boron is spallation-produced (~6 × 10⁻¹⁰ solar abundance), ~4× more abundant than Be but same formation bottleneck.",
