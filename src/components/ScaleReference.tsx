@@ -39,7 +39,7 @@ const STATUE_HEIGHT = 93;
 const HUMAN_HEIGHT = 1.8;
 
 export const REFERENCES: Record<RefType, ReferenceInfo> = {
-  heliosphere:    { type: "heliosphere",    label: "Voyager-scale",            shortLabel: "Voyager",           color: "#C4B8F0", realSize: HELIOSPHERE_DIAMETER, render: (s) => renderHeliosphere(s) },
+  heliosphere:    { type: "heliosphere",    label: "Voyager-sphere",           shortLabel: "Voyager",           color: "#C4B8F0", realSize: HELIOSPHERE_DIAMETER, render: (s) => renderHeliosphere(s) },
   "solar-system": { type: "solar-system",   label: "Solar system-scale",       shortLabel: "Solar system",      color: "#E8D878", realSize: SOLAR_SYSTEM_DIAMETER, render: (s) => renderSolarSystem(s) },
   sun:            { type: "sun",            label: "Sun-scale",                shortLabel: "The Sun",           color: "#F0C060", realSize: SUN_DIAMETER, render: (s) => renderSun(s) },
   earth:          { type: "earth",          label: "Earth-scale",              shortLabel: "Earth",             color: "#7CB0E0", realSize: EARTH_DIAMETER, render: (s) => renderEarth(s) },

@@ -40,12 +40,14 @@ export const metadata: Metadata = {
       "Every gemstone ranked by total mass in the known universe. Diamond is one of the most common.",
     type: "article",
     locale: "en_AU",
+    images: [{ url: "/p/abundant-gems/og-emerald.png", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Imagine You Are an Intergalactic Gem Hunter",
     description:
       "Every gemstone ranked by total mass in the known universe. Diamond is one of the most common.",
+    images: ["/p/abundant-gems/og-emerald.png"],
   },
 };
 
