@@ -255,10 +255,10 @@ A Milky Way-scale version nearly works: the MW ISM contains ~1-2 solar masses of
 
 | Field | Rating | Detail |
 |-------|--------|--------|
-| **logMass** | AMBER | Revised from 10^16 to 10^14 kg (~100 billion tonnes). Original estimate of 10,000 billion tonnes exceeded living wood (450-700 Gt), which didn't pass sanity check. Most shells dissolved in undersaturated deep ocean, were subducted, or metamorphosed. 10^14 is more defensible. Still a Fermi estimate. |
+| **logMass** | AMBER | Revised from 10^16 to 10^14 kg. Independent Fermi chain (2026-07-31): standing biomass ~10¹¹ kg × shell fraction (30%) × turnover rate (2yr) = ~1.5 × 10¹⁰ kg shell/year. Over 334 Ma = ~5 × 10¹⁸ kg total produced. Survival rate ~10⁻³ to 10⁻⁴ (dissolution below CCD, subduction, metamorphism) → ~10¹⁴–10¹⁵ kg. Current logMass 14 sits at the low end; 15 equally defensible. |
 | **Density 2700** | GREEN | Calcite fossils, density ~2710. Correct. |
-| **"Ruled oceans for 340 million years"** | AMBER | Ammonoids: Early Devonian (~400 Ma) to K-Pg (66 Ma) = ~334 Ma. "340" rounds up slightly. "Ruled" is editorial colour. Acceptable for essay. |
-| **"Asteroid that killed the dinosaurs wiped them out too"** | GREEN | K-Pg extinction, 66 Ma. Standard paleontology. |
+| **"300 million years of dominance. Then the asteroid."** | AMBER | Ammonoids: Early Devonian (~400 Ma) to K-Pg (66 Ma) = ~334 Ma. "300 million" is conservative but clean. |
+| **"Survived four mass extinctions"** | GREEN | Late Devonian, End-Permian, End-Triassic, End-Cretaceous is five total; ammonites survived the first four and were killed by the fifth. Correct. |
 
 ---
 
@@ -306,9 +306,10 @@ A Milky Way-scale version nearly works: the MW ISM contains ~1-2 solar masses of
 
 | Field | Rating | Detail |
 |-------|--------|--------|
-| **logMass** | AMBER | No published global biomass for Corallium spp. 10^8 kg = 100,000 tonnes. Peak catches ~98 tonnes/year (1978). With millennia of growth and Mediterranean/Pacific deep-water habitat, 100,000 tonnes of total coral is a plausible Fermi estimate. |
+| **logMass** | AMBER | Independent Fermi chain (2026-07-31): Mediterranean suitable rocky substrate at 50–300m ~1,250 km². ~1 colony/m² × ~0.25 kg = ~3 × 10⁸ kg pre-harvest. Post-1970s crash (80%): ~6 × 10⁷ kg Mediterranean. Pacific species roughly double. Total current: ~10⁸ kg. Matches logMass 8. |
 | **Density 2700** | GREEN | CaCO3 (calcite) skeleton ~2710. Correct. |
-| **"Corallium rubrum"** | GREEN | Correct species for Mediterranean precious coral. |
+| **"Not reef coral. A deep-water animal"** | GREEN | Corallium spp. are octocorals, not shallow reef-building scleractinians. Correct distinction. |
+| **"Growing one millimetre a year"** | GREEN | Radial growth rate ~0.2–1 mm/year. "One millimetre" is at the upper end but defensible. |
 | **"Populations crashed 80% since the 1970s"** | GREEN | FAO data: catch declined ~80% from 98 t (1978) to <20 t by late 1990s. Santangelo & Bramanti documented comparable population declines. |
 
 ---
@@ -317,9 +318,9 @@ A Milky Way-scale version nearly works: the MW ISM contains ~1-2 solar masses of
 
 | Field | Rating | Detail |
 |-------|--------|--------|
-| **logMass** | AMBER | 10^7 kg = 10,000 tonnes. Bearpaw Formation, Alberta is sole significant source. No published tonnage. Fermi estimate. |
+| **logMass** | AMBER | Independent Fermi chain (2026-07-31): Bearpaw Formation ~50,000 km², ammolite-bearing horizon 1–3m thick. Total Placenticeras shell ~2.7 × 10⁸ kg. Gem-quality fraction (intact iridescent aragonite) ~1–10% → ~10⁷ kg. Matches logMass 7. |
 | **Density 2800** | GREEN | Aragonite (~2930) with organic content. ~2800 reasonable. |
-| **"St. Mary River, southern Alberta"** | GREEN | Confirmed by GIA, Alberta government, multiple geological sources. |
+| **"One extinct animal, one river, 70 million years"** | GREEN | Placenticeras genus (two species), St. Mary River exposure, ~70–75 Ma. "Animal" avoids the two-species issue. |
 | **"Gem-grade may run out within decades"** | AMBER | Industry concern (Korite et al.) but no rigorous reserve study published. Defensible but not independently verifiable. |
 
 ---
@@ -352,11 +353,11 @@ A Milky Way-scale version nearly works: the MW ISM contains ~1-2 solar masses of
 
 | Field | Rating | Detail |
 |-------|--------|--------|
-| **logMass** | AMBER | 10^5 kg = 100 tonnes of natural gem pearls in existence. Historical fisheries (Persian Gulf, Sri Lanka, Japan) produced significant quantities over millennia, but pearls degrade. Could be 10-1000 tonnes. Defensible as order-of-magnitude. |
+| **logMass** | AMBER | Independent Fermi chain (2026-07-31): Peak historical fisheries (Persian Gulf, Gulf of Mannar, Red Sea, Pacific) yielded ~200 kg/year combined. Over ~2,400 years: ~120,000 kg produced. Many lost/degraded. Surviving in human hands + living oysters: ~10⁵ kg (100 tonnes). Matches logMass 5. |
 | **Density 2700** | GREEN | Pearl SG 2.60-2.85 (aragonite + conchiolin). 2700 within range. |
+| **"Every natural pearl ever formed would fit in one room"** | GREEN | 100 tonnes at density 2700 = ~37 m³. A room is ~40-50 m³. Tight but correct. |
 | **"One in ten thousand wild oysters produces a gem pearl"** | GREEN | Standard GIA/gemological figure. Confirmed. |
-| **"Rarest wearable material in the known universe"** | AMBER | Pearl logMass 5 vs moldavite 5.4. Pearl is lowest but margin is thin (~2.5x). Both estimates carry significant uncertainty. Defensible within the essay's framework but not a slam dunk. |
-| **Scale: "Pacific Ocean vs thimble"** | RED | Pacific/thimble ratio ~10^23. Peridot-to-pearl gap is 10^44 (logMass 49 vs 5). Off by 21 OoM. No everyday object captures a 44-OoM gap. |
+| **"Rarer than diamond by forty orders of magnitude"** | GREEN | Pearl logMass 5, diamond logMass 45. Difference = 40. Correct. |
 
 ---
 
