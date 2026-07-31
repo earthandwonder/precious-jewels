@@ -31,6 +31,8 @@ function getParticleStyle(material: Material): ParticleStyle {
       return { particleShape: "chunk", colorJitter: 0.15, sizeRange: [0.9, 2.0], countMultiplier: 5.0 };
     case "alexandrite":
       return { particleShape: "chunk", colorJitter: 0.15, sizeRange: [1.5, 3.0], countMultiplier: 4.0 };
+    case "painite":
+      return { particleShape: "chunk", colorJitter: 0.15, sizeRange: [1.0, 2.2], countMultiplier: 5.0 };
     case "taaffeite":
       return { particleShape: "chunk", colorJitter: 0.15, sizeRange: [1.5, 3.0], countMultiplier: 4.0 };
     case "jadeite":
