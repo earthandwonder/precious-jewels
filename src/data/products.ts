@@ -14,7 +14,7 @@ export const inlineProducts: Record<string, Product[]> = {
       name: "Lightning Ridge Black Opal — 9.89ct Natural Solid",
       price: "$2,860",
       url: "https://www.etsy.com/au/listing/1275994599/169-x-13mm-989ct-australian-black-opal",
-      imageUrl: "/p/abundant-gems/samples/opal3.png",
+      imageUrl: "/p/rarest-gemstones/samples/opal3.png",
     },
   ],
   moldavite: [
@@ -22,7 +22,7 @@ export const inlineProducts: Record<string, Product[]> = {
       name: "AAA Raw Moldavite — Museum Piece",
       price: "$89",
       url: "https://www.etsy.com/au/listing/1547899512/aaa-raw-moldavite-museum-piece",
-      imageUrl: "/p/abundant-gems/samples/moldavite2.png",
+      imageUrl: "/p/rarest-gemstones/samples/moldavite2.png",
     },
   ],
   alexandrite: [
@@ -30,7 +30,7 @@ export const inlineProducts: Record<string, Product[]> = {
       name: "Fireworks Cut Color-Change Alexandrite Pendant — Sterling Silver",
       price: "$180",
       url: "https://www.etsy.com/au/listing/4411411619/fireworks-cut-color-change-alexandrite",
-      imageUrl: "/p/abundant-gems/samples/alexandrite1.png",
+      imageUrl: "/p/rarest-gemstones/samples/alexandrite1.png",
     },
   ],
   ammolite: [
@@ -38,7 +38,7 @@ export const inlineProducts: Record<string, Product[]> = {
       name: "Ammolite Shell Pendant — Sterling Silver",
       price: "$100",
       url: "https://www.etsy.com/au/listing/1508401721/ammolite-necklace-sterling-silver",
-      imageUrl: "/p/abundant-gems/samples/ammolite1.png",
+      imageUrl: "/p/rarest-gemstones/samples/ammolite1.png",
     },
   ],
   "amber-inclusion": [
@@ -46,7 +46,7 @@ export const inlineProducts: Record<string, Product[]> = {
       name: "Baltic Amber with Insect Inclusion — Natural Fossil Specimen",
       price: "$45",
       url: "https://www.etsy.com/au/listing/4366141942/rare-caddisfly-inclusion-amber-cabochon",
-      imageUrl: "/p/abundant-gems/samples/amber-inclusion3.png",
+      imageUrl: "/p/rarest-gemstones/samples/amber-inclusion3.png",
     },
   ],
   pearl: [
@@ -54,7 +54,7 @@ export const inlineProducts: Record<string, Product[]> = {
       name: "14.8mm White Round Edison Pearl — Loose Freshwater",
       price: "$584",
       url: "https://www.etsy.com/au/listing/1816210836/148mm-white-round-edison-pearl-loose",
-      imageUrl: "/p/abundant-gems/samples/pearl-edison-macro.png",
+      imageUrl: "/p/rarest-gemstones/samples/pearl-edison-macro.png",
     },
   ],
   // Ready to re-enable — images already in public/samples/
@@ -63,7 +63,7 @@ export const inlineProducts: Record<string, Product[]> = {
   //     name: "Rare Bixbite Red Beryl Crystal From Utah — 0.24ct",
   //     price: "$55",
   //     url: "https://www.etsy.com/au/listing/4543519356/nice-rare-gem-bixbite-red-emerald-beryl",
-  //     imageUrl: "/p/abundant-gems/samples/red-beryl1.png",
+  //     imageUrl: "/p/rarest-gemstones/samples/red-beryl1.png",
   //   },
   // ],
   // taaffeite: [
@@ -71,7 +71,7 @@ export const inlineProducts: Record<string, Product[]> = {
   //     name: "Rare Gem Taaffeite Cut Stone From Mogok — 0.63ct",
   //     price: "$235",
   //     url: "https://www.etsy.com/au/listing/4469694679/063-carat-rare-gem-taaffeite-cut-stone",
-  //     imageUrl: "/p/abundant-gems/samples/taaffeite4.png",
+  //     imageUrl: "/p/rarest-gemstones/samples/taaffeite4.png",
   //   },
   // ],
 };
@@ -87,7 +87,7 @@ export const shopProducts: Record<string, Product[]> = {
       name: "Teal Sapphire Stud Earrings — Sterling Silver",
       price: "$195",
       url: "https://www.etsy.com/au/listing/4351859922/teal-sapphire-stud-earrings-sterling",
-      imageUrl: "/p/abundant-gems/samples/RubySapphire2.png",
+      imageUrl: "/p/rarest-gemstones/samples/RubySapphire2.png",
     },
   ],
   quartz: [
@@ -95,7 +95,7 @@ export const shopProducts: Record<string, Product[]> = {
       name: "Amethyst Purple CZ Marquise Cluster Stud Earrings",
       price: "$48",
       url: "https://www.etsy.com/au/listing/1491023644/amethyst-purple-cz-marquise-cluster-stud",
-      imageUrl: "/p/abundant-gems/samples/Amethyst.png",
+      imageUrl: "/p/rarest-gemstones/samples/Amethyst.png",
     },
   ],
   jadeite: [
@@ -103,7 +103,7 @@ export const shopProducts: Record<string, Product[]> = {
       name: "Natural Certificated Type A Jadeite Bangle",
       price: "$165",
       url: "https://www.etsy.com/au/listing/4390574011/natural-certificated-type-a-54-63mm-blue",
-      imageUrl: "/p/abundant-gems/samples/jade.png",
+      imageUrl: "/p/rarest-gemstones/samples/jade.png",
     },
   ],
 };

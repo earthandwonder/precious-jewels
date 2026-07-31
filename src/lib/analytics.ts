@@ -15,7 +15,7 @@ interface EventMetadata {
 export function trackEvent(eventType: EventType, metadata?: EventMetadata) {
   try {
     const payload = {
-      project_slug: "abundant-gems",
+      project_slug: "rarest-gemstones",
       event_type: eventType,
       referrer: metadata?.referrer || document.referrer || undefined,
       metadata: metadata || {},

@@ -21,33 +21,34 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Imagine You Are an Intergalactic Gem Hunter — Every Gemstone Ranked by Total Mass in the Universe",
+  title: "The Rarest Gemstones (in the Universe)",
   description:
-    "Every gemstone ranked by total mass in the known universe. Diamond is one of the most common. The rarest thing you could wear is something no one expects.",
+    "27 precious materials ranked by how much exists across the entire universe. The rarest isn't diamond. It's not ruby either.",
   keywords: [
     "rarest gemstone",
     "rarest gem in the world",
-    "rarest stone in the world",
-    "rarest thing in the universe",
-    "precious stones",
-    "cosmic abundance of gems",
+    "what is the rarest gemstone",
+    "rarest gemstone in the world",
+    "rarest mineral on earth",
+    "most rare gemstone",
+    "rarest precious stone",
+    "rarest mineral in the world",
     "gemstone rarity ranking",
-    "diamond common universe",
   ],
   openGraph: {
-    title: "Imagine You Are an Intergalactic Gem Hunter",
+    title: "The Rarest Gemstones (in the Universe)",
     description:
-      "Every gemstone ranked by total mass in the known universe. Diamond is one of the most common.",
+      "27 precious materials ranked by how much exists across the entire universe. The rarest isn't diamond. It's not ruby either.",
     type: "article",
     locale: "en_AU",
-    images: [{ url: "/p/abundant-gems/og-emerald.png", width: 1200, height: 630 }],
+    images: [{ url: "/p/rarest-gemstones/og-emerald.png", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Imagine You Are an Intergalactic Gem Hunter",
+    title: "The Rarest Gemstones (in the Universe)",
     description:
-      "Every gemstone ranked by total mass in the known universe. Diamond is one of the most common.",
-    images: ["/p/abundant-gems/og-emerald.png"],
+      "27 precious materials ranked by how much exists across the entire universe. The rarest isn't diamond. It's not ruby either.",
+    images: ["/p/rarest-gemstones/og-emerald.png"],
   },
 };
 
@@ -67,7 +68,7 @@ export default function RootLayout({
         {/* @ts-expect-error web component */}
         <bm-capture
           mode="relationship"
-          source="abundant-gems"
+          source="rarest-gemstones"
           variant="invite-a"
           reveal-at="captureReveal"
           expand-at="captureExpand"

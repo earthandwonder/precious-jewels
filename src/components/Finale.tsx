@@ -77,7 +77,7 @@ export default function Finale({ isActive }: { isActive: boolean }) {
               }}
             />
             <img
-              src="/p/abundant-gems/pearl.png"
+              src="/p/rarest-gemstones/pearl.png"
               alt="A natural pearl"
               className="relative w-full h-full object-contain drop-shadow-[0_0_30px_rgba(253,235,208,0.3)]"
               draggable={false}

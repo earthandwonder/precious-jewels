@@ -10,11 +10,11 @@ An interactive scroll-essay that visualises how much of each precious material e
 
 ## How it's served
 
-This project is served at `benmccarthy.com.au/p/abundant-gems` via Vercel rewrites from the shell site (`ben-mccarthy-com-au`). The shell site proxies all requests under `/p/abundant-gems` to this project's Vercel deployment.
+This project is served at `benmccarthy.com.au/p/rarest-gemstones` via Vercel rewrites from the shell site (`ben-mccarthy-com-au`). The shell site proxies all requests under `/p/rarest-gemstones` to this project's Vercel deployment.
 
-- `basePath` is set to `/p/abundant-gems` in `next.config.ts`
+- `basePath` is set to `/p/rarest-gemstones` in `next.config.ts`
 - `NEXT_PUBLIC_BASE_PATH` is available as an env var for fetch calls, window.location, etc.
-- Local dev runs at `localhost:3000/p/abundant-gems`
+- Local dev runs at `localhost:3000/p/rarest-gemstones`
 - See `REWRITE-SETUP.md` in the shell repo for the full pattern docs
 
 ## The plan
@@ -40,9 +40,9 @@ The full working brief is in `docs/plan.md`. Key points:
 ## Deployment checklist (not yet done)
 
 1. Create a Vercel project for this repo (should auto-detect as Next.js)
-2. Deploy it — verify it works at `abundant-gems.vercel.app/p/abundant-gems`
-3. Then in the **shell site** repo (`/Users/ben/Developer/Next(dot)js/ben-mccarthy-com-au`), commit and deploy the `next.config.ts` change that adds the rewrite rules for `/p/abundant-gems`. The rewrite rules are already written — they just need committing and pushing.
-4. Verify `benmccarthy.com.au/p/abundant-gems` loads correctly
+2. Deploy it — verify it works at `rarest-gemstones.vercel.app/p/rarest-gemstones`
+3. Then in the **shell site** repo (`/Users/ben/Developer/Next(dot)js/ben-mccarthy-com-au`), commit and deploy the `next.config.ts` change that adds the rewrite rules for `/p/rarest-gemstones`. The rewrite rules are already written — they just need committing and pushing.
+4. Verify `benmccarthy.com.au/p/rarest-gemstones` loads correctly
 
 ## Reddit distribution constraints (MUST READ)
 
@@ -52,7 +52,7 @@ The full brief is in `docs/reddit-distribution-requirements.md`. These are the n
 2. **No AI-generated content or AI-as-feature.** The build method (Claude) is fine; the *content* must be human-researched. No "powered by AI" anywhere.
 3. **No paywall or freemium gating.** Everything fully free. The ShopSection with affiliate links must not gate any content.
 4. **No game-like mechanics** (scores, challenges, quizzes). Interactive essay = fine.
-5. **Custom domain only** — `benmccarthy.com.au/p/abundant-gems`. vercel.app subdomains are blanket-banned on the primary target sub.
+5. **Custom domain only** — `benmccarthy.com.au/p/rarest-gemstones`. vercel.app subdomains are blanket-banned on the primary target sub.
 6. **Must survive a traffic spike** (50K+ sessions in hours). Static/CDN, no server bottleneck.
 
 ### Avoiding "AI feel" (the real gatekeeper)

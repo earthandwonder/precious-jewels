@@ -1,6 +1,6 @@
 import type { NextConfig } from "next";
 
-const basePath = "/p/abundant-gems";
+const basePath = "/p/rarest-gemstones";
 
 const nextConfig: NextConfig = {
   basePath,

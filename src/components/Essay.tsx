@@ -11,6 +11,8 @@ import ScrollAtmosphere from "./ScrollAtmosphere";
 import { getRefType } from "./ScaleReference";
 import Finale from "./Finale";
 import EarthIntro from "./EarthIntro";
+import ArticleSummary from "./ArticleSummary";
+import FaqSchema from "./FaqSchema";
 
 /**
  * Build the ordered list of all snap pages (segments).
@@ -174,7 +176,9 @@ export default function Essay() {
 
           }
         })}
+        <ArticleSummary />
       </div>
+      <FaqSchema />
     </>
   );
 }
@@ -190,13 +194,13 @@ function HeroPage({ isActive }: { isActive: boolean }) {
         }}
       />
 
-      <h1 className="hero-title font-editorial text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight mb-8 text-foreground relative z-10 leading-[0.95]">
+      <p className="hero-title font-editorial text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight mb-8 text-foreground relative z-10 leading-[0.95]">
         Imagine you are
         <br />
         an intergalactic
         <br />
         <span className="italic hero-gemstones">gem hunter</span>...
-      </h1>
+      </p>
 
       <div className="hero-subtitle relative z-10 mb-6">
         <p

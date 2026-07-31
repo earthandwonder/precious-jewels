@@ -210,7 +210,11 @@ export default function MaterialCard({
   const hasProducts = !!inlineProducts[material.id];
 
   return (
-    <div className="material-card relative w-full max-w-[100vw] h-full flex flex-col items-center justify-center gap-6 md:gap-10 px-4 md:px-6 pt-10 pb-4 md:py-0 overflow-hidden">
+    <div
+      className="material-card relative w-full max-w-[100vw] h-full flex flex-col items-center justify-center gap-6 md:gap-10 px-4 md:px-6 pt-10 pb-4 md:py-0 overflow-hidden"
+      role="region"
+      aria-label={`${material.name} — ${material.tagline}`}
+    >
       {/* Zone 1: Visual — pile + reference, scaled to fit on mobile */}
       <div
         className={`snap-animate snap-animate-delay-1 w-full flex items-end justify-center gap-2 md:gap-3 overflow-visible ${active ? "is-active" : ""}`}
@@ -250,12 +254,12 @@ export default function MaterialCard({
 
       {/* Zone 2: Identity — title, counter, tagline */}
       <div className="text-center max-w-lg mx-auto">
-        <h3
+        <h2
           className={`snap-animate snap-animate-delay-2 font-editorial text-2xl md:text-4xl lg:text-5xl font-medium tracking-tight leading-[1.1] ${active ? "is-active" : ""}`}
           style={{ color: material.color }}
         >
           {material.name}
-        </h3>
+        </h2>
 
         <div className={`snap-animate snap-animate-delay-3 mt-3 md:mt-4 ${active ? "is-active" : ""}`}>
           <MassCounter logVolume={material.logVolume} density={material.density} color={material.color} act={material.act} derivation={material.derivation} scaleNote={getScaleNote(material)} />
