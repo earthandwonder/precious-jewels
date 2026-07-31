@@ -269,9 +269,9 @@ export const materials: Material[] = [
     color: "#9B2335",
     glowColor: "#C94456",
     tagline:
-      "The Guinness record holder for rarest mineral. But minerals form on trillions of worlds.",
+      "The Guinness record holder for rarest mineral — for twenty-four years.",
     description:
-      "For twenty-eight years after its discovery, only one crystal existed. On Earth, fewer than a thousand crystals have turned up. But painite is still a mineral. Its ingredients exist on trillions of rocky worlds. What comes next doesn't get that multiplier.",
+      "Discovered in 1951. A second crystal wasn't found until 1979. Fewer than a thousand are known on Earth. But calcium, zirconium, boron, aluminium — they all exist on other worlds. Painite is rare here. It's not rare everywhere.",
     derivation: {
       steps: [
         "CaZrBAl₉O₁₈. Boron is spallation-produced (~6 × 10⁻¹⁰ solar abundance), ~4× more abundant than Be but same formation bottleneck.",
