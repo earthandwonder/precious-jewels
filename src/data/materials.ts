@@ -300,7 +300,9 @@ export const materials: Material[] = [
       "Ammonites survived four mass extinctions. The fifth one, 66 million years ago, ended them along with the dinosaurs. Their coiled shells are now embedded in rock on every continent.",
     derivation: {
       steps: [
-        "Fermi estimate — no published total exists. Most shells dissolved or were subducted; revised down from earlier estimate.",
+        "Standing biomass ~10¹¹ kg (comparable to modern cephalopods). Shell ~30% of body, turnover ~2 years → ~1.5 × 10¹⁰ kg shell/year deposited.",
+        "Over 334 Ma: ~5 × 10¹⁸ kg total shell produced. Most dissolved below the carbonate compensation depth or was subducted.",
+        "Survival rate ~10⁻³ to 10⁻⁴ → ~10¹⁴–10¹⁵ kg fossilised shell remains today.",
       ],
       sources: [
         "Landman et al. (1996) Ammonoid Paleobiology — Plenum Press",
@@ -344,7 +346,9 @@ export const materials: Material[] = [
       "Precious coral lives in deep water, not on reefs. Its dense red skeleton has been harvested by Mediterranean fishers for millennia. Populations have crashed 80% since the 1970s.",
     derivation: {
       steps: [
-        "Fermi estimate — no published global biomass. Peak catches ~98 t/year (1978); millennia of deep-water growth.",
+        "Mediterranean suitable habitat ~1,250 km² of rocky substrate at 50–300m. ~1 colony/m² × ~0.25 kg average → ~3 × 10⁸ kg pre-harvest.",
+        "Post-1970s crash (80% decline): ~6 × 10⁷ kg Mediterranean. Pacific species roughly double it.",
+        "Total current global standing biomass: ~10⁸ kg.",
       ],
       sources: [
         "FAO FishStatJ — Corallium spp. global catch data (1950–2024)",
@@ -367,7 +371,9 @@ export const materials: Material[] = [
       "The iridescent shell of one extinct ammonite, found along a narrow belt of Alberta's St. Mary River. Gem-grade material may run out within decades.",
     derivation: {
       steps: [
-        "Fermi estimate. Bearpaw Formation, Alberta — sole significant source. No published total tonnage.",
+        "Bearpaw Formation: ~50,000 km² across southern Alberta, ammolite-bearing horizon 1–3m thick.",
+        "Total Placenticeras shell in formation: ~2.7 × 10⁸ kg. Gem-quality fraction (intact iridescent aragonite): ~1–10%.",
+        "Central estimate: ~10⁷ kg of gem-grade ammolite.",
       ],
       sources: [
         "Mychaluk (2009) Gems & Gemology — ammolite update from the Bearpaw Formation",
@@ -436,7 +442,9 @@ export const materials: Material[] = [
       "Every natural pearl that has ever existed would fit inside a single room.",
     derivation: {
       steps: [
-        "1 in 10,000 wild oysters produces a gem pearl. Total surviving natural pearls: Fermi estimate ~100 tonnes.",
+        "1 in 10,000 wild oysters produces a gem pearl. Peak historical fisheries (Persian Gulf, Gulf of Mannar, Red Sea, Pacific) yielded ~200 kg/year combined.",
+        "Over ~2,400 years of harvesting: ~120,000 kg total produced. Many lost, degraded, or dissolved.",
+        "Surviving in human hands + currently in living oysters: ~10⁵ kg (100 tonnes).",
       ],
       sources: [
         "Strack (2006) Pearls — Rühle-Diebener Verlag (gem pearl frequency in wild populations)",
