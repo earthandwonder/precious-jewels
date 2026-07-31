@@ -107,7 +107,7 @@ export default function ArticleSummary() {
           The full ranking
         </h2>
         <p className="text-sm mb-4" style={{ color: tintSoft }}>
-          Most abundant to rarest, by total mass across the known universe:
+          Most abundant gemstone to rarest, by total mass across the known universe:
         </p>
         <ol className="text-sm md:text-base leading-relaxed space-y-0.5 list-decimal list-inside" style={{ color: tintSoft }}>
           <li>Ruby &amp; Sapphire (corundum)</li>
