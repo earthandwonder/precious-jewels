@@ -31,7 +31,7 @@ export default function FaqSchema() {
     "@type": "Article",
     headline: "The Rarest Gemstones (in the Universe)",
     description:
-      "27 precious materials ranked by how much exists across the entire universe. The rarest isn't diamond. It's not ruby either.",
+      "17 precious materials ranked by how much exists across the entire universe. The rarest isn't diamond. It's not ruby either.",
     author: {
       "@type": "Person",
       name: "Ben McCarthy",

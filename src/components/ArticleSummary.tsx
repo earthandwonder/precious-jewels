@@ -31,7 +31,7 @@ export default function ArticleSummary() {
           The rarest gemstones in the universe, ranked
         </h1>
         <p className="text-base md:text-lg leading-relaxed" style={{ color: tintSoft }}>
-          We ranked 27 precious materials — every mineral, fossil, and biological gem
+          We ranked 17 precious materials — every mineral, fossil, and biological gem
           used in jewellery — by how much of each one exists across the entire known universe.
           The result spans 44 orders of magnitude, from planet-swallowing
           quantities of corundum down to a single room of natural pearls.

@@ -70,7 +70,7 @@ Harder SERP but still achievable — earthdate.org (DR 44) is #3.
 ## On-page SEO plan
 
 1. **Title tag**: "The Rarest Gemstones (in the Universe)"
-2. **Meta description**: "27 precious materials ranked by how much exists across the entire universe. The rarest isn't diamond. It's not ruby either."
+2. **Meta description**: "17 precious materials ranked by how much exists across the entire universe. The rarest isn't diamond. It's not ruby either."
 3. **H1**: In text article section below the interactive (not in the scroll experience)
 4. **FAQ schema**: JSON-LD targeting the "what is the rarest..." question variants
 5. **Text article section**: Crawlable summary covering tier 1 keywords naturally

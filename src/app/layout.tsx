@@ -23,7 +23,7 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "The Rarest Gemstones (in the Universe)",
   description:
-    "27 precious materials ranked by how much exists across the entire universe. The rarest isn't diamond. It's not ruby either.",
+    "17 precious materials ranked by how much exists across the entire universe. The rarest isn't diamond. It's not ruby either.",
   keywords: [
     "rarest gemstone",
     "rarest gem in the world",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "The Rarest Gemstones (in the Universe)",
     description:
-      "27 precious materials ranked by how much exists across the entire universe. The rarest isn't diamond. It's not ruby either.",
+      "17 precious materials ranked by how much exists across the entire universe. The rarest isn't diamond. It's not ruby either.",
     type: "article",
     locale: "en_AU",
     images: [{ url: "/p/rarest-gemstones/og-emerald.png", width: 1200, height: 630 }],
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "The Rarest Gemstones (in the Universe)",
     description:
-      "27 precious materials ranked by how much exists across the entire universe. The rarest isn't diamond. It's not ruby either.",
+      "17 precious materials ranked by how much exists across the entire universe. The rarest isn't diamond. It's not ruby either.",
     images: ["/p/rarest-gemstones/og-emerald.png"],
   },
 };
