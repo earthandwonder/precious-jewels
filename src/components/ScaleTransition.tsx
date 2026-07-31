@@ -67,7 +67,7 @@ function ZoomTransition({
 
   const contextText =
     fromRef === "heliosphere" && toRef === "solar-system"
-      ? "The entire solar system fits inside Voyager's sphere four times over. We zoom in."
+      ? "The piles from here are smaller. The entire solar system fits inside Voyager's sphere four times over."
       : null;
 
   // Phase 1: from object grows and fades (0-0.5)

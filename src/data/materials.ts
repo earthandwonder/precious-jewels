@@ -56,7 +56,7 @@ export const materials: Material[] = [
     glowColor: "#FF6B8A",
     tagline: "Born in the atmospheres of dying stars",
     description:
-      "Corundum — the mineral that gives us both rubies and sapphires — is one of the first minerals to crystallise from a cooling stellar wind. The same crystal, coloured red by chromium or blue by iron and titanium.",
+      "Ruby and sapphire are the same crystal, corundum, with different impurities. It's one of the first crystals to condense from the gas of a star shedding its outer layers.",
     scaleComparison:
       "Enough ruby and sapphire to bury every planet in the solar system kilometres deep.",
     derivation: {
@@ -79,9 +79,9 @@ export const materials: Material[] = [
     density: 3500,
     color: "#B9F2FF",
     glowColor: "#E0F7FF",
-    tagline: "Rained from methane skies, scattered through interstellar dust",
+    tagline: "On Neptune, it rains diamonds.",
     description:
-      "Carbon — the fourth most abundant element — becomes diamond wherever pressure and temperature align. The universe provides both generously.",
+      "Carbon, the fourth most abundant element, becomes diamond easily. Inside planets, around dying stars, in the methane atmospheres of ice giants. It forms everywhere.",
     scaleComparison:
       "A sphere of diamond stretching far past the orbit of Pluto.",
     derivation: {
@@ -104,9 +104,9 @@ export const materials: Material[] = [
     density: 2650,
     color: "#9B59B6",
     glowColor: "#C39BD3",
-    tagline: "Crystallised wherever silica and water meet inside a cooling crust",
+    tagline: "Twelve percent of Earth's continental crust is this.",
     description:
-      "Rarer than raw mantle minerals, but still staggeringly common across trillions of rocky planets. Amethyst is just quartz with a trace of irradiated iron.",
+      "Any rocky planet that forms a crust will form quartz. Trillions of them have. Amethyst is just quartz with a trace of irradiated iron.",
     scaleComparison: "Enough amethyst to build a mountain range spanning a galaxy.",
     derivation: {
       steps: [
@@ -129,7 +129,7 @@ export const materials: Material[] = [
     glowColor: "#66CDAA",
     tagline: "Forged in the collision zones of tectonic plates",
     description:
-      "Not every rocky world has plate tectonics, but enough do. Imperial jade — the vivid green variety — requires a chromium trace that makes it genuinely uncommon.",
+      "Jadeite only forms under the extreme pressure of one tectonic plate diving beneath another. Not every rocky world has plate tectonics — but trillions do.",
     derivation: {
       steps: [
         "~10-30% of rocky planets have plate tectonics. ~10²⁰ kg jadeite-facies material per tectonic world × ~10²² planets.",
@@ -149,9 +149,9 @@ export const materials: Material[] = [
     density: 2100,
     color: "#00B4D8",
     glowColor: "#48CAE4",
-    tagline: "Silica dissolved in water, settled into a lattice that splits light into fire",
+    tagline: "The only gemstone that needs water to exist.",
     description:
-      "It requires a world with liquid water — a far rarer condition than most people realise. Opal has been detected on Mars.",
+      "Opal is hydrated silica — tiny spheres of glass arranged so precisely they diffract light into colour. It can only form on worlds with liquid water. It's been found on Mars.",
     derivation: {
       steps: [
         "Requires liquid water. ~1-10% of rocky planets have water history → ~10²¹ water-worlds × ~10¹⁵ kg opal each.",
@@ -175,9 +175,9 @@ export const materials: Material[] = [
     density: 2700,
     color: "#50C878",
     glowColor: "#7DCEA0",
-    tagline: "Built from cosmic ray debris — beryllium, an element stars can't make",
+    tagline: "The green comes from chromium — an element that shouldn't be anywhere near beryllium.",
     description:
-      "Every emerald in existence started as atomic shrapnel. The beryllium bottleneck means emerald can never be cosmically common — no matter how many rocky worlds there are.",
+      "Beryllium lives in the crust. Chromium lives in the mantle. Emerald forms in the narrow zones where they collide.",
     scaleComparison:
       "All the emerald in the universe would fit in a sphere about six times wider than the Sun.",
     derivation: {
@@ -200,9 +200,9 @@ export const materials: Material[] = [
     density: 2700,
     color: "#DC143C",
     glowColor: "#FF4444",
-    tagline: "The same impossible element, plus one more coincidence",
+    tagline: "Same crystal as emerald, coloured red by manganese. Even harder to form.",
     description:
-      "Same beryllium bottleneck as emerald, plus manganese inside a very specific type of rhyolitic lava flow. On Earth, there's one commercial deposit — in Utah. But trillions of rocky worlds each roll those dice. One red beryl crystal for every 150,000 gem diamonds.",
+      "Red beryl needs everything emerald needs, plus manganese inside a specific type of volcanic flow. On Earth, one deposit exists — in Utah. One red beryl crystal for every 150,000 gem diamonds.",
     derivation: {
       steps: [
         "Same Be bottleneck as emerald, plus Mn in rhyolitic lava. ~1,000× rarer — one commercial deposit exists on Earth.",
@@ -223,9 +223,9 @@ export const materials: Material[] = [
     density: 3600,
     color: "#B0B8C8",
     glowColor: "#C8D0E0",
-    tagline: "Four reluctant elements, forced into a crystal that almost never forms",
+    tagline: "So rare it was discovered by accident — already cut and polished.",
     description:
-      "First discovered in 1945 — already cut and polished, sitting in a jeweller's box, mistaken for spinel. Fewer than a thousand faceted stones are known on Earth. The crystal structure almost never nucleates — but across enough worlds, almost never still adds up.",
+      "Taaffeite needs beryllium, magnesium, and aluminium in the same place — then almost never crystallises anyway. Fewer than a thousand faceted stones exist on Earth.",
     derivation: {
       steps: [
         "BeMgAl₄O₈ — same Be scarcity, but the crystal structure almost never nucleates. Hundreds to low-thousands of faceted stones known as of 2026.",
@@ -246,9 +246,9 @@ export const materials: Material[] = [
     density: 3700,
     color: "#A855F4",
     glowColor: "#C084FC",
-    tagline: "Beryllium from the crust, chromium from the mantle — they rarely meet",
+    tagline: "Green in daylight. Red by candlelight.",
     description:
-      "When they do, you get a gem that shifts from green to red depending on the light. Geochemical enemies producing something beautiful.",
+      "The chromium in the crystal absorbs a narrow band of yellow. What's left is green and red — and whichever your light source favours, that's the colour you see.",
     derivation: {
       steps: [
         "BeAl₂O₄ + Cr³⁺. Be lives in felsic rocks, Cr in mafic — they converge only at pegmatite-ultramafic contacts.",
@@ -271,9 +271,9 @@ export const materials: Material[] = [
     density: 500,
     color: "#C4956A",
     glowColor: "#D4A574",
-    tagline: "Grown by living organisms, ring by ring, on only one planet",
+    tagline: "Three trillion trees. 450 billion tonnes.",
     description:
-      "There are about 3 trillion trees on Earth, holding roughly 450 billion tonnes of wood. That sounds like a lot — until you remember that diamond exists on trillions of worlds. Wood exists on one. By cosmic measure, a wooden ring is roughly thirty orders of magnitude rarer than a diamond one.",
+      "Cellulose, lignin, water. Grown ring by ring over decades. It rots, it burns, it gets eaten — and still there are 450 billion tonnes of it.",
     scaleComparison:
       "All the wood on Earth would not fill a single large asteroid. All the diamond in the universe would swallow the solar system.",
     derivation: {
@@ -295,9 +295,9 @@ export const materials: Material[] = [
     density: 2700,
     color: "#D4A574",
     glowColor: "#E8C9A0",
-    tagline: "340 million years of ocean life, fossilised in stone",
+    tagline: "300 million years of dominance. Then the asteroid.",
     description:
-      "Ammonites ruled Earth's oceans for over 300 million years before the asteroid that killed the dinosaurs wiped them out too. Their spiralling shells are embedded in marine rock across every continent. But they only ever existed here.",
+      "Ammonites survived four mass extinctions. The fifth one, 66 million years ago, ended them along with the dinosaurs. Their coiled shells are now embedded in rock on every continent.",
     derivation: {
       steps: [
         "Fermi estimate — no published total exists. Most shells dissolved or were subducted; revised down from earlier estimate.",
@@ -317,9 +317,9 @@ export const materials: Material[] = [
     density: 1050,
     color: "#FFBF00",
     glowColor: "#FFD700",
-    tagline: "Ancient tree blood, hardened by time",
+    tagline: "Fossilised tree resin. 44 million years old.",
     description:
-      "Amber is fossilised tree resin — not sap, but the sticky defensive secretion trees produce when wounded. The Baltic deposit alone holds an estimated 640,000 tonnes, laid down 44 million years ago in a vast forest that no longer exists. All of it: one planet.",
+      "Trees produce resin when wounded — sticky, antimicrobial, designed to seal a cut. The Baltic deposit holds about 640,000 tonnes of it, from a forest that disappeared 44 million years ago.",
     derivation: {
       steps: [
         "Baltic deposit: ~640,000 tonnes. Other deposits (Dominican Republic, Myanmar, etc.) add ~300,000+ tonnes.",
@@ -339,9 +339,9 @@ export const materials: Material[] = [
     density: 2700,
     color: "#FF4040",
     glowColor: "#FF6B6B",
-    tagline: "Built by tiny animals, colony by colony",
+    tagline: "Not reef coral. A deep-water animal, growing one millimetre a year.",
     description:
-      "Precious coral — Corallium rubrum — is not reef coral. It's a slow-growing deep-water animal that builds a dense, polishable skeleton of calcium carbonate. Mediterranean fishers have harvested it for millennia. Populations have crashed 80% since the 1970s.",
+      "Precious coral lives in deep water, not on reefs. Its dense red skeleton has been harvested by Mediterranean fishers for millennia. Populations have crashed 80% since the 1970s.",
     derivation: {
       steps: [
         "Fermi estimate — no published global biomass. Peak catches ~98 t/year (1978); millennia of deep-water growth.",
@@ -362,7 +362,7 @@ export const materials: Material[] = [
     density: 2800,
     color: "#4CC88A",
     glowColor: "#3DBFA0",
-    tagline: "One extinct species, one river, 70 million years",
+    tagline: "One extinct animal, one river, 70 million years.",
     description:
       "The iridescent shell of one extinct ammonite, found along a narrow belt of Alberta's St. Mary River. Gem-grade material may run out within decades.",
     derivation: {
@@ -429,9 +429,9 @@ export const materials: Material[] = [
     density: 2700,
     color: "#FDEBD0",
     glowColor: "#FFF8DC",
-    tagline: "A mollusk's slow answer to a grain of sand",
+    tagline: "Every natural pearl ever formed would fit in one room.",
     description:
-      "One in ten thousand wild oysters produces a gem pearl. Every natural pearl ever formed would fit inside a single room. Of everything you could wear, this is the rarest in existence.",
+      "One in ten thousand wild oysters produces a gem pearl. Layer by layer, over years, around an irritant the animal can't remove. Of everything you could wear, this is the rarest in existence.",
     scaleComparison:
       "Every natural pearl that has ever existed would fit inside a single room.",
     derivation: {
@@ -450,12 +450,12 @@ export const materials: Material[] = [
 // Interstitial text between acts
 export const interstitials = {
   "1-2": {
-    heading: "Now things get genuinely rare. These piles may look large — but this is all there is, everywhere.",
-    body: "Everything below needs beryllium — an element stars can't make. It's created only when cosmic rays shatter heavier atoms at near-light speed.",
+    heading: "These piles may look large — but this is all there is in the known universe.",
+    body: "The next four gems all need beryllium — an element stars can't make. It's created only when cosmic rays shatter heavier atoms at near-light speed.",
   },
   "2-3": {
     heading: "One planet.",
-    body: "Everything below was made by life. You're surrounded by some of the rarest stuff in the universe.",
+    body: "Everything below exists only on Earth. The wooden table you're sitting at is rarer than diamond by thirty orders of magnitude.",
   },
 };
 

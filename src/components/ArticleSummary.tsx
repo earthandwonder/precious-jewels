@@ -47,11 +47,10 @@ export default function ArticleSummary() {
           The most common gemstones are cosmically abundant
         </h2>
         <p className="text-base md:text-lg leading-relaxed" style={{ color: tintSoft }}>
-          Ruby and sapphire — both forms of corundum — are among the first minerals
-          to crystallise from a cooling stellar wind. Diamond is even more
-          common: carbon is the fourth most abundant element, and diamond forms
-          wherever pressure and temperature align. It rains diamonds inside
-          Uranus and Neptune.
+          Ruby and sapphire are the same crystal, corundum, with different impurities —
+          one of the first minerals to condense from the gas of a star shedding
+          its outer layers. Diamond is even more common: carbon, the fourth most
+          abundant element, becomes diamond easily. On Neptune, it rains diamonds.
           Quartz, amethyst, jadeite, and opal follow — all abundant
           wherever rocky planets exist with the right conditions.
         </p>

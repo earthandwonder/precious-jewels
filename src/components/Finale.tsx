@@ -110,7 +110,7 @@ export default function Finale({ isActive }: { isActive: boolean }) {
         >
           Not diamond. Not ruby. A small, quiet sphere built by a living
           creature, on the only planet known to have oceans, wrapped around an
-          irritant grain by grain over years.
+          irritant layer by layer over years.
         </p>
 
         <p
@@ -120,8 +120,7 @@ export default function Finale({ isActive }: { isActive: boolean }) {
             opacity: comparisonOpacity,
           }}
         >
-          Every natural pearl that has ever existed — across all of history
-          — would fit inside a single room.
+          Rarer than diamond by forty orders of magnitude.
         </p>
       </div>
     </div>

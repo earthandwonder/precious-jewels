@@ -87,7 +87,7 @@ export default function EarthIntro({ isActive }: { isActive: boolean }) {
           color: "rgba(210, 222, 238, 0.95)",
         }}
       >
-        We can estimate this. This is the bubble of solar wind around our Sun — Voyager 1 just barely crossed its edge. How much of each gem could you fit inside it?
+        Take a sphere the size of Voyager 1's distance from the Sun. Then pile every piece of each gem in the universe next to it.
       </p>
     </div>
   );
