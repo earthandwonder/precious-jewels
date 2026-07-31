@@ -23,6 +23,7 @@ export type RefType = "heliosphere" | "solar-system" | "sun" | "earth" | "everes
 export interface ReferenceInfo {
   type: RefType;
   label: string;
+  shortLabel: string;
   color: string;
   realSize: number; // metres
   render: (size: number) => React.ReactNode;
@@ -38,13 +39,13 @@ const STATUE_HEIGHT = 93;
 const HUMAN_HEIGHT = 1.8;
 
 export const REFERENCES: Record<RefType, ReferenceInfo> = {
-  heliosphere:    { type: "heliosphere",    label: "Voyager-scale",        color: "#C4B8F0", realSize: HELIOSPHERE_DIAMETER, render: (s) => renderHeliosphere(s) },
-  "solar-system": { type: "solar-system",   label: "Solar system-scale",       color: "#E8D878", realSize: SOLAR_SYSTEM_DIAMETER, render: (s) => renderSolarSystem(s) },
-  sun:            { type: "sun",            label: "Sun-scale",                color: "#F0C060", realSize: SUN_DIAMETER, render: (s) => renderSun(s) },
-  earth:          { type: "earth",          label: "Earth-scale",              color: "#7CB0E0", realSize: EARTH_DIAMETER, render: (s) => renderEarth(s) },
-  everest:        { type: "everest",        label: "Everest-scale",            color: "#D0D8E0", realSize: EVEREST_HEIGHT, render: (s) => renderMountain(s) },
-  statue:         { type: "statue",         label: "Statue of Liberty-scale",  color: "#A0DCC0", realSize: STATUE_HEIGHT, render: (s) => renderStatue(s) },
-  human:          { type: "human",          label: "Human-scale",              color: "#E0C8A0", realSize: HUMAN_HEIGHT, render: (s) => renderHuman(s) },
+  heliosphere:    { type: "heliosphere",    label: "Voyager-scale",            shortLabel: "Voyager",           color: "#C4B8F0", realSize: HELIOSPHERE_DIAMETER, render: (s) => renderHeliosphere(s) },
+  "solar-system": { type: "solar-system",   label: "Solar system-scale",       shortLabel: "Solar system",      color: "#E8D878", realSize: SOLAR_SYSTEM_DIAMETER, render: (s) => renderSolarSystem(s) },
+  sun:            { type: "sun",            label: "Sun-scale",                shortLabel: "The Sun",           color: "#F0C060", realSize: SUN_DIAMETER, render: (s) => renderSun(s) },
+  earth:          { type: "earth",          label: "Earth-scale",              shortLabel: "Earth",             color: "#7CB0E0", realSize: EARTH_DIAMETER, render: (s) => renderEarth(s) },
+  everest:        { type: "everest",        label: "Everest-scale",            shortLabel: "Everest",           color: "#D0D8E0", realSize: EVEREST_HEIGHT, render: (s) => renderMountain(s) },
+  statue:         { type: "statue",         label: "Statue of Liberty-scale",  shortLabel: "Statue of Liberty", color: "#A0DCC0", realSize: STATUE_HEIGHT, render: (s) => renderStatue(s) },
+  human:          { type: "human",          label: "Human-scale",              shortLabel: "Human",             color: "#E0C8A0", realSize: HUMAN_HEIGHT, render: (s) => renderHuman(s) },
 };
 
 /**
@@ -271,7 +272,7 @@ export default function ScaleReference({ logVolume, act, pileHeight, sizeFactor 
         className="text-xs font-medium tracking-wider uppercase whitespace-nowrap"
         style={{ color: ref.color, opacity: 1 }}
       >
-        {ref.label}
+        {ref.shortLabel}
       </span>
     </div>
   );
