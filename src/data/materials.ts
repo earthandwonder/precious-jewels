@@ -259,6 +259,33 @@ export const materials: Material[] = [
       ],
     },
   },
+  {
+    id: "painite",
+    name: "Painite",
+    category: "mineral",
+    act: 2,
+    logVolume: 19.0,
+    density: 4010,
+    color: "#8B4513",
+    glowColor: "#CD853F",
+    tagline:
+      "The Guinness record holder for rarest mineral. But minerals form on trillions of worlds.",
+    description:
+      "For twenty-eight years after its discovery, only one crystal existed. Painite held the Guinness record for rarest mineral for over two decades. On Earth, fewer than a thousand crystals have been found — all from one region in Myanmar. But painite is a mineral. It needs calcium, zirconium, boron, and aluminium — all of which exist on other rocky worlds. Multiply by ten sextillion planets, and the pile you're looking at is the size of the Moon. What comes next doesn't get that multiplier.",
+    derivation: {
+      steps: [
+        "CaZrBAl₉O₁₈. Boron is spallation-produced (~6 × 10⁻¹⁰ solar abundance), ~4× more abundant than Be but same formation bottleneck.",
+        "Earth total (found + undiscovered): ~10²–10³ kg. ~1,000 crystals known, mostly from Mogok, Myanmar.",
+        "Requires convergence of Ca, Zr, B, Al in metamorphic/metasomatic settings. Estimated ~10⁻³ of rocky planets produce painite-type conditions.",
+        "~10¹⁹ suitable planets × ~10² kg each → ~10²¹ kg. Central estimate: logMass ~22, logVol ~19.",
+      ],
+      sources: [
+        "Guinness World Records — rarest mineral (1981–2005)",
+        "Harding et al. (2007) Mineralogical Magazine — crystal structure of painite",
+        "Fermi estimate — no published cosmic abundance; Earth specimen counts from GRS and dealer records",
+      ],
+    },
+  },
   // ═══════════════════════════════════════════
   // ACT III — Biological / Earth-only
   // ═══════════════════════════════════════════
