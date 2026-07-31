@@ -22,7 +22,7 @@ function getParticleStyle(material: Material): ParticleStyle {
     case "corundum":
       return { particleShape: "chunk", colorJitter: 0.15, sizeRange: [1.0, 2.2], countMultiplier: 3.0 };
     case "diamond":
-      return { particleShape: "chunk", colorJitter: 0.15, sizeRange: [1.3, 2.6], countMultiplier: 2.0 };
+      return { particleShape: "chunk", colorJitter: 0.15, sizeRange: [0.9, 2.0], countMultiplier: 3.5 };
     case "quartz":
       return { particleShape: "chunk", colorJitter: 0.15, sizeRange: [1.1, 2.2], countMultiplier: 2.0 };
     case "emerald":
