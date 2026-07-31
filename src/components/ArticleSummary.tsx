@@ -31,8 +31,8 @@ export default function ArticleSummary() {
           The rarest gemstones in the universe, ranked
         </h1>
         <p className="text-base md:text-lg leading-relaxed" style={{ color: tintSoft }}>
-          We ranked 17 precious materials — every mineral, fossil, and biological gem
-          used in jewellery — by how much of each one exists across the entire known universe.
+          We estimated how much of 17 precious materials — minerals, fossils, and
+          biological gems — exists across the entire known universe.
           The result spans 44 orders of magnitude, from planet-swallowing
           quantities of corundum down to a single room of natural pearls.
         </p>
@@ -50,8 +50,9 @@ export default function ArticleSummary() {
           Ruby and sapphire — both forms of corundum — are among the first minerals
           to crystallise from a cooling stellar wind. Diamond is even more
           common: carbon is the fourth most abundant element, and diamond forms
-          wherever pressure and temperature align. It rains diamonds inside Uranus
-          and Neptune. Quartz, amethyst, jadeite, and opal follow — all abundant
+          wherever pressure and temperature align. Lab experiments suggest it may
+          even precipitate as rain inside ice giants like Uranus and Neptune.
+          Quartz, amethyst, jadeite, and opal follow — all abundant
           wherever rocky planets exist with the right conditions.
         </p>
       </ArticlePage>
@@ -86,15 +87,16 @@ export default function ArticleSummary() {
         </h2>
         <p className="text-base md:text-lg leading-relaxed mb-6" style={{ color: tintSoft }}>
           Minerals can form on trillions of worlds. Life — as far as we know — happened
-          on one. Every biological gem exists only on Earth: wood, ammonite
-          fossils, amber, precious coral, ammolite, and natural pearl. Moldavite
-          is glass formed by a single asteroid impact 14.8 million years ago.
-          Only 275 tonnes survive.
+          on one. Wood, ammonite fossils, amber, precious coral, ammolite, and
+          natural pearl all exist only on Earth. Then there&apos;s moldavite — not
+          biological, but just as singular: glass formed by a single asteroid
+          impact in Bavaria 14.8 million years ago. 275 tonnes survive.
+          No more will ever form.
         </p>
         <p className="text-base md:text-lg leading-relaxed" style={{ color: tintSoft }}>
-          The rarest of all? Not diamond. Not ruby. A natural pearl — built grain
-          by grain by a living creature, on the only planet known to have oceans.
-          Every natural pearl that has ever existed would fit inside a single room.
+          At the bottom of the list sits a natural pearl. One in ten thousand
+          wild oysters produces one. Every natural pearl that has ever
+          existed — across all of history — would fit inside a single room.
         </p>
       </ArticlePage>
 
