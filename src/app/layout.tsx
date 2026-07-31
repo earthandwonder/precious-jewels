@@ -21,6 +21,10 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://benmccarthy.com.au"),
+  alternates: {
+    canonical: "/p/rarest-gemstones",
+  },
   title: "The Rarest Gemstones (in the Universe)",
   description:
     "17 precious materials ranked by how much exists across the entire universe. The rarest isn't diamond. It's not ruby either.",
