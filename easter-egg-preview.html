@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { background: #0a0a12; color: #eee; font-family: system-ui; display: flex; flex-wrap: wrap; gap: 60px; padding: 40px; justify-content: center; }
+  .card { text-align: center; max-width: 280px; }
+  .card h3 { margin-bottom: 8px; font-size: 16px; opacity: 0.8; }
+  .card p { margin-top: 12px; font-size: 13px; opacity: 0.5; line-height: 1.5; }
+  .preview { border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 20px; background: rgba(255,255,255,0.03); }
+  h2 { width: 100%; text-align: center; opacity: 0.4; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+
+<h2>Easter Egg Assets v4</h2>
+
+<!-- FULL SIZE ICONS -->
+
+<div class="card">
+  <h3>Dragon (geometric/iconic)</h3>
+  <div class="preview" style="background:rgba(185,242,255,0.05);">
+    <svg width="160" height="120" viewBox="0 0 160 120">
+      <!--
+        Minimal geometric dragon: S-curve body, triangle head, triangle wings, curled tail.
+        Like a logo — reads as "dragon" at any size.
+      -->
+      <!-- Body — thick S-curve, lying down -->
+      <path d="M30,90 C40,88 60,82 80,75 C100,68 110,60 115,55"
+            stroke="#B9F2FF" stroke-width="16" fill="none" stroke-linecap="round"/>
+
+      <!-- Neck curves up -->
+      <path d="M115,55 C120,45 125,35 128,28"
+            stroke="#B9F2FF" stroke-width="12" fill="none" stroke-linecap="round"/>
+
+      <!-- Head — angular triangle pointing right -->
+      <polygon points="128,28 148,22 140,34 128,32" fill="#B9F2FF"/>
+
+      <!-- Horns -->
+      <polygon points="130,24 126,12 134,22" fill="#B9F2FF"/>
+      <polygon points="135,22 133,10 139,20" fill="#B9F2FF"/>
+
+      <!-- Eye -->
+      <circle cx="137" cy="26" r="1.5" fill="#0a0a12"/>
+
+      <!-- Wing — single angular bat-wing, the key shape -->
+      <polygon points="75,75 50,20 65,40 80,10 85,38 100,18 95,45 110,30 100,55"
+               fill="#B9F2FF" opacity="0.7"/>
+
+      <!-- Tail — curls from back end -->
+      <path d="M30,90 C20,92 12,88 10,80 C8,72 14,68 20,72"
+            stroke="#B9F2FF" stroke-width="8" fill="none" stroke-linecap="round"/>
+      <!-- Tail spade -->
+      <polygon points="10,80 2,72 12,78 6,66 14,76" fill="#B9F2FF"/>
+
+      <!-- Front legs -->
+      <path d="M110,58 L108,72 L104,72 L108,72 L112,72"
+            stroke="#B9F2FF" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+      <!-- Back legs -->
+      <path d="M50,86 L48,98 L44,98 L48,98 L52,98"
+            stroke="#B9F2FF" stroke-width="3" fill="none" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <p>Geometric dragon. S-curve body, angular bat-wing, triangle head with horns, curled tail with spade.</p>
+</div>
+
+<div class="card">
+  <h3>Infinity Gauntlet (hand-drawn)</h3>
+  <div class="preview" style="background:rgba(155,89,182,0.05);">
+    <svg width="120" height="160" viewBox="0 0 120 160">
+      <!-- Gauntlet — upright fist, fingers facing up -->
+      <!-- Wrist / forearm plate -->
+      <rect x="30" y="110" width="60" height="40" rx="8" fill="#C0A040" opacity="0.9"/>
+      <rect x="35" y="115" width="50" height="8" rx="3" fill="#A08830" opacity="0.6"/>
+      <rect x="35" y="128" width="50" height="8" rx="3" fill="#A08830" opacity="0.6"/>
+      <!-- Palm -->
+      <rect x="25" y="55" width="70" height="58" rx="10" fill="#C0A040"/>
+      <!-- Knuckle ridge -->
+      <rect x="25" y="50" width="70" height="14" rx="6" fill="#D4B050"/>
+      <!-- Fingers -->
+      <rect x="26" y="15" width="14" height="40" rx="6" fill="#C0A040"/>
+      <rect x="43" y="8" width="14" height="47" rx="6" fill="#C0A040"/>
+      <rect x="60" y="12" width="14" height="43" rx="6" fill="#C0A040"/>
+      <rect x="77" y="22" width="13" height="33" rx="6" fill="#C0A040"/>
+      <!-- Thumb — shifted down, pointier, thinner -->
+      <path d="M25,100 C20,98 12,92 10,82 C8,74 12,68 18,70 C22,72 24,78 25,85"
+            fill="#C0A040"/>
+
+      <!-- Finger joints -->
+      <line x1="28" y1="35" x2="38" y2="35" stroke="#A08830" stroke-width="1.5" opacity="0.5"/>
+      <line x1="45" y1="30" x2="55" y2="30" stroke="#A08830" stroke-width="1.5" opacity="0.5"/>
+      <line x1="62" y1="33" x2="72" y2="33" stroke="#A08830" stroke-width="1.5" opacity="0.5"/>
+      <line x1="79" y1="38" x2="88" y2="38" stroke="#A08830" stroke-width="1.5" opacity="0.5"/>
+
+      <!-- INFINITY STONES — on knuckle-palm junction -->
+      <!-- Space (blue) — index -->
+      <circle cx="33" cy="58" r="5" fill="#4169E1"/>
+      <circle cx="33" cy="58" r="2.5" fill="#6B8FE8" opacity="0.6"/>
+      <!-- Mind (yellow) — middle -->
+      <circle cx="50" cy="58" r="5" fill="#FFD700"/>
+      <circle cx="50" cy="58" r="2.5" fill="#FFE44D" opacity="0.6"/>
+      <!-- Reality (red) — ring -->
+      <circle cx="67" cy="58" r="5" fill="#DC143C"/>
+      <circle cx="67" cy="58" r="2.5" fill="#E8485A" opacity="0.6"/>
+      <!-- Soul (orange) — pinky -->
+      <circle cx="83" cy="58" r="5" fill="#FF8C00"/>
+      <circle cx="83" cy="58" r="2.5" fill="#FFB040" opacity="0.6"/>
+      <!-- Power (purple) — back of hand -->
+      <circle cx="60" cy="80" r="6" fill="#9B59B6"/>
+      <circle cx="60" cy="80" r="3.5" fill="#B87FD0" opacity="0.5"/>
+      <!-- Time (green) — thumb -->
+      <circle cx="10" cy="78" r="5" fill="#50C878"/>
+      <circle cx="10" cy="78" r="2.5" fill="#7ADEA0" opacity="0.6"/>
+    </svg>
+  </div>
+  <p>Stones moved down to knuckle-palm junction. Thumb improved. Purple stays on back of hand.</p>
+</div>
+
+<div class="card">
+  <h3>No-Face (hand-drawn)</h3>
+  <div class="preview" style="background:rgba(255,191,0,0.05);">
+    <svg width="90" height="150" viewBox="0 0 60 100">
+      <path d="M30,28 C18,28 10,45 8,70 C6,85 12,100 30,100 C48,100 54,85 52,70 C50,45 42,28 30,28Z" fill="#2a2a3e"/>
+      <ellipse cx="30" cy="22" rx="14" ry="16" fill="#2a2a3e"/>
+      <ellipse cx="30" cy="20" rx="10" ry="12" fill="#e8e0d0" opacity="0.9"/>
+      <ellipse cx="25.5" cy="17.5" rx="2.5" ry="3.2" fill="#1a1a2e"/>
+      <ellipse cx="34.5" cy="17.5" rx="2.5" ry="3.2" fill="#1a1a2e"/>
+      <rect x="23.5" y="10" width="4" height="5" rx="1.5" fill="#7B3F7B"/>
+      <rect x="32.5" y="10" width="4" height="5" rx="1.5" fill="#7B3F7B"/>
+      <rect x="23.5" y="22" width="4" height="5" rx="1.5" fill="#7B3F7B"/>
+      <rect x="32.5" y="22" width="4" height="5" rx="1.5" fill="#7B3F7B"/>
+      <ellipse cx="30" cy="29" rx="1.8" ry="1.2" fill="#1a1a2e" opacity="0.5"/>
+    </svg>
+  </div>
+</div>
+
+<!-- On-pile previews -->
+<h2 style="margin-top:40px;">On piles at easter-egg opacity</h2>
+
+<div class="card">
+  <h3>Dragon on Diamond</h3>
+  <div class="preview">
+    <div style="position:relative; width:220px; height:180px; margin:0 auto;">
+      <svg width="220" height="180" viewBox="0 0 220 180" style="position:absolute;top:0;left:0;">
+        <polygon points="110,30 20,170 200,170" fill="#B9F2FF" opacity="0.12"/>
+      </svg>
+      <svg width="80" height="60" viewBox="0 0 160 120" style="position:absolute; top:22px; right:15px; opacity:0.18;">
+        <path d="M30,90 C40,88 60,82 80,75 C100,68 110,60 115,55" stroke="#B9F2FF" stroke-width="16" fill="none" stroke-linecap="round"/>
+        <path d="M115,55 C120,45 125,35 128,28" stroke="#B9F2FF" stroke-width="12" fill="none" stroke-linecap="round"/>
+        <polygon points="128,28 148,22 140,34 128,32" fill="#B9F2FF"/>
+        <polygon points="130,24 126,12 134,22" fill="#B9F2FF"/>
+        <polygon points="135,22 133,10 139,20" fill="#B9F2FF"/>
+        <polygon points="75,75 50,20 65,40 80,10 85,38 100,18 95,45 110,30 100,55" fill="#B9F2FF" opacity="0.7"/>
+        <path d="M30,90 C20,92 12,88 10,80 C8,72 14,68 20,72" stroke="#B9F2FF" stroke-width="8" fill="none" stroke-linecap="round"/>
+        <polygon points="10,80 2,72 12,78 6,66 14,76" fill="#B9F2FF"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Gauntlet on Amethyst</h3>
+  <div class="preview">
+    <div style="position:relative; width:220px; height:180px; margin:0 auto;">
+      <svg width="220" height="180" viewBox="0 0 220 180" style="position:absolute;top:0;left:0;">
+        <polygon points="110,30 20,170 200,170" fill="#9B59B6" opacity="0.12"/>
+      </svg>
+      <svg width="40" height="54" viewBox="0 0 120 160" style="position:absolute; bottom:35px; left:85px; opacity:0.22;">
+        <rect x="30" y="110" width="60" height="40" rx="8" fill="#C0A040" opacity="0.9"/>
+        <rect x="25" y="55" width="70" height="58" rx="10" fill="#C0A040"/>
+        <rect x="25" y="50" width="70" height="14" rx="6" fill="#D4B050"/>
+        <rect x="26" y="15" width="14" height="40" rx="6" fill="#C0A040"/>
+        <rect x="43" y="8" width="14" height="47" rx="6" fill="#C0A040"/>
+        <rect x="60" y="12" width="14" height="43" rx="6" fill="#C0A040"/>
+        <rect x="77" y="22" width="13" height="33" rx="6" fill="#C0A040"/>
+        <path d="M25,100 C20,98 12,92 10,82 C8,74 12,68 18,70 C22,72 24,78 25,85" fill="#C0A040"/>
+        <circle cx="33" cy="58" r="5" fill="#4169E1"/>
+        <circle cx="50" cy="58" r="5" fill="#FFD700"/>
+        <circle cx="67" cy="58" r="5" fill="#DC143C"/>
+        <circle cx="83" cy="58" r="5" fill="#FF8C00"/>
+        <circle cx="60" cy="80" r="6" fill="#9B59B6"/>
+        <circle cx="10" cy="78" r="5" fill="#50C878"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h3>No-Face on Amber</h3>
+  <div class="preview">
+    <div style="position:relative; width:220px; height:180px; margin:0 auto;">
+      <svg width="220" height="180" viewBox="0 0 220 180" style="position:absolute;top:0;left:0;">
+        <polygon points="110,30 20,170 200,170" fill="#FFBF00" opacity="0.12"/>
+      </svg>
+      <svg width="30" height="50" viewBox="0 0 60 100" style="position:absolute; top:50px; right:35px; opacity:0.35;">
+        <path d="M30,28 C18,28 10,45 8,70 C6,85 12,100 30,100 C48,100 54,85 52,70 C50,45 42,28 30,28Z" fill="#2a2a3e"/>
+        <ellipse cx="30" cy="22" rx="14" ry="16" fill="#2a2a3e"/>
+        <ellipse cx="30" cy="20" rx="10" ry="12" fill="#e8e0d0" opacity="0.9"/>
+        <ellipse cx="25.5" cy="17.5" rx="2.5" ry="3.2" fill="#1a1a2e"/>
+        <ellipse cx="34.5" cy="17.5" rx="2.5" ry="3.2" fill="#1a1a2e"/>
+        <rect x="23.5" y="10" width="4" height="5" rx="1.5" fill="#7B3F7B"/>
+        <rect x="32.5" y="10" width="4" height="5" rx="1.5" fill="#7B3F7B"/>
+        <rect x="23.5" y="22" width="4" height="5" rx="1.5" fill="#7B3F7B"/>
+        <rect x="32.5" y="22" width="4" height="5" rx="1.5" fill="#7B3F7B"/>
+        <ellipse cx="30" cy="29" rx="1.8" ry="1.2" fill="#1a1a2e" opacity="0.5"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

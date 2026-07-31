@@ -489,8 +489,8 @@ export const interstitials = {
     body: "The next four gems all need beryllium — an element stars can't make. It's created only when cosmic rays shatter heavier atoms at near-light speed.",
   },
   "2-3": {
-    heading: "One planet.",
-    body: "Everything below exists only on Earth. The wooden table you're sitting at is rarer than diamond by thirty orders of magnitude.",
+    heading: "Everything below exists only on Earth.",
+    body: "The wooden table you're sitting at is rarer than diamond by thirty orders of magnitude.",
   },
 };
 
