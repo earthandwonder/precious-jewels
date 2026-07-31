@@ -58,9 +58,9 @@ export default function Finale({ isActive }: { isActive: boolean }) {
         </p>
 
         {/* Pearl image with glow backdrop */}
-        <div className="flex justify-center mb-12">
+        <div className="flex justify-center mb-12 overflow-visible">
           <div
-            className="relative"
+            className="relative overflow-visible"
             style={{
               width: 140,
               height: 140,
