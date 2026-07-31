@@ -99,7 +99,7 @@ export default function FaqSchema() {
         name: "Is diamond actually rare?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "No. Diamond is one of the most common gemstone materials in the universe. Carbon is the fourth most abundant element, and diamond forms wherever pressure and temperature align. Lab experiments suggest diamond may even precipitate inside ice giants like Uranus and Neptune. On a cosmic scale, ruby, sapphire, and quartz are all more abundant, but diamond is far from rare.",
+          text: "No. Diamond is one of the most common gemstone materials in the universe. Carbon is the fourth most abundant element, and diamond forms wherever pressure and temperature align. It rains diamonds inside Uranus and Neptune. On a cosmic scale, ruby, sapphire, and quartz are all more abundant, but diamond is far from rare.",
         },
       },
       {

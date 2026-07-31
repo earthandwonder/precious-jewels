@@ -31,8 +31,8 @@ export default function ArticleSummary() {
           The rarest gemstones in the universe, ranked
         </h1>
         <p className="text-base md:text-lg leading-relaxed" style={{ color: tintSoft }}>
-          We estimated how much of 17 precious materials — minerals, fossils, and
-          biological gems — exists across the entire known universe.
+          We estimated how much of 17 selected precious materials — minerals, fossils,
+          and biological gems — exists across the entire known universe.
           The result spans 44 orders of magnitude, from planet-swallowing
           quantities of corundum down to a single room of natural pearls.
         </p>
@@ -50,8 +50,8 @@ export default function ArticleSummary() {
           Ruby and sapphire — both forms of corundum — are among the first minerals
           to crystallise from a cooling stellar wind. Diamond is even more
           common: carbon is the fourth most abundant element, and diamond forms
-          wherever pressure and temperature align. Lab experiments suggest it may
-          even precipitate as rain inside ice giants like Uranus and Neptune.
+          wherever pressure and temperature align. It rains diamonds inside
+          Uranus and Neptune.
           Quartz, amethyst, jadeite, and opal follow — all abundant
           wherever rocky planets exist with the right conditions.
         </p>
@@ -90,8 +90,7 @@ export default function ArticleSummary() {
           on one. Wood, ammonite fossils, amber, precious coral, ammolite, and
           natural pearl all exist only on Earth. Then there&apos;s moldavite — not
           biological, but just as singular: glass formed by a single asteroid
-          impact in Bavaria 14.8 million years ago. 275 tonnes survive.
-          No more will ever form.
+          impact in Bavaria 14.8 million years ago.
         </p>
         <p className="text-base md:text-lg leading-relaxed" style={{ color: tintSoft }}>
           At the bottom of the list sits a natural pearl. One in ten thousand
