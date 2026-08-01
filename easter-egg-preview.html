@@ -35,9 +35,9 @@
       <!-- Head — angular wedge pointing right with jaw -->
       <polygon points="124,24 148,18 150,26 142,32 124,32" fill="#B9F2FF"/>
 
-      <!-- Horns -->
-      <polygon points="128,22 124,10 132,20" fill="#B9F2FF"/>
-      <polygon points="134,19 132,7 138,18" fill="#B9F2FF"/>
+      <!-- Horns — bases on head top edge -->
+      <polygon points="126,23 128,8 133,21" fill="#B9F2FF"/>
+      <polygon points="134,20 138,5 141,19" fill="#B9F2FF"/>
 
       <!-- Eye -->
       <circle cx="136" cy="24" r="2" fill="#0a0a12"/>
@@ -45,9 +45,9 @@
       <!-- Nostril -->
       <circle cx="146" cy="22" r="1" fill="#0a0a12" opacity="0.6"/>
 
-      <!-- Wing — single angular bat-wing, the key shape -->
+      <!-- Wing — single angular bat-wing, rotated 30° anti-clockwise -->
       <polygon points="75,75 50,20 65,40 80,10 85,38 100,18 95,45 110,30 100,55"
-               fill="#B9F2FF" opacity="0.7"/>
+               fill="#B9F2FF" opacity="0.7" transform="rotate(-30, 92, 65)"/>
 
       <!-- Tail — curls from back end -->
       <path d="M30,90 C20,92 12,88 10,80 C8,72 14,68 20,72"
@@ -55,13 +55,15 @@
       <!-- Tail spade -->
       <polygon points="10,80 2,72 12,78 6,66 14,76" fill="#B9F2FF"/>
 
-      <!-- Front legs -->
-      <path d="M110,58 L108,72 L104,72 L108,72 L112,72"
-            stroke="#B9F2FF" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <!-- Front leg -->
+      <path d="M110,58 L107,72" stroke="#B9F2FF" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <!-- Front foot — 3 forward-facing talons -->
+      <path d="M107,72 L100,82 M107,72 L105,83 M107,72 L113,82" stroke="#B9F2FF" stroke-width="3" fill="none" stroke-linecap="round"/>
 
-      <!-- Back legs -->
-      <path d="M50,86 L48,98 L44,98 L48,98 L52,98"
-            stroke="#B9F2FF" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <!-- Back leg -->
+      <path d="M50,86 L47,98" stroke="#B9F2FF" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <!-- Back foot — 3 forward-facing talons -->
+      <path d="M47,98 L40,108 M47,98 L45,109 M47,98 L53,108" stroke="#B9F2FF" stroke-width="3" fill="none" stroke-linecap="round"/>
     </svg>
   </div>
   <p>Geometric dragon. S-curve body, angular bat-wing, triangle head with horns, curled tail with spade.</p>
@@ -151,8 +153,8 @@
         <path d="M30,90 C40,88 60,82 80,75 C100,68 110,60 115,55" stroke="#B9F2FF" stroke-width="16" fill="none" stroke-linecap="round"/>
         <path d="M115,55 C120,45 125,35 128,28" stroke="#B9F2FF" stroke-width="12" fill="none" stroke-linecap="round"/>
         <polygon points="124,24 148,18 150,26 142,32 124,32" fill="#B9F2FF"/>
-        <polygon points="128,22 124,10 132,20" fill="#B9F2FF"/>
-        <polygon points="134,19 132,7 138,18" fill="#B9F2FF"/>
+        <polygon points="126,23 128,8 133,21" fill="#B9F2FF"/>
+        <polygon points="134,20 138,5 141,19" fill="#B9F2FF"/>
         <polygon points="75,75 50,20 65,40 80,10 85,38 100,18 95,45 110,30 100,55" fill="#B9F2FF" opacity="0.7"/>
         <path d="M30,90 C20,92 12,88 10,80 C8,72 14,68 20,72" stroke="#B9F2FF" stroke-width="8" fill="none" stroke-linecap="round"/>
         <polygon points="10,80 2,72 12,78 6,66 14,76" fill="#B9F2FF"/>
