@@ -332,7 +332,7 @@ function EasterEggOverlay({ materialId, pileRef }: { materialId: string; pileRef
             <div
               className="absolute"
               style={{
-                width: "28%", maxWidth: 44, top: "8%", left: "12%", height: "88%",
+                width: "28%", maxWidth: 44, top: "12%", left: "50%", height: "85%", transform: "translateX(-50%)",
                 background: "linear-gradient(to bottom, rgba(126, 200, 126, 0.3), rgba(126, 200, 126, 0))",
                 clipPath: "polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%)",
                 pointerEvents: "none",
@@ -343,8 +343,8 @@ function EasterEggOverlay({ materialId, pileRef }: { materialId: string; pileRef
             ref={ufoRef}
             className="absolute transition-transform"
             style={{
-              width: "28%", maxWidth: 44, top: "2%", left: "12%", pointerEvents: "none",
-              transform: `scale(${ufoPulse ? 1.15 : 1})`,
+              width: "28%", maxWidth: 44, top: "2%", left: "50%", pointerEvents: "none",
+              transform: `translateX(-50%) scale(${ufoPulse ? 1.15 : 1})`,
               filter: ufoPulse ? "drop-shadow(0 0 8px rgba(126, 200, 126, 0.8))" : "none",
               transition: "transform 0.3s ease-out, filter 0.3s ease-out",
             }}
@@ -370,7 +370,7 @@ function EasterEggOverlay({ materialId, pileRef }: { materialId: string; pileRef
         <div className="absolute inset-0 z-20" style={{ pointerEvents: "none" }}>
           <div
             className="absolute cursor-pointer"
-            style={{ width: "40%", maxWidth: 60, top: "0%", left: "6%", height: "35%", pointerEvents: "auto" }}
+            style={{ width: "40%", maxWidth: 60, top: "0%", left: "50%", transform: "translateX(-50%)", height: "35%", pointerEvents: "auto" }}
             onClick={handleUfoClick}
           />
         </div>
