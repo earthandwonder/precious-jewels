@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useCallback } from "react";
+import { useRef, useEffect, useCallback, forwardRef, useImperativeHandle } from "react";
 
 interface Particle {
   x: number;
@@ -40,6 +40,12 @@ interface BlastFlash {
 
 export type MaterialFeel = "heavy" | "sparkly" | "organic" | "glassy";
 export type ParticleShape = "circle" | "chunk" | "shard" | "log";
+
+export interface ParticlePileHandle {
+  snap: () => void;
+  /** Spawn particles at a position relative to the canvas element */
+  spawnAt: (clientX: number, clientY: number, count: number) => void;
+}
 
 interface ParticlePileProps {
   color: string;
@@ -218,7 +224,7 @@ function drawHighlight(
   ctx.restore();
 }
 
-export default function ParticlePile({
+const ParticlePile = forwardRef<ParticlePileHandle, ParticlePileProps>(function ParticlePile({
   color,
   glowColor,
   height,
@@ -230,7 +236,7 @@ export default function ParticlePile({
   sizeRange = [0.7, 1.3],
   countMultiplier = 1,
   pileScale = 1,
-}: ParticlePileProps) {
+}, ref) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
   const sparklesRef = useRef<SparkleTrail[]>([]);
@@ -699,6 +705,66 @@ export default function ParticlePile({
     animFrameRef.current = requestAnimationFrame(drawRef.current);
   }, []);
 
+  useImperativeHandle(ref, () => ({
+    snap: () => {
+      const particles = particlesRef.current;
+      const indices = particles.map((_, i) => i);
+      for (let i = indices.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [indices[i], indices[j]] = [indices[j], indices[i]];
+      }
+      const half = Math.floor(indices.length / 2);
+      for (let i = 0; i < half; i++) {
+        const p = particles[indices[i]];
+        p.opacity = 0;
+        p.settled = true;
+      }
+      disturbedRef.current = true;
+      kickAnimation();
+    },
+    spawnAt: (clientX: number, clientY: number, count: number) => {
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+      const rect = canvas.getBoundingClientRect();
+      const scaleX = canvas.clientWidth / rect.width;
+      const scaleY = canvas.clientHeight / rect.height;
+      const x = (clientX - rect.left) * scaleX;
+      const y = (clientY - rect.top) * scaleY;
+      const baseRgb = hexToRgb(color);
+      const jitter = colorJitter;
+
+      for (let i = 0; i < count; i++) {
+        const lightnessShift = (Math.random() - 0.5) * 2 * jitter * 60;
+        const channelNoise = jitter * 15;
+        const sizeMult = sizeRange[0] + Math.random() * (sizeRange[1] - sizeRange[0]);
+        const rawRadius = 3.5 + Math.random() * 2.5;
+        let aspect = 1;
+        if (particleShape === "log") aspect = 2.0 + Math.random() * 1.5;
+        else if (particleShape === "shard") aspect = 1.8 + Math.random() * 1.2;
+
+        particlesRef.current.push({
+          x: x + (Math.random() - 0.5) * 8,
+          y: y + (Math.random() - 0.5) * 4,
+          vx: (Math.random() - 0.5) * 1.5,
+          vy: 0.5 + Math.random() * 2,
+          radius: rawRadius * sizeMult,
+          opacity: 0.7 + Math.random() * 0.3,
+          settled: false,
+          rotation: Math.random() * Math.PI * 2,
+          rotationSpeed: (Math.random() - 0.5) * 0.2,
+          sparkleTimer: 0,
+          idleOffset: Math.random() * Math.PI * 2,
+          cr: clamp(baseRgb.r + lightnessShift + (Math.random() - 0.5) * channelNoise),
+          cg: clamp(baseRgb.g + lightnessShift + (Math.random() - 0.5) * channelNoise),
+          cb: clamp(baseRgb.b + lightnessShift + (Math.random() - 0.5) * channelNoise),
+          aspect,
+        });
+      }
+      disturbedRef.current = true;
+      kickAnimation();
+    },
+  }), [kickAnimation, color, colorJitter, sizeRange, particleShape]);
+
   const handleClick = (e: React.MouseEvent<HTMLCanvasElement>) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -738,4 +804,6 @@ export default function ParticlePile({
       />
     </div>
   );
-}
+});
+
+export default ParticlePile;

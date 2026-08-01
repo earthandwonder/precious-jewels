@@ -1,10 +1,10 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useCallback } from "react";
 import type { Material } from "@/data/materials";
 import { inlineProducts } from "@/data/products";
 import ParticlePile from "./ParticlePile";
-import type { MaterialFeel, ParticleShape } from "./ParticlePile";
+import type { MaterialFeel, ParticleShape, ParticlePileHandle } from "./ParticlePile";
 import MassCounter from "./MassCounter";
 import ScaleReference, { getRefType, REFERENCES } from "./ScaleReference";
 import AffiliateRow from "./AffiliateRow";
@@ -15,6 +15,237 @@ interface ParticleStyle {
   colorJitter: number;
   sizeRange: [number, number];
   countMultiplier?: number;
+}
+
+interface FireParticle {
+  id: number;
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  life: number;
+  size: number;
+  hue: number;
+}
+
+interface GoldParticle {
+  id: number;
+  x: number;
+  y: number;
+  vy: number;
+  life: number;
+  size: number;
+}
+
+function EasterEggOverlay({ materialId, pileRef }: { materialId: string; pileRef?: React.RefObject<ParticlePileHandle | null> }) {
+  const [fireParticles, setFireParticles] = useState<FireParticle[]>([]);
+  const [goldParticles, setGoldParticles] = useState<GoldParticle[]>([]);
+  const [gauntletPulse, setGauntletPulse] = useState(false);
+  const fireIdRef = useRef(0);
+  const goldIdRef = useRef(0);
+  const fireRafRef = useRef<number>(0);
+  const goldRafRef = useRef<number>(0);
+  const dragonRef = useRef<SVGSVGElement>(null);
+  const noFaceRef = useRef<SVGSVGElement>(null);
+
+  // Animate fire particles
+  useEffect(() => {
+    if (fireParticles.length === 0) return;
+    const animate = () => {
+      setFireParticles(prev => {
+        const next = prev
+          .map(p => ({ ...p, x: p.x + p.vx, y: p.y + p.vy, vy: p.vy - 0.1, life: p.life - 0.02 }))
+          .filter(p => p.life > 0);
+        if (next.length > 0) fireRafRef.current = requestAnimationFrame(animate);
+        return next;
+      });
+    };
+    fireRafRef.current = requestAnimationFrame(animate);
+    return () => { if (fireRafRef.current) cancelAnimationFrame(fireRafRef.current); };
+  }, [fireParticles.length > 0]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Animate gold particles
+  useEffect(() => {
+    if (goldParticles.length === 0) return;
+    const animate = () => {
+      setGoldParticles(prev => {
+        const next = prev
+          .map(p => ({ ...p, y: p.y + p.vy, vy: p.vy + 0.3, life: p.life - 0.015 }))
+          .filter(p => p.life > 0);
+        if (next.length > 0) goldRafRef.current = requestAnimationFrame(animate);
+        return next;
+      });
+    };
+    goldRafRef.current = requestAnimationFrame(animate);
+    return () => { if (goldRafRef.current) cancelAnimationFrame(goldRafRef.current); };
+  }, [goldParticles.length > 0]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const fireContainerRef = useRef<HTMLDivElement>(null);
+  const goldContainerRef = useRef<HTMLDivElement>(null);
+
+  const spawnFire = useCallback(() => {
+    const svgEl = dragonRef.current;
+    const container = fireContainerRef.current;
+    if (!svgEl || !container) return;
+    const rect = svgEl.getBoundingClientRect();
+    const containerRect = container.getBoundingClientRect();
+    // Dragon is flipped — mouth on the left
+    const relX = (rect.left + rect.width * 0.08) - containerRect.left;
+    const relY = (rect.top + rect.height * 0.2) - containerRect.top;
+
+    const particles: FireParticle[] = [];
+    for (let i = 0; i < 30; i++) {
+      particles.push({
+        id: fireIdRef.current++,
+        x: relX,
+        y: relY,
+        vx: -(3 + Math.random() * 6),
+        vy: (Math.random() - 0.5) * 4,
+        life: 0.8 + Math.random() * 0.4,
+        size: 5 + Math.random() * 8,
+        hue: Math.random() * 40,
+      });
+    }
+    setFireParticles(prev => [...prev, ...particles]);
+  }, []);
+
+  const spawnGold = useCallback(() => {
+    const svgEl = noFaceRef.current;
+    if (!svgEl || !pileRef?.current) return;
+    const rect = svgEl.getBoundingClientRect();
+    // Mouth position in client coords
+    const mouthX = rect.left + rect.width * 0.5;
+    const mouthY = rect.top + rect.height * 0.29;
+    pileRef.current.spawnAt(mouthX, mouthY, 12);
+  }, [pileRef]);
+
+  const handleGauntletClick = useCallback(() => {
+    pileRef?.current?.snap();
+    setGauntletPulse(true);
+    setTimeout(() => setGauntletPulse(false), 400);
+  }, [pileRef]);
+
+  if (materialId === "diamond") {
+    const dragonColor = "#90CCD8";
+    const dragonSvg = (
+      <svg
+        ref={dragonRef}
+        className="absolute"
+        style={{ width: "50%", maxWidth: 80, bottom: "2%", right: "8%", opacity: 1, transform: "scaleX(-1)", pointerEvents: "none" }}
+        viewBox="0 0 160 120"
+      >
+        <path d="M30,90 C40,88 60,82 80,75 C100,68 110,60 115,55" stroke={dragonColor} strokeWidth="16" fill="none" strokeLinecap="round"/>
+        <path d="M115,55 C120,45 125,35 128,28" stroke={dragonColor} strokeWidth="12" fill="none" strokeLinecap="round"/>
+        <polygon points="124,24 148,18 150,26 142,32 124,32" fill={dragonColor}/>
+        <polygon points="126,23 128,8 133,21" fill={dragonColor}/>
+        <polygon points="134,20 138,5 141,19" fill={dragonColor}/>
+        <circle cx="136" cy="24" r="2" fill="#0a0a12"/>
+        <circle cx="146" cy="22" r="1" fill="#0a0a12" opacity="0.6"/>
+        <polygon points="75,75 50,20 65,40 80,10 85,38 100,18 95,45 110,30 100,55" fill={dragonColor} opacity="0.7" transform="rotate(-30, 92, 65)"/>
+        <path d="M30,90 C20,92 12,88 10,80 C8,72 14,68 20,72" stroke={dragonColor} strokeWidth="8" fill="none" strokeLinecap="round"/>
+        <polygon points="10,80 2,72 12,78 6,66 14,76" fill={dragonColor}/>
+        <path d="M110,58 L107,72" stroke={dragonColor} strokeWidth="5" fill="none" strokeLinecap="round"/>
+        <path d="M107,72 L100,82 M107,72 L105,83 M107,72 L113,82" stroke={dragonColor} strokeWidth="3" fill="none" strokeLinecap="round"/>
+        <path d="M50,86 L47,98" stroke={dragonColor} strokeWidth="5" fill="none" strokeLinecap="round"/>
+        <path d="M47,98 L40,108 M47,98 L45,109 M47,98 L53,108" stroke={dragonColor} strokeWidth="3" fill="none" strokeLinecap="round"/>
+      </svg>
+    );
+    return (
+      <>
+        {/* Dragon visual — behind the pile (z-0) */}
+        <div className="absolute inset-0 z-0 overflow-visible">{dragonSvg}</div>
+        {/* Click target + fire particles — in front (z-20) */}
+        <div ref={fireContainerRef} className="absolute inset-0 z-20 overflow-visible" style={{ pointerEvents: "none" }}>
+          <div
+            className="absolute cursor-pointer"
+            style={{ width: "50%", maxWidth: 80, bottom: "2%", right: "8%", height: "60%", pointerEvents: "auto" }}
+            onClick={spawnFire}
+          />
+          {fireParticles.map(p => (
+            <div
+              key={p.id}
+              className="absolute rounded-full pointer-events-none"
+              style={{
+                left: p.x,
+                top: p.y,
+                width: p.size * p.life,
+                height: p.size * p.life,
+                background: `hsl(${p.hue}, 100%, ${50 + p.life * 30}%)`,
+                opacity: p.life,
+                transform: "translate(-50%, -50%)",
+              }}
+            />
+          ))}
+        </div>
+      </>
+    );
+  }
+  if (materialId === "quartz") {
+    return (
+      <svg
+        className="absolute cursor-pointer z-20 transition-transform"
+        style={{
+          width: "16%", maxWidth: 25, bottom: "-8%", right: "15%", opacity: 1,
+          transform: `rotate(-70deg) scale(${gauntletPulse ? 1.3 : 1})`,
+          filter: gauntletPulse ? "drop-shadow(0 0 8px rgba(255, 255, 255, 0.8))" : "none",
+          transition: "transform 0.3s ease-out, filter 0.3s ease-out",
+        }}
+        viewBox="0 0 120 160"
+        onClick={handleGauntletClick}
+      >
+        <rect x="30" y="110" width="60" height="40" rx="8" fill="#C0A040" opacity="0.9"/>
+        <rect x="25" y="55" width="70" height="58" rx="10" fill="#C0A040"/>
+        <rect x="25" y="50" width="70" height="14" rx="6" fill="#D4B050"/>
+        <rect x="26" y="15" width="14" height="40" rx="6" fill="#C0A040"/>
+        <rect x="43" y="8" width="14" height="47" rx="6" fill="#C0A040"/>
+        <rect x="60" y="12" width="14" height="43" rx="6" fill="#C0A040"/>
+        <rect x="77" y="22" width="13" height="33" rx="6" fill="#C0A040"/>
+        <path d="M25,100 C20,98 12,92 10,82 C8,74 12,68 18,70 C22,72 24,78 25,85" fill="#C0A040"/>
+        <circle cx="33" cy="58" r="6" fill="#4169E1"/>
+        <circle cx="50" cy="58" r="6" fill="#FFD700"/>
+        <circle cx="67" cy="58" r="6" fill="#DC143C"/>
+        <circle cx="83" cy="58" r="6" fill="#FF8C00"/>
+        <circle cx="60" cy="80" r="7.2" fill="#9B59B6"/>
+        <circle cx="18" cy="86" r="6" fill="#50C878"/>
+      </svg>
+    );
+  }
+  if (materialId === "amber") {
+    const noFaceSvg = (
+      <svg
+        ref={noFaceRef}
+        className="absolute"
+        style={{ width: "22%", maxWidth: 32, bottom: "8%", right: "22%", opacity: 1, pointerEvents: "none" }}
+        viewBox="0 0 60 100"
+      >
+        <path d="M30,28 C18,28 10,45 8,70 C6,85 12,100 30,100 C48,100 54,85 52,70 C50,45 42,28 30,28Z" fill="#2a2a3e"/>
+        <ellipse cx="30" cy="22" rx="14" ry="16" fill="#2a2a3e"/>
+        <ellipse cx="30" cy="20" rx="10" ry="12" fill="#e8e0d0" opacity="0.9"/>
+        <ellipse cx="25.5" cy="17.5" rx="2.5" ry="3.2" fill="#1a1a2e"/>
+        <ellipse cx="34.5" cy="17.5" rx="2.5" ry="3.2" fill="#1a1a2e"/>
+        <rect x="23.5" y="10" width="4" height="5" rx="1.5" fill="#7B3F7B"/>
+        <rect x="32.5" y="10" width="4" height="5" rx="1.5" fill="#7B3F7B"/>
+        <rect x="23.5" y="22" width="4" height="5" rx="1.5" fill="#7B3F7B"/>
+        <rect x="32.5" y="22" width="4" height="5" rx="1.5" fill="#7B3F7B"/>
+        <ellipse cx="30" cy="29" rx="1.8" ry="1.2" fill="#1a1a2e" opacity="0.5"/>
+      </svg>
+    );
+    return (
+      <>
+        {/* No-Face visual — behind pile (z-0) */}
+        <div className="absolute inset-0 z-0 overflow-visible">{noFaceSvg}</div>
+        {/* Click target — in front (z-20) */}
+        <div className="absolute inset-0 z-20" style={{ pointerEvents: "none" }}>
+          <div
+            className="absolute cursor-pointer"
+            style={{ width: "22%", maxWidth: 32, bottom: "8%", right: "22%", height: "40%", pointerEvents: "auto" }}
+            onClick={spawnGold}
+          />
+        </div>
+      </>
+    );
+  }
+  return null;
 }
 
 function getParticleStyle(material: Material): ParticleStyle {
@@ -69,6 +300,7 @@ function getPileShrink(id: string, mobile: boolean): number {
     switch (id) {
       case "corundum": // ruby & sapphire
       case "emerald":
+      case "painite":
       case "taaffeite":
       case "alexandrite":
       case "ammolite":
@@ -185,6 +417,7 @@ export default function MaterialCard({
   isActive: boolean;
 }) {
   const [hasAnimated, setHasAnimated] = useState(false);
+  const pileRef = useRef<ParticlePileHandle>(null);
   const isMobile = useIsMobile();
   const desktopCap = useDesktopCap();
 
@@ -236,12 +469,13 @@ export default function MaterialCard({
         </div>
 
         <div
-          className="flex-1"
+          className="flex-1 relative"
           style={{
             maxWidth: Math.max(240, pileHeight * 3),
           }}
         >
           <ParticlePile
+            ref={pileRef}
             color={material.color}
             glowColor={material.glowColor}
             height={canvasHeight}
@@ -251,6 +485,7 @@ export default function MaterialCard({
             pileScale={pileScale}
             {...getParticleStyle(material)}
           />
+          <EasterEggOverlay materialId={material.id} pileRef={pileRef} />
         </div>
       </div>
 
