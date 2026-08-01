@@ -332,7 +332,7 @@ function EasterEggOverlay({ materialId, pileRef }: { materialId: string; pileRef
             <div
               className="absolute"
               style={{
-                width: "28%", maxWidth: 44, top: "12%", left: "50%", height: "85%", transform: "translateX(-50%)",
+                width: "28%", maxWidth: 44, top: "18%", left: "50%", height: "78%", transform: "translateX(-50%)",
                 background: "linear-gradient(to bottom, rgba(126, 200, 126, 0.3), rgba(126, 200, 126, 0))",
                 clipPath: "polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%)",
                 pointerEvents: "none",
