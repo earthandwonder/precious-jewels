@@ -45,6 +45,10 @@ export interface ParticlePileHandle {
   snap: () => void;
   /** Spawn particles at a position relative to the canvas element */
   spawnAt: (clientX: number, clientY: number, count: number) => void;
+  /** Pull particles upward toward a point and fade them out (tractor beam) */
+  abduct: (clientX: number, clientY: number, radius: number) => void;
+  /** Shake all particles sideways (earthquake) */
+  quake: () => void;
 }
 
 interface ParticlePileProps {
@@ -538,6 +542,7 @@ const ParticlePile = forwardRef<ParticlePileHandle, ParticlePileProps>(function 
 
         // Fade if off-screen
         if (
+          p.y < -20 ||
           p.y > cssH + 20 ||
           p.x < -20 ||
           p.x > cssW + 20
@@ -759,6 +764,38 @@ const ParticlePile = forwardRef<ParticlePileHandle, ParticlePileProps>(function 
           cb: clamp(baseRgb.b + lightnessShift + (Math.random() - 0.5) * channelNoise),
           aspect,
         });
+      }
+      disturbedRef.current = true;
+      kickAnimation();
+    },
+    abduct: (clientX: number, clientY: number, radius: number) => {
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+      const rect = canvas.getBoundingClientRect();
+      const scaleX = canvas.clientWidth / rect.width;
+      const scaleY = canvas.clientHeight / rect.height;
+      const targetX = (clientX - rect.left) * scaleX;
+      const targetY = (clientY - rect.top) * scaleY;
+      const r = radius * scaleX;
+
+      const particles = particlesRef.current;
+      for (const p of particles) {
+        const dx = p.x - targetX;
+        if (Math.abs(dx) > r) continue;
+        // Pull toward the UFO position — converge horizontally, launch upward
+        p.vx = (targetX - p.x) * 0.04 + (Math.random() - 0.5) * 0.3;
+        p.vy = -(8 + Math.random() * 6);
+        p.settled = false;
+      }
+      disturbedRef.current = true;
+      kickAnimation();
+    },
+    quake: () => {
+      const particles = particlesRef.current;
+      for (const p of particles) {
+        p.vx += (Math.random() - 0.5) * 6;
+        p.vy -= 0.5 + Math.random() * 1.5;
+        p.settled = false;
       }
       disturbedRef.current = true;
       kickAnimation();

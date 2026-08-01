@@ -13,6 +13,7 @@ import Finale from "./Finale";
 import EarthIntro from "./EarthIntro";
 import ArticleSummary from "./ArticleSummary";
 import FaqSchema from "./FaqSchema";
+import { EasterEggProvider, EasterEggCounter } from "./EasterEggTracker";
 
 /**
  * Build the ordered list of all snap pages (segments).
@@ -110,7 +111,7 @@ export default function Essay() {
   const progress = totalPages > 1 ? (activeIndex / (totalPages - 1)) * 100 : 0;
 
   return (
-    <>
+    <EasterEggProvider>
       <ScrollProgress progress={progress} />
       <ScrollAtmosphere progress={activeIndex / Math.max(1, totalPages - 1)} />
       <div className="starfield" />
@@ -179,7 +180,8 @@ export default function Essay() {
         <ArticleSummary />
       </div>
       <FaqSchema />
-    </>
+      <EasterEggCounter />
+    </EasterEggProvider>
   );
 }
 

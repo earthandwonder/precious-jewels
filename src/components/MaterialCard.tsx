@@ -8,6 +8,7 @@ import type { MaterialFeel, ParticleShape, ParticlePileHandle } from "./Particle
 import MassCounter from "./MassCounter";
 import ScaleReference, { getRefType, REFERENCES } from "./ScaleReference";
 import AffiliateRow from "./AffiliateRow";
+import { useEasterEggs } from "./EasterEggTracker";
 
 
 interface ParticleStyle {
@@ -37,7 +38,18 @@ interface GoldParticle {
   size: number;
 }
 
+interface Bubble {
+  id: number;
+  x: number;
+  y: number;
+  vy: number;
+  vx: number;
+  life: number;
+  size: number;
+}
+
 function EasterEggOverlay({ materialId, pileRef }: { materialId: string; pileRef?: React.RefObject<ParticlePileHandle | null> }) {
+  const { markFound } = useEasterEggs();
   const [fireParticles, setFireParticles] = useState<FireParticle[]>([]);
   const [goldParticles, setGoldParticles] = useState<GoldParticle[]>([]);
   const [gauntletPulse, setGauntletPulse] = useState(false);
@@ -47,6 +59,13 @@ function EasterEggOverlay({ materialId, pileRef }: { materialId: string; pileRef
   const goldRafRef = useRef<number>(0);
   const dragonRef = useRef<SVGSVGElement>(null);
   const noFaceRef = useRef<SVGSVGElement>(null);
+  const [ufoPulse, setUfoPulse] = useState(false);
+  const [dinoPulse, setDinoPulse] = useState(false);
+  const ufoRef = useRef<SVGSVGElement>(null);
+  const [bubbles, setBubbles] = useState<Bubble[]>([]);
+  const bubbleIdRef = useRef(0);
+  const bubbleRafRef = useRef<number>(0);
+  const diverContainerRef = useRef<HTMLDivElement>(null);
 
   // Animate fire particles
   useEffect(() => {
@@ -80,6 +99,22 @@ function EasterEggOverlay({ materialId, pileRef }: { materialId: string; pileRef
     return () => { if (goldRafRef.current) cancelAnimationFrame(goldRafRef.current); };
   }, [goldParticles.length > 0]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  // Animate bubbles
+  useEffect(() => {
+    if (bubbles.length === 0) return;
+    const animate = () => {
+      setBubbles(prev => {
+        const next = prev
+          .map(b => ({ ...b, x: b.x + b.vx, y: b.y + b.vy, life: b.life - 0.000063 }))
+          .filter(b => b.life > 0);
+        if (next.length > 0) bubbleRafRef.current = requestAnimationFrame(animate);
+        return next;
+      });
+    };
+    bubbleRafRef.current = requestAnimationFrame(animate);
+    return () => { if (bubbleRafRef.current) cancelAnimationFrame(bubbleRafRef.current); };
+  }, [bubbles.length > 0]); // eslint-disable-line react-hooks/exhaustive-deps
+
   const fireContainerRef = useRef<HTMLDivElement>(null);
   const goldContainerRef = useRef<HTMLDivElement>(null);
 
@@ -93,6 +128,7 @@ function EasterEggOverlay({ materialId, pileRef }: { materialId: string; pileRef
     const relX = (rect.left + rect.width * 0.08) - containerRect.left;
     const relY = (rect.top + rect.height * 0.2) - containerRect.top;
 
+    markFound("dragon");
     const particles: FireParticle[] = [];
     for (let i = 0; i < 30; i++) {
       particles.push({
@@ -107,23 +143,63 @@ function EasterEggOverlay({ materialId, pileRef }: { materialId: string; pileRef
       });
     }
     setFireParticles(prev => [...prev, ...particles]);
-  }, []);
+  }, [markFound]);
 
   const spawnGold = useCallback(() => {
     const svgEl = noFaceRef.current;
     if (!svgEl || !pileRef?.current) return;
+    markFound("noface");
     const rect = svgEl.getBoundingClientRect();
     // Mouth position in client coords
     const mouthX = rect.left + rect.width * 0.5;
     const mouthY = rect.top + rect.height * 0.29;
     pileRef.current.spawnAt(mouthX, mouthY, 12);
-  }, [pileRef]);
+  }, [pileRef, markFound]);
 
   const handleGauntletClick = useCallback(() => {
     pileRef?.current?.snap();
+    markFound("gauntlet");
     setGauntletPulse(true);
     setTimeout(() => setGauntletPulse(false), 400);
-  }, [pileRef]);
+  }, [pileRef, markFound]);
+
+  const handleUfoClick = useCallback(() => {
+    const svgEl = ufoRef.current;
+    if (!svgEl || !pileRef?.current) return;
+    const rect = svgEl.getBoundingClientRect();
+    const centerX = rect.left + rect.width * 0.5;
+    const bottomY = rect.top + rect.height;
+    pileRef.current.abduct(centerX, bottomY, rect.width * 0.8);
+    markFound("ufo");
+    setUfoPulse(true);
+    setTimeout(() => setUfoPulse(false), 800);
+  }, [pileRef, markFound]);
+
+  const handleDinoClick = useCallback(() => {
+    pileRef?.current?.quake();
+    markFound("dino");
+    setDinoPulse(true);
+    setTimeout(() => setDinoPulse(false), 400);
+  }, [pileRef, markFound]);
+
+  const handleDiverClick = useCallback(() => {
+    markFound("diver");
+    const container = diverContainerRef.current;
+    if (!container) return;
+    const newBubbles: Bubble[] = [];
+    for (let i = 0; i < 24; i++) {
+      newBubbles.push({
+        id: bubbleIdRef.current++,
+        x: 0,
+        y: 0,
+        vy: -(0.003 + Math.random() * 0.006),
+        vx: (Math.random() - 0.5) * 0.004,
+        size: 4 + Math.random() * 6,
+        life: 1.0 + Math.random() * 0.5,
+      });
+    }
+    setBubbles(prev => [...prev, ...newBubbles]);
+  }, [markFound]);
 
   if (materialId === "diamond") {
     const dragonColor = "#90CCD8";
@@ -241,6 +317,168 @@ function EasterEggOverlay({ materialId, pileRef }: { materialId: string; pileRef
             style={{ width: "22%", maxWidth: 32, bottom: "8%", right: "22%", height: "40%", pointerEvents: "auto" }}
             onClick={spawnGold}
           />
+        </div>
+      </>
+    );
+  }
+  if (materialId === "moldavite") {
+    const ufoColor = "#7ec87e";
+    return (
+      <>
+        {/* UFO + beam — behind pile (z-0) */}
+        <div className="absolute inset-0 z-0 overflow-visible">
+          {/* Beam — visible on click, extends from UFO down */}
+          {ufoPulse && (
+            <div
+              className="absolute"
+              style={{
+                width: "28%", maxWidth: 44, top: "10%", right: "12%", height: "85%",
+                background: "linear-gradient(to bottom, rgba(126, 200, 126, 0.3), rgba(126, 200, 126, 0))",
+                clipPath: "polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%)",
+                pointerEvents: "none",
+              }}
+            />
+          )}
+          <svg
+            ref={ufoRef}
+            className="absolute transition-transform"
+            style={{
+              width: "28%", maxWidth: 44, top: "2%", right: "12%", pointerEvents: "none",
+              transform: `scale(${ufoPulse ? 1.15 : 1})`,
+              filter: ufoPulse ? "drop-shadow(0 0 8px rgba(126, 200, 126, 0.8))" : "none",
+              transition: "transform 0.3s ease-out, filter 0.3s ease-out",
+            }}
+            viewBox="0 0 80 50"
+          >
+            {/* Dome */}
+            <ellipse cx="40" cy="28" rx="12" ry="10" fill="#556b55" opacity="0.7" />
+            {/* Body disc */}
+            <ellipse cx="40" cy="34" rx="28" ry="8" fill={ufoColor} />
+            {/* Lights */}
+            <circle cx="24" cy="34" r="2.5" fill="#ffe066" opacity="0.9">
+              <animate attributeName="opacity" values="0.9;0.3;0.9" dur="0.8s" repeatCount="indefinite" />
+            </circle>
+            <circle cx="40" cy="37" r="2.5" fill="#ffe066" opacity="0.9">
+              <animate attributeName="opacity" values="0.3;0.9;0.3" dur="0.8s" repeatCount="indefinite" />
+            </circle>
+            <circle cx="56" cy="34" r="2.5" fill="#ffe066" opacity="0.9">
+              <animate attributeName="opacity" values="0.9;0.3;0.9" dur="0.8s" repeatCount="indefinite" />
+            </circle>
+          </svg>
+        </div>
+        {/* Click target — in front (z-20) */}
+        <div className="absolute inset-0 z-20" style={{ pointerEvents: "none" }}>
+          <div
+            className="absolute cursor-pointer"
+            style={{ width: "28%", maxWidth: 44, top: "2%", right: "12%", height: "25%", pointerEvents: "auto" }}
+            onClick={handleUfoClick}
+          />
+        </div>
+      </>
+    );
+  }
+  if (materialId === "amber-inclusion") {
+    const dinoColor = "#8B7355";
+    return (
+      <>
+        {/* Brontosaurus — behind pile (z-0) */}
+        <div className="absolute inset-0 z-0 overflow-visible">
+          <svg
+            className="absolute"
+            style={{
+              width: "60%", maxWidth: 90, bottom: "0%", left: "6%", pointerEvents: "none",
+              transform: `scale(${dinoPulse ? 1.15 : 1})`,
+              filter: dinoPulse ? "drop-shadow(0 0 8px rgba(139, 115, 85, 0.8))" : "none",
+              transition: "transform 0.3s ease-out, filter 0.3s ease-out",
+            }}
+            viewBox="0 0 100 80"
+          >
+            {/* Body */}
+            <ellipse cx="50" cy="50" rx="22" ry="14" fill={dinoColor} />
+            {/* Neck */}
+            <path d="M68,46 C75,40 80,30 78,20" stroke={dinoColor} strokeWidth="10" fill="none" strokeLinecap="round" />
+            {/* Head */}
+            <ellipse cx="80" cy="16" rx="8" ry="5" fill={dinoColor} />
+            <circle cx="84" cy="14" r="1.5" fill="#1a1a2e" />
+            {/* Tail */}
+            <path d="M30,50 C20,48 10,42 4,36" stroke={dinoColor} strokeWidth="8" fill="none" strokeLinecap="round" />
+            {/* Legs */}
+            <rect x="38" y="60" width="6" height="16" rx="2" fill={dinoColor} />
+            <rect x="56" y="60" width="6" height="16" rx="2" fill={dinoColor} />
+          </svg>
+        </div>
+        {/* Click target — in front (z-20) */}
+        <div className="absolute inset-0 z-20" style={{ pointerEvents: "none" }}>
+          <div
+            className="absolute cursor-pointer"
+            style={{ width: "60%", maxWidth: 90, bottom: "0%", left: "6%", height: "45%", pointerEvents: "auto" }}
+            onClick={handleDinoClick}
+          />
+        </div>
+      </>
+    );
+  }
+  if (materialId === "pearl") {
+    const diverColor = "#8B7D6B";
+    const helmetColor = "#C8A86E";
+    return (
+      <>
+        {/* Diver visual — behind pile (z-0) */}
+        <div className="absolute inset-0 z-0 overflow-visible">
+          <svg
+            className="absolute"
+            style={{ width: "15%", maxWidth: 22, bottom: "2%", left: "50%", transform: "translateX(-50%)", pointerEvents: "none", opacity: 0.8 }}
+            viewBox="0 0 50 90"
+          >
+            {/* Air hose */}
+            <path d="M25,8 C30,2 40,0 45,5" stroke={helmetColor} strokeWidth="2" fill="none" strokeLinecap="round" opacity="0.6" />
+            {/* Helmet dome */}
+            <rect x="10" y="12" width="30" height="28" rx="10" fill={helmetColor} />
+            {/* Porthole */}
+            <circle cx="25" cy="24" r="8" fill="#1a2a3a" />
+            <circle cx="25" cy="24" r="7" fill="none" stroke="#A08050" strokeWidth="1.5" />
+            {/* Porthole glint */}
+            <circle cx="22" cy="21" r="2" fill="rgba(180, 220, 255, 0.3)" />
+            {/* Body / suit */}
+            <rect x="13" y="38" width="24" height="28" rx="4" fill={diverColor} />
+            {/* Arms */}
+            <rect x="3" y="40" width="12" height="7" rx="3" fill={diverColor} />
+            <rect x="35" y="40" width="12" height="7" rx="3" fill={diverColor} />
+            {/* Belt */}
+            <rect x="13" y="52" width="24" height="4" rx="1" fill="#5A4A3A" />
+            {/* Legs */}
+            <rect x="14" y="64" width="9" height="14" rx="3" fill={diverColor} />
+            <rect x="27" y="64" width="9" height="14" rx="3" fill={diverColor} />
+            {/* Boots */}
+            <rect x="12" y="75" width="13" height="6" rx="2" fill="#3A3A3A" />
+            <rect x="25" y="75" width="13" height="6" rx="2" fill="#3A3A3A" />
+          </svg>
+        </div>
+        {/* Click target + bubbles — in front (z-20) */}
+        <div ref={diverContainerRef} className="absolute inset-0 z-20 overflow-visible" style={{ pointerEvents: "none" }}>
+          <div
+            className="absolute cursor-pointer"
+            style={{ width: "15%", maxWidth: 22, bottom: "2%", left: "50%", transform: "translateX(-50%)", height: "50%", pointerEvents: "auto" }}
+            onClick={handleDiverClick}
+          />
+          {bubbles.map(b => (
+            <div
+              key={b.id}
+              className="absolute rounded-full pointer-events-none"
+              style={{
+                left: "50%",
+                bottom: "20%",
+                marginLeft: b.x,
+                marginBottom: -b.y,
+                width: b.size,
+                height: b.size,
+                border: "1px solid rgba(180, 220, 255, 0.5)",
+                background: "radial-gradient(circle at 30% 30%, rgba(200, 230, 255, 0.3), transparent)",
+                opacity: b.life,
+                transform: "translate(50%, 50%)",
+              }}
+            />
+          ))}
         </div>
       </>
     );
