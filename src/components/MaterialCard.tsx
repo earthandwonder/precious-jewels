@@ -105,7 +105,7 @@ function EasterEggOverlay({ materialId, pileRef }: { materialId: string; pileRef
     const animate = () => {
       setBubbles(prev => {
         const next = prev
-          .map(b => ({ ...b, x: b.x + b.vx, y: b.y + b.vy, life: b.life - 0.000063 }))
+          .map(b => ({ ...b, x: b.x + b.vx, y: b.y + b.vy, life: b.life - 0.003 }))
           .filter(b => b.life > 0);
         if (next.length > 0) bubbleRafRef.current = requestAnimationFrame(animate);
         return next;
@@ -192,8 +192,8 @@ function EasterEggOverlay({ materialId, pileRef }: { materialId: string; pileRef
         id: bubbleIdRef.current++,
         x: 0,
         y: 0,
-        vy: -(0.003 + Math.random() * 0.006),
-        vx: (Math.random() - 0.5) * 0.004,
+        vy: -(0.15 + Math.random() * 0.3),
+        vx: (Math.random() - 0.5) * 0.15,
         size: 4 + Math.random() * 6,
         life: 1.0 + Math.random() * 0.5,
       });
@@ -332,7 +332,7 @@ function EasterEggOverlay({ materialId, pileRef }: { materialId: string; pileRef
             <div
               className="absolute"
               style={{
-                width: "28%", maxWidth: 44, top: "10%", right: "12%", height: "85%",
+                width: "28%", maxWidth: 44, top: "8%", left: "12%", height: "88%",
                 background: "linear-gradient(to bottom, rgba(126, 200, 126, 0.3), rgba(126, 200, 126, 0))",
                 clipPath: "polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%)",
                 pointerEvents: "none",
@@ -343,7 +343,7 @@ function EasterEggOverlay({ materialId, pileRef }: { materialId: string; pileRef
             ref={ufoRef}
             className="absolute transition-transform"
             style={{
-              width: "28%", maxWidth: 44, top: "2%", right: "12%", pointerEvents: "none",
+              width: "28%", maxWidth: 44, top: "2%", left: "12%", pointerEvents: "none",
               transform: `scale(${ufoPulse ? 1.15 : 1})`,
               filter: ufoPulse ? "drop-shadow(0 0 8px rgba(126, 200, 126, 0.8))" : "none",
               transition: "transform 0.3s ease-out, filter 0.3s ease-out",
@@ -366,11 +366,11 @@ function EasterEggOverlay({ materialId, pileRef }: { materialId: string; pileRef
             </circle>
           </svg>
         </div>
-        {/* Click target — in front (z-20) */}
+        {/* Click target — in front (z-20), oversized for easier mobile taps */}
         <div className="absolute inset-0 z-20" style={{ pointerEvents: "none" }}>
           <div
             className="absolute cursor-pointer"
-            style={{ width: "28%", maxWidth: 44, top: "2%", right: "12%", height: "25%", pointerEvents: "auto" }}
+            style={{ width: "40%", maxWidth: 60, top: "0%", left: "6%", height: "35%", pointerEvents: "auto" }}
             onClick={handleUfoClick}
           />
         </div>
