@@ -32,7 +32,8 @@ export function trackEvent(eventType: EventType, metadata?: EventMetadata) {
     // Use sendBeacon for reliability (survives page unload), fall back to fetch
     const body = JSON.stringify(payload);
     if (navigator.sendBeacon) {
-      navigator.sendBeacon("/api/analytics", body);
+      const blob = new Blob([body], { type: "application/json" });
+      navigator.sendBeacon("/api/analytics", blob);
     } else {
       fetch("/api/analytics", {
         method: "POST",
