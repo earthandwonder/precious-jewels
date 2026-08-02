@@ -2,6 +2,7 @@
 
 import { materials } from "@/data/materials";
 import { affiliateProducts } from "@/data/products";
+import { trackEvent } from "@/lib/analytics";
 
 /**
  * Bottom-of-page shop section. Outline-only buttons linking to affiliate products.
@@ -40,6 +41,12 @@ export default function ShopSection() {
                 href={primary.url}
                 target="_blank"
                 rel="noopener noreferrer nofollow sponsored"
+                onClick={() =>
+                  trackEvent("outbound_click", {
+                    material: m.id,
+                    url: primary.url,
+                  })
+                }
                 className="group inline-flex items-center gap-1.5 px-3 py-1.5 text-sm transition-all duration-300 hover:scale-105"
                 style={{
                   border: `1px solid ${m.color}30`,

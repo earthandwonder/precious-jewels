@@ -1,5 +1,7 @@
 "use client";
 
+import { trackEvent } from "@/lib/analytics";
+
 export interface Product {
   name: string;
   price: string;
@@ -16,10 +18,12 @@ export default function ProductCard({
   product,
   glowColor,
   materialColor,
+  materialId,
 }: {
   product: Product;
   glowColor: string;
   materialColor: string;
+  materialId?: string;
 }) {
   const rgb = hexToRgb(glowColor);
 
@@ -28,6 +32,12 @@ export default function ProductCard({
       href={product.url}
       target="_blank"
       rel="noopener noreferrer nofollow sponsored"
+      onClick={() =>
+        trackEvent("outbound_click", {
+          material: materialId,
+          url: product.url,
+        })
+      }
       className="group relative flex items-center gap-3 md:gap-4 max-w-full"
     >
       {/* Image */}

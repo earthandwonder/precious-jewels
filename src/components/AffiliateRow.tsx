@@ -11,10 +11,12 @@ export default function AffiliateRow({
   products,
   glowColor,
   materialColor,
+  materialId,
 }: {
   products: Product[];
   glowColor: string;
   materialColor: string;
+  materialId?: string;
 }) {
   if (products.length === 0) return null;
 
@@ -26,6 +28,7 @@ export default function AffiliateRow({
           product={product}
           glowColor={glowColor}
           materialColor={materialColor}
+          materialId={materialId}
         />
       ))}
     </div>

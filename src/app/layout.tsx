@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, JetBrains_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import PageviewTracker from "@/components/PageviewTracker";
+import ScrollDepthTracker from "@/components/ScrollDepthTracker";
 
 const jakartaSans = Plus_Jakarta_Sans({
   variable: "--font-jakarta-sans",
@@ -68,6 +69,7 @@ export default function RootLayout({
     >
       <body>
         <PageviewTracker />
+        <ScrollDepthTracker />
         {children}
         {/* @ts-expect-error web component */}
         <bm-capture

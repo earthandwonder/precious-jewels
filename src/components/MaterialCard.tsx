@@ -763,6 +763,7 @@ export default function MaterialCard({
               products={inlineProducts[material.id]}
               glowColor={material.glowColor}
               materialColor={material.color}
+              materialId={material.id}
             />
           </div>
         )}

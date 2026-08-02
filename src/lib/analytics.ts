@@ -4,11 +4,19 @@
  * No cookies, no localStorage, no fingerprinting, no session tracking.
  */
 
-type EventType = "pageview" | "email_capture" | "scroll_depth";
+type EventType =
+  | "pageview"
+  | "email_capture"
+  | "scroll_depth"
+  | "outbound_click"
+  | "footer_reveal"
+  | "footer_expand";
 
 interface EventMetadata {
   referrer?: string;
   depth?: string;
+  material?: string;
+  url?: string;
   [key: string]: string | undefined;
 }
 
