@@ -36,7 +36,7 @@ export const ACT_TITLES = {
   3: {
     title: "Life on One Planet",
     subtitle:
-      "Minerals form on trillions of worlds. Life — as far as we know — happened on one. Everything below this line exists only on Earth.",
+      "Minerals likely form on trillions of worlds. Life — as far as we know — happened on one. Everything below this line exists only on Earth.",
     logRange: [0, 13] as const,
   },
 } as const;
@@ -106,7 +106,7 @@ export const materials: Material[] = [
     glowColor: "#C39BD3",
     tagline: "Twelve percent of Earth's continental crust is this.",
     description:
-      "Any rocky planet that forms a crust will form quartz. Trillions of them have. Amethyst is just quartz with a trace of irradiated iron.",
+      "Any rocky planet that forms a crust will form quartz. Trillions of them likely have. Amethyst is just quartz with a trace of irradiated iron.",
     scaleComparison: "Enough amethyst to build a mountain range spanning a galaxy.",
     derivation: {
       steps: [
@@ -129,7 +129,7 @@ export const materials: Material[] = [
     glowColor: "#66CDAA",
     tagline: "Forged in the collision zones of tectonic plates",
     description:
-      "Jadeite only forms under the extreme pressure of one tectonic plate diving beneath another. Not every rocky world has plate tectonics — but trillions do.",
+      "Jadeite only forms under the extreme pressure of one tectonic plate diving beneath another. Not every rocky world has plate tectonics — but trillions probably do.",
     derivation: {
       steps: [
         "~10-30% of rocky planets have plate tectonics. ~10²⁰ kg jadeite-facies material per tectonic world × ~10²² planets.",
@@ -202,7 +202,7 @@ export const materials: Material[] = [
     glowColor: "#FF4444",
     tagline: "Same crystal as emerald, coloured red by manganese. Even harder to form.",
     description:
-      "Red beryl needs everything emerald needs, plus manganese inside a specific type of volcanic flow. On Earth, one deposit exists — in Utah. One red beryl crystal for every 150,000 gem diamonds.",
+      "Red beryl needs everything emerald needs, plus manganese inside a specific type of volcanic flow. On Earth, one deposit exists — in Utah. One red beryl crystal exists for every 150,000 gem diamonds.",
     derivation: {
       steps: [
         "Same Be bottleneck as emerald, plus Mn in rhyolitic lava. ~1,000× rarer — one commercial deposit exists on Earth.",
@@ -300,7 +300,7 @@ export const materials: Material[] = [
     glowColor: "#D4A574",
     tagline: "Three trillion trees. 450 billion tonnes.",
     description:
-      "Cellulose, lignin, water. Grown ring by ring over decades. It rots, it burns, it gets eaten — and still there are 450 billion tonnes of it.",
+      "Cellulose, lignin, water. Grown ring by ring over decades by life on one planet — Earth. There are 450 billion tonnes of it in the universe.",
     scaleComparison:
       "All the wood on Earth would not fill a single large asteroid. All the diamond in the universe would swallow the solar system.",
     derivation: {
@@ -346,9 +346,9 @@ export const materials: Material[] = [
     density: 1050,
     color: "#FFBF00",
     glowColor: "#FFD700",
-    tagline: "Fossilised tree resin. 44 million years old.",
+    tagline: "Fossilised 44-million-year-old tree resin",
     description:
-      "Trees produce resin when wounded — sticky, antimicrobial, designed to seal a cut. The Baltic deposit holds about 640,000 tonnes of it, from a forest that disappeared 44 million years ago.",
+      "Trees produce resin when wounded — sticky, antimicrobial, designed to seal a cut. Most of it comes from the Baltics, where 45 million years ago a climate shift caused a vast network of conifer forests to massively overproduce resin.",
     derivation: {
       steps: [
         "Baltic deposit: ~640,000 tonnes. Other deposits (Dominican Republic, Myanmar, etc.) add ~300,000+ tonnes.",
@@ -442,7 +442,7 @@ export const materials: Material[] = [
     glowColor: "#A3E635",
     tagline: "Earth's crust, turned to glass by a cosmic impact",
     description:
-      "An asteroid vaporised Bavarian ground 14.8 million years ago. The molten glass solidified mid-flight over central Europe. 275 tonnes survive. No more will ever form.",
+      "An asteroid vaporised part of Bavaria 14.8 million years ago. The molten glass solidified mid-flight. 275 tonnes survive. No more will ever form.",
     derivation: {
       steps: [
         "~275 tonnes survive (Trnka & Houzar 2002). Ries impact dated to 14.808 ± 0.038 Ma.",
@@ -464,7 +464,7 @@ export const materials: Material[] = [
     glowColor: "#FFF8DC",
     tagline: "Every natural pearl ever formed would fit in one room.",
     description:
-      "One in ten thousand wild oysters produces a gem pearl. Layer by layer, over years, around an irritant the animal can't remove. Of everything you could wear, this is the rarest in existence.",
+      "One in ten thousand wild oysters produces a gem pearl. Layer by layer, a protective coating forms over an irritant like debris that the animal can't remove. Of every gem you could wear, this is the rarest in existence.",
     scaleComparison:
       "Every natural pearl that has ever existed would fit inside a single room.",
     derivation: {

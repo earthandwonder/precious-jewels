@@ -79,7 +79,7 @@ export default function RootLayout({
           reveal-at="captureReveal"
           expand-at="captureExpand"
           theme="dark"
-          genesis="I saw a reddit post I had to visualise: 'Throughout the entire galaxy, wood is probably more rare than diamonds.'"
+          genesis="This post started when I saw a Reddit post I had to visualise: 'Throughout the entire galaxy, wood is probably more rare than diamonds.'"
         />
         <script src="https://benmccarthy.com.au/shared/capture.js" defer />
       </body>

@@ -5,7 +5,7 @@
  */
 
 const tint = "rgba(230, 238, 248, 0.85)";
-const tintSoft = "rgba(230, 238, 248, 0.55)";
+const tintSoft = "rgba(230, 238, 248, 0.7)";
 
 function ArticlePage({ children }: { children: React.ReactNode }) {
   return (
@@ -70,7 +70,7 @@ export default function ArticleSummary() {
           cosmic rays smash into heavier atoms at near-light speed. This bottleneck
           means these gems can never be cosmically common, no matter how many
           rocky worlds there are. Red beryl has one commercial deposit on Earth,
-          and there is roughly one red beryl crystal for every 150,000 gem diamonds.
+          and there is roughly one red beryl crystal exists for every 150,000 gem diamonds.
           Taaffeite was first discovered already cut and polished in a jeweller&apos;s box,
           mistaken for spinel. Fewer than a thousand faceted stones are known.
         </p>

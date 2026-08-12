@@ -108,9 +108,10 @@ export default function Finale({ isActive }: { isActive: boolean }) {
             opacity: bodyOpacity,
           }}
         >
-          Not diamond. Not ruby. A small, quiet sphere built by a living
-          creature, on the only planet known to have oceans, wrapped around an
-          irritant layer by layer over years.
+          Not diamond or ruby, but a tiny sphere made of delicate layers of
+          nacre from the modest oyster. When light hits these layers, it bends
+          and reflects in different directions to create a soft, glowing
+          rainbow.
         </p>
 
         <p

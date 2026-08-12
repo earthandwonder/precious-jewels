@@ -91,7 +91,7 @@ export default function FaqSchema() {
         name: "What is the rarest mineral on Earth?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "The rarest single mineral specimen is kyawthuite — only one crystal has ever been found. Among gem-quality minerals, taaffeite and red beryl are exceptionally rare. Red beryl has one commercial deposit (in Utah), and there is roughly one red beryl crystal for every 150,000 gem diamonds.",
+          text: "The rarest single mineral specimen is kyawthuite — only one crystal has ever been found. Among gem-quality minerals, taaffeite and red beryl are exceptionally rare. Red beryl has one commercial deposit (in Utah), and there is roughly one red beryl crystal exists for every 150,000 gem diamonds.",
         },
       },
       {
