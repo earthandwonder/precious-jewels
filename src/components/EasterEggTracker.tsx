@@ -157,7 +157,7 @@ export function EasterEggCounter() {
       <div
         className={`fixed bottom-4 left-4 z-50 text-sm font-mono select-none ${isComplete ? "cursor-pointer" : "pointer-events-none"}`}
         style={{
-          color: isComplete ? "rgba(255, 215, 0, 0.8)" : "rgba(255, 255, 255, 0.4)",
+          color: isComplete ? "rgba(255, 215, 0, 0.8)" : "rgba(255, 255, 255, 0.25)",
           transition: "color 0.5s ease",
         }}
         onClick={isComplete ? spawnConfettiBurst : undefined}
