@@ -393,7 +393,7 @@ export const materials: Material[] = [
     density: 2800,
     color: "#4CC88A",
     glowColor: "#3DBFA0",
-    tagline: "One extinct animal, one river, 70 million years.",
+    tagline: "One extinct species, one river, buried for 70 million years.",
     description:
       "The iridescent shell of one extinct ammonite, found along a narrow belt of Alberta's St. Mary River. Gem-grade material may run out within decades.",
     derivation: {
