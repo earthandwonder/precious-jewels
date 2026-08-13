@@ -20,13 +20,18 @@ interface EventMetadata {
   [key: string]: string | undefined;
 }
 
+const _ref =
+  typeof window !== "undefined"
+    ? new URLSearchParams(window.location.search).get("ref") || undefined
+    : undefined;
+
 export function trackEvent(eventType: EventType, metadata?: EventMetadata) {
   try {
     const payload = {
       project_slug: "rarest-gemstones",
       event_type: eventType,
       referrer: metadata?.referrer || document.referrer || undefined,
-      metadata: metadata || {},
+      metadata: { ...metadata, ...(_ref ? { ref: _ref } : {}) },
     };
 
     // Use sendBeacon for reliability (survives page unload), fall back to fetch
