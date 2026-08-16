@@ -71,6 +71,9 @@ export default function RootLayout({
         <PageviewTracker />
         <ScrollDepthTracker />
         {children}
+        <footer style={{ position: "fixed", bottom: 12, right: 16, zIndex: 10, fontFamily: "var(--font-jakarta-sans)", fontSize: 11, letterSpacing: "0.03em" }}>
+          <a href="https://benmccarthy.com.au" style={{ color: "rgba(255,255,255,0.2)", textDecoration: "none", borderBottom: "1px solid rgba(255,255,255,0.06)", paddingBottom: 1 }}>Ben McCarthy</a>
+        </footer>
         {/* @ts-expect-error web component */}
         <bm-capture
           mode="relationship"
