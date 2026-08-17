@@ -1,3 +1,5 @@
+import { CONTENT } from "./content";
+
 export type MaterialCategory = "mineral" | "biological" | "earth-impact";
 
 export type Act = 1 | 2 | 3;
@@ -22,21 +24,18 @@ export interface Material {
 
 export const ACT_TITLES = {
   1: {
-    title: "The Cosmos Makes These by the Planet-Load",
-    subtitle:
-      "Every 'precious' gem you know is one of the most abundant materials in the universe.",
+    title: CONTENT.act1_title,
+    subtitle: CONTENT.act1_subtitle,
     logRange: [35, 44] as const,
   },
   2: {
-    title: "The Beryllium Cliff",
-    subtitle:
-      "Beryllium isn't forged in stars — it's made when cosmic rays smash into heavier atoms. Most gems below need beryllium to form. The rest demand an equally improbable convergence of elements.",
+    title: CONTENT.act2_title,
+    subtitle: CONTENT.act2_subtitle,
     logRange: [20, 30] as const,
   },
   3: {
-    title: "Life on One Planet",
-    subtitle:
-      "Minerals likely form on trillions of worlds. Life — as far as we know — happened on one. Everything below this line exists only on Earth.",
+    title: CONTENT.act3_title,
+    subtitle: CONTENT.act3_subtitle,
     logRange: [0, 13] as const,
   },
 } as const;
@@ -485,12 +484,12 @@ export const materials: Material[] = [
 // Interstitial text between acts
 export const interstitials = {
   "1-2": {
-    heading: "These piles may look large — but this is all there is in the known universe.",
-    body: "The next four gems all need beryllium — an element stars can't make. It's created only when cosmic rays shatter heavier atoms at near-light speed.",
+    heading: CONTENT.interstitial_1_2_heading,
+    body: CONTENT.interstitial_1_2_body,
   },
   "2-3": {
-    heading: "Everything below exists only on Earth.",
-    body: "The wooden table you're sitting at is rarer than diamond by thirty orders of magnitude.",
+    heading: CONTENT.interstitial_2_3_heading,
+    body: CONTENT.interstitial_2_3_body,
   },
 };
 
@@ -499,12 +498,12 @@ export const counterConfig = {
   uncountableThreshold: 20, // logVolume above this shows "uncountable" style
   countableThreshold: 10, // logVolume below this shows actual numbers
   units: [
-    { max: 50, label: "trillion Earth-masses" },
-    { max: 40, label: "Earth-masses" },
-    { max: 30, label: "Moon-masses" },
-    { max: 20, label: "Mount Everests" },
-    { max: 15, label: "Great Pyramids" },
-    { max: 10, label: "tonnes" },
-    { max: 7, label: "kilograms" },
-  ] as const,
+    { max: 50, label: CONTENT.counter_unit_trillion_earth },
+    { max: 40, label: CONTENT.counter_unit_earth },
+    { max: 30, label: CONTENT.counter_unit_moon },
+    { max: 20, label: CONTENT.counter_unit_everest },
+    { max: 15, label: CONTENT.counter_unit_pyramid },
+    { max: 10, label: CONTENT.counter_unit_tonnes },
+    { max: 7, label: CONTENT.counter_unit_kg },
+  ],
 };

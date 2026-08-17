@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { CONTENT } from "@/data/content";
 
 /**
  * Heliosphere intro — auto-animates when snapped into view.
@@ -76,7 +77,7 @@ export default function EarthIntro({ isActive }: { isActive: boolean }) {
           color: "rgba(180, 170, 240, 1)",
         }}
       >
-        Voyager 1
+        {CONTENT.earth_intro_label}
       </p>
 
       {/* Context */}
@@ -87,7 +88,7 @@ export default function EarthIntro({ isActive }: { isActive: boolean }) {
           color: "rgba(210, 222, 238, 0.95)",
         }}
       >
-        Take a sphere the size of Voyager 1's distance from the Sun. Then pile every piece of each gem in the universe next to it.
+        {CONTENT.earth_intro_context}
       </p>
     </div>
   );

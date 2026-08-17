@@ -1,5 +1,6 @@
 "use client";
 
+import { CONTENT } from "@/data/content";
 import { materials } from "@/data/materials";
 import { affiliateProducts } from "@/data/products";
 import { trackEvent } from "@/lib/analytics";
@@ -27,7 +28,7 @@ export default function ShopSection() {
         />
 
         <p className="text-center text-base text-muted leading-relaxed mb-10 max-w-md mx-auto">
-          Every material above is real. Some of them are surprisingly easy to own.
+          {CONTENT.shop_intro}
         </p>
 
         <div className="flex flex-wrap justify-center gap-2">
@@ -70,7 +71,7 @@ export default function ShopSection() {
         </div>
 
         <p className="text-center text-xs text-muted mt-6 opacity-40">
-          Affiliate links — we may earn a small commission at no cost to you.
+          {CONTENT.shop_affiliate_disclaimer}
         </p>
       </div>
     </section>

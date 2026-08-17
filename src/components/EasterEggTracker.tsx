@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useState, useCallback, useEffect, useRef, type ReactNode } from "react";
 import { createPortal } from "react-dom";
+import { CONTENT } from "@/data/content";
 
 type EggId = "dragon" | "noface" | "gauntlet" | "ufo" | "dino" | "diver";
 
@@ -162,7 +163,7 @@ export function EasterEggCounter() {
         }}
         onClick={isComplete ? spawnConfettiBurst : undefined}
       >
-        {count}/6 Easter eggs
+        {count}/6 {CONTENT.easter_egg_counter}
       </div>
     </>
   );

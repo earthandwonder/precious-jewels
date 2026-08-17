@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useCallback, useEffect, useState } from "react";
+import { CONTENT } from "@/data/content";
 import { materials, interstitials } from "@/data/materials";
 import type { Material } from "@/data/materials";
 import MaterialCard from "./MaterialCard";
@@ -147,7 +148,7 @@ export default function Essay() {
                 <div key={`interstitial-${segment.key}`} className="snap-page">
                   <Interstitial
                     {...interstitials[segment.key]}
-                    partLabel={segment.key === "1-2" ? "Part II" : "Part III"}
+                    partLabel={segment.key === "1-2" ? CONTENT.part_ii : CONTENT.part_iii}
                     transitionKey={segment.key}
                     isActive={isActive}
                   />
@@ -197,11 +198,11 @@ function HeroPage({ isActive }: { isActive: boolean }) {
       />
 
       <p className="hero-title font-editorial text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight mb-8 text-foreground relative z-10 leading-[0.95]">
-        Imagine you are
+        {CONTENT.hero_line1}
         <br />
-        an intergalactic
+        {CONTENT.hero_line2}
         <br />
-        <span className="italic hero-gemstones">gem hunter</span>...
+        <span className="italic hero-gemstones">{CONTENT.hero_line3}</span>...
       </p>
 
       <div className="hero-subtitle relative z-10 mb-6">
@@ -209,9 +210,9 @@ function HeroPage({ isActive }: { isActive: boolean }) {
           className="font-editorial text-xl md:text-2xl lg:text-3xl italic max-w-xl leading-relaxed"
           style={{ color: "rgba(232, 230, 227, 0.85)" }}
         >
-          Which gemstones are common across the universe?
+          {CONTENT.hero_subtitle_1}
           <br />
-          Which are vanishingly rare?
+          {CONTENT.hero_subtitle_2}
         </p>
       </div>
 

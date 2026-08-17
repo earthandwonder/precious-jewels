@@ -9,6 +9,7 @@
  *   Heliosphere → Solar System → Sun → Earth → Everest → Statue → Human
  */
 
+import { CONTENT } from "@/data/content";
 import type { Act } from "@/data/materials";
 
 interface ScaleReferenceProps {
@@ -39,13 +40,13 @@ const STATUE_HEIGHT = 93;
 const HUMAN_HEIGHT = 1.8;
 
 export const REFERENCES: Record<RefType, ReferenceInfo> = {
-  heliosphere:    { type: "heliosphere",    label: "Voyager-sphere",           shortLabel: "Voyager",           color: "#C4B8F0", realSize: HELIOSPHERE_DIAMETER, render: (s) => renderHeliosphere(s) },
-  "solar-system": { type: "solar-system",   label: "Solar system-scale",       shortLabel: "Solar system",      color: "#E8D878", realSize: SOLAR_SYSTEM_DIAMETER, render: (s) => renderSolarSystem(s) },
-  sun:            { type: "sun",            label: "Sun-scale",                shortLabel: "The Sun",           color: "#F0C060", realSize: SUN_DIAMETER, render: (s) => renderSun(s) },
-  earth:          { type: "earth",          label: "Earth-scale",              shortLabel: "Earth",             color: "#7CB0E0", realSize: EARTH_DIAMETER, render: (s) => renderEarth(s) },
-  everest:        { type: "everest",        label: "Everest-scale",            shortLabel: "Everest",           color: "#D0D8E0", realSize: EVEREST_HEIGHT, render: (s) => renderMountain(s) },
-  statue:         { type: "statue",         label: "Statue of Liberty-scale",  shortLabel: "Statue of Liberty", color: "#A0DCC0", realSize: STATUE_HEIGHT, render: (s) => renderStatue(s) },
-  human:          { type: "human",          label: "Human-scale",              shortLabel: "Human",             color: "#E0C8A0", realSize: HUMAN_HEIGHT, render: (s) => renderHuman(s) },
+  heliosphere:    { type: "heliosphere",    label: CONTENT.ref_heliosphere_label,    shortLabel: CONTENT.ref_heliosphere_short,    color: "#C4B8F0", realSize: HELIOSPHERE_DIAMETER, render: (s) => renderHeliosphere(s) },
+  "solar-system": { type: "solar-system",   label: CONTENT.ref_solar_system_label,   shortLabel: CONTENT.ref_solar_system_short,   color: "#E8D878", realSize: SOLAR_SYSTEM_DIAMETER, render: (s) => renderSolarSystem(s) },
+  sun:            { type: "sun",            label: CONTENT.ref_sun_label,            shortLabel: CONTENT.ref_sun_short,            color: "#F0C060", realSize: SUN_DIAMETER, render: (s) => renderSun(s) },
+  earth:          { type: "earth",          label: CONTENT.ref_earth_label,          shortLabel: CONTENT.ref_earth_short,          color: "#7CB0E0", realSize: EARTH_DIAMETER, render: (s) => renderEarth(s) },
+  everest:        { type: "everest",        label: CONTENT.ref_everest_label,        shortLabel: CONTENT.ref_everest_short,        color: "#D0D8E0", realSize: EVEREST_HEIGHT, render: (s) => renderMountain(s) },
+  statue:         { type: "statue",         label: CONTENT.ref_statue_label,         shortLabel: CONTENT.ref_statue_short,         color: "#A0DCC0", realSize: STATUE_HEIGHT, render: (s) => renderStatue(s) },
+  human:          { type: "human",          label: CONTENT.ref_human_label,          shortLabel: CONTENT.ref_human_short,          color: "#E0C8A0", realSize: HUMAN_HEIGHT, render: (s) => renderHuman(s) },
 };
 
 /**

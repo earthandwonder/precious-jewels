@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { CONTENT } from "@/data/content";
 
 /**
  * The pearl reveal — auto-animated entrance when snapped into view.
@@ -54,7 +55,7 @@ export default function Finale({ isActive }: { isActive: boolean }) {
             opacity: labelOpacity,
           }}
         >
-          The rarest gemstone in the known universe
+          {CONTENT.finale_label}
         </p>
 
         {/* Pearl image with glow backdrop */}
@@ -78,7 +79,7 @@ export default function Finale({ isActive }: { isActive: boolean }) {
             />
             <img
               src="/p/rarest-gemstones/pearl.png"
-              alt="A natural pearl"
+              alt={CONTENT.finale_pearl_alt}
               className="relative w-full h-full object-contain drop-shadow-[0_0_30px_rgba(253,235,208,0.3)]"
               draggable={false}
             />
@@ -93,7 +94,7 @@ export default function Finale({ isActive }: { isActive: boolean }) {
             transform: `translateY(${titleY}px)`,
           }}
         >
-          A natural pearl.
+          {CONTENT.finale_title}
         </p>
 
         <hr
@@ -108,10 +109,7 @@ export default function Finale({ isActive }: { isActive: boolean }) {
             opacity: bodyOpacity,
           }}
         >
-          Not diamond or ruby, but a tiny sphere made of delicate layers of
-          nacre from the modest oyster. When light hits these layers, it bends
-          and reflects in different directions to create a soft, glowing
-          rainbow.
+          {CONTENT.finale_body}
         </p>
 
         <p
@@ -121,7 +119,7 @@ export default function Finale({ isActive }: { isActive: boolean }) {
             opacity: comparisonOpacity,
           }}
         >
-          Rarer than diamond by forty orders of magnitude.
+          {CONTENT.finale_comparison}
         </p>
       </div>
     </div>

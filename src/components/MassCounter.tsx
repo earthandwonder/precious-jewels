@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { CONTENT } from "@/data/content";
 import type { Act, Material } from "@/data/materials";
 
 interface MassCounterProps {
@@ -42,38 +43,38 @@ function formatMass(logMass: number, act: Act): { value: React.ReactNode; unit: 
   if (act === 1) {
     const earthExp = Math.round(logMass - 24.8);
     if (earthExp <= 0) {
-      return { value: "~1", unit: "Earth-mass" };
+      return { value: "~1", unit: CONTENT.mass_unit_earth_mass };
     }
-    return { value: <span>~<TenPow n={earthExp} /></span>, unit: "Earth-masses" };
+    return { value: <span>~<TenPow n={earthExp} /></span>, unit: CONTENT.mass_unit_earth_masses };
   }
 
   if (act === 2) {
-    return { value: <span>~<TenPow n={Math.round(logMass)} /></span>, unit: "kg" };
+    return { value: <span>~<TenPow n={Math.round(logMass)} /></span>, unit: CONTENT.mass_unit_kg };
   }
 
   // Act 3: tonnes (logMass is in kg, so subtract 3 for tonnes)
   const logTonnes = logMass - 3;
   if (logTonnes >= 9) {
     const billionExp = Math.round(logTonnes - 9);
-    if (billionExp === 0) return { value: "~1", unit: "billion tonnes" };
-    return { value: <span>~<TenPow n={billionExp} /></span>, unit: "billion tonnes" };
+    if (billionExp === 0) return { value: "~1", unit: CONTENT.mass_unit_billion_tonnes };
+    return { value: <span>~<TenPow n={billionExp} /></span>, unit: CONTENT.mass_unit_billion_tonnes };
   }
   if (logTonnes >= 6) {
     const millionExp = Math.round(logTonnes - 6);
-    if (millionExp === 0) return { value: "~1", unit: "million tonnes" };
+    if (millionExp === 0) return { value: "~1", unit: CONTENT.mass_unit_million_tonnes };
     const val = Math.round(10 ** millionExp);
-    return { value: `~${val.toLocaleString()}`, unit: "million tonnes" };
+    return { value: `~${val.toLocaleString()}`, unit: CONTENT.mass_unit_million_tonnes };
   }
   if (logTonnes >= 3) {
     const val = Math.round(10 ** (logTonnes - 3));
-    return { value: `~${val.toLocaleString()}`, unit: "thousand tonnes" };
+    return { value: `~${val.toLocaleString()}`, unit: CONTENT.mass_unit_thousand_tonnes };
   }
   if (logTonnes >= 0) {
     const val = Math.round(10 ** logTonnes);
-    return { value: `~${val.toLocaleString()}`, unit: "tonnes" };
+    return { value: `~${val.toLocaleString()}`, unit: CONTENT.mass_unit_tonnes };
   }
   const kg = Math.round(10 ** logMass);
-  return { value: `~${kg.toLocaleString()}`, unit: "kg" };
+  return { value: `~${kg.toLocaleString()}`, unit: CONTENT.mass_unit_kg };
 }
 
 export default function MassCounter({ logVolume, density, color, act, derivation, scaleNote }: MassCounterProps) {
@@ -160,7 +161,7 @@ export default function MassCounter({ logVolume, density, color, act, derivation
               borderBottom: "1px solid rgba(255,255,255,0.12)",
             }}
           >
-            * Estimated total mass across the observable universe.
+            {CONTENT.mass_asterisk_note}
           </p>
 
           {/* Bridge: connects displayed value to derivation */}
@@ -179,7 +180,7 @@ export default function MassCounter({ logVolume, density, color, act, derivation
             className="text-xs uppercase tracking-[0.15em] mb-1.5"
             style={{ color, opacity: 1 }}
           >
-            How we got this number
+            {CONTENT.mass_derivation_heading}
           </p>
           <ul className="space-y-1">
             {derivation.steps.map((step, i) => (
@@ -199,7 +200,7 @@ export default function MassCounter({ logVolume, density, color, act, derivation
                 className="text-xs uppercase tracking-[0.15em] mb-1"
                 style={{ color, opacity: 0.95 }}
               >
-                Sources
+                {CONTENT.mass_sources_heading}
               </p>
               <ul className="space-y-0.5">
                 {derivation.sources.map((src, i) => (

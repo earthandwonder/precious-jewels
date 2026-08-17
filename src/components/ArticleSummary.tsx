@@ -4,6 +4,8 @@
  * Contains the H1 for Google and keyword-rich content.
  */
 
+import { CONTENT } from "@/data/content";
+
 const tint = "rgba(230, 238, 248, 0.85)";
 const tintSoft = "rgba(230, 238, 248, 0.7)";
 
@@ -28,13 +30,10 @@ export default function ArticleSummary() {
           className="font-editorial text-3xl md:text-5xl font-medium tracking-tight leading-[1.1] mb-8"
           style={{ color: tint }}
         >
-          The rarest gemstones in the universe, ranked
+          {CONTENT.article_h1}
         </h1>
         <p className="text-base md:text-lg leading-relaxed" style={{ color: tintSoft }}>
-          We estimated how much of 17 selected precious materials — minerals, fossils,
-          and biological gems — exists across the entire known universe.
-          The result spans 44 orders of magnitude, from planet-swallowing
-          quantities of corundum down to a single room of natural pearls.
+          {CONTENT.article_intro}
         </p>
       </ArticlePage>
 
@@ -44,15 +43,10 @@ export default function ArticleSummary() {
           className="font-editorial text-2xl md:text-4xl font-medium tracking-tight leading-[1.1] mb-6"
           style={{ color: tint }}
         >
-          The most common gemstones are cosmically abundant
+          {CONTENT.article_h2_abundant}
         </h2>
         <p className="text-base md:text-lg leading-relaxed" style={{ color: tintSoft }}>
-          Ruby and sapphire are the same crystal, corundum, with different impurities —
-          one of the first minerals to condense from the gas of a star shedding
-          its outer layers. Diamond is even more common: carbon, the fourth most
-          abundant element, becomes diamond easily. On Neptune, it rains diamonds.
-          Quartz, amethyst, jadeite, and opal follow — all abundant
-          wherever rocky planets exist with the right conditions.
+          {CONTENT.article_p_abundant}
         </p>
       </ArticlePage>
 
@@ -62,17 +56,10 @@ export default function ArticleSummary() {
           className="font-editorial text-2xl md:text-4xl font-medium tracking-tight leading-[1.1] mb-6"
           style={{ color: tint }}
         >
-          The beryllium cliff
+          {CONTENT.article_h2_beryllium}
         </h2>
         <p className="text-base md:text-lg leading-relaxed" style={{ color: tintSoft }}>
-          Emerald, red beryl, taaffeite, and alexandrite all require beryllium — an
-          element that can&apos;t be forged inside stars. Beryllium is created only when
-          cosmic rays smash into heavier atoms at near-light speed. This bottleneck
-          means these gems can never be cosmically common, no matter how many
-          rocky worlds there are. Red beryl has one commercial deposit on Earth,
-          and there is roughly one red beryl crystal exists for every 150,000 gem diamonds.
-          Taaffeite was first discovered already cut and polished in a jeweller&apos;s box,
-          mistaken for spinel. Fewer than a thousand faceted stones are known.
+          {CONTENT.article_p_beryllium}
         </p>
       </ArticlePage>
 
@@ -82,19 +69,13 @@ export default function ArticleSummary() {
           className="font-editorial text-2xl md:text-4xl font-medium tracking-tight leading-[1.1] mb-6"
           style={{ color: tint }}
         >
-          The rarest gemstones exist on only one planet
+          {CONTENT.article_h2_earth_only}
         </h2>
         <p className="text-base md:text-lg leading-relaxed mb-6" style={{ color: tintSoft }}>
-          Minerals can form on trillions of worlds. Life — as far as we know — happened
-          on one. Wood, ammonite fossils, amber, precious coral, ammolite, and
-          natural pearl all exist only on Earth. Then there&apos;s moldavite — not
-          biological, but just as singular: glass formed by a single asteroid
-          impact in Bavaria 14.8 million years ago.
+          {CONTENT.article_p_earth_only_1}
         </p>
         <p className="text-base md:text-lg leading-relaxed" style={{ color: tintSoft }}>
-          At the bottom of the list sits a natural pearl. One in ten thousand
-          wild oysters produces one. Every natural pearl that has ever
-          existed — across all of history — would fit inside a single room.
+          {CONTENT.article_p_earth_only_2}
         </p>
       </ArticlePage>
 
@@ -104,29 +85,15 @@ export default function ArticleSummary() {
           className="font-editorial text-2xl md:text-3xl font-medium tracking-tight leading-[1.1] mb-6"
           style={{ color: tint }}
         >
-          The full ranking
+          {CONTENT.article_h2_ranking}
         </h2>
         <p className="text-sm mb-4" style={{ color: tintSoft }}>
-          Most abundant gemstone to rarest, by total mass across the known universe:
+          {CONTENT.article_ranking_intro}
         </p>
         <ol className="text-sm md:text-base leading-relaxed space-y-0.5 list-decimal list-inside" style={{ color: tintSoft }}>
-          <li>Ruby &amp; Sapphire (corundum)</li>
-          <li>Quartz &amp; Amethyst</li>
-          <li>Diamond</li>
-          <li>Jadeite</li>
-          <li>Opal</li>
-          <li>Emerald</li>
-          <li>Red Beryl</li>
-          <li>Taaffeite</li>
-          <li>Alexandrite</li>
-          <li>Wood</li>
-          <li>Ammonite</li>
-          <li>Amber</li>
-          <li>Precious Coral</li>
-          <li>Ammolite</li>
-          <li>Amber with Insect Inclusions</li>
-          <li>Moldavite</li>
-          <li>Natural Pearl</li>
+          {CONTENT.article_ranking.map((item, i) => (
+            <li key={i}>{item}</li>
+          ))}
         </ol>
       </ArticlePage>
     </article>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { CONTENT } from "@/data/content";
 import { REFERENCES, type RefType } from "./ScaleReference";
 
 interface ScaleTransitionProps {
@@ -67,7 +68,7 @@ function ZoomTransition({
 
   const contextText =
     fromRef === "heliosphere" && toRef === "solar-system"
-      ? "The piles from here are smaller. The entire solar system fits inside Voyager's sphere four times over."
+      ? CONTENT.scale_transition_helio_to_solar
       : null;
 
   // Phase 1: from object grows and fades (0-0.5)
