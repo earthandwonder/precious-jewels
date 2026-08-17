@@ -1,6 +1,6 @@
 "use client";
 
-import { CONTENT } from "@/data/content";
+import { useT } from "./LocaleProvider";
 import { materials } from "@/data/materials";
 import { affiliateProducts } from "@/data/products";
 import { trackEvent } from "@/lib/analytics";
@@ -13,6 +13,8 @@ export default function ShopSection() {
   const materialsWithProducts = materials.filter(
     (m) => affiliateProducts[m.id]?.length
   );
+
+  const t = useT();
 
   if (materialsWithProducts.length === 0) return null;
 
@@ -28,7 +30,7 @@ export default function ShopSection() {
         />
 
         <p className="text-center text-base text-muted leading-relaxed mb-10 max-w-md mx-auto">
-          {CONTENT.shop_intro}
+          {t("shop_intro")}
         </p>
 
         <div className="flex flex-wrap justify-center gap-2">
@@ -71,7 +73,7 @@ export default function ShopSection() {
         </div>
 
         <p className="text-center text-xs text-muted mt-6 opacity-40">
-          {CONTENT.shop_affiliate_disclaimer}
+          {t("shop_affiliate_disclaimer")}
         </p>
       </div>
     </section>

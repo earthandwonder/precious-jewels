@@ -1,10 +1,12 @@
+"use client";
+
 /**
  * Crawlable text summary below the interactive essay, split across
  * snap pages so it flows naturally within the scroll experience.
  * Contains the H1 for Google and keyword-rich content.
  */
 
-import { CONTENT } from "@/data/content";
+import { useT } from "./LocaleProvider";
 
 const tint = "rgba(230, 238, 248, 0.85)";
 const tintSoft = "rgba(230, 238, 248, 0.7)";
@@ -22,6 +24,8 @@ function ArticlePage({ children }: { children: React.ReactNode }) {
 }
 
 export default function ArticleSummary() {
+  const t = useT();
+
   return (
     <article>
       {/* Page 1: Intro + H1 */}
@@ -30,10 +34,10 @@ export default function ArticleSummary() {
           className="font-editorial text-3xl md:text-5xl font-medium tracking-tight leading-[1.1] mb-8"
           style={{ color: tint }}
         >
-          {CONTENT.article_h1}
+          {t("article_h1")}
         </h1>
         <p className="text-base md:text-lg leading-relaxed" style={{ color: tintSoft }}>
-          {CONTENT.article_intro}
+          {t("article_intro")}
         </p>
       </ArticlePage>
 
@@ -43,10 +47,10 @@ export default function ArticleSummary() {
           className="font-editorial text-2xl md:text-4xl font-medium tracking-tight leading-[1.1] mb-6"
           style={{ color: tint }}
         >
-          {CONTENT.article_h2_abundant}
+          {t("article_h2_abundant")}
         </h2>
         <p className="text-base md:text-lg leading-relaxed" style={{ color: tintSoft }}>
-          {CONTENT.article_p_abundant}
+          {t("article_p_abundant")}
         </p>
       </ArticlePage>
 
@@ -56,10 +60,10 @@ export default function ArticleSummary() {
           className="font-editorial text-2xl md:text-4xl font-medium tracking-tight leading-[1.1] mb-6"
           style={{ color: tint }}
         >
-          {CONTENT.article_h2_beryllium}
+          {t("article_h2_beryllium")}
         </h2>
         <p className="text-base md:text-lg leading-relaxed" style={{ color: tintSoft }}>
-          {CONTENT.article_p_beryllium}
+          {t("article_p_beryllium")}
         </p>
       </ArticlePage>
 
@@ -69,13 +73,13 @@ export default function ArticleSummary() {
           className="font-editorial text-2xl md:text-4xl font-medium tracking-tight leading-[1.1] mb-6"
           style={{ color: tint }}
         >
-          {CONTENT.article_h2_earth_only}
+          {t("article_h2_earth_only")}
         </h2>
         <p className="text-base md:text-lg leading-relaxed mb-6" style={{ color: tintSoft }}>
-          {CONTENT.article_p_earth_only_1}
+          {t("article_p_earth_only_1")}
         </p>
         <p className="text-base md:text-lg leading-relaxed" style={{ color: tintSoft }}>
-          {CONTENT.article_p_earth_only_2}
+          {t("article_p_earth_only_2")}
         </p>
       </ArticlePage>
 
@@ -85,13 +89,13 @@ export default function ArticleSummary() {
           className="font-editorial text-2xl md:text-3xl font-medium tracking-tight leading-[1.1] mb-6"
           style={{ color: tint }}
         >
-          {CONTENT.article_h2_ranking}
+          {t("article_h2_ranking")}
         </h2>
         <p className="text-sm mb-4" style={{ color: tintSoft }}>
-          {CONTENT.article_ranking_intro}
+          {t("article_ranking_intro")}
         </p>
         <ol className="text-sm md:text-base leading-relaxed space-y-0.5 list-decimal list-inside" style={{ color: tintSoft }}>
-          {CONTENT.article_ranking.map((item, i) => (
+          {(t("article_ranking") as string[]).map((item: string, i: number) => (
             <li key={i}>{item}</li>
           ))}
         </ol>

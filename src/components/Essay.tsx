@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useCallback, useEffect, useState } from "react";
-import { CONTENT } from "@/data/content";
+import { useT } from "./LocaleProvider";
 import { materials, interstitials } from "@/data/materials";
 import type { Material } from "@/data/materials";
 import MaterialCard from "./MaterialCard";
@@ -89,6 +89,7 @@ function addMaterialsWithTransitions(
 const allSegments = buildSegments();
 
 export default function Essay() {
+  const t = useT();
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -148,7 +149,7 @@ export default function Essay() {
                 <div key={`interstitial-${segment.key}`} className="snap-page">
                   <Interstitial
                     {...interstitials[segment.key]}
-                    partLabel={segment.key === "1-2" ? CONTENT.part_ii : CONTENT.part_iii}
+                    partLabel={segment.key === "1-2" ? t("part_ii") : t("part_iii")}
                     transitionKey={segment.key}
                     isActive={isActive}
                   />
@@ -187,6 +188,7 @@ export default function Essay() {
 }
 
 function HeroPage({ isActive }: { isActive: boolean }) {
+  const t = useT();
   return (
     <header className="hero-gradient relative z-10 w-full h-full flex flex-col items-center justify-center px-6 text-center">
       <div
@@ -198,11 +200,11 @@ function HeroPage({ isActive }: { isActive: boolean }) {
       />
 
       <p className="hero-title font-editorial text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight mb-8 text-foreground relative z-10 leading-[0.95]">
-        {CONTENT.hero_line1}
+        {t("hero_line1")}
         <br />
-        {CONTENT.hero_line2}
+        {t("hero_line2")}
         <br />
-        <span className="italic hero-gemstones">{CONTENT.hero_line3}</span>...
+        <span className="italic hero-gemstones">{t("hero_line3")}</span>...
       </p>
 
       <div className="hero-subtitle relative z-10 mb-6">
@@ -210,9 +212,9 @@ function HeroPage({ isActive }: { isActive: boolean }) {
           className="font-editorial text-xl md:text-2xl lg:text-3xl italic max-w-xl leading-relaxed"
           style={{ color: "rgba(232, 230, 227, 0.85)" }}
         >
-          {CONTENT.hero_subtitle_1}
+          {t("hero_subtitle_1")}
           <br />
-          {CONTENT.hero_subtitle_2}
+          {t("hero_subtitle_2")}
         </p>
       </div>
 

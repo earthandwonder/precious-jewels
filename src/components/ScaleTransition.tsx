@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { CONTENT } from "@/data/content";
-import { REFERENCES, type RefType } from "./ScaleReference";
+import { useT, useLocale } from "./LocaleProvider";
+import { REFERENCES, getRefLabel, type RefType } from "./ScaleReference";
 
 interface ScaleTransitionProps {
   fromRef: RefType;
@@ -66,9 +66,12 @@ function ZoomTransition({
   const from = REFERENCES[fromRef];
   const to = REFERENCES[toRef];
 
+  const t = useT();
+  const locale = useLocale();
+
   const contextText =
     fromRef === "heliosphere" && toRef === "solar-system"
-      ? CONTENT.scale_transition_helio_to_solar
+      ? t("scale_transition_helio_to_solar")
       : null;
 
   // Phase 1: from object grows and fades (0-0.5)
@@ -92,7 +95,7 @@ function ZoomTransition({
               className="mt-2 text-xs font-medium tracking-wider uppercase"
               style={{ color: from.color, opacity: 0.95 }}
             >
-              {from.label}
+              {getRefLabel(fromRef, locale)}
             </span>
           )}
         </div>
@@ -106,7 +109,7 @@ function ZoomTransition({
             className="mt-2 text-xs tracking-wider uppercase"
             style={{ color: to.color, opacity: 0.95 * toOpacity }}
           >
-            {to.label}
+            {getRefLabel(toRef, locale)}
           </span>
           {contextText && (
             <p

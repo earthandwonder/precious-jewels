@@ -1,3 +1,5 @@
+"use client";
+
 /**
  * Structured data (JSON-LD) for search engines.
  * - Article: editorial content signals, author, date
@@ -5,22 +7,26 @@
  * - FAQPage: targets "rarest gemstone" question variants
  */
 
-import { CONTENT } from "@/data/content";
+import { useT } from "./LocaleProvider";
 
 export default function FaqSchema() {
+  const t = useT();
+  const ranking = t("article_ranking") as string[];
+  const faq = t("faq") as { q: string; a: string }[];
+
   const articleData = {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: CONTENT.schema_headline,
-    description: CONTENT.schema_description,
+    headline: t("schema_headline"),
+    description: t("schema_description"),
     author: {
       "@type": "Person",
-      name: CONTENT.schema_author,
+      name: t("schema_author"),
       url: "https://benmccarthy.com.au",
     },
     publisher: {
       "@type": "Person",
-      name: CONTENT.schema_author,
+      name: t("schema_author"),
       url: "https://benmccarthy.com.au",
     },
     mainEntityOfPage: {
@@ -35,11 +41,11 @@ export default function FaqSchema() {
   const itemListData = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: CONTENT.schema_list_name,
-    description: CONTENT.schema_list_description,
-    numberOfItems: CONTENT.article_ranking.length,
+    name: t("schema_list_name"),
+    description: t("schema_list_description"),
+    numberOfItems: ranking.length,
     itemListOrder: "https://schema.org/ItemListOrderDescending",
-    itemListElement: CONTENT.article_ranking.map((name, i) => ({
+    itemListElement: ranking.map((name: string, i: number) => ({
       "@type": "ListItem",
       position: i + 1,
       name,
@@ -49,7 +55,7 @@ export default function FaqSchema() {
   const faqData = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: CONTENT.faq.map((item) => ({
+    mainEntity: faq.map((item: { q: string; a: string }) => ({
       "@type": "Question",
       name: item.q,
       acceptedAnswer: {

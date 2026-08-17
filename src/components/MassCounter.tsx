@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { CONTENT } from "@/data/content";
+import { useT } from "./LocaleProvider";
+import type { CONTENT } from "@/data/content";
 import type { Act, Material } from "@/data/materials";
 
 interface MassCounterProps {
@@ -33,54 +34,57 @@ function tenPowText(n: number): string {
   return `10${sup}`;
 }
 
+type TFn = (key: keyof typeof CONTENT) => any;
+
 /**
  * Consistent units per part:
  * Part 1 (logMass 41-49): Earth-masses
  * Part 2 (logMass 27-38): kg
  * Part 3 (logMass 5-16): tonnes
  */
-function formatMass(logMass: number, act: Act): { value: React.ReactNode; unit: string } {
+function formatMass(logMass: number, act: Act, t: TFn): { value: React.ReactNode; unit: string } {
   if (act === 1) {
     const earthExp = Math.round(logMass - 24.8);
     if (earthExp <= 0) {
-      return { value: "~1", unit: CONTENT.mass_unit_earth_mass };
+      return { value: "~1", unit: t("mass_unit_earth_mass") };
     }
-    return { value: <span>~<TenPow n={earthExp} /></span>, unit: CONTENT.mass_unit_earth_masses };
+    return { value: <span>~<TenPow n={earthExp} /></span>, unit: t("mass_unit_earth_masses") };
   }
 
   if (act === 2) {
-    return { value: <span>~<TenPow n={Math.round(logMass)} /></span>, unit: CONTENT.mass_unit_kg };
+    return { value: <span>~<TenPow n={Math.round(logMass)} /></span>, unit: t("mass_unit_kg") };
   }
 
   // Act 3: tonnes (logMass is in kg, so subtract 3 for tonnes)
   const logTonnes = logMass - 3;
   if (logTonnes >= 9) {
     const billionExp = Math.round(logTonnes - 9);
-    if (billionExp === 0) return { value: "~1", unit: CONTENT.mass_unit_billion_tonnes };
-    return { value: <span>~<TenPow n={billionExp} /></span>, unit: CONTENT.mass_unit_billion_tonnes };
+    if (billionExp === 0) return { value: "~1", unit: t("mass_unit_billion_tonnes") };
+    return { value: <span>~<TenPow n={billionExp} /></span>, unit: t("mass_unit_billion_tonnes") };
   }
   if (logTonnes >= 6) {
     const millionExp = Math.round(logTonnes - 6);
-    if (millionExp === 0) return { value: "~1", unit: CONTENT.mass_unit_million_tonnes };
+    if (millionExp === 0) return { value: "~1", unit: t("mass_unit_million_tonnes") };
     const val = Math.round(10 ** millionExp);
-    return { value: `~${val.toLocaleString()}`, unit: CONTENT.mass_unit_million_tonnes };
+    return { value: `~${val.toLocaleString()}`, unit: t("mass_unit_million_tonnes") };
   }
   if (logTonnes >= 3) {
     const val = Math.round(10 ** (logTonnes - 3));
-    return { value: `~${val.toLocaleString()}`, unit: CONTENT.mass_unit_thousand_tonnes };
+    return { value: `~${val.toLocaleString()}`, unit: t("mass_unit_thousand_tonnes") };
   }
   if (logTonnes >= 0) {
     const val = Math.round(10 ** logTonnes);
-    return { value: `~${val.toLocaleString()}`, unit: CONTENT.mass_unit_tonnes };
+    return { value: `~${val.toLocaleString()}`, unit: t("mass_unit_tonnes") };
   }
   const kg = Math.round(10 ** logMass);
-  return { value: `~${kg.toLocaleString()}`, unit: CONTENT.mass_unit_kg };
+  return { value: `~${kg.toLocaleString()}`, unit: t("mass_unit_kg") };
 }
 
 export default function MassCounter({ logVolume, density, color, act, derivation, scaleNote }: MassCounterProps) {
+  const t = useT();
   const [expanded, setExpanded] = useState(false);
   const logMass = logVolume + Math.log10(density);
-  const { value, unit } = formatMass(logMass, act);
+  const { value, unit } = formatMass(logMass, act, t);
 
   const isUncountable = logVolume >= 20;
 
@@ -161,7 +165,7 @@ export default function MassCounter({ logVolume, density, color, act, derivation
               borderBottom: "1px solid rgba(255,255,255,0.12)",
             }}
           >
-            {CONTENT.mass_asterisk_note}
+            {t("mass_asterisk_note")}
           </p>
 
           {/* Bridge: connects displayed value to derivation */}
@@ -180,7 +184,7 @@ export default function MassCounter({ logVolume, density, color, act, derivation
             className="text-xs uppercase tracking-[0.15em] mb-1.5"
             style={{ color, opacity: 1 }}
           >
-            {CONTENT.mass_derivation_heading}
+            {t("mass_derivation_heading")}
           </p>
           <ul className="space-y-1">
             {derivation.steps.map((step, i) => (
@@ -200,7 +204,7 @@ export default function MassCounter({ logVolume, density, color, act, derivation
                 className="text-xs uppercase tracking-[0.15em] mb-1"
                 style={{ color, opacity: 0.95 }}
               >
-                {CONTENT.mass_sources_heading}
+                {t("mass_sources_heading")}
               </p>
               <ul className="space-y-0.5">
                 {derivation.sources.map((src, i) => (

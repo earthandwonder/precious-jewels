@@ -3,6 +3,7 @@
 import { useRef, useEffect, useState, useCallback } from "react";
 import type { Material } from "@/data/materials";
 import { inlineProducts } from "@/data/products";
+import { useTm } from "./LocaleProvider";
 import ParticlePile from "./ParticlePile";
 import type { MaterialFeel, ParticleShape, ParticlePileHandle } from "./ParticlePile";
 import MassCounter from "./MassCounter";
@@ -654,6 +655,7 @@ export default function MaterialCard({
   material: Material;
   isActive: boolean;
 }) {
+  const tm = useTm();
   const [hasAnimated, setHasAnimated] = useState(false);
   const pileRef = useRef<ParticlePileHandle>(null);
   const isMobile = useIsMobile();
@@ -686,7 +688,7 @@ export default function MaterialCard({
     <div
       className="material-card relative w-full max-w-[100vw] h-full flex flex-col items-center justify-center gap-6 md:gap-10 px-4 md:px-6 pt-10 pb-4 md:py-0 overflow-hidden"
       role="region"
-      aria-label={`${material.name} — ${material.tagline}`}
+      aria-label={`${tm(material.id, "name") ?? material.name} — ${tm(material.id, "tagline") ?? material.tagline}`}
     >
       {/* Zone 1: Visual — pile + reference, scaled to fit on mobile */}
       <div
@@ -733,7 +735,7 @@ export default function MaterialCard({
           className={`snap-animate snap-animate-delay-2 font-editorial text-2xl md:text-4xl lg:text-5xl font-medium tracking-tight leading-[1.1] ${active ? "is-active" : ""}`}
           style={{ color: material.color }}
         >
-          {material.name}
+          {tm(material.id, "name") ?? material.name}
         </h2>
 
         <div className={`snap-animate snap-animate-delay-3 mt-3 md:mt-4 ${active ? "is-active" : ""}`}>
@@ -744,7 +746,7 @@ export default function MaterialCard({
           className={`snap-animate snap-animate-delay-4 font-editorial text-base md:text-xl italic mt-1 md:mt-3 leading-relaxed ${active ? "is-active" : ""}`}
           style={{ color: `rgba(${tintBase}, 1)` }}
         >
-          {material.tagline}
+          {tm(material.id, "tagline") ?? material.tagline}
         </p>
       </div>
 
@@ -754,7 +756,7 @@ export default function MaterialCard({
           className={`snap-animate snap-animate-delay-5 text-sm md:text-lg leading-[1.6] md:leading-[1.8] max-w-md mx-auto ${active ? "is-active" : ""}`}
           style={{ color: `rgba(${tintBase}, 1)` }}
         >
-          {material.description}
+          {tm(material.id, "description") ?? material.description}
         </p>
 
         {hasProducts && (

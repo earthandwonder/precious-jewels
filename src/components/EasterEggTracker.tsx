@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState, useCallback, useEffect, useRef, type ReactNode } from "react";
 import { createPortal } from "react-dom";
-import { CONTENT } from "@/data/content";
+import { useT } from "./LocaleProvider";
 
 type EggId = "dragon" | "noface" | "gauntlet" | "ufo" | "dino" | "diver";
 
@@ -57,6 +57,7 @@ interface Confetto {
 }
 
 export function EasterEggCounter() {
+  const t = useT();
   const { found } = useEasterEggs();
   const count = found.size;
   const [, forceRender] = useState(0);
@@ -163,7 +164,7 @@ export function EasterEggCounter() {
         }}
         onClick={isComplete ? spawnConfettiBurst : undefined}
       >
-        {count}/6 {CONTENT.easter_egg_counter}
+        {count}/6 {t("easter_egg_counter")}
       </div>
     </>
   );

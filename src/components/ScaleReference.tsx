@@ -10,6 +10,7 @@
  */
 
 import { CONTENT } from "@/data/content";
+import { t as tFn, type Locale } from "@/lib/i18n";
 import type { Act } from "@/data/materials";
 
 interface ScaleReferenceProps {
@@ -259,9 +260,42 @@ function renderHuman(size: number) {
   );
 }
 
+// ─── Locale-aware label helpers ───────────────────────────────
+
+const REF_LABEL_KEYS: Record<RefType, keyof typeof CONTENT> = {
+  heliosphere: "ref_heliosphere_label",
+  "solar-system": "ref_solar_system_label",
+  sun: "ref_sun_label",
+  earth: "ref_earth_label",
+  everest: "ref_everest_label",
+  statue: "ref_statue_label",
+  human: "ref_human_label",
+};
+
+const REF_SHORT_KEYS: Record<RefType, keyof typeof CONTENT> = {
+  heliosphere: "ref_heliosphere_short",
+  "solar-system": "ref_solar_system_short",
+  sun: "ref_sun_short",
+  earth: "ref_earth_short",
+  everest: "ref_everest_short",
+  statue: "ref_statue_short",
+  human: "ref_human_short",
+};
+
+export function getRefLabel(refType: RefType, locale: Locale): string {
+  return tFn(locale, REF_LABEL_KEYS[refType]) as string;
+}
+
+export function getRefShortLabel(refType: RefType, locale: Locale): string {
+  return tFn(locale, REF_SHORT_KEYS[refType]) as string;
+}
+
 // ─── Component ────────────────────────────────────────────────
 
+import { useLocale } from "./LocaleProvider";
+
 export default function ScaleReference({ logVolume, act, pileHeight, sizeFactor = 1 }: ScaleReferenceProps) {
+  const locale = useLocale();
   const refType = getRefType(logVolume, act);
   const ref = REFERENCES[refType];
   const size = getRefSize(logVolume, act) * sizeFactor;
@@ -273,7 +307,7 @@ export default function ScaleReference({ logVolume, act, pileHeight, sizeFactor 
         className="text-xs font-medium tracking-wider uppercase whitespace-nowrap"
         style={{ color: ref.color, opacity: 1 }}
       >
-        {ref.shortLabel}
+        {getRefShortLabel(refType, locale)}
       </span>
     </div>
   );

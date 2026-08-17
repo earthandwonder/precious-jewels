@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { CONTENT } from "@/data/content";
+import { useT } from "./LocaleProvider";
 
 /**
  * Heliosphere intro — auto-animates when snapped into view.
@@ -9,6 +9,7 @@ import { CONTENT } from "@/data/content";
  * Sets up the first scale reference for Act 1 materials.
  */
 export default function EarthIntro({ isActive }: { isActive: boolean }) {
+  const t = useT();
   const [hasAnimated, setHasAnimated] = useState(false);
   const [progress, setProgress] = useState(0);
 
@@ -77,7 +78,7 @@ export default function EarthIntro({ isActive }: { isActive: boolean }) {
           color: "rgba(180, 170, 240, 1)",
         }}
       >
-        {CONTENT.earth_intro_label}
+        {t("earth_intro_label")}
       </p>
 
       {/* Context */}
@@ -88,7 +89,7 @@ export default function EarthIntro({ isActive }: { isActive: boolean }) {
           color: "rgba(210, 222, 238, 0.95)",
         }}
       >
-        {CONTENT.earth_intro_context}
+        {t("earth_intro_context")}
       </p>
     </div>
   );

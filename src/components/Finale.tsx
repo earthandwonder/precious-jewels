@@ -1,13 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { CONTENT } from "@/data/content";
+import { useT } from "./LocaleProvider";
 
 /**
  * The pearl reveal — auto-animated entrance when snapped into view.
  * Slow, dramatic staggered reveal (~2.5s total).
  */
 export default function Finale({ isActive }: { isActive: boolean }) {
+  const t = useT();
   const [hasAnimated, setHasAnimated] = useState(false);
   const [progress, setProgress] = useState(0);
 
@@ -55,7 +56,7 @@ export default function Finale({ isActive }: { isActive: boolean }) {
             opacity: labelOpacity,
           }}
         >
-          {CONTENT.finale_label}
+          {t("finale_label")}
         </p>
 
         {/* Pearl image with glow backdrop */}
@@ -79,7 +80,7 @@ export default function Finale({ isActive }: { isActive: boolean }) {
             />
             <img
               src="/p/rarest-gemstones/pearl.png"
-              alt={CONTENT.finale_pearl_alt}
+              alt={t("finale_pearl_alt")}
               className="relative w-full h-full object-contain drop-shadow-[0_0_30px_rgba(253,235,208,0.3)]"
               draggable={false}
             />
@@ -94,7 +95,7 @@ export default function Finale({ isActive }: { isActive: boolean }) {
             transform: `translateY(${titleY}px)`,
           }}
         >
-          {CONTENT.finale_title}
+          {t("finale_title")}
         </p>
 
         <hr
@@ -109,7 +110,7 @@ export default function Finale({ isActive }: { isActive: boolean }) {
             opacity: bodyOpacity,
           }}
         >
-          {CONTENT.finale_body}
+          {t("finale_body")}
         </p>
 
         <p
@@ -119,7 +120,7 @@ export default function Finale({ isActive }: { isActive: boolean }) {
             opacity: comparisonOpacity,
           }}
         >
-          {CONTENT.finale_comparison}
+          {t("finale_comparison")}
         </p>
       </div>
     </div>

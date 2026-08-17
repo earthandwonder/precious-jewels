@@ -1,6 +1,6 @@
 "use client";
 
-import { CONTENT } from "@/data/content";
+import { useT } from "./LocaleProvider";
 import { trackEvent } from "@/lib/analytics";
 
 export interface Product {
@@ -26,6 +26,7 @@ export default function ProductCard({
   materialColor: string;
   materialId?: string;
 }) {
+  const t = useT();
   const rgb = hexToRgb(glowColor);
 
   return (
@@ -101,13 +102,13 @@ export default function ProductCard({
             background: "rgba(3, 3, 8, 0.4)",
           }}
         >
-          {CONTENT.product_cta}
+          {t("product_cta")}
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M7 17l9.2-9.2M17 17V7H7" />
           </svg>
         </span>
         <span className="text-[10px] tracking-wide opacity-50" style={{ color: materialColor }}>
-          {CONTENT.product_affiliate_label}
+          {t("product_affiliate_label")}
         </span>
       </div>
     </a>
