@@ -13,6 +13,9 @@ import { CONTENT } from "@/data/content";
 export const LOCALES = ["en", "es", "pt", "fr", "de", "ja", "hi", "zh", "ko"] as const;
 export type Locale = (typeof LOCALES)[number];
 
+/** Non-English locales — used for [locale] route generateStaticParams */
+export const NON_EN_LOCALES = LOCALES.filter((l) => l !== "en");
+
 export const LANG_FLAGS: Record<Locale, string> = {
   en: "\uD83C\uDDEC\uD83C\uDDE7",
   es: "\uD83C\uDDEA\uD83C\uDDF8",
