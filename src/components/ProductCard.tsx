@@ -33,7 +33,7 @@ export default function ProductCard({
     <a
       href={product.url}
       target="_blank"
-      rel="noopener noreferrer nofollow sponsored"
+      rel="noopener noreferrer"
       onClick={() =>
         trackEvent("outbound_click", {
           material: materialId,
@@ -107,9 +107,11 @@ export default function ProductCard({
             <path d="M7 17l9.2-9.2M17 17V7H7" />
           </svg>
         </span>
+        {/* TODO: restore when Rakuten affiliate is approved
         <span className="text-[10px] tracking-wide opacity-50" style={{ color: materialColor }}>
           {t("product_affiliate_label")}
         </span>
+        */}
       </div>
     </a>
   );
